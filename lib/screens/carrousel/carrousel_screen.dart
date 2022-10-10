@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:thunderapp/components/buttons/custom_text_button.dart';
-import 'package:thunderapp/components/buttons/primary_button.dart';
-import 'package:thunderapp/components/utils/vertical_spacer_box.dart';
-import 'package:thunderapp/screens/carrousel/carrousel_controller.dart';
-import 'package:thunderapp/shared/constants/app_enums.dart';
-import 'package:thunderapp/shared/constants/app_number_constants.dart';
-import 'package:thunderapp/shared/constants/style_constants.dart';
-import 'package:thunderapp/shared/core/assets_index.dart';
+import 'package:ecommercebonito/components/buttons/custom_text_button.dart';
+import 'package:ecommercebonito/components/buttons/primary_button.dart';
+import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
+import 'package:ecommercebonito/screens/carrousel/carrousel_controller.dart';
+import 'package:ecommercebonito/shared/constants/app_enums.dart';
+import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
+import 'package:ecommercebonito/shared/constants/style_constants.dart';
+import 'package:ecommercebonito/shared/core/assets_index.dart';
 
 class CarrouselScreen extends StatelessWidget {
   const CarrouselScreen({Key? key}) : super(key: key);

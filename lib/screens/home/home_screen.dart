@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:thunderapp/components/buttons/custom_text_button.dart';
-import 'package:thunderapp/screens/home/home_screen_controller.dart';
+import 'package:ecommercebonito/components/buttons/custom_text_button.dart';
+import 'package:ecommercebonito/screens/home/home_screen_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
       builder: (context, child) => Consumer<HomeScreenController>(
         builder: ((context, controller, child) => Scaffold(
               appBar: AppBar(
-                title: const Text('Thunder App'),
+                title: const Text('Ecoomerce Bonito'),
               ),
               body: SizedBox(
                 width: size.width,
