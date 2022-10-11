@@ -25,7 +25,7 @@ class SignInScreen extends StatelessWidget {
           return Consumer<SignInController>(
             builder: (context, controller, child) => Scaffold(
               appBar: PreferredSize(
-                preferredSize: const Size.fromHeight(250),
+                preferredSize: const Size.fromHeight(320),
                 child: AppBar(
                   title: const Center(
                     child: Text(
@@ -48,15 +48,18 @@ class SignInScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Wrap(
+                      children: const [
+                        Center(
+                          child: Text(
+                            'Entrar',
+                            style: TextStyle(fontSize: 35, color: Colors.grey),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    ),
                     const Spacer(),
-                    const Center(
-                        child: Text(
-                      'Entrar',
-                      style: kTitle2,
-                      selectionColor: kSecondaryColor,
-                    )),
-                    const Spacer(),
-                    const VerticalSpacerBox(size: SpacerSize.small),
                     CustomTextFormField(
                       hintText: 'E-mail',
                       controller: controller.emailController,
@@ -83,6 +86,38 @@ class SignInScreen extends StatelessWidget {
                             text: 'Entrar',
                             onPressed: () => controller.signIn(context)),
                     const VerticalSpacerBox(size: SpacerSize.large),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Divider(
+                          color: kTextButtonColor,
+                        ),
+                        Text('ou'),
+                        Divider(
+                          color: kTextButtonColor,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: () {},
+                          child: Container(
+                              width: size.width * 0.1,
+                              height: size.height * 0.06,
+                              child: Image.network(
+                                  'http://pngimg.com/uploads/google/google_PNG19635.png',
+                                  fit: BoxFit.cover)),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.facebook_sharp),
+                          iconSize: 45,
+                          color: Colors.blue,
+                        ),
+                      ],
+                    ),
                     SizedBox(
                       width: size.width,
                       child: Column(
@@ -111,7 +146,6 @@ class SignInScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const Spacer(),
                   ],
                 ),
               ),

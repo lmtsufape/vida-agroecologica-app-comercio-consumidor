@@ -24,7 +24,7 @@ class RegisterAdress extends StatelessWidget {
           return Consumer<SignInController>(
             builder: (context, controller, child) => Scaffold(
               appBar: PreferredSize(
-                preferredSize: const Size.fromHeight(250),
+                preferredSize: const Size.fromHeight(320),
                 child: AppBar(
                   title: const Center(
                     child: Text(
@@ -47,15 +47,18 @@ class RegisterAdress extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Wrap(
+                      children: const [
+                        Center(
+                          child: Text(
+                            'Endereço',
+                            style: TextStyle(fontSize: 35, color: Colors.grey),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    ),
                     const Spacer(),
-                    const Center(
-                        child: Text(
-                      'Endereço',
-                      style: kTitle1,
-                      selectionColor: kSecondaryColor,
-                    )),
-                    const Spacer(),
-                    const VerticalSpacerBox(size: SpacerSize.small),
                     CustomTextFormField(
                       hintText: 'Rua',
                       controller: controller.emailController,
@@ -75,7 +78,7 @@ class RegisterAdress extends StatelessWidget {
                       hintText: 'Número',
                       controller: controller.passwordController,
                     ),
-                    const VerticalSpacerBox(size: SpacerSize.large),
+                    const Spacer(),
                     controller.status == SignInStatus.loading
                         ? const CircularProgressIndicator()
                         : PrimaryButton(
@@ -101,8 +104,7 @@ class RegisterAdress extends StatelessWidget {
                               CustomTextButton(
                                 title: 'Entre aqui',
                                 onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, Screens.register);
+                                  Navigator.pushNamed(context, Screens.signin);
                                 },
                               ),
                             ],
@@ -110,7 +112,6 @@ class RegisterAdress extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const Spacer(),
                   ],
                 ),
               ),

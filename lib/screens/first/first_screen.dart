@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:ecommercebonito/components/buttons/custom_text_button.dart';
 import 'package:ecommercebonito/components/buttons/primary_button.dart';
 import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
@@ -26,7 +28,7 @@ class FirstScreen extends StatelessWidget {
           return Consumer<SignInController>(
             builder: (context, controller, child) => Scaffold(
               appBar: PreferredSize(
-                preferredSize: const Size.fromHeight(250),
+                preferredSize: const Size.fromHeight(320),
                 child: AppBar(
                   title: const Center(
                     child: Text(
@@ -50,13 +52,16 @@ class FirstScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Spacer(),
-                    const Center(
-                        child: Text(
-                      'Para começar, que tal entrar com sua conta?',
-                      style: kTitle2,
-                      selectionColor: kSecondaryColor,
-                    )),
-                    const VerticalSpacerBox(size: SpacerSize.large),
+                    Wrap(
+                      children: const [
+                        Text(
+                          'Para começar, que tal entrar com sua conta?',
+                          style: TextStyle(fontSize: 25),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                    const Spacer(),
                     controller.status == SignInStatus.loading
                         ? const CircularProgressIndicator()
                         : PrimaryButton(
@@ -102,7 +107,6 @@ class FirstScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const Spacer(),
                   ],
                 ),
               ),

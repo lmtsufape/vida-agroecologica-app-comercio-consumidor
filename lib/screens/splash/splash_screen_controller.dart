@@ -33,7 +33,7 @@ class SplashScreenController {
     ///is shown for 3 seconds
     ///for example, we can go to the home screen after 3 seconds
     ///we can also use the following code to go to the home screen:
-    // Navigator.pushNamed(context, Screens.first);
+    Navigator.pushNamed(context, Screens.first);
 
     ///or we can use the following code to go to the sign in screen:
     // await configDefaultAppSettings();

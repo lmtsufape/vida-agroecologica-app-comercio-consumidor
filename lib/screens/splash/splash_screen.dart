@@ -56,6 +56,7 @@ class _SplashScreenState extends State<SplashScreen>
             child: Text(
               'Logo',
               style: kTitle1,
+              
             ),
           ),
           shape: const RoundedRectangleBorder(

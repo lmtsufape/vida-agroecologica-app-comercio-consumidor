@@ -24,7 +24,7 @@ class RegisterScreen extends StatelessWidget {
           return Consumer<SignInController>(
             builder: (context, controller, child) => Scaffold(
               appBar: PreferredSize(
-                preferredSize: const Size.fromHeight(250),
+                preferredSize: const Size.fromHeight(320),
                 child: AppBar(
                   title: const Center(
                     child: Text(
@@ -47,15 +47,19 @@ class RegisterScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    
+                    Wrap(
+                      children: const [
+                        Center(
+                          child: Text(
+                            'Cadastro',
+                            style: TextStyle(fontSize: 35, color: Colors.grey),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    ),
                     const Spacer(),
-                    const Center(
-                        child: Text(
-                      'Cadastro',
-                      style: kTitle1,
-                      selectionColor: kSecondaryColor,
-                    )),
-                    const Spacer(),
-                    const VerticalSpacerBox(size: SpacerSize.small),
                     CustomTextFormField(
                       hintText: 'Nome',
                       controller: controller.emailController,
@@ -75,7 +79,7 @@ class RegisterScreen extends StatelessWidget {
                       hintText: 'Telefone',
                       controller: controller.passwordController,
                     ),
-                    const VerticalSpacerBox(size: SpacerSize.large),
+                    const Spacer(),
                     controller.status == SignInStatus.loading
                         ? const CircularProgressIndicator()
                         : PrimaryButton(
@@ -102,8 +106,7 @@ class RegisterScreen extends StatelessWidget {
                               CustomTextButton(
                                 title: 'Entre aqui',
                                 onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, Screens.register);
+                                  Navigator.pushNamed(context, Screens.signin);
                                 },
                               ),
                             ],
@@ -111,7 +114,6 @@ class RegisterScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const Spacer(),
                   ],
                 ),
               ),

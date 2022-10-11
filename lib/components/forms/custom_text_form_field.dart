@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
 
 class CustomTextFormField extends StatefulWidget {
-  const CustomTextFormField({Key? key, this.label, this.controller, this.keyboardType, this.hintText, this.isPassword}) : super(key: key);
+  const CustomTextFormField(
+      {Key? key,
+      this.label,
+      this.controller,
+      this.keyboardType,
+      this.hintText,
+      this.isPassword})
+      : super(key: key);
   final String? label;
   final String? hintText;
   final TextEditingController? controller;
@@ -36,8 +42,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         obscureText: _obscureText,
         controller: widget.controller,
         decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(kDefaultBorderRadius),
+          icon: const Icon(
+            Icons.person,
+            color: Colors.grey,
           ),
           labelText: widget.label,
           filled: true,
