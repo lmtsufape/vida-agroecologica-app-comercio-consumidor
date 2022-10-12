@@ -1,4 +1,5 @@
 import 'package:ecommercebonito/screens/screens_index.dart';
+import 'package:ecommercebonito/shared/components/style_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ecommercebonito/components/buttons/custom_text_button.dart';
@@ -24,23 +25,10 @@ class SignInScreen extends StatelessWidget {
         builder: (context, child) {
           return Consumer<SignInController>(
             builder: (context, controller, child) => Scaffold(
-              appBar: PreferredSize(
-                preferredSize: const Size.fromHeight(320),
-                child: AppBar(
-                  title: const Center(
-                    child: Text(
-                      'Bem-vindo(a) ao App Bonito',
-                      style: kTitle1,
-                    ),
-                  ),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(
-                      bottom: Radius.circular(30),
-                    ),
-                  ),
-                  backgroundColor: kDetailColor,
-                ),
-              ),
+              appBar: const PreferredSize(
+                  preferredSize: Size.fromHeight(320),
+                  child: StyleBar(
+                      title: 'Bem vindo(a) ao App bonito', hasLeading: true)),
               body: Container(
                 width: size.width,
                 padding: const EdgeInsets.all(kDefaultPadding),

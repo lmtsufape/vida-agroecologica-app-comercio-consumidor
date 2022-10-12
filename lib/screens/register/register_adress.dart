@@ -4,6 +4,7 @@ import 'package:ecommercebonito/components/forms/custom_text_form_field.dart';
 import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/screens/signin/sign_in_controller.dart';
+import 'package:ecommercebonito/shared/components/style_bar.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
 import 'package:ecommercebonito/shared/constants/style_constants.dart';
@@ -23,23 +24,10 @@ class RegisterAdress extends StatelessWidget {
         builder: (context, child) {
           return Consumer<SignInController>(
             builder: (context, controller, child) => Scaffold(
-              appBar: PreferredSize(
-                preferredSize: const Size.fromHeight(320),
-                child: AppBar(
-                  title: const Center(
-                    child: Text(
-                      'Bem-vindo(a) ao App Bonito',
-                      style: kTitle1,
-                    ),
-                  ),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(
-                      bottom: Radius.circular(30),
-                    ),
-                  ),
-                  backgroundColor: kDetailColor,
-                ),
-              ),
+              appBar: const PreferredSize(
+                  preferredSize: Size.fromHeight(320),
+                  child: StyleBar(
+                      title: 'Bem Vindo(a) ao App Bonito', hasLeading: true)),
               body: Container(
                 width: size.width,
                 padding: const EdgeInsets.all(kDefaultPadding),
