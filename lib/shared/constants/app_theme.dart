@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:thunderapp/shared/constants/app_enums.dart';
-import 'package:thunderapp/shared/constants/style_constants.dart';
+import 'package:ecommercebonito/shared/constants/app_enums.dart';
+import 'package:ecommercebonito/shared/constants/style_constants.dart';
 
 class AppTheme with ChangeNotifier {
   CurrentAppTheme _currentAppTheme = CurrentAppTheme.light;

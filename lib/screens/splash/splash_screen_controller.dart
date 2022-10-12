@@ -1,20 +1,19 @@
 import 'dart:developer';
-
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:thunderapp/screens/screens_index.dart';
-import 'package:thunderapp/shared/core/navigator.dart';
-import 'package:thunderapp/shared/core/preferences_manager.dart';
-import 'package:thunderapp/shared/core/user_storage.dart';
+import 'package:ecommercebonito/screens/screens_index.dart';
+import 'package:ecommercebonito/shared/core/navigator.dart';
+import 'package:ecommercebonito/shared/core/preferences_manager.dart';
+import 'package:ecommercebonito/shared/core/user_storage.dart';
 
 class SplashScreenController {
   final BuildContext context;
   bool isFirstTime = false;
   SplashScreenController(this.context);
-  final Logger _logger = Logger('Splash screen logger'); //a logger is always good to have
+  final Logger _logger =
+      Logger('Splash screen logger'); //a logger is always good to have
   final userStorage = UserStorage();
 
   ///this class is binded with SplashScreen widget and should be used
@@ -34,9 +33,10 @@ class SplashScreenController {
     ///is shown for 3 seconds
     ///for example, we can go to the home screen after 3 seconds
     ///we can also use the following code to go to the home screen:
-    ///Navigator.pushNamed(context, Screens.home);
+    Navigator.pushNamed(context, Screens.first);
+
     ///or we can use the following code to go to the sign in screen:
-    await configDefaultAppSettings();
+    // await configDefaultAppSettings();
     // FirebaseAuth.instance.authStateChanges().listen((User? user) {
     //   Future.delayed(const Duration(seconds: 3), () {
     //     if (user == null) {
@@ -62,7 +62,7 @@ class SplashScreenController {
     final bool? isFirstTime = prefs.getBool(loadedKey);
     if (isFirstTime != null && isFirstTime) {
       log('First time user in: carrosel');
-      navigatorKey.currentState!.pushNamed(Screens.carrousel);
+      navigatorKey.currentState!.pushNamed(Screens.signin);
     } else {
       log('User already open app: sign in or home');
       return;

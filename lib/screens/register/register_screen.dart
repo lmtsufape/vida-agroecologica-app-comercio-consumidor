@@ -1,21 +1,20 @@
-import 'package:ecommercebonito/screens/screens_index.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:ecommercebonito/components/buttons/custom_text_button.dart';
 import 'package:ecommercebonito/components/buttons/primary_button.dart';
 import 'package:ecommercebonito/components/forms/custom_text_form_field.dart';
 import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
+import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/screens/signin/sign_in_controller.dart';
+import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
 import 'package:ecommercebonito/shared/constants/style_constants.dart';
-import '../../shared/constants/app_enums.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class SignInScreen extends StatelessWidget {
-  const SignInScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    /**Declare this variable to get the Media Query of the screen in the current context */
     Size size = MediaQuery.of(context).size;
     return MultiProvider(
         providers: [
@@ -48,11 +47,12 @@ class SignInScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    
                     Wrap(
                       children: const [
                         Center(
                           child: Text(
-                            'Entrar',
+                            'Cadastro',
                             style: TextStyle(fontSize: 35, color: Colors.grey),
                             textAlign: TextAlign.center,
                           ),
@@ -61,63 +61,32 @@ class SignInScreen extends StatelessWidget {
                     ),
                     const Spacer(),
                     CustomTextFormField(
-                      hintText: 'E-mail',
+                      hintText: 'Nome',
                       controller: controller.emailController,
                     ),
                     const VerticalSpacerBox(size: SpacerSize.small),
                     CustomTextFormField(
-                      hintText: 'Senha',
-                      isPassword: true,
+                      hintText: 'E-mail',
                       controller: controller.passwordController,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        CustomTextButton(
-                          title: 'Esqueceu a senha?',
-                          onPressed: () {},
-                        ),
-                      ],
+                    const VerticalSpacerBox(size: SpacerSize.small),
+                    CustomTextFormField(
+                      hintText: 'Senha',
+                      controller: controller.emailController,
                     ),
-                    const VerticalSpacerBox(size: SpacerSize.medium),
+                    const VerticalSpacerBox(size: SpacerSize.small),
+                    CustomTextFormField(
+                      hintText: 'Telefone',
+                      controller: controller.passwordController,
+                    ),
+                    const Spacer(),
                     controller.status == SignInStatus.loading
                         ? const CircularProgressIndicator()
                         : PrimaryButton(
-                            text: 'Entrar',
-                            onPressed: () => controller.signIn(context)),
+                            text: 'Próximo',
+                            onPressed: () => Navigator.pushNamed(
+                                context, Screens.registerAdress)),
                     const VerticalSpacerBox(size: SpacerSize.large),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Divider(
-                          color: kTextButtonColor,
-                        ),
-                        Text('ou'),
-                        Divider(
-                          color: kTextButtonColor,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: () {},
-                          child: Container(
-                              width: size.width * 0.1,
-                              height: size.height * 0.06,
-                              child: Image.network(
-                                  'http://pngimg.com/uploads/google/google_PNG19635.png',
-                                  fit: BoxFit.cover)),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.facebook_sharp),
-                          iconSize: 45,
-                          color: Colors.blue,
-                        ),
-                      ],
-                    ),
                     SizedBox(
                       width: size.width,
                       child: Column(
@@ -133,12 +102,11 @@ class SignInScreen extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text('Não possui conta?'),
+                              const Text('Já possui conta?'),
                               CustomTextButton(
-                                title: 'Crie aqui',
+                                title: 'Entre aqui',
                                 onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, Screens.register);
+                                  Navigator.pushNamed(context, Screens.signin);
                                 },
                               ),
                             ],

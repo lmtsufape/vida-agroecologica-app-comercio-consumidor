@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:thunderapp/components/buttons/custom_text_button.dart';
-import 'package:thunderapp/components/buttons/primary_button.dart';
-import 'package:thunderapp/shared/constants/style_constants.dart';
-import 'package:thunderapp/shared/core/navigator.dart';
+import 'package:ecommercebonito/components/buttons/custom_text_button.dart';
+import 'package:ecommercebonito/components/buttons/primary_button.dart';
+import 'package:ecommercebonito/shared/constants/style_constants.dart';
+import 'package:ecommercebonito/shared/core/navigator.dart';
 
 class DefaultAlertDialog extends StatelessWidget {
-  const DefaultAlertDialog({Key? key, required this.title, required this.body, required this.cancelText, required this.onConfirm, required this.confirmText}) : super(key: key);
+  const DefaultAlertDialog(
+      {Key? key,
+      required this.title,
+      required this.body,
+      required this.cancelText,
+      required this.onConfirm,
+      required this.confirmText})
+      : super(key: key);
   final String title;
   final String body;
   final String cancelText;
@@ -25,7 +32,14 @@ class DefaultAlertDialog extends StatelessWidget {
         body,
         style: kCaption2,
       ),
-      actions: [CustomTextButton(title: cancelText, onPressed: (() => navigatorKey.currentState!.pop())), SizedBox(width: size.width * 0.3, child: PrimaryButton(text: confirmText, onPressed: onConfirm))],
+      actions: [
+        CustomTextButton(
+            title: cancelText,
+            onPressed: (() => navigatorKey.currentState!.pop())),
+        SizedBox(
+            width: size.width * 0.3,
+            child: PrimaryButton(text: confirmText, onPressed: onConfirm))
+      ],
     );
   }
 }

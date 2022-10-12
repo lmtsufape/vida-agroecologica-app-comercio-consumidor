@@ -3,8 +3,11 @@ class Screens {
   ///so you can easily navigate to them.
   ///With this, you can change the route easily without breaking the routes and you can
   ///change in the future
-  static const String home = '/home';
-  static const String splash = '/splash';
-  static const String signin = '/sign_in';
+  static const String home = '/home/home_screen';
+  static const String splash = '/splash/splash_screen';
+  static const String signin = '/sign_in/sign_in_screen';
   static const String carrousel = '/carrousel';
+  static const String register = '/register/register_screen';
+  static const String registerAdress = '/register/register_adress';
+  static const String first = '/first/first_screen';
 }

@@ -1,14 +1,10 @@
+import 'package:ecommercebonito/assets/index.dart';
+import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
+import 'package:ecommercebonito/shared/constants/app_enums.dart';
+import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:thunderapp/components/utils/vertical_spacer_box.dart';
-import 'package:thunderapp/screens/screens_index.dart';
-import 'package:thunderapp/screens/splash/splash_screen_controller.dart';
-import 'package:thunderapp/shared/constants/app_enums.dart';
-
-import 'package:thunderapp/shared/constants/app_number_constants.dart';
-import 'package:thunderapp/shared/constants/style_constants.dart';
-
-import '../../shared/core/assets_index.dart';
+import 'package:ecommercebonito/screens/screens_index.dart';
+import 'package:ecommercebonito/screens/splash/splash_screen_controller.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -25,14 +21,14 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
-    animController = AnimationController(
-        vsync: this, duration: const Duration(seconds: 2));
+    animController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
     _controller = SplashScreenController(context);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setController();
       stopController();
       _controller.initApplication(() {
-        Navigator.popAndPushNamed(context, Screens.home);
+        Navigator.popAndPushNamed(context, Screens.signin);
       });
     });
   }
@@ -52,52 +48,38 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   actions: [
-      //     IconButton(
-      //         onPressed: () async {
-      //           animController.repeat();
-      //           stopController();
-      //         },
-      //         icon: Icon(Icons.add))
-      //   ],
-      // ),
-      body: Stack(
-        children: [
-          SizedBox(
-            width: size.width,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Lottie.asset(
-                    width: 220,
-                    height: 220,
-                    controller: animController,
-                    Assets.introLottie,
-                    fit: BoxFit.fill),
-                AnimatedOpacity(
-                    duration: const Duration(milliseconds: 200),
-                    opacity: opacity,
-                    child: const Text('Delivering Eggexperience')),
-                const VerticalSpacerBox(size: SpacerSize.huge)
-              ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(650),
+        child: AppBar(
+          title: const Center(
+            child: Text(
+              'Logo',
+              style: kTitle1,
+              
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(kDefaultPadding),
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: Text(
-                'From AR BASH Studios',
-                style: kCaption2.copyWith(fontFamily: 'Roboto'),
-              ),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30),
             ),
-          )
-        ],
+          ),
+          backgroundColor: kDetailColor,
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text(
+              'Desenvolvido por:',
+              style: kBody3,
+            ),
+            const VerticalSpacerBox(size: SpacerSize.small),
+            Center(child: Image.asset(Assets.logo)),
+          ],
+        ),
       ),
     );
   }
