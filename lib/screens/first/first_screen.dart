@@ -5,6 +5,7 @@ import 'package:ecommercebonito/components/buttons/primary_button.dart';
 import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/screens/signin/sign_in_controller.dart';
+import 'package:ecommercebonito/shared/components/style_bar.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
 import 'package:flutter/material.dart';
@@ -27,23 +28,12 @@ class FirstScreen extends StatelessWidget {
         builder: (context, child) {
           return Consumer<SignInController>(
             builder: (context, controller, child) => Scaffold(
-              appBar: PreferredSize(
-                preferredSize: const Size.fromHeight(320),
-                child: AppBar(
-                  title: const Center(
-                    child: Text(
-                      'Eba, que bom que você voltou!',
-                      style: kTitle1,
-                    ),
-                  ),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(
-                      bottom: Radius.circular(30),
-                    ),
-                  ),
-                  backgroundColor: kDetailColor,
-                ),
-              ),
+              appBar: const PreferredSize(
+                  preferredSize: Size.fromHeight(320),
+                  child: StyleBar(
+                    title: 'Eba, que bom que você voltou!',
+                    hasLeading: false,
+                  )),
               body: Container(
                 width: size.width,
                 padding: const EdgeInsets.all(kDefaultPadding),

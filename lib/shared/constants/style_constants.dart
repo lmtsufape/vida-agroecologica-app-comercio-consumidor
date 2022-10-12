@@ -37,6 +37,7 @@ const Color kAlertColor = Colors.orangeAccent;
 const TextStyle kTitle1 = TextStyle(
   fontSize: 28,
   fontWeight: FontWeight.w900,
+  color: kBackgroundColor,
 );
 const TextStyle kTitle2 = TextStyle(
   fontSize: 24,
