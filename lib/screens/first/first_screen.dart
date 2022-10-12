@@ -30,6 +30,7 @@ class FirstScreen extends StatelessWidget {
               appBar: PreferredSize(
                 preferredSize: const Size.fromHeight(320),
                 child: AppBar(
+                  leading: const SizedBox(),
                   title: const Center(
                     child: Text(
                       'Eba, que bom que você voltou!',
