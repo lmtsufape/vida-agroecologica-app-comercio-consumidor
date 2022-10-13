@@ -1,5 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:ecommercebonito/screens/first/first_screen.dart';
+import 'package:ecommercebonito/screens/home/favorite_screen.dart';
+import 'package:ecommercebonito/screens/home/profile_screen.dart';
 import 'package:ecommercebonito/screens/register/register_adress.dart';
 import 'package:ecommercebonito/screens/register/register_screen.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +44,8 @@ class App extends StatelessWidget {
         Screens.registerAdress: (BuildContext context) =>
             const RegisterAdress(),
         Screens.first: (BuildContext context) => const FirstScreen(),
+        Screens.profile: (BuildContext context) => const ProfileScreen(),
+        Screens.favorite: (BuildContext context) => const FavoriteScreen(),
       },
     );
   }

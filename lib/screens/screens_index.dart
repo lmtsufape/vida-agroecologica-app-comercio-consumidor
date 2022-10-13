@@ -10,4 +10,6 @@ class Screens {
   static const String register = '/register/register_screen';
   static const String registerAdress = '/register/register_adress';
   static const String first = '/first/first_screen';
+  static const String profile = '/home/profile_screen';
+  static const String favorite = '/home/favorite_screen';
 }

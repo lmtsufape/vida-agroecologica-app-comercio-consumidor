@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     animController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 2));
+        AnimationController(vsync: this, duration: const Duration(seconds: 6));
     _controller = SplashScreenController(context);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setController();
@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   void stopController() async {
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 6), () {
       setState(() {
         opacity = 1;
       });
@@ -56,7 +56,6 @@ class _SplashScreenState extends State<SplashScreen>
             child: Text(
               'Logo',
               style: kTitle1,
-              
             ),
           ),
           shape: const RoundedRectangleBorder(
