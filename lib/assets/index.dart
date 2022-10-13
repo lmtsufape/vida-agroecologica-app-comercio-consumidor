@@ -6,4 +6,10 @@ class Assets {
 
   //**IMAGES */
   static const String logo = 'lib/assets/images/logo_lmts.png';
+  static const String vegetais = 'lib/assets/images/Carrot.svg';
+  static const String frutas = 'lib/assets/images/Bitten Apple.svg';
+  static const String folhosos = 'lib/assets/images/Spinach.svg';
+  static const String carnes = 'lib/assets/images/Meat.svg';
+  static const String leite = 'lib/assets/images/Milk Carton.svg';
+  static const String ovos = 'lib/assets/images/Eggs.svg';
 }
