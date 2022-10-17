@@ -87,7 +87,9 @@ class ProfileScreen extends StatelessWidget {
               color: Colors.grey,
             ),
             InkWell(
-              onTap: () async {},
+              onTap: () {
+                Navigator.pushNamed(context, Screens.purchases);
+              },
               child: Row(
                 children: [
                   Container(
@@ -128,7 +130,9 @@ class ProfileScreen extends StatelessWidget {
               color: Colors.grey,
             ),
             InkWell(
-              onTap: () async {},
+              onTap: () {
+                Navigator.pushNamed(context, Screens.endereco);
+              },
               child: Row(
                 children: [
                   Container(
@@ -169,7 +173,9 @@ class ProfileScreen extends StatelessWidget {
               color: Colors.grey,
             ),
             InkWell(
-              onTap: () async {},
+              onTap: () {
+                Navigator.pushNamed(context, Screens.pagamento);
+              },
               child: Row(
                 children: [
                   Container(

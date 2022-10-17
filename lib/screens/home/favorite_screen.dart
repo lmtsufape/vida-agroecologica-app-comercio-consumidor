@@ -89,7 +89,7 @@ class FavoriteScreen extends StatelessWidget {
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(30))),
+                                    BorderRadius.all(Radius.circular(40))),
                             hintText: 'Buscar',
                             contentPadding: EdgeInsets.symmetric(
                                 vertical: 15, horizontal: 15),
@@ -119,63 +119,70 @@ class FavoriteScreen extends StatelessWidget {
                             width: 440,
                             height: 125,
                             decoration: const BoxDecoration(
-                                color: Colors.grey,
+                                color: Colors.white,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(15))),
-                            child: Wrap(
-                              children: [
-                                Row(
-                                  children: [
-                                    const HorizontalSpacerBox(
-                                        size: SpacerSize.large),
-                                    Container(
-                                      width: 65.0,
-                                      height: 65.0,
-                                      decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                          fit: BoxFit.fill,
-                                          image: NetworkImage(
-                                              "https://gentv.com.br/img/content/266-1"),
+                            child: Center(
+                              child: Wrap(
+                                children: [
+                                  Row(
+                                    children: [
+                                      const HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      Container(
+                                        width: 65.0,
+                                        height: 65.0,
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          image: DecorationImage(
+                                            fit: BoxFit.fill,
+                                            image: NetworkImage(
+                                                "https://gentv.com.br/img/content/266-1"),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    HorizontalSpacerBox(size: SpacerSize.large),
-                                    const Text(
-                                      'João Frutas',
-                                      style: TextStyle(fontSize: 20),
-                                      textAlign: TextAlign.end,
-                                    ),
-                                    const Spacer(),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(
-                                          Icons.favorite,
-                                          color: Colors.green,
-                                        )),
-                                  ],
-                                ),
-                                Row(
-                                  children: const [
-                                    HorizontalSpacerBox(size: SpacerSize.large),
-                                    Text('Frutas - Legumes - Tempeiros'),
-                                  ],
-                                ),
-                                const VerticalSpacerBox(size: SpacerSize.small),
-                                Row(
-                                  children: const [
-                                    HorizontalSpacerBox(size: SpacerSize.large),
-                                    Text(
-                                      'Contato: (11) 99999-9999',
-                                    ),
-                                    HorizontalSpacerBox(size: SpacerSize.tiny),
-                                    Icon(
-                                      Icons.whatsapp,
-                                      color: Colors.green,
-                                    ),
-                                  ],
-                                )
-                              ],
+                                      const HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      const Text(
+                                        'João Frutas',
+                                        style: TextStyle(fontSize: 20),
+                                        textAlign: TextAlign.end,
+                                      ),
+                                      const Spacer(),
+                                      IconButton(
+                                          onPressed: () {},
+                                          icon: const Icon(
+                                            Icons.favorite,
+                                            color: Colors.green,
+                                          )),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: const [
+                                      HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      Text('Frutas - Legumes - Tempeiros'),
+                                    ],
+                                  ),
+                                  const VerticalSpacerBox(
+                                      size: SpacerSize.small),
+                                  Row(
+                                    children: const [
+                                      HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      Text(
+                                        'Contato: (11) 99999-9999',
+                                      ),
+                                      HorizontalSpacerBox(
+                                          size: SpacerSize.tiny),
+                                      Icon(
+                                        Icons.whatsapp,
+                                        color: Colors.green,
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ],
@@ -191,63 +198,70 @@ class FavoriteScreen extends StatelessWidget {
                             width: 440,
                             height: 125,
                             decoration: const BoxDecoration(
-                                color: Colors.grey,
+                                color: Colors.white,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(15))),
-                            child: Wrap(
-                              children: [
-                                Row(
-                                  children: [
-                                    const HorizontalSpacerBox(
-                                        size: SpacerSize.large),
-                                    Container(
-                                      width: 65.0,
-                                      height: 65.0,
-                                      decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                          fit: BoxFit.fill,
-                                          image: NetworkImage(
-                                              "https://expomeat.com.br/img/site/1666/m/5413240.jpg"),
+                            child: Center(
+                              child: Wrap(
+                                children: [
+                                  Row(
+                                    children: [
+                                      const HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      Container(
+                                        width: 65.0,
+                                        height: 65.0,
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          image: DecorationImage(
+                                            fit: BoxFit.fill,
+                                            image: NetworkImage(
+                                                "https://expomeat.com.br/img/site/1666/m/5413240.jpg"),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    HorizontalSpacerBox(size: SpacerSize.large),
-                                    const Text(
-                                      'Leandro Carnes',
-                                      style: TextStyle(fontSize: 20),
-                                      textAlign: TextAlign.end,
-                                    ),
-                                    const Spacer(),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(
-                                          Icons.favorite,
-                                          color: Colors.green,
-                                        )),
-                                  ],
-                                ),
-                                Row(
-                                  children: const [
-                                    HorizontalSpacerBox(size: SpacerSize.large),
-                                    Text('Frutas - Legumes - Tempeiros'),
-                                  ],
-                                ),
-                                const VerticalSpacerBox(size: SpacerSize.small),
-                                Row(
-                                  children: const [
-                                    HorizontalSpacerBox(size: SpacerSize.large),
-                                    Text(
-                                      'Contato: (11) 99999-9999',
-                                    ),
-                                    HorizontalSpacerBox(size: SpacerSize.tiny),
-                                    Icon(
-                                      Icons.whatsapp,
-                                      color: Colors.green,
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                      const HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      const Text(
+                                        'Leandro Carnes',
+                                        style: TextStyle(fontSize: 20),
+                                        textAlign: TextAlign.end,
+                                      ),
+                                      const Spacer(),
+                                      IconButton(
+                                          onPressed: () {},
+                                          icon: const Icon(
+                                            Icons.favorite,
+                                            color: Colors.green,
+                                          )),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: const [
+                                      HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      Text('Frutas - Legumes - Tempeiros'),
+                                    ],
+                                  ),
+                                  const VerticalSpacerBox(
+                                      size: SpacerSize.small),
+                                  Row(
+                                    children: const [
+                                      HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      Text(
+                                        'Contato: (11) 99999-9999',
+                                      ),
+                                      HorizontalSpacerBox(
+                                          size: SpacerSize.tiny),
+                                      Icon(
+                                        Icons.whatsapp,
+                                        color: Colors.green,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
