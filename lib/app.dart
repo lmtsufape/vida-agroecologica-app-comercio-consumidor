@@ -37,7 +37,7 @@ class App extends StatelessWidget {
       home: const SplashScreen(),
       routes: {
         Screens.splash: (BuildContext context) => const SplashScreen(),
-        Screens.carrousel: (BuildContext context) => const CarrouselScreen(),
+        // Screens.carrousel: (BuildContext context) => const CarrouselScreen(),
         Screens.home: (BuildContext context) => const HomeScreen(),
         Screens.signin: (BuildContext context) => const SignInScreen(),
         Screens.register: (BuildContext context) => const RegisterScreen(),

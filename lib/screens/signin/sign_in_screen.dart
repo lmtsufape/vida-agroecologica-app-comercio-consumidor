@@ -51,12 +51,14 @@ class SignInScreen extends StatelessWidget {
                     CustomTextFormField(
                       hintText: 'E-mail',
                       controller: controller.emailController,
+                      icon: const Icon(Icons.mail),
                     ),
                     const VerticalSpacerBox(size: SpacerSize.small),
                     CustomTextFormField(
                       hintText: 'Senha',
                       isPassword: true,
                       controller: controller.passwordController,
+                      icon: const Icon(Icons.lock),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -72,7 +74,9 @@ class SignInScreen extends StatelessWidget {
                         ? const CircularProgressIndicator()
                         : PrimaryButton(
                             text: 'Entrar',
-                            onPressed: () => controller.signIn(context)),
+                            onPressed: () => controller.signIn(context),
+                            color: kDetailColor,
+                          ),
                     const VerticalSpacerBox(size: SpacerSize.large),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -91,6 +95,7 @@ class SignInScreen extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {},
+                          // ignore: sized_box_for_whitespace
                           child: Container(
                               width: size.width * 0.1,
                               height: size.height * 0.06,

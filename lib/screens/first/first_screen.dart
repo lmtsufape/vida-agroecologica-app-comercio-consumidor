@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:ecommercebonito/components/buttons/custom_text_button.dart';
 import 'package:ecommercebonito/components/buttons/primary_button.dart';
 import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
@@ -46,7 +45,8 @@ class FirstScreen extends StatelessWidget {
                       children: const [
                         Text(
                           'Para começar, que tal entrar com sua conta?',
-                          style: TextStyle(fontSize: 25),
+                          style:
+                              TextStyle(fontSize: 23, color: Colors.blueGrey),
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -56,13 +56,17 @@ class FirstScreen extends StatelessWidget {
                         ? const CircularProgressIndicator()
                         : PrimaryButton(
                             text: 'Continuar como Eduarda',
-                            onPressed: () => controller.signIn(context)),
+                            onPressed: () => controller.signIn(context),
+                            color: kDetailColor,
+                          ),
                     const VerticalSpacerBox(size: SpacerSize.large),
                     PrimaryButton(
-                        text: 'Não sou Eduarda',
-                        onPressed: () {
-                          Navigator.pushNamed(context, Screens.signin);
-                        }),
+                      text: 'Não sou Eduarda',
+                      onPressed: () {
+                        Navigator.pushNamed(context, Screens.signin);
+                      },
+                      color: Colors.grey,
+                    ),
                     SizedBox(
                       width: size.width,
                       child: Column(

@@ -7,6 +7,8 @@ import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../shared/constants/style_constants.dart';
+
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
@@ -45,41 +47,44 @@ class ProfileScreen extends StatelessWidget {
                     decoration: const BoxDecoration(
                       color: Colors.orange,
                     ),
-                    child: Wrap(
-                      children: [
-                        Row(
-                          children: [
-                            const HorizontalSpacerBox(size: SpacerSize.large),
-                            const HorizontalSpacerBox(size: SpacerSize.small),
-                            Container(
-                              width: 70.0,
-                              height: 70.0,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                image: DecorationImage(
-                                  fit: BoxFit.fill,
-                                  image: NetworkImage(
-                                      "https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"),
+                    child: Center(
+                      child: Wrap(
+                        children: [
+                          Row(
+                            children: [
+                              const HorizontalSpacerBox(size: SpacerSize.large),
+                              const HorizontalSpacerBox(size: SpacerSize.small),
+                              Container(
+                                width: 62.0,
+                                height: 62.0,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: NetworkImage(
+                                        "https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"),
+                                  ),
                                 ),
                               ),
-                            ),
-                            const HorizontalSpacerBox(size: SpacerSize.medium),
-                            const Text(
-                              'Maria Eduarda',
-                              style:
-                                  TextStyle(fontSize: 27, color: Colors.white),
-                              textAlign: TextAlign.end,
-                            ),
-                          ],
-                        ),
-                      ],
+                              const HorizontalSpacerBox(
+                                  size: SpacerSize.medium),
+                              const Text(
+                                'Maria Eduarda',
+                                style: TextStyle(
+                                    fontSize: 22, color: Colors.white),
+                                textAlign: TextAlign.end,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             const Divider(
-              color: Colors.black,
+              color: Colors.grey,
             ),
             InkWell(
               onTap: () async {},
@@ -89,36 +94,38 @@ class ProfileScreen extends StatelessWidget {
                     width: 480,
                     height: 60,
                     decoration: const BoxDecoration(
-                      color: Colors.grey,
+                      color: Colors.white,
                     ),
-                    child: Wrap(
-                      children: [
-                        const VerticalSpacerBox(size: SpacerSize.large),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            HorizontalSpacerBox(size: SpacerSize.large),
-                            Icon(
-                              Icons.list_alt,
-                              size: 32,
-                            ),
-                            HorizontalSpacerBox(size: SpacerSize.medium),
-                            Text(
-                              'Pedidos',
-                              style:
-                                  TextStyle(fontSize: 22, color: Colors.white),
-                              textAlign: TextAlign.end,
-                            ),
-                          ],
-                        ),
-                      ],
+                    child: Center(
+                      child: Wrap(
+                        children: [
+                          const VerticalSpacerBox(size: SpacerSize.large),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              HorizontalSpacerBox(size: SpacerSize.large),
+                              Icon(
+                                Icons.list_alt,
+                                size: 32,
+                              ),
+                              HorizontalSpacerBox(size: SpacerSize.medium),
+                              Text(
+                                'Pedidos',
+                                style:
+                                    TextStyle(fontSize: 21, color: Colors.grey),
+                                textAlign: TextAlign.end,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             const Divider(
-              color: Colors.black,
+              color: Colors.grey,
             ),
             InkWell(
               onTap: () async {},
@@ -128,36 +135,38 @@ class ProfileScreen extends StatelessWidget {
                     width: 480,
                     height: 60,
                     decoration: const BoxDecoration(
-                      color: Colors.grey,
+                      color: Colors.white,
                     ),
-                    child: Wrap(
-                      children: [
-                        const VerticalSpacerBox(size: SpacerSize.large),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            HorizontalSpacerBox(size: SpacerSize.large),
-                            Icon(
-                              Icons.pin_drop,
-                              size: 32,
-                            ),
-                            HorizontalSpacerBox(size: SpacerSize.medium),
-                            Text(
-                              'Endereços',
-                              style:
-                                  TextStyle(fontSize: 22, color: Colors.white),
-                              textAlign: TextAlign.end,
-                            ),
-                          ],
-                        ),
-                      ],
+                    child: Center(
+                      child: Wrap(
+                        children: [
+                          const VerticalSpacerBox(size: SpacerSize.large),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              HorizontalSpacerBox(size: SpacerSize.large),
+                              Icon(
+                                Icons.pin_drop,
+                                size: 32,
+                              ),
+                              HorizontalSpacerBox(size: SpacerSize.medium),
+                              Text(
+                                'Endereços',
+                                style:
+                                    TextStyle(fontSize: 21, color: Colors.grey),
+                                textAlign: TextAlign.end,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             const Divider(
-              color: Colors.black,
+              color: Colors.grey,
             ),
             InkWell(
               onTap: () async {},
@@ -167,36 +176,38 @@ class ProfileScreen extends StatelessWidget {
                     width: 480,
                     height: 60,
                     decoration: const BoxDecoration(
-                      color: Colors.grey,
+                      color: Colors.white,
                     ),
-                    child: Wrap(
-                      children: [
-                        const VerticalSpacerBox(size: SpacerSize.large),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            HorizontalSpacerBox(size: SpacerSize.large),
-                            Icon(
-                              Icons.credit_card,
-                              size: 32,
-                            ),
-                            HorizontalSpacerBox(size: SpacerSize.medium),
-                            Text(
-                              'Pagamentos',
-                              style:
-                                  TextStyle(fontSize: 22, color: Colors.white),
-                              textAlign: TextAlign.end,
-                            ),
-                          ],
-                        ),
-                      ],
+                    child: Center(
+                      child: Wrap(
+                        children: [
+                          const VerticalSpacerBox(size: SpacerSize.large),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              HorizontalSpacerBox(size: SpacerSize.large),
+                              Icon(
+                                Icons.credit_card,
+                                size: 32,
+                              ),
+                              HorizontalSpacerBox(size: SpacerSize.medium),
+                              Text(
+                                'Pagamentos',
+                                style:
+                                    TextStyle(fontSize: 21, color: Colors.grey),
+                                textAlign: TextAlign.end,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             const Divider(
-              color: Colors.black,
+              color: Colors.grey,
             ),
             InkWell(
               onTap: () {
@@ -208,42 +219,49 @@ class ProfileScreen extends StatelessWidget {
                     width: 480,
                     height: 60,
                     decoration: const BoxDecoration(
-                      color: Colors.grey,
+                      color: Colors.white,
                     ),
-                    child: Wrap(
-                      children: [
-                        const VerticalSpacerBox(size: SpacerSize.large),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            HorizontalSpacerBox(size: SpacerSize.large),
-                            Icon(
-                              Icons.favorite,
-                              size: 32,
-                            ),
-                            HorizontalSpacerBox(size: SpacerSize.medium),
-                            Text(
-                              'Favoritos',
-                              style:
-                                  TextStyle(fontSize: 22, color: Colors.white),
-                              textAlign: TextAlign.end,
-                            ),
-                          ],
-                        ),
-                      ],
+                    child: Center(
+                      child: Wrap(
+                        children: [
+                          const VerticalSpacerBox(size: SpacerSize.large),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              HorizontalSpacerBox(size: SpacerSize.large),
+                              Icon(
+                                Icons.favorite,
+                                size: 32,
+                              ),
+                              HorizontalSpacerBox(size: SpacerSize.medium),
+                              Text(
+                                'Favoritos',
+                                style:
+                                    TextStyle(fontSize: 21, color: Colors.grey),
+                                textAlign: TextAlign.end,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
+            const Divider(
+              color: Colors.grey,
+            ),
             const Spacer(),
             Container(
               padding: const EdgeInsets.all(kDefaultPadding),
               child: PrimaryButton(
-                  text: 'Sair',
-                  onPressed: () {
-                    SystemNavigator.pop();
-                  }),
+                text: 'Sair',
+                onPressed: () {
+                  SystemNavigator.pop();
+                },
+                color: kDetailColor,
+              ),
             ),
           ],
         ));

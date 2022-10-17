@@ -7,13 +7,15 @@ class CustomTextFormField extends StatefulWidget {
       this.controller,
       this.keyboardType,
       this.hintText,
-      this.isPassword})
+      this.isPassword,
+      this.icon})
       : super(key: key);
   final String? label;
   final String? hintText;
   final TextEditingController? controller;
   final TextInputType? keyboardType;
   final bool? isPassword;
+  final Icon? icon;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -21,17 +23,20 @@ class CustomTextFormField extends StatefulWidget {
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
   bool _obscureText = false;
+  Icon? _icon;
   @override
   void initState() {
     if (widget.isPassword != null) {
       _obscureText = widget.isPassword!;
     }
+    _icon = widget.icon;
     super.initState();
   }
 
   void _toggleVisibility() {
     setState(() {
       _obscureText = !_obscureText;
+      _icon = widget.icon;
     });
   }
 
@@ -42,10 +47,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         obscureText: _obscureText,
         controller: widget.controller,
         decoration: InputDecoration(
-          icon: const Icon(
-            Icons.person,
-            color: Colors.grey,
-          ),
+          icon: _icon,
           labelText: widget.label,
           filled: true,
           fillColor: Colors.white,
