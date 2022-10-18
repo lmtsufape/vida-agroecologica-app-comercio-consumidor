@@ -83,9 +83,6 @@ class ProfileScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const Divider(
-              color: Colors.grey,
-            ),
             InkWell(
               onTap: () {
                 Navigator.pushNamed(context, Screens.purchases);
@@ -95,8 +92,17 @@ class ProfileScreen extends StatelessWidget {
                   Container(
                     width: 480,
                     height: 60,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 7,
+                          offset:
+                              const Offset(0, 5), // changes position of shadow
+                        ),
+                      ],
                     ),
                     child: Center(
                       child: Wrap(
@@ -126,9 +132,6 @@ class ProfileScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const Divider(
-              color: Colors.grey,
-            ),
             InkWell(
               onTap: () {
                 Navigator.pushNamed(context, Screens.endereco);
@@ -138,8 +141,17 @@ class ProfileScreen extends StatelessWidget {
                   Container(
                     width: 480,
                     height: 60,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 7,
+                          offset:
+                              const Offset(0, 5), // changes position of shadow
+                        ),
+                      ],
                     ),
                     child: Center(
                       child: Wrap(
@@ -169,9 +181,6 @@ class ProfileScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const Divider(
-              color: Colors.grey,
-            ),
             InkWell(
               onTap: () {
                 Navigator.pushNamed(context, Screens.pagamento);
@@ -181,8 +190,17 @@ class ProfileScreen extends StatelessWidget {
                   Container(
                     width: 480,
                     height: 60,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 7,
+                          offset:
+                              const Offset(0, 5), // changes position of shadow
+                        ),
+                      ],
                     ),
                     child: Center(
                       child: Wrap(
@@ -212,9 +230,6 @@ class ProfileScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const Divider(
-              color: Colors.grey,
-            ),
             InkWell(
               onTap: () {
                 Navigator.pushNamed(context, Screens.favorite);
@@ -224,8 +239,17 @@ class ProfileScreen extends StatelessWidget {
                   Container(
                     width: 480,
                     height: 60,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 7,
+                          offset:
+                              const Offset(0, 5), // changes position of shadow
+                        )
+                      ],
                     ),
                     child: Center(
                       child: Wrap(
@@ -254,9 +278,6 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
-            const Divider(
-              color: Colors.grey,
             ),
             const Spacer(),
             Container(
