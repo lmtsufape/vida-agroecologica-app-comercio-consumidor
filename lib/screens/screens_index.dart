@@ -12,4 +12,7 @@ class Screens {
   static const String first = '/first/first_screen';
   static const String profile = '/home/profile_screen';
   static const String favorite = '/home/favorite_screen';
+  static const String purchases = '/profile/purchases_screen';
+  static const String endereco = '/profile/adress_screen';
+  static const String pagamento = '/profile/card_screen';
 }

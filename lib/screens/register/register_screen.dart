@@ -53,21 +53,25 @@ class RegisterScreen extends StatelessWidget {
                     CustomTextFormField(
                       hintText: 'Nome',
                       controller: controller.emailController,
+                      icon: const Icon(Icons.person),
                     ),
                     const VerticalSpacerBox(size: SpacerSize.small),
                     CustomTextFormField(
                       hintText: 'E-mail',
                       controller: controller.passwordController,
+                      icon: const Icon(Icons.mail),
                     ),
                     const VerticalSpacerBox(size: SpacerSize.small),
                     CustomTextFormField(
                       hintText: 'Senha',
                       controller: controller.emailController,
+                      icon: const Icon(Icons.lock),
                     ),
                     const VerticalSpacerBox(size: SpacerSize.small),
                     CustomTextFormField(
                       hintText: 'Telefone',
                       controller: controller.passwordController,
+                      icon: const Icon(Icons.phone),
                     ),
                     const Spacer(),
                     controller.status == SignInStatus.loading
@@ -75,7 +79,9 @@ class RegisterScreen extends StatelessWidget {
                         : PrimaryButton(
                             text: 'Próximo',
                             onPressed: () => Navigator.pushNamed(
-                                context, Screens.registerAdress)),
+                                context, Screens.registerAdress),
+                            color: kDetailColor,
+                          ),
                     const VerticalSpacerBox(size: SpacerSize.large),
                     SizedBox(
                       width: size.width,

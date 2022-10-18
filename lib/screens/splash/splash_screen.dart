@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/screens/splash/splash_screen_controller.dart';
 
+import '../../shared/components/style_bar.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -49,21 +51,11 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(650),
-        child: AppBar(
-          title: const Center(
-            child: Text(
-              'Logo',
-              style: kTitle1,
-            ),
-          ),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(30),
-            ),
-          ),
-          backgroundColor: kDetailColor,
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(320),
+        child: StyleBar(
+          title: 'Logo',
+          hasLeading: false,
         ),
       ),
       body: Center(

@@ -37,8 +37,10 @@ class DefaultAlertDialog extends StatelessWidget {
             title: cancelText,
             onPressed: (() => navigatorKey.currentState!.pop())),
         SizedBox(
-            width: size.width * 0.3,
-            child: PrimaryButton(text: confirmText, onPressed: onConfirm))
+          width: size.width * 0.3,
+          child: PrimaryButton(
+              text: confirmText, onPressed: onConfirm, color: Colors.orange),
+        )
       ],
     );
   }

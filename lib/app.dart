@@ -1,7 +1,9 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:ecommercebonito/screens/first/first_screen.dart';
 import 'package:ecommercebonito/screens/home/favorite_screen.dart';
-import 'package:ecommercebonito/screens/home/profile_screen.dart';
+import 'package:ecommercebonito/screens/profile/adress_screen.dart';
+import 'package:ecommercebonito/screens/profile/card_screen.dart';
+import 'package:ecommercebonito/screens/profile/profile_screen.dart';
 import 'package:ecommercebonito/screens/register/register_adress.dart';
 import 'package:ecommercebonito/screens/register/register_screen.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,7 @@ import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:ecommercebonito/screens/carrousel/carrousel_screen.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
 import 'screens/home/home_screen.dart';
+import 'screens/profile/purchases_screen.dart';
 import 'screens/signin/sign_in_screen.dart';
 import 'screens/splash/splash_screen.dart';
 
@@ -37,7 +40,7 @@ class App extends StatelessWidget {
       home: const SplashScreen(),
       routes: {
         Screens.splash: (BuildContext context) => const SplashScreen(),
-        Screens.carrousel: (BuildContext context) => const CarrouselScreen(),
+        // Screens.carrousel: (BuildContext context) => const CarrouselScreen(),
         Screens.home: (BuildContext context) => const HomeScreen(),
         Screens.signin: (BuildContext context) => const SignInScreen(),
         Screens.register: (BuildContext context) => const RegisterScreen(),
@@ -46,6 +49,9 @@ class App extends StatelessWidget {
         Screens.first: (BuildContext context) => const FirstScreen(),
         Screens.profile: (BuildContext context) => const ProfileScreen(),
         Screens.favorite: (BuildContext context) => const FavoriteScreen(),
+        Screens.purchases: (BuildContext context) => const PurchasesScreen(),
+        Screens.endereco: (BuildContext context) => const AdressScreen(),
+        Screens.pagamento: (BuildContext context) => const CardScreen(),
       },
     );
   }

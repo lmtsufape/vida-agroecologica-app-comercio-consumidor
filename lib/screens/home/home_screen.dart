@@ -15,6 +15,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int _selectedIndex = 0;
     Size size = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
       create: (_) => HomeScreenController(),
@@ -41,43 +42,57 @@ class HomeScreen extends StatelessWidget {
                 //IconButton
               ),
               bottomNavigationBar: BottomNavigationBar(
-                type: BottomNavigationBarType.fixed,
-                items: const [
-                  BottomNavigationBarItem(
-                    label: 'Início',
-                    icon: Icon(
-                      Icons.home,
-                      color: Colors.white,
-                      size: 40,
+                  type: BottomNavigationBarType.fixed,
+                  items: const [
+                    BottomNavigationBarItem(
+                      label: 'Início',
+                      icon: Icon(
+                        Icons.home,
+                        color: Colors.black,
+                        size: 40,
+                      ),
                     ),
-                  ),
-                  BottomNavigationBarItem(
-                    label: 'Vendedores',
-                    icon: Icon(
-                      Icons.storefront,
-                      color: Colors.white,
-                      size: 40,
+                    BottomNavigationBarItem(
+                      label: 'Vendedores',
+                      icon: Icon(
+                        Icons.storefront,
+                        color: Colors.black,
+                        size: 40,
+                      ),
                     ),
-                  ),
-                  BottomNavigationBarItem(
-                    label: 'Pedidos',
-                    icon: Icon(
-                      Icons.list_alt,
-                      color: Colors.white,
-                      size: 40,
+                    BottomNavigationBarItem(
+                      label: 'Pedidos',
+                      icon: Icon(
+                        Icons.list_alt,
+                        color: Colors.black,
+                        size: 40,
+                      ),
                     ),
-                  ),
-                  BottomNavigationBarItem(
-                    label: 'Cesta',
-                    icon: Icon(
-                      Icons.shopping_basket_outlined,
-                      color: Colors.white,
-                      size: 40,
+                    BottomNavigationBarItem(
+                      label: 'Cesta',
+                      icon: Icon(
+                        Icons.shopping_basket_outlined,
+                        color: Colors.black,
+                        size: 40,
+                      ),
                     ),
-                  ),
-                ],
-                backgroundColor: Colors.orange,
-              ),
+                  ],
+                  currentIndex: _selectedIndex,
+                  unselectedItemColor: Colors.black,
+                  selectedItemColor: Colors.white,
+                  backgroundColor: Colors.orange,
+                  onTap: (index) {
+                    _selectedIndex = index;
+                    if (_selectedIndex == 0) {
+                      Navigator.pushNamed(context, Screens.home);
+                    } else if (_selectedIndex == 1) {
+                      Navigator.pushNamed(context, Screens.favorite);
+                    } else if (_selectedIndex == 2) {
+                      Navigator.pushNamed(context, Screens.purchases);
+                    } else if (_selectedIndex == 3) {
+                      Navigator.pushNamed(context, Screens.home);
+                    }
+                  }),
               body: Container(
                 width: size.width,
                 padding: const EdgeInsets.all(20),
@@ -310,63 +325,70 @@ class HomeScreen extends StatelessWidget {
                             width: 440,
                             height: 125,
                             decoration: const BoxDecoration(
-                                color: Colors.grey,
+                                color: Colors.white,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(15))),
-                            child: Wrap(
-                              children: [
-                                Row(
-                                  children: [
-                                    const HorizontalSpacerBox(
-                                        size: SpacerSize.large),
-                                    Container(
-                                      width: 65.0,
-                                      height: 65.0,
-                                      decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                          fit: BoxFit.fill,
-                                          image: NetworkImage(
-                                              "https://gentv.com.br/img/content/266-1"),
+                            child: Center(
+                              child: Wrap(
+                                children: [
+                                  Row(
+                                    children: [
+                                      const HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      Container(
+                                        width: 65.0,
+                                        height: 65.0,
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          image: DecorationImage(
+                                            fit: BoxFit.fill,
+                                            image: NetworkImage(
+                                                "https://gentv.com.br/img/content/266-1"),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    HorizontalSpacerBox(size: SpacerSize.large),
-                                    const Text(
-                                      'João Frutas',
-                                      style: TextStyle(fontSize: 20),
-                                      textAlign: TextAlign.end,
-                                    ),
-                                    const Spacer(),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(
-                                          Icons.favorite,
-                                          color: Colors.green,
-                                        )),
-                                  ],
-                                ),
-                                Row(
-                                  children: const [
-                                    HorizontalSpacerBox(size: SpacerSize.large),
-                                    Text('Frutas - Legumes - Tempeiros'),
-                                  ],
-                                ),
-                                const VerticalSpacerBox(size: SpacerSize.small),
-                                Row(
-                                  children: const [
-                                    HorizontalSpacerBox(size: SpacerSize.large),
-                                    Text(
-                                      'Contato: (11) 99999-9999',
-                                    ),
-                                    HorizontalSpacerBox(size: SpacerSize.tiny),
-                                    Icon(
-                                      Icons.whatsapp,
-                                      color: Colors.green,
-                                    ),
-                                  ],
-                                )
-                              ],
+                                      const HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      const Text(
+                                        'João Frutas',
+                                        style: TextStyle(fontSize: 20),
+                                        textAlign: TextAlign.end,
+                                      ),
+                                      const Spacer(),
+                                      IconButton(
+                                          onPressed: () {},
+                                          icon: const Icon(
+                                            Icons.favorite,
+                                            color: Colors.green,
+                                          )),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: const [
+                                      HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      Text('Frutas - Legumes - Tempeiros'),
+                                    ],
+                                  ),
+                                  const VerticalSpacerBox(
+                                      size: SpacerSize.small),
+                                  Row(
+                                    children: const [
+                                      HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      Text(
+                                        'Contato: (11) 99999-9999',
+                                      ),
+                                      HorizontalSpacerBox(
+                                          size: SpacerSize.tiny),
+                                      Icon(
+                                        Icons.whatsapp,
+                                        color: Colors.green,
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ],
@@ -382,63 +404,70 @@ class HomeScreen extends StatelessWidget {
                             width: 440,
                             height: 125,
                             decoration: const BoxDecoration(
-                                color: Colors.grey,
+                                color: Colors.white,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(15))),
-                            child: Wrap(
-                              children: [
-                                Row(
-                                  children: [
-                                    const HorizontalSpacerBox(
-                                        size: SpacerSize.large),
-                                    Container(
-                                      width: 65.0,
-                                      height: 65.0,
-                                      decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                          fit: BoxFit.fill,
-                                          image: NetworkImage(
-                                              "https://expomeat.com.br/img/site/1666/m/5413240.jpg"),
+                            child: Center(
+                              child: Wrap(
+                                children: [
+                                  Row(
+                                    children: [
+                                      const HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      Container(
+                                        width: 65.0,
+                                        height: 65.0,
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          image: DecorationImage(
+                                            fit: BoxFit.fill,
+                                            image: NetworkImage(
+                                                "https://expomeat.com.br/img/site/1666/m/5413240.jpg"),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    HorizontalSpacerBox(size: SpacerSize.large),
-                                    const Text(
-                                      'Leandro Carnes',
-                                      style: TextStyle(fontSize: 20),
-                                      textAlign: TextAlign.end,
-                                    ),
-                                    const Spacer(),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(
-                                          Icons.favorite,
-                                          color: Colors.green,
-                                        )),
-                                  ],
-                                ),
-                                Row(
-                                  children: const [
-                                    HorizontalSpacerBox(size: SpacerSize.large),
-                                    Text('Frutas - Legumes - Tempeiros'),
-                                  ],
-                                ),
-                                const VerticalSpacerBox(size: SpacerSize.small),
-                                Row(
-                                  children: const [
-                                    HorizontalSpacerBox(size: SpacerSize.large),
-                                    Text(
-                                      'Contato: (11) 99999-9999',
-                                    ),
-                                    HorizontalSpacerBox(size: SpacerSize.tiny),
-                                    Icon(
-                                      Icons.whatsapp,
-                                      color: Colors.green,
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                      const HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      const Text(
+                                        'Leandro Carnes',
+                                        style: TextStyle(fontSize: 20),
+                                        textAlign: TextAlign.end,
+                                      ),
+                                      const Spacer(),
+                                      IconButton(
+                                          onPressed: () {},
+                                          icon: const Icon(
+                                            Icons.favorite,
+                                            color: Colors.green,
+                                          )),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: const [
+                                      HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      Text('Frutas - Legumes - Tempeiros'),
+                                    ],
+                                  ),
+                                  const VerticalSpacerBox(
+                                      size: SpacerSize.small),
+                                  Row(
+                                    children: const [
+                                      HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      Text(
+                                        'Contato: (11) 99999-9999',
+                                      ),
+                                      HorizontalSpacerBox(
+                                          size: SpacerSize.tiny),
+                                      Icon(
+                                        Icons.whatsapp,
+                                        color: Colors.green,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],

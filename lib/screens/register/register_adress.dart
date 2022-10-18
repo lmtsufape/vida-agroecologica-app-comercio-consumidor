@@ -71,7 +71,9 @@ class RegisterAdress extends StatelessWidget {
                         ? const CircularProgressIndicator()
                         : PrimaryButton(
                             text: 'Criar conta',
-                            onPressed: () => controller.signIn(context)),
+                            onPressed: () => controller.signIn(context),
+                            color: kDetailColor,
+                          ),
                     const VerticalSpacerBox(size: SpacerSize.large),
                     SizedBox(
                       width: size.width,
