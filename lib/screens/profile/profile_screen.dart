@@ -134,7 +134,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Navigator.pushNamed(context, Screens.endereco);
+                Navigator.pushNamed(context, Screens.selectAdress);
               },
               child: Row(
                 children: [
@@ -183,7 +183,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Navigator.pushNamed(context, Screens.pagamento);
+                Navigator.pushNamed(context, Screens.payment);
               },
               child: Row(
                 children: [

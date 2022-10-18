@@ -3,11 +3,9 @@ import 'package:ecommercebonito/components/forms/auth_form_field.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../../components/utils/vertical_spacer_box.dart';
 import '../../shared/constants/app_enums.dart';
-import '../../shared/constants/style_constants.dart';
 
 class AdressScreen extends StatelessWidget {
   const AdressScreen({Key? key}) : super(key: key);

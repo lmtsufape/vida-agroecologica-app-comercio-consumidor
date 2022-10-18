@@ -4,6 +4,7 @@ import 'package:ecommercebonito/screens/home/favorite_screen.dart';
 import 'package:ecommercebonito/screens/profile/adress_screen.dart';
 import 'package:ecommercebonito/screens/profile/card_screen.dart';
 import 'package:ecommercebonito/screens/profile/profile_screen.dart';
+import 'package:ecommercebonito/screens/profile/select_adress_screen.dart';
 import 'package:ecommercebonito/screens/register/register_adress.dart';
 import 'package:ecommercebonito/screens/register/register_screen.dart';
 import 'package:flutter/material.dart';
@@ -50,8 +51,9 @@ class App extends StatelessWidget {
         Screens.profile: (BuildContext context) => const ProfileScreen(),
         Screens.favorite: (BuildContext context) => const FavoriteScreen(),
         Screens.purchases: (BuildContext context) => const PurchasesScreen(),
-        Screens.endereco: (BuildContext context) => const AdressScreen(),
-        Screens.pagamento: (BuildContext context) => const CardScreen(),
+        Screens.adress: (BuildContext context) => const AdressScreen(),
+        Screens.payment: (BuildContext context) => const CardScreen(),
+        Screens.selectAdress: (BuildContext context) => const SelectAdress(),
       },
     );
   }
