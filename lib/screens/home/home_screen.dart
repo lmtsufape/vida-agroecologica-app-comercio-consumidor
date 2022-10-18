@@ -15,6 +15,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int _selectedIndex = 0;
     Size size = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
       create: (_) => HomeScreenController(),
@@ -41,43 +42,57 @@ class HomeScreen extends StatelessWidget {
                 //IconButton
               ),
               bottomNavigationBar: BottomNavigationBar(
-                type: BottomNavigationBarType.fixed,
-                items: const [
-                  BottomNavigationBarItem(
-                    label: 'Início',
-                    icon: Icon(
-                      Icons.home,
-                      color: Colors.white,
-                      size: 40,
+                  type: BottomNavigationBarType.fixed,
+                  items: const [
+                    BottomNavigationBarItem(
+                      label: 'Início',
+                      icon: Icon(
+                        Icons.home,
+                        color: Colors.black,
+                        size: 40,
+                      ),
                     ),
-                  ),
-                  BottomNavigationBarItem(
-                    label: 'Vendedores',
-                    icon: Icon(
-                      Icons.storefront,
-                      color: Colors.white,
-                      size: 40,
+                    BottomNavigationBarItem(
+                      label: 'Vendedores',
+                      icon: Icon(
+                        Icons.storefront,
+                        color: Colors.black,
+                        size: 40,
+                      ),
                     ),
-                  ),
-                  BottomNavigationBarItem(
-                    label: 'Pedidos',
-                    icon: Icon(
-                      Icons.list_alt,
-                      color: Colors.white,
-                      size: 40,
+                    BottomNavigationBarItem(
+                      label: 'Pedidos',
+                      icon: Icon(
+                        Icons.list_alt,
+                        color: Colors.black,
+                        size: 40,
+                      ),
                     ),
-                  ),
-                  BottomNavigationBarItem(
-                    label: 'Cesta',
-                    icon: Icon(
-                      Icons.shopping_basket_outlined,
-                      color: Colors.white,
-                      size: 40,
+                    BottomNavigationBarItem(
+                      label: 'Cesta',
+                      icon: Icon(
+                        Icons.shopping_basket_outlined,
+                        color: Colors.black,
+                        size: 40,
+                      ),
                     ),
-                  ),
-                ],
-                backgroundColor: Colors.orange,
-              ),
+                  ],
+                  currentIndex: _selectedIndex,
+                  unselectedItemColor: Colors.black,
+                  selectedItemColor: Colors.white,
+                  backgroundColor: Colors.orange,
+                  onTap: (index) {
+                    _selectedIndex = index;
+                    if (_selectedIndex == 0) {
+                      Navigator.pushNamed(context, Screens.home);
+                    } else if (_selectedIndex == 1) {
+                      Navigator.pushNamed(context, Screens.favorite);
+                    } else if (_selectedIndex == 2) {
+                      Navigator.pushNamed(context, Screens.purchases);
+                    } else if (_selectedIndex == 3) {
+                      Navigator.pushNamed(context, Screens.home);
+                    }
+                  }),
               body: Container(
                 width: size.width,
                 padding: const EdgeInsets.all(20),
