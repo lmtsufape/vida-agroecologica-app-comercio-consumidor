@@ -43,7 +43,7 @@ class CardScreen extends StatelessWidget {
               Row(
                 children: const [
                   Text(
-                    'Adicione um novo endereço',
+                    'Adicione um novo cartão',
                     style: TextStyle(fontSize: 25),
                   ),
                 ],

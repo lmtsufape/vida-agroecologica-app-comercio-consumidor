@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:ecommercebonito/assets/index.dart';
 import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
 import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
@@ -138,176 +136,238 @@ class HomeScreen extends StatelessWidget {
                                 Container(
                                   width: 80,
                                   height: 80,
-                                  decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15))),
-                                  child: Wrap(
-                                    children: [
-                                      Center(
-                                          child: SvgPicture.asset(
-                                        Assets.vegetais,
-                                        color: Colors.orange,
-                                        height: 40,
-                                        width: 40,
-                                        allowDrawingOutsideViewBox: true,
-                                      )),
-                                      Container(
-                                        alignment: Alignment.bottomCenter,
-                                        child: const Text(
-                                          'Vegetais',
-                                        ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        spreadRadius: 5,
+                                        blurRadius: 7,
+                                        offset: const Offset(
+                                            0, 5), // changes position of shadow
                                       ),
                                     ],
                                   ),
-                                ),
-                              ],
-                            )),
-                        InkWell(
-                            onTap: () async {},
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 80,
-                                  height: 80,
-                                  decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15))),
-                                  child: Wrap(
-                                    children: [
-                                      Center(
-                                        child: SvgPicture.asset(
-                                          Assets.frutas,
-                                          color: Colors.orange,
-                                          height: 40,
-                                          width: 40,
-                                          allowDrawingOutsideViewBox: true,
-                                        ),
-                                      ),
-                                      Container(
-                                        alignment: Alignment.bottomCenter,
-                                        child: const Text(
-                                          'Frutas',
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            )),
-                        InkWell(
-                            onTap: () async {},
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 80,
-                                  height: 80,
-                                  decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15))),
-                                  child: Wrap(
-                                    children: [
-                                      Center(
-                                        child: SvgPicture.asset(
-                                          Assets.folhosos,
-                                          color: Colors.orange,
-                                          height: 40,
-                                          width: 40,
-                                          allowDrawingOutsideViewBox: true,
-                                        ),
-                                      ),
-                                      Container(
-                                        alignment: Alignment.bottomCenter,
-                                        child: const Text(
-                                          'Folhosos',
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            )),
-                        InkWell(
-                            onTap: () async {},
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 80,
-                                  height: 80,
-                                  decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15))),
-                                  child: Wrap(
-                                    children: [
-                                      Center(
-                                        child: SvgPicture.asset(
-                                          Assets.carnes,
-                                          color: Colors.orange,
-                                          height: 40,
-                                          width: 40,
-                                          allowDrawingOutsideViewBox: true,
-                                        ),
-                                      ),
-                                      Container(
-                                        alignment: Alignment.bottomCenter,
-                                        child: const Text(
-                                          'Carnes',
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            )),
-                        InkWell(
-                            onTap: () async {},
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 80,
-                                  height: 80,
-                                  decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15))),
-                                  child: Wrap(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Center(
+                                  child: Center(
+                                    child: Wrap(
+                                      children: [
+                                        Center(
                                             child: SvgPicture.asset(
-                                              Assets.ovos,
-                                              color: Colors.orange,
-                                              height: 30,
-                                              width: 30,
-                                              allowDrawingOutsideViewBox: true,
-                                            ),
+                                          Assets.vegetais,
+                                          color: Colors.orange,
+                                          height: 40,
+                                          width: 40,
+                                          allowDrawingOutsideViewBox: true,
+                                        )),
+                                        Container(
+                                          alignment: Alignment.bottomCenter,
+                                          child: const Text(
+                                            'Vegetais',
                                           ),
-                                          SvgPicture.asset(
-                                            Assets.leite,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                        InkWell(
+                            onTap: () async {},
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 80,
+                                  height: 80,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        spreadRadius: 5,
+                                        blurRadius: 7,
+                                        offset: const Offset(
+                                            0, 5), // changes position of shadow
+                                      ),
+                                    ],
+                                  ),
+                                  child: Center(
+                                    child: Wrap(
+                                      children: [
+                                        Center(
+                                          child: SvgPicture.asset(
+                                            Assets.frutas,
                                             color: Colors.orange,
                                             height: 40,
                                             width: 40,
                                             allowDrawingOutsideViewBox: true,
                                           ),
-                                        ],
-                                      ),
-                                      Container(
-                                        alignment: Alignment.bottomCenter,
-                                        child: const Text(
-                                          'Leite e Ovos',
                                         ),
+                                        Container(
+                                          alignment: Alignment.bottomCenter,
+                                          child: const Text(
+                                            'Frutas',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                        InkWell(
+                            onTap: () async {},
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 80,
+                                  height: 80,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        spreadRadius: 5,
+                                        blurRadius: 7,
+                                        offset: const Offset(
+                                            0, 5), // changes position of shadow
                                       ),
                                     ],
+                                  ),
+                                  child: Center(
+                                    child: Wrap(
+                                      children: [
+                                        Center(
+                                          child: SvgPicture.asset(
+                                            Assets.folhosos,
+                                            color: Colors.orange,
+                                            height: 40,
+                                            width: 40,
+                                            allowDrawingOutsideViewBox: true,
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: Alignment.bottomCenter,
+                                          child: const Text(
+                                            'Folhosos',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                        InkWell(
+                            onTap: () async {},
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 80,
+                                  height: 80,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        spreadRadius: 5,
+                                        blurRadius: 7,
+                                        offset: const Offset(
+                                            0, 5), // changes position of shadow
+                                      ),
+                                    ],
+                                  ),
+                                  child: Center(
+                                    child: Wrap(
+                                      children: [
+                                        Center(
+                                          child: SvgPicture.asset(
+                                            Assets.carnes,
+                                            color: Colors.orange,
+                                            height: 40,
+                                            width: 40,
+                                            allowDrawingOutsideViewBox: true,
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: Alignment.bottomCenter,
+                                          child: const Text(
+                                            'Carnes',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                        InkWell(
+                            onTap: () async {},
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 80,
+                                  height: 80,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        spreadRadius: 5,
+                                        blurRadius: 7,
+                                        offset: const Offset(
+                                            0, 5), // changes position of shadow
+                                      ),
+                                    ],
+                                  ),
+                                  child: Center(
+                                    child: Wrap(
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Center(
+                                              child: SvgPicture.asset(
+                                                Assets.ovos,
+                                                color: Colors.orange,
+                                                height: 30,
+                                                width: 30,
+                                                allowDrawingOutsideViewBox:
+                                                    true,
+                                              ),
+                                            ),
+                                            SvgPicture.asset(
+                                              Assets.leite,
+                                              color: Colors.orange,
+                                              height: 40,
+                                              width: 40,
+                                              allowDrawingOutsideViewBox: true,
+                                            ),
+                                          ],
+                                        ),
+                                        Container(
+                                          alignment: Alignment.bottomCenter,
+                                          child: const Text(
+                                            'Leite e Ovos',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
                             )),
                       ],
                     ),
+                    const VerticalSpacerBox(size: SpacerSize.medium),
                     Row(
                       children: const [
                         Text(
@@ -324,10 +384,20 @@ class HomeScreen extends StatelessWidget {
                           Container(
                             width: 440,
                             height: 125,
-                            decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15))),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(15)),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 5,
+                                  blurRadius: 7,
+                                  offset: const Offset(
+                                      0, 5), // changes position of shadow
+                                ),
+                              ],
+                            ),
                             child: Center(
                               child: Wrap(
                                 children: [
@@ -365,8 +435,7 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                   Row(
                                     children: const [
-                                      HorizontalSpacerBox(
-                                          size: SpacerSize.large),
+                                      Spacer(),
                                       Text('Frutas - Legumes - Tempeiros'),
                                     ],
                                   ),
@@ -374,8 +443,7 @@ class HomeScreen extends StatelessWidget {
                                       size: SpacerSize.small),
                                   Row(
                                     children: const [
-                                      HorizontalSpacerBox(
-                                          size: SpacerSize.large),
+                                      Spacer(),
                                       Text(
                                         'Contato: (11) 99999-9999',
                                       ),
@@ -403,10 +471,20 @@ class HomeScreen extends StatelessWidget {
                           Container(
                             width: 440,
                             height: 125,
-                            decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15))),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(15)),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 5,
+                                  blurRadius: 7,
+                                  offset: const Offset(
+                                      0, 5), // changes position of shadow
+                                ),
+                              ],
+                            ),
                             child: Center(
                               child: Wrap(
                                 children: [
@@ -444,8 +522,7 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                   Row(
                                     children: const [
-                                      HorizontalSpacerBox(
-                                          size: SpacerSize.large),
+                                      Spacer(),
                                       Text('Frutas - Legumes - Tempeiros'),
                                     ],
                                   ),
@@ -453,8 +530,7 @@ class HomeScreen extends StatelessWidget {
                                       size: SpacerSize.small),
                                   Row(
                                     children: const [
-                                      HorizontalSpacerBox(
-                                          size: SpacerSize.large),
+                                      Spacer(),
                                       Text(
                                         'Contato: (11) 99999-9999',
                                       ),
