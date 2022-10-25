@@ -25,12 +25,9 @@ class RegisterScreen extends StatelessWidget {
           return Consumer<SignInController>(
             builder: (context, controller, child) => Scaffold(
               appBar: const PreferredSize(
-                preferredSize: Size.fromHeight(320),
-                child: StyleBar(
-                  title: 'Bem Vindo(a) ao App Bonito',
-                  hasLeading: true,
-                ),
-              ),
+                  preferredSize: Size.fromHeight(360),
+                  child: StyleBar(
+                      title: 'Bem vindo(a) ao App bonito', hasLeading: true)),
               body: Container(
                 width: size.width,
                 padding: const EdgeInsets.all(kDefaultPadding),
@@ -38,16 +35,12 @@ class RegisterScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Wrap(
-                      children: const [
-                        Center(
-                          child: Text(
-                            'Cadastro',
-                            style: TextStyle(fontSize: 35, color: Colors.grey),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ],
+                    const Spacer(),
+                    Center(
+                      child: Text(
+                        'Cadastro',
+                        style: kTitle.copyWith(fontWeight: FontWeight.bold),
+                      ),
                     ),
                     const Spacer(),
                     CustomTextFormField(
