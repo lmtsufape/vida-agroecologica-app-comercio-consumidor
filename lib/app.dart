@@ -1,15 +1,16 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:ecommercebonito/screens/first/first_screen.dart';
 import 'package:ecommercebonito/screens/home/favorite_screen.dart';
+import 'package:ecommercebonito/screens/home/menu_screen.dart';
 import 'package:ecommercebonito/screens/profile/adress_screen.dart';
 import 'package:ecommercebonito/screens/profile/card_screen.dart';
 import 'package:ecommercebonito/screens/profile/profile_screen.dart';
 import 'package:ecommercebonito/screens/profile/select_adress_screen.dart';
+import 'package:ecommercebonito/screens/profile/select_card_screen.dart';
 import 'package:ecommercebonito/screens/register/register_adress.dart';
 import 'package:ecommercebonito/screens/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
-import 'package:ecommercebonito/screens/carrousel/carrousel_screen.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/profile/purchases_screen.dart';
@@ -54,6 +55,8 @@ class App extends StatelessWidget {
         Screens.adress: (BuildContext context) => const AdressScreen(),
         Screens.payment: (BuildContext context) => const CardScreen(),
         Screens.selectAdress: (BuildContext context) => const SelectAdress(),
+        Screens.selectCard: (BuildContext context) => const SelectCard(),
+        Screens.menu: (BuildContext context) => const MenuScreen(),
       },
     );
   }
