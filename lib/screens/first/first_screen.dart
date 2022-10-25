@@ -1,4 +1,4 @@
-import 'dart:ui';
+
 import 'package:ecommercebonito/components/buttons/custom_text_button.dart';
 import 'package:ecommercebonito/components/buttons/primary_button.dart';
 import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
@@ -9,7 +9,6 @@ import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../shared/constants/style_constants.dart';
 
 class FirstScreen extends StatelessWidget {

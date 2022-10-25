@@ -6,8 +6,8 @@ import '../../components/utils/vertical_spacer_box.dart';
 import '../../shared/components/dialogs/finish_dialog.dart';
 import '../../shared/constants/app_enums.dart';
 
-class SelectAdress extends StatelessWidget {
-  const SelectAdress({Key? key}) : super(key: key);
+class SelectCard extends StatelessWidget {
+  const SelectCard({Key? key}) : super(key: key);
 
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -41,7 +41,7 @@ class SelectAdress extends StatelessWidget {
               Row(
                 children: const [
                   Text(
-                    'Selecionar um endereço de envio',
+                    'Informações de pagamento',
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -52,11 +52,11 @@ class SelectAdress extends StatelessWidget {
                   children: [
                     Container(
                       width: 440,
-                      height: 285,
+                      height: 110,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius:
-                            const BorderRadius.all(Radius.circular(15)),
+                            const BorderRadius.all(Radius.circular(20)),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.5),
@@ -79,109 +79,46 @@ class SelectAdress extends StatelessWidget {
                                 ),
                               ),
                               const Text(
-                                'USADO RECENTEMENTE',
+                                'Forma de pagamento',
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
-                              const Spacer(),
-                              IconButton(
-                                  onPressed: () {
-                                    showDialog(
-                                        context: context,
-                                        builder: (context) =>
-                                            const FinishVisitDialog());
-                                  },
-                                  icon: const Icon(
-                                    Icons.delete,
-                                    color: Colors.grey,
-                                  ),
-                                  iconSize: 30),
                             ],
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 5),
+                                horizontal: 15, vertical: 3),
                             child: Row(
                               children: const [
                                 HorizontalSpacerBox(size: SpacerSize.large),
-                                Text('Eduarda', style: TextStyle(fontSize: 17)),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 5),
-                            child: Row(
-                              children: const [
-                                HorizontalSpacerBox(size: SpacerSize.large),
-                                Text('Rua Professora Esmeralda Barros, 67',
-                                    style: TextStyle(fontSize: 17)),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 5),
-                            child: Row(
-                              children: const [
-                                HorizontalSpacerBox(size: SpacerSize.large),
-                                Text('Apartamento',
-                                    style: TextStyle(fontSize: 17)),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 5),
-                            child: Row(
-                              children: const [
-                                HorizontalSpacerBox(size: SpacerSize.large),
-                                Text('Caruaru, PE, 55044-070',
-                                    style: TextStyle(fontSize: 17)),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 5),
-                            child: Row(
-                              children: const [
-                                HorizontalSpacerBox(size: SpacerSize.large),
-                                Text('Brasil', style: TextStyle(fontSize: 17)),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 5),
-                            child: Row(
-                              children: const [
-                                HorizontalSpacerBox(size: SpacerSize.large),
-                                Text('Telefone: (81) 99699-7476',
-                                    style: TextStyle(fontSize: 17)),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                              children: [
-                                const Spacer(),
-                                ElevatedButton(
-                                  onPressed: null,
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Colors.orange),
-                                  ),
-                                  child: const Text(
-                                    'Editar',
+                                Text('Mastercard',
                                     style: TextStyle(
-                                        fontSize: 15, color: Colors.white),
-                                  ),
-                                ),
+                                      fontSize: 15,
+                                    )),
+                                Text(' (Crédito) ',
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold)),
+                                Text('com final 1447',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    )),
                               ],
                             ),
-                          )
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 3),
+                            child: Row(
+                              children: const [
+                                HorizontalSpacerBox(size: SpacerSize.large),
+                                Text('Parcelas não disponíveis',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    )),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -223,7 +160,7 @@ class SelectAdress extends StatelessWidget {
                                   ),
                                 ),
                                 const Text(
-                                  'Adicione um novo endereço',
+                                  'Adicione um novo cartão',
                                   style: TextStyle(
                                       fontSize: 20,
                                       color: Colors.grey,
@@ -234,7 +171,7 @@ class SelectAdress extends StatelessWidget {
                                 IconButton(
                                     onPressed: () {
                                       Navigator.pushNamed(
-                                          context, Screens.adress);
+                                          context, Screens.payment);
                                     },
                                     icon: const Icon(
                                       Icons.arrow_forward_ios_outlined,
@@ -249,9 +186,10 @@ class SelectAdress extends StatelessWidget {
                   ],
                 ),
                 onTap: () {
-                  Navigator.pushNamed(context, Screens.adress);
+                  Navigator.pushNamed(context, Screens.payment);
                 },
               ),
+              
             ]))));
   }
 }

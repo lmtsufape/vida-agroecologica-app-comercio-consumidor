@@ -183,7 +183,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Navigator.pushNamed(context, Screens.payment);
+                Navigator.pushNamed(context, Screens.selectCard);
               },
               child: Row(
                 children: [

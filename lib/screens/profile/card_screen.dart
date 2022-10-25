@@ -44,7 +44,7 @@ class CardScreen extends StatelessWidget {
                 children: const [
                   Text(
                     'Adicione um novo cartão',
-                    style: TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),

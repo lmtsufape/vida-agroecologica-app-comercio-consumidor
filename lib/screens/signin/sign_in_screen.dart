@@ -3,6 +3,7 @@ import 'package:ecommercebonito/shared/components/style_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ecommercebonito/components/buttons/custom_text_button.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ecommercebonito/components/buttons/primary_button.dart';
 import 'package:ecommercebonito/components/forms/custom_text_form_field.dart';
 import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
@@ -26,7 +27,7 @@ class SignInScreen extends StatelessWidget {
           return Consumer<SignInController>(
             builder: (context, controller, child) => Scaffold(
               appBar: const PreferredSize(
-                  preferredSize: Size.fromHeight(320),
+                  preferredSize: Size.fromHeight(360),
                   child: StyleBar(
                       title: 'Bem vindo(a) ao App bonito', hasLeading: true)),
               body: Container(
@@ -36,29 +37,25 @@ class SignInScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Wrap(
-                      children: const [
-                        Center(
-                          child: Text(
-                            'Entrar',
-                            style: TextStyle(fontSize: 35, color: Colors.grey),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ],
-                    ),
                     const Spacer(),
+                    Center(
+                      child: Text(
+                        'Entrar',
+                        style: kTitle.copyWith(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const VerticalSpacerBox(size: SpacerSize.huge),
                     CustomTextFormField(
                       hintText: 'E-mail',
+                      icon: const Icon(Icons.email),
                       controller: controller.emailController,
-                      icon: const Icon(Icons.mail),
                     ),
                     const VerticalSpacerBox(size: SpacerSize.small),
                     CustomTextFormField(
                       hintText: 'Senha',
                       isPassword: true,
-                      controller: controller.passwordController,
                       icon: const Icon(Icons.lock),
+                      controller: controller.passwordController,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -90,25 +87,20 @@ class SignInScreen extends StatelessWidget {
                         ),
                       ],
                     ),
+                    const VerticalSpacerBox(size: SpacerSize.small),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: () {},
-                          // ignore: sized_box_for_whitespace
-                          child: Container(
-                              width: size.width * 0.1,
-                              height: size.height * 0.06,
-                              child: Image.network(
-                                  'http://pngimg.com/uploads/google/google_PNG19635.png',
-                                  fit: BoxFit.cover)),
-                        ),
+                      children: <Widget>[
                         IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.facebook_sharp),
-                          iconSize: 45,
-                          color: Colors.blue,
-                        ),
+                            onPressed: () {},
+                            icon: const Icon(FontAwesomeIcons.google,
+                                color: Colors.red),
+                            iconSize: 38),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const Icon(FontAwesomeIcons.facebook,
+                                color: Colors.blue),
+                            iconSize: 38)
                       ],
                     ),
                     SizedBox(

@@ -8,8 +8,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:ecommercebonito/screens/home/home_screen_controller.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class MenuScreen extends StatelessWidget {
+  const MenuScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -119,16 +119,6 @@ class HomeScreen extends StatelessWidget {
                             ),
                           )),
                     ),
-                    const VerticalSpacerBox(size: SpacerSize.small),
-                    Row(
-                      children: const [
-                        Text(
-                          'Categorias',
-                          style: TextStyle(fontSize: 25),
-                        ),
-                      ],
-                    ),
-                    const VerticalSpacerBox(size: SpacerSize.large),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -381,184 +371,216 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                     const VerticalSpacerBox(size: SpacerSize.large),
-                    Row(
-                      children: const [
-                        Text(
-                          'Vendedores',
-                          style: TextStyle(fontSize: 25),
-                        ),
-                      ],
-                    ),
-                    const VerticalSpacerBox(size: SpacerSize.large),
-                    InkWell(
-                      child: Container(
-                        width: 440,
-                        height: 145,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(15)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset: const Offset(
-                                  0, 5), // changes position of shadow
+                    SingleChildScrollView(
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                              child: Container(
+                                width: 210,
+                                height: 320,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(15)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      spreadRadius: 5,
+                                      blurRadius: 7,
+                                      offset: const Offset(
+                                          0, 5), // changes position of shadow
+                                    ),
+                                  ],
+                                ),
+                                child: Center(
+                                  child: Wrap(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          const HorizontalSpacerBox(
+                                              size: SpacerSize.large),
+                                          Container(
+                                            width: 161.0,
+                                            height: 190.0,
+                                            decoration: const BoxDecoration(
+                                              image: DecorationImage(
+                                                fit: BoxFit.fill,
+                                                image:
+                                                    AssetImage(Assets.banana),
+                                              ),
+                                            ),
+                                          ),
+                                          const HorizontalSpacerBox(
+                                              size: SpacerSize.large),
+                                        ],
+                                      ),
+                                      const HorizontalSpacerBox(
+                                          size: SpacerSize.small),
+                                      const Text(
+                                        'RS 0,25',
+                                        style: TextStyle(
+                                            fontSize: 35,
+                                            fontWeight: FontWeight.bold),
+                                        textAlign: TextAlign.end,
+                                      ),
+                                      const HorizontalSpacerBox(
+                                          size: SpacerSize.small),
+                                      const Text(
+                                        'Unidade',
+                                      ),
+                                      Row(
+                                        children: const [
+                                          HorizontalSpacerBox(
+                                              size: SpacerSize.small),
+                                          Text(
+                                            'Banana',
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const VerticalSpacerBox(
+                                          size: SpacerSize.tiny),
+                                      Row(
+                                        children: const [
+                                          HorizontalSpacerBox(
+                                              size: SpacerSize.small),
+                                          Text(
+                                            'Vendido por ',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Maria',
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.green),
+                                          ),
+                                          Spacer(),
+                                          IconButton(
+                                            onPressed: null,
+                                            icon: Icon(
+                                              Icons.add_box,
+                                              color: Colors.green,
+                                              size: 28,
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              onTap: () async {},
+                            ),
+                            const HorizontalSpacerBox(size: SpacerSize.tiny),
+                            InkWell(
+                              child: Container(
+                                width: 210,
+                                height: 320,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(15)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      spreadRadius: 5,
+                                      blurRadius: 7,
+                                      offset: const Offset(
+                                          0, 5), // changes position of shadow
+                                    ),
+                                  ],
+                                ),
+                                child: Center(
+                                  child: Wrap(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          const HorizontalSpacerBox(
+                                              size: SpacerSize.large),
+                                          Container(
+                                            width: 150.0,
+                                            height: 190.0,
+                                            decoration: const BoxDecoration(
+                                              image: DecorationImage(
+                                                fit: BoxFit.fill,
+                                                image: AssetImage(Assets.maca),
+                                              ),
+                                            ),
+                                          ),
+                                          const HorizontalSpacerBox(
+                                              size: SpacerSize.large),
+                                        ],
+                                      ),
+                                      const HorizontalSpacerBox(
+                                          size: SpacerSize.small),
+                                      const Text(
+                                        'RS 1,18',
+                                        style: TextStyle(
+                                            fontSize: 35,
+                                            fontWeight: FontWeight.bold),
+                                        textAlign: TextAlign.end,
+                                      ),
+                                      const HorizontalSpacerBox(
+                                          size: SpacerSize.small),
+                                      const Text(
+                                        'Unidade',
+                                      ),
+                                      Row(
+                                        children: const [
+                                          HorizontalSpacerBox(
+                                              size: SpacerSize.small),
+                                          Text(
+                                            'Maça',
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const VerticalSpacerBox(
+                                          size: SpacerSize.tiny),
+                                      Row(
+                                        children: const [
+                                          HorizontalSpacerBox(
+                                              size: SpacerSize.small),
+                                          Text(
+                                            'Vendido por ',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          Text(
+                                            'João',
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.green),
+                                          ),
+                                          Spacer(),
+                                          IconButton(
+                                            onPressed: null,
+                                            icon: Icon(
+                                              Icons.add_box,
+                                              color: Colors.green,
+                                              size: 28,
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              onTap: () async {},
                             ),
                           ],
                         ),
-                        child: Center(
-                          child: Wrap(
-                            children: [
-                              Row(
-                                children: [
-                                  const HorizontalSpacerBox(
-                                      size: SpacerSize.large),
-                                  Container(
-                                    width: 65.0,
-                                    height: 65.0,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      image: DecorationImage(
-                                        fit: BoxFit.fill,
-                                        image: NetworkImage(
-                                            "https://gentv.com.br/img/content/266-1"),
-                                      ),
-                                    ),
-                                  ),
-                                  const HorizontalSpacerBox(
-                                      size: SpacerSize.large),
-                                  const Text(
-                                    'João Frutas',
-                                    style: TextStyle(fontSize: 20),
-                                    textAlign: TextAlign.end,
-                                  ),
-                                  const Spacer(),
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.favorite,
-                                        color: Colors.green,
-                                      )),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
-                                  Text('Frutas - Legumes - Tempeiros'),
-                                ],
-                              ),
-                              const VerticalSpacerBox(size: SpacerSize.small),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
-                                  Text(
-                                    'Contato: (11) 99999-9999',
-                                  ),
-                                  HorizontalSpacerBox(size: SpacerSize.tiny),
-                                  IconButton(
-                                    icon: Icon(
-                                      Icons.whatsapp,
-                                      color: Colors.green,
-                                    ),
-                                    onPressed: null,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
                       ),
-                      onTap: () async {},
-                    ),
-                    const VerticalSpacerBox(size: SpacerSize.small),
-                    InkWell(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 440,
-                            height: 145,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(15)),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 5,
-                                  blurRadius: 7,
-                                  offset: const Offset(
-                                      0, 5), // changes position of shadow
-                                ),
-                              ],
-                            ),
-                            child: Center(
-                              child: Wrap(
-                                children: [
-                                  Row(
-                                    children: [
-                                      const HorizontalSpacerBox(
-                                          size: SpacerSize.large),
-                                      Container(
-                                        width: 65.0,
-                                        height: 65.0,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          image: DecorationImage(
-                                            fit: BoxFit.fill,
-                                            image: NetworkImage(
-                                                "https://expomeat.com.br/img/site/1666/m/5413240.jpg"),
-                                          ),
-                                        ),
-                                      ),
-                                      const HorizontalSpacerBox(
-                                          size: SpacerSize.large),
-                                      const Text(
-                                        'Leandro Carnes',
-                                        style: TextStyle(fontSize: 20),
-                                        textAlign: TextAlign.end,
-                                      ),
-                                      const Spacer(),
-                                      IconButton(
-                                          onPressed: () {},
-                                          icon: const Icon(
-                                            Icons.favorite,
-                                            color: Colors.green,
-                                          )),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: const [
-                                      Text('Frutas - Legumes - Tempeiros'),
-                                    ],
-                                  ),
-                                  const VerticalSpacerBox(
-                                      size: SpacerSize.small),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: const [
-                                      Text(
-                                        'Contato: (11) 99999-9999',
-                                      ),
-                                      IconButton(
-                                        icon: Icon(
-                                          Icons.whatsapp,
-                                          color: Colors.green,
-                                        ),
-                                        onPressed: null,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      onTap: () async {},
                     ),
                     const VerticalSpacerBox(size: SpacerSize.small),
                   ],
