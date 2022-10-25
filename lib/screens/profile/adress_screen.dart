@@ -45,7 +45,8 @@ class AdressScreen extends StatelessWidget {
                   children: const [
                     Text(
                       'Adicione um novo endereço',
-                      style: TextStyle(fontSize: 25),
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),

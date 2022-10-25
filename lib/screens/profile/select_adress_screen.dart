@@ -42,7 +42,7 @@ class SelectAdress extends StatelessWidget {
                 children: const [
                   Text(
                     'Selecionar um endereço de envio',
-                    style: TextStyle(fontSize: 22),
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -52,7 +52,7 @@ class SelectAdress extends StatelessWidget {
                   children: [
                     Container(
                       width: 440,
-                      height: 225,
+                      height: 285,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius:
@@ -80,7 +80,8 @@ class SelectAdress extends StatelessWidget {
                               ),
                               const Text(
                                 'USADO RECENTEMENTE',
-                                style: TextStyle(fontSize: 20),
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                               const Spacer(),
                               IconButton(
@@ -93,47 +94,94 @@ class SelectAdress extends StatelessWidget {
                                   icon: const Icon(
                                     Icons.delete,
                                     color: Colors.grey,
-                                  )),
+                                  ),
+                                  iconSize: 30),
                             ],
                           ),
-                          Row(
-                            children: const [
-                              HorizontalSpacerBox(size: SpacerSize.large),
-                              Text('Eduarda'),
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 5),
+                            child: Row(
+                              children: const [
+                                HorizontalSpacerBox(size: SpacerSize.large),
+                                Text('Eduarda', style: TextStyle(fontSize: 17)),
+                              ],
+                            ),
                           ),
-                          Row(
-                            children: const [
-                              HorizontalSpacerBox(size: SpacerSize.large),
-                              Text(
-                                'Rua Professora Esmeralda Barros, 67',
-                              ),
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 5),
+                            child: Row(
+                              children: const [
+                                HorizontalSpacerBox(size: SpacerSize.large),
+                                Text('Rua Professora Esmeralda Barros, 67',
+                                    style: TextStyle(fontSize: 17)),
+                              ],
+                            ),
                           ),
-                          Row(
-                            children: const [
-                              HorizontalSpacerBox(size: SpacerSize.large),
-                              Text('Apartamento'),
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 5),
+                            child: Row(
+                              children: const [
+                                HorizontalSpacerBox(size: SpacerSize.large),
+                                Text('Apartamento',
+                                    style: TextStyle(fontSize: 17)),
+                              ],
+                            ),
                           ),
-                          Row(
-                            children: const [
-                              HorizontalSpacerBox(size: SpacerSize.large),
-                              Text('Caruaru, PE, 55044-070'),
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 5),
+                            child: Row(
+                              children: const [
+                                HorizontalSpacerBox(size: SpacerSize.large),
+                                Text('Caruaru, PE, 55044-070',
+                                    style: TextStyle(fontSize: 17)),
+                              ],
+                            ),
                           ),
-                          Row(
-                            children: const [
-                              HorizontalSpacerBox(size: SpacerSize.large),
-                              Text('Brasil'),
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 5),
+                            child: Row(
+                              children: const [
+                                HorizontalSpacerBox(size: SpacerSize.large),
+                                Text('Brasil', style: TextStyle(fontSize: 17)),
+                              ],
+                            ),
                           ),
-                          Row(
-                            children: const [
-                              HorizontalSpacerBox(size: SpacerSize.large),
-                              Text('Telefone: (81) 99699-7476'),
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 5),
+                            child: Row(
+                              children: const [
+                                HorizontalSpacerBox(size: SpacerSize.large),
+                                Text('Telefone: (81) 99699-7476',
+                                    style: TextStyle(fontSize: 17)),
+                              ],
+                            ),
                           ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                            child: Row(
+                              children: [
+                                const Spacer(),
+                                ElevatedButton(
+                                  onPressed: null,
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        Colors.orange),
+                                  ),
+                                  child: const Text(
+                                    'Editar',
+                                    style: TextStyle(
+                                        fontSize: 15, color: Colors.white),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
                         ],
                       ),
                     ),

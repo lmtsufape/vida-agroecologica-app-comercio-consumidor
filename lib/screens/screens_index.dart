@@ -9,11 +9,13 @@ class Screens {
   static const String carrousel = '/carrousel';
   static const String register = '/register/register_screen';
   static const String registerAdress = '/register/register_adress';
-  static const String first = '/first/first_screen';
+  static const String first = '/first/start_screen';
   static const String profile = '/home/profile_screen';
   static const String favorite = '/home/favorite_screen';
   static const String purchases = '/profile/purchases_screen';
   static const String adress = '/profile/adress_screen';
   static const String payment = '/profile/card_screen';
   static const String selectAdress = '/profile/select_adress_screen';
+  static const String selectCard = '/profile/select_card_screen';
+  static const String menu = '/profile/menu_screen';
 }
