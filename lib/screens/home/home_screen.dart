@@ -44,25 +44,28 @@ class HomeScreen extends StatelessWidget {
                   items: const [
                     BottomNavigationBarItem(
                       label: 'Início',
+                      backgroundColor: Colors.white,
                       icon: Icon(
                         Icons.home,
-                        color: Colors.black,
+                        color: Colors.white,
                         size: 40,
                       ),
                     ),
                     BottomNavigationBarItem(
                       label: 'Vendedores',
+                      backgroundColor: Colors.white,
                       icon: Icon(
                         Icons.storefront,
-                        color: Colors.black,
+                        color: Colors.white,
                         size: 40,
                       ),
                     ),
                     BottomNavigationBarItem(
                       label: 'Pedidos',
+                      backgroundColor: Colors.white,
                       icon: Icon(
                         Icons.list_alt,
-                        color: Colors.black,
+                        color: Colors.white,
                         size: 40,
                       ),
                     ),
@@ -70,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                       label: 'Cesta',
                       icon: Icon(
                         Icons.shopping_basket_outlined,
-                        color: Colors.black,
+                        color: Colors.white,
                         size: 40,
                       ),
                     ),
@@ -130,7 +133,9 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         InkWell(
-                            onTap: () async {},
+                            onTap: () {
+                              Navigator.pushNamed(context, Screens.menu);
+                            },
                             child: Row(
                               children: [
                                 Container(
@@ -174,7 +179,9 @@ class HomeScreen extends StatelessWidget {
                               ],
                             )),
                         InkWell(
-                            onTap: () async {},
+                            onTap: () {
+                              Navigator.pushNamed(context, Screens.menu);
+                            },
                             child: Row(
                               children: [
                                 Container(
@@ -219,7 +226,9 @@ class HomeScreen extends StatelessWidget {
                               ],
                             )),
                         InkWell(
-                            onTap: () async {},
+                            onTap: () {
+                              Navigator.pushNamed(context, Screens.menu);
+                            },
                             child: Row(
                               children: [
                                 Container(
@@ -264,7 +273,9 @@ class HomeScreen extends StatelessWidget {
                               ],
                             )),
                         InkWell(
-                            onTap: () async {},
+                            onTap: () {
+                              Navigator.pushNamed(context, Screens.menu);
+                            },
                             child: Row(
                               children: [
                                 Container(
@@ -309,7 +320,9 @@ class HomeScreen extends StatelessWidget {
                               ],
                             )),
                         InkWell(
-                            onTap: () async {},
+                            onTap: () {
+                              Navigator.pushNamed(context, Screens.menu);
+                            },
                             child: Row(
                               children: [
                                 Container(
@@ -367,7 +380,7 @@ class HomeScreen extends StatelessWidget {
                             )),
                       ],
                     ),
-                    const VerticalSpacerBox(size: SpacerSize.medium),
+                    const VerticalSpacerBox(size: SpacerSize.large),
                     Row(
                       children: const [
                         Text(
@@ -378,88 +391,84 @@ class HomeScreen extends StatelessWidget {
                     ),
                     const VerticalSpacerBox(size: SpacerSize.large),
                     InkWell(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 440,
-                            height: 125,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(15)),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 5,
-                                  blurRadius: 7,
-                                  offset: const Offset(
-                                      0, 5), // changes position of shadow
-                                ),
-                              ],
+                      child: Container(
+                        width: 440,
+                        height: 145,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(15)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: const Offset(
+                                  0, 5), // changes position of shadow
                             ),
-                            child: Center(
-                              child: Wrap(
+                          ],
+                        ),
+                        child: Center(
+                          child: Wrap(
+                            children: [
+                              Row(
                                 children: [
-                                  Row(
-                                    children: [
-                                      const HorizontalSpacerBox(
-                                          size: SpacerSize.large),
-                                      Container(
-                                        width: 65.0,
-                                        height: 65.0,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          image: DecorationImage(
-                                            fit: BoxFit.fill,
-                                            image: NetworkImage(
-                                                "https://gentv.com.br/img/content/266-1"),
-                                          ),
-                                        ),
+                                  const HorizontalSpacerBox(
+                                      size: SpacerSize.large),
+                                  Container(
+                                    width: 65.0,
+                                    height: 65.0,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        fit: BoxFit.fill,
+                                        image: NetworkImage(
+                                            "https://gentv.com.br/img/content/266-1"),
                                       ),
-                                      const HorizontalSpacerBox(
-                                          size: SpacerSize.large),
-                                      const Text(
-                                        'João Frutas',
-                                        style: TextStyle(fontSize: 20),
-                                        textAlign: TextAlign.end,
-                                      ),
-                                      const Spacer(),
-                                      IconButton(
-                                          onPressed: () {},
-                                          icon: const Icon(
-                                            Icons.favorite,
-                                            color: Colors.green,
-                                          )),
-                                    ],
+                                    ),
                                   ),
-                                  Row(
-                                    children: const [
-                                      Spacer(),
-                                      Text('Frutas - Legumes - Tempeiros'),
-                                    ],
+                                  const HorizontalSpacerBox(
+                                      size: SpacerSize.large),
+                                  const Text(
+                                    'João Frutas',
+                                    style: TextStyle(fontSize: 20),
+                                    textAlign: TextAlign.end,
                                   ),
-                                  const VerticalSpacerBox(
-                                      size: SpacerSize.small),
-                                  Row(
-                                    children: const [
-                                      Spacer(),
-                                      Text(
-                                        'Contato: (11) 99999-9999',
-                                      ),
-                                      HorizontalSpacerBox(
-                                          size: SpacerSize.tiny),
-                                      Icon(
-                                        Icons.whatsapp,
+                                  const Spacer(),
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.favorite,
                                         color: Colors.green,
-                                      ),
-                                    ],
-                                  )
+                                      )),
                                 ],
                               ),
-                            ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: const [
+                                  Text('Frutas - Legumes - Tempeiros'),
+                                ],
+                              ),
+                              const VerticalSpacerBox(size: SpacerSize.small),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: const [
+                                  Text(
+                                    'Contato: (11) 99999-9999',
+                                  ),
+                                  HorizontalSpacerBox(size: SpacerSize.tiny),
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.whatsapp,
+                                      color: Colors.green,
+                                    ),
+                                    onPressed: null,
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                       onTap: () async {},
                     ),
@@ -470,7 +479,7 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           Container(
                             width: 440,
-                            height: 125,
+                            height: 145,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius:
@@ -521,24 +530,25 @@ class HomeScreen extends StatelessWidget {
                                     ],
                                   ),
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: const [
-                                      Spacer(),
                                       Text('Frutas - Legumes - Tempeiros'),
                                     ],
                                   ),
                                   const VerticalSpacerBox(
                                       size: SpacerSize.small),
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: const [
-                                      Spacer(),
                                       Text(
                                         'Contato: (11) 99999-9999',
                                       ),
-                                      HorizontalSpacerBox(
-                                          size: SpacerSize.tiny),
-                                      Icon(
-                                        Icons.whatsapp,
-                                        color: Colors.green,
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.whatsapp,
+                                          color: Colors.green,
+                                        ),
+                                        onPressed: null,
                                       ),
                                     ],
                                   ),
