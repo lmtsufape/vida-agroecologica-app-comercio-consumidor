@@ -18,7 +18,10 @@ class PrimaryButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(backgroundColor: color),
         onPressed: () => onPressed(),
-        child: Text(text),
+        child: Text(
+          text,
+          style: const TextStyle(fontSize: 18),
+        ),
       ),
     );
   }
