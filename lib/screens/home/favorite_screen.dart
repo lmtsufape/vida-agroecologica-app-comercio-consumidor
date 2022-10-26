@@ -1,6 +1,7 @@
 import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
 import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
+import 'package:ecommercebonito/shared/components/BottomNavigation.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +12,7 @@ class FavoriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int _selectedIndex = 0;
+    int selectedIndex = 0;
     Size size = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
       create: (_) => HomeScreenController(),
@@ -37,61 +38,9 @@ class FavoriteScreen extends StatelessWidget {
                 ],
                 //IconButton
               ),
-              bottomNavigationBar: BottomNavigationBar(
-                  type: BottomNavigationBarType.fixed,
-                  items: const [
-                    BottomNavigationBarItem(
-                      label: 'Início',
-                      backgroundColor: Colors.white,
-                      icon: Icon(
-                        Icons.home,
-                        color: Colors.white,
-                        size: 40,
-                      ),
-                    ),
-                    BottomNavigationBarItem(
-                      label: 'Vendedores',
-                      backgroundColor: Colors.white,
-                      icon: Icon(
-                        Icons.storefront,
-                        color: Colors.white,
-                        size: 40,
-                      ),
-                    ),
-                    BottomNavigationBarItem(
-                      label: 'Pedidos',
-                      backgroundColor: Colors.white,
-                      icon: Icon(
-                        Icons.list_alt,
-                        color: Colors.white,
-                        size: 40,
-                      ),
-                    ),
-                    BottomNavigationBarItem(
-                      label: 'Cesta',
-                      icon: Icon(
-                        Icons.shopping_basket_outlined,
-                        color: Colors.white,
-                        size: 40,
-                      ),
-                    ),
-                  ],
-                  currentIndex: _selectedIndex,
-                  unselectedItemColor: Colors.black,
-                  selectedItemColor: Colors.white,
-                  backgroundColor: Colors.orange,
-                  onTap: (index) {
-                    _selectedIndex = index;
-                    if (_selectedIndex == 0) {
-                      Navigator.pushNamed(context, Screens.home);
-                    } else if (_selectedIndex == 1) {
-                      Navigator.pushNamed(context, Screens.favorite);
-                    } else if (_selectedIndex == 2) {
-                      Navigator.pushNamed(context, Screens.purchases);
-                    } else if (_selectedIndex == 3) {
-                      Navigator.pushNamed(context, Screens.home);
-                    }
-                  }),
+              bottomNavigationBar: BottomNavigation(
+                selectedIndex: selectedIndex,
+              ),
               body: Container(
                 width: size.width,
                 padding: const EdgeInsets.all(20),
