@@ -1,4 +1,3 @@
-
 import 'package:ecommercebonito/components/buttons/custom_text_button.dart';
 import 'package:ecommercebonito/components/buttons/primary_button.dart';
 import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
@@ -33,6 +32,7 @@ class FirstScreen extends StatelessWidget {
                     hasLeading: false,
                   )),
               body: Container(
+                color: Colors.white,
                 width: size.width,
                 padding: const EdgeInsets.all(kDefaultPadding),
                 child: Column(

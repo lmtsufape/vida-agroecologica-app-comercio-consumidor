@@ -42,19 +42,20 @@ class FavoriteScreen extends StatelessWidget {
               bottomNavigationBar:
                   BottomNavigation(selectedIndex: selectedIndex),
               body: Container(
+                color: Colors.white,
                 width: size.width,
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   // ignore: prefer_const_literals_to_create_immutables
                   children: [
                     const Padding(
-                      padding: EdgeInsets.all(18.0),
+                      padding: EdgeInsets.all(5.0),
                       child: TextField(
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(40))),
+                                    BorderRadius.all(Radius.circular(30))),
                             hintText: 'Buscar',
                             contentPadding: EdgeInsets.symmetric(
                                 vertical: 15, horizontal: 15),
@@ -66,7 +67,7 @@ class FavoriteScreen extends StatelessWidget {
                             ),
                           )),
                     ),
-                    const VerticalSpacerBox(size: SpacerSize.small),
+                    const VerticalSpacerBox(size: SpacerSize.medium),
                     Row(
                       children: const [
                         Text(

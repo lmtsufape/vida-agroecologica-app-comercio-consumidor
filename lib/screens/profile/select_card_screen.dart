@@ -33,6 +33,7 @@ class SelectCard extends StatelessWidget {
           //IconButton
         ),
         body: Container(
+            color: Colors.white,
             width: size.width,
             padding: const EdgeInsets.all(20),
             child: SingleChildScrollView(
@@ -189,7 +190,6 @@ class SelectCard extends StatelessWidget {
                   Navigator.pushNamed(context, Screens.payment);
                 },
               ),
-              
             ]))));
   }
 }
