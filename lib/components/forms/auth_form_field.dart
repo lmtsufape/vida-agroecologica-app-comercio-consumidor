@@ -25,10 +25,10 @@ class _AuthFormFieldState extends State<AuthFormField> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SizedBox(
-      height: size.height * 0.08,
+      height: size.height * 0.06,
       child: TextFormField(
         onChanged: widget.onChanged,
-        style: const TextStyle(color: kTextColor),
+        style: const TextStyle(color: kSecondaryColor),
         obscureText: widget.isPassword ? showPassword : false,
         keyboardType: widget.inputType,
         decoration: InputDecoration(
