@@ -44,13 +44,14 @@ class HomeScreen extends StatelessWidget {
               bottomNavigationBar:
                   BottomNavigation(selectedIndex: selectedIndex),
               body: Container(
+                color: Colors.white,
                 width: size.width,
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   // ignore: prefer_const_literals_to_create_immutables
                   children: [
                     const Padding(
-                      padding: EdgeInsets.all(18.0),
+                      padding: EdgeInsets.all(5.0),
                       child: TextField(
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
@@ -68,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                           )),
                     ),
-                    const VerticalSpacerBox(size: SpacerSize.small),
+                    const VerticalSpacerBox(size: SpacerSize.medium),
                     Row(
                       children: const [
                         Text(
@@ -89,7 +90,7 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 Container(
                                   width: 80,
-                                  height: 80,
+                                  height: 90,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: const BorderRadius.all(
@@ -108,12 +109,10 @@ class HomeScreen extends StatelessWidget {
                                     child: Wrap(
                                       children: [
                                         Center(
-                                            child: SvgPicture.asset(
+                                            child: Image.asset(
                                           Assets.vegetais,
-                                          color: Colors.orange,
-                                          height: 40,
-                                          width: 40,
-                                          allowDrawingOutsideViewBox: true,
+                                          fit: BoxFit.cover,
+                                          height: 48,
                                         )),
                                         Container(
                                           alignment: Alignment.bottomCenter,
@@ -135,7 +134,7 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 Container(
                                   width: 80,
-                                  height: 80,
+                                  height: 90,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: const BorderRadius.all(
@@ -154,14 +153,11 @@ class HomeScreen extends StatelessWidget {
                                     child: Wrap(
                                       children: [
                                         Center(
-                                          child: SvgPicture.asset(
-                                            Assets.frutas,
-                                            color: Colors.orange,
-                                            height: 40,
-                                            width: 40,
-                                            allowDrawingOutsideViewBox: true,
-                                          ),
-                                        ),
+                                            child: Image.asset(
+                                          Assets.frutas,
+                                          fit: BoxFit.cover,
+                                          height: 48,
+                                        )),
                                         Container(
                                           alignment: Alignment.bottomCenter,
                                           child: const Text(
@@ -182,7 +178,7 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 Container(
                                   width: 80,
-                                  height: 80,
+                                  height: 90,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: const BorderRadius.all(
@@ -201,14 +197,11 @@ class HomeScreen extends StatelessWidget {
                                     child: Wrap(
                                       children: [
                                         Center(
-                                          child: SvgPicture.asset(
-                                            Assets.folhosos,
-                                            color: Colors.orange,
-                                            height: 40,
-                                            width: 40,
-                                            allowDrawingOutsideViewBox: true,
-                                          ),
-                                        ),
+                                            child: Image.asset(
+                                          Assets.folhosos,
+                                          fit: BoxFit.cover,
+                                          height: 48,
+                                        )),
                                         Container(
                                           alignment: Alignment.bottomCenter,
                                           child: const Text(
@@ -229,7 +222,7 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 Container(
                                   width: 80,
-                                  height: 80,
+                                  height: 90,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: const BorderRadius.all(
@@ -248,14 +241,11 @@ class HomeScreen extends StatelessWidget {
                                     child: Wrap(
                                       children: [
                                         Center(
-                                          child: SvgPicture.asset(
-                                            Assets.carnes,
-                                            color: Colors.orange,
-                                            height: 40,
-                                            width: 40,
-                                            allowDrawingOutsideViewBox: true,
-                                          ),
-                                        ),
+                                            child: Image.asset(
+                                          Assets.carnes,
+                                          fit: BoxFit.cover,
+                                          height: 48,
+                                        )),
                                         Container(
                                           alignment: Alignment.bottomCenter,
                                           child: const Text(
@@ -276,7 +266,7 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 Container(
                                   width: 80,
-                                  height: 80,
+                                  height: 90,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: const BorderRadius.all(
@@ -297,22 +287,16 @@ class HomeScreen extends StatelessWidget {
                                         Row(
                                           children: [
                                             Center(
-                                              child: SvgPicture.asset(
-                                                Assets.ovos,
-                                                color: Colors.orange,
-                                                height: 30,
-                                                width: 30,
-                                                allowDrawingOutsideViewBox:
-                                                    true,
-                                              ),
-                                            ),
-                                            SvgPicture.asset(
+                                                child: Image.asset(
+                                              Assets.ovos,
+                                              fit: BoxFit.cover,
+                                              height: 30,
+                                            )),
+                                            Image.asset(
                                               Assets.leite,
-                                              color: Colors.orange,
-                                              height: 40,
-                                              width: 40,
-                                              allowDrawingOutsideViewBox: true,
-                                            ),
+                                              fit: BoxFit.cover,
+                                              height: 50,
+                                            )
                                           ],
                                         ),
                                         Container(
@@ -342,7 +326,7 @@ class HomeScreen extends StatelessWidget {
                     InkWell(
                       child: Container(
                         width: 440,
-                        height: 145,
+                        height: 125,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius:
@@ -365,6 +349,8 @@ class HomeScreen extends StatelessWidget {
                                   const HorizontalSpacerBox(
                                       size: SpacerSize.large),
                                   Container(
+                                    transformAlignment: Alignment.center,
+                                    alignment: Alignment.center,
                                     width: 65.0,
                                     height: 65.0,
                                     decoration: const BoxDecoration(
@@ -377,11 +363,18 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                   ),
                                   const HorizontalSpacerBox(
-                                      size: SpacerSize.large),
-                                  const Text(
-                                    'João Frutas',
-                                    style: TextStyle(fontSize: 20),
-                                    textAlign: TextAlign.end,
+                                      size: SpacerSize.medium),
+                                  Padding(
+                                    padding: const EdgeInsets.all(6.0),
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: const Text(
+                                        'João Frutas',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
                                   ),
                                   const Spacer(),
                                   IconButton(
@@ -405,7 +398,6 @@ class HomeScreen extends StatelessWidget {
                                   Text(
                                     'Contato: (11) 99999-9999',
                                   ),
-                                  HorizontalSpacerBox(size: SpacerSize.tiny),
                                   IconButton(
                                     icon: Icon(
                                       Icons.whatsapp,
@@ -419,7 +411,9 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      onTap: () async {},
+                      onTap: () {
+                        Navigator.pushNamed(context, Screens.menu);
+                      },
                     ),
                     const VerticalSpacerBox(size: SpacerSize.small),
                     InkWell(
@@ -428,7 +422,7 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           Container(
                             width: 440,
-                            height: 145,
+                            height: 125,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius:
@@ -451,6 +445,8 @@ class HomeScreen extends StatelessWidget {
                                       const HorizontalSpacerBox(
                                           size: SpacerSize.large),
                                       Container(
+                                        transformAlignment: Alignment.center,
+                                        alignment: Alignment.center,
                                         width: 65.0,
                                         height: 65.0,
                                         decoration: const BoxDecoration(
@@ -463,11 +459,18 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                       ),
                                       const HorizontalSpacerBox(
-                                          size: SpacerSize.large),
-                                      const Text(
-                                        'Leandro Carnes',
-                                        style: TextStyle(fontSize: 20),
-                                        textAlign: TextAlign.end,
+                                          size: SpacerSize.medium),
+                                      Padding(
+                                        padding: const EdgeInsets.all(6.0),
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          child: const Text(
+                                            'Leandro Carnes',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
                                       ),
                                       const Spacer(),
                                       IconButton(
@@ -507,7 +510,9 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      onTap: () async {},
+                      onTap: () {
+                        Navigator.pushNamed(context, Screens.menu);
+                      },
                     ),
                     const VerticalSpacerBox(size: SpacerSize.small),
                   ],

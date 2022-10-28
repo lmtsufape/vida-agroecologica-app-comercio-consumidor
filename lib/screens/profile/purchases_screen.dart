@@ -35,6 +35,7 @@ class PurchasesScreen extends StatelessWidget {
           //IconButton
         ),
         body: Container(
+          color: Colors.white,
             width: size.width,
             padding: const EdgeInsets.all(20),
             child: SingleChildScrollView(

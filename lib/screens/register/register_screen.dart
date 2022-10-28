@@ -29,6 +29,7 @@ class RegisterScreen extends StatelessWidget {
                   child: StyleBar(
                       title: 'Bem vindo(a) ao App bonito', hasLeading: true)),
               body: Container(
+                color: Colors.white,
                 width: size.width,
                 padding: const EdgeInsets.all(kDefaultPadding),
                 child: Column(

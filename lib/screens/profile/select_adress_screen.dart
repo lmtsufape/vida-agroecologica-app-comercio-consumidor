@@ -33,6 +33,7 @@ class SelectAdress extends StatelessWidget {
           //IconButton
         ),
         body: Container(
+          color: Colors.white,
             width: size.width,
             padding: const EdgeInsets.all(20),
             child: SingleChildScrollView(
@@ -168,7 +169,10 @@ class SelectAdress extends StatelessWidget {
                               children: [
                                 const Spacer(),
                                 ElevatedButton(
-                                  onPressed: null,
+                                  onPressed: () {
+                                    Navigator.pushNamed(
+                                        context, Screens.adress);
+                                  },
                                   style: ButtonStyle(
                                     backgroundColor: MaterialStateProperty.all(
                                         Colors.orange),

@@ -1,5 +1,8 @@
 import 'package:ecommercebonito/components/buttons/primary_button.dart';
 import 'package:ecommercebonito/components/forms/auth_form_field.dart';
+import 'package:ecommercebonito/components/forms/auth_form_field2.dart';
+import 'package:ecommercebonito/components/forms/auth_form_field3.dart';
+import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +38,7 @@ class AdressScreen extends StatelessWidget {
         //IconButton
       ),
       body: Container(
+          color: Colors.white,
           width: size.width,
           padding: const EdgeInsets.all(20),
           child: SingleChildScrollView(
@@ -74,56 +78,56 @@ class AdressScreen extends StatelessWidget {
                           Text(
                             'Rua',
                           ),
-                        ],
-                      ),
-                      const VerticalSpacerBox(size: SpacerSize.small),
-                      AuthFormField(
-                          label: '',
-                          isPassword: false,
-                          inputType: TextInputType.streetAddress,
-                          onChanged: (String value) {}),
-                      const VerticalSpacerBox(size: SpacerSize.small),
-                      Row(
-                        children: const [
+                          Spacer(),
                           Text(
                             'Número',
                           ),
                         ],
                       ),
                       const VerticalSpacerBox(size: SpacerSize.small),
-                      AuthFormField(
-                          label: '',
-                          isPassword: false,
-                          inputType: TextInputType.streetAddress,
-                          onChanged: (String value) {}),
+                      Row(
+                        children: [
+                          AuthFormField3(
+                              label: '',
+                              isPassword: false,
+                              inputType: TextInputType.streetAddress,
+                              onChanged: (String value) {}),
+                          const HorizontalSpacerBox(size: SpacerSize.small),
+                          AuthFormField2(
+                              label: '',
+                              isPassword: false,
+                              inputType: TextInputType.streetAddress,
+                              onChanged: (String value) {}),
+                        ],
+                      ),
                       const VerticalSpacerBox(size: SpacerSize.small),
                       Row(
                         children: const [
                           Text(
                             'Cidade',
                           ),
-                        ],
-                      ),
-                      const VerticalSpacerBox(size: SpacerSize.small),
-                      AuthFormField(
-                          label: '',
-                          isPassword: false,
-                          inputType: TextInputType.text,
-                          onChanged: (String value) {}),
-                      const VerticalSpacerBox(size: SpacerSize.small),
-                      Row(
-                        children: const [
+                          Spacer(),
                           Text(
                             'Estado',
                           ),
                         ],
                       ),
                       const VerticalSpacerBox(size: SpacerSize.small),
-                      AuthFormField(
-                          label: '',
-                          isPassword: false,
-                          inputType: TextInputType.streetAddress,
-                          onChanged: (String value) {}),
+                      Row(
+                        children: [
+                          AuthFormField3(
+                              label: '',
+                              isPassword: false,
+                              inputType: TextInputType.streetAddress,
+                              onChanged: (String value) {}),
+                          const HorizontalSpacerBox(size: SpacerSize.small),
+                          AuthFormField2(
+                              label: '',
+                              isPassword: false,
+                              inputType: TextInputType.streetAddress,
+                              onChanged: (String value) {}),
+                        ],
+                      ),
                       const VerticalSpacerBox(size: SpacerSize.small),
                       Row(
                         children: const [
@@ -147,17 +151,27 @@ class AdressScreen extends StatelessWidget {
                         ],
                       ),
                       const VerticalSpacerBox(size: SpacerSize.small),
-                      AuthFormField(
-                          label: '',
-                          isPassword: false,
-                          inputType: TextInputType.number,
-                          onChanged: (String value) {}),
-                      const VerticalSpacerBox(size: SpacerSize.small),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        child: AuthFormField3(
+                            label: '',
+                            isPassword: false,
+                            inputType: TextInputType.number,
+                            onChanged: (String value) {}),
+                      ),
+                      const VerticalSpacerBox(size: SpacerSize.large),
+                      const VerticalSpacerBox(size: SpacerSize.large),
+                      const VerticalSpacerBox(size: SpacerSize.large),
+                      const VerticalSpacerBox(size: SpacerSize.large),
+                      const VerticalSpacerBox(size: SpacerSize.large),
+                      const VerticalSpacerBox(size: SpacerSize.large),
                       Container(
                         padding: const EdgeInsets.all(kDefaultPadding),
                         child: PrimaryButton(
                           text: 'Salvar',
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, Screens.selectAdress);
+                          },
                           color: Colors.green,
                         ),
                       ),
