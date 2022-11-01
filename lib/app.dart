@@ -1,7 +1,9 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:ecommercebonito/screens/first/first_screen.dart';
+import 'package:ecommercebonito/screens/home/cart.screen.dart';
 import 'package:ecommercebonito/screens/home/favorite_screen.dart';
 import 'package:ecommercebonito/screens/home/menu_screen.dart';
+import 'package:ecommercebonito/screens/home/menu_seller_screen.dart';
 import 'package:ecommercebonito/screens/profile/adress_screen.dart';
 import 'package:ecommercebonito/screens/profile/card_screen.dart';
 import 'package:ecommercebonito/screens/profile/profile_screen.dart';
@@ -57,6 +59,8 @@ class App extends StatelessWidget {
         Screens.selectAdress: (BuildContext context) => const SelectAdress(),
         Screens.selectCard: (BuildContext context) => const SelectCard(),
         Screens.menu: (BuildContext context) => const MenuScreen(),
+        Screens.menuSeller: (BuildContext context) => const MenuSellerScreen(),
+        Screens.cart: (BuildContext context) => const CartScreen(),
       },
     );
   }
