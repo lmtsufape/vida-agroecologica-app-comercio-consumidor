@@ -5,7 +5,6 @@ import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/shared/components/BottomNavigation.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:ecommercebonito/screens/home/home_screen_controller.dart';
 
@@ -313,7 +312,7 @@ class MenuScreen extends StatelessWidget {
                               InkWell(
                                 child: Container(
                                   width: 210,
-                                  height: 320,
+                                  height: 300,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: const BorderRadius.all(
@@ -336,8 +335,8 @@ class MenuScreen extends StatelessWidget {
                                             const HorizontalSpacerBox(
                                                 size: SpacerSize.large),
                                             Container(
-                                              width: 161.0,
-                                              height: 190.0,
+                                              width: 160.0,
+                                              height: 180.0,
                                               decoration: const BoxDecoration(
                                                 image: DecorationImage(
                                                   fit: BoxFit.fill,
@@ -415,7 +414,7 @@ class MenuScreen extends StatelessWidget {
                               InkWell(
                                 child: Container(
                                   width: 210,
-                                  height: 320,
+                                  height: 300,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: const BorderRadius.all(
@@ -438,8 +437,8 @@ class MenuScreen extends StatelessWidget {
                                             const HorizontalSpacerBox(
                                                 size: SpacerSize.large),
                                             Container(
-                                              width: 150.0,
-                                              height: 190.0,
+                                              width: 160.0,
+                                              height: 180.0,
                                               decoration: const BoxDecoration(
                                                 image: DecorationImage(
                                                   fit: BoxFit.fill,
@@ -526,7 +525,7 @@ class MenuScreen extends StatelessWidget {
                               InkWell(
                                 child: Container(
                                   width: 210,
-                                  height: 320,
+                                  height: 300,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: const BorderRadius.all(
@@ -549,8 +548,8 @@ class MenuScreen extends StatelessWidget {
                                             const HorizontalSpacerBox(
                                                 size: SpacerSize.large),
                                             Container(
-                                              width: 161.0,
-                                              height: 190.0,
+                                              width: 160.0,
+                                              height: 180.0,
                                               decoration: const BoxDecoration(
                                                 image: DecorationImage(
                                                   fit: BoxFit.fill,
@@ -628,7 +627,7 @@ class MenuScreen extends StatelessWidget {
                               InkWell(
                                 child: Container(
                                   width: 210,
-                                  height: 320,
+                                  height: 300,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: const BorderRadius.all(
@@ -651,8 +650,8 @@ class MenuScreen extends StatelessWidget {
                                             const HorizontalSpacerBox(
                                                 size: SpacerSize.large),
                                             Container(
-                                              width: 150.0,
-                                              height: 190.0,
+                                              width: 160.0,
+                                              height: 180.0,
                                               decoration: const BoxDecoration(
                                                 image: DecorationImage(
                                                   fit: BoxFit.fill,
