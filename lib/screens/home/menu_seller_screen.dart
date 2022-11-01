@@ -1,18 +1,19 @@
 import 'package:ecommercebonito/assets/index.dart';
-import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
 import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
+import 'package:ecommercebonito/screens/home/home_screen_controller.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/shared/components/BottomNavigation.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ecommercebonito/screens/home/home_screen_controller.dart';
+import '../../components/utils/horizontal_spacer_box.dart';
 
-class MenuScreen extends StatelessWidget {
-  const MenuScreen({Key? key}) : super(key: key);
+class MenuSellerScreen extends StatelessWidget {
+  const MenuSellerScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // ignore: no_leading_underscores_for_local_identifiers
     int _selectedIndex = 0;
     Size size = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
@@ -49,6 +50,93 @@ class MenuScreen extends StatelessWidget {
                   child: Column(
                     // ignore: prefer_const_literals_to_create_immutables
                     children: [
+                      InkWell(
+                        child: Container(
+                          width: 440,
+                          height: 90,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(15)),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 5,
+                                blurRadius: 7,
+                                offset: const Offset(
+                                    0, 5), // changes position of shadow
+                              ),
+                            ],
+                          ),
+                          child: Center(
+                            child: Wrap(
+                              children: [
+                                Row(
+                                  children: [
+                                    const HorizontalSpacerBox(
+                                        size: SpacerSize.large),
+                                    Container(
+                                      transformAlignment: Alignment.center,
+                                      alignment: Alignment.center,
+                                      width: 65.0,
+                                      height: 65.0,
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                          fit: BoxFit.fill,
+                                          image: NetworkImage(
+                                              "https://gentv.com.br/img/content/266-1"),
+                                        ),
+                                      ),
+                                    ),
+                                    const HorizontalSpacerBox(
+                                        size: SpacerSize.large),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const VerticalSpacerBox(
+                                            size: SpacerSize.medium),
+                                        Row(
+                                          children: const [
+                                            Text(
+                                              'João Frutas',
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: const [
+                                            Text(
+                                              'Contato: (11) 99999-9999',
+                                            ),
+                                            IconButton(
+                                              onPressed: null,
+                                              icon: Icon(
+                                                Icons.whatsapp,
+                                                color: Colors.green,
+                                                size: 30,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(context, Screens.menuSeller);
+                        },
+                      ),
+                      const VerticalSpacerBox(size: SpacerSize.medium),
                       const Padding(
                         padding: EdgeInsets.all(5.0),
                         child: TextField(
@@ -69,241 +157,6 @@ class MenuScreen extends StatelessWidget {
                             )),
                       ),
                       const VerticalSpacerBox(size: SpacerSize.medium),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, Screens.menu);
-                              },
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 80,
-                                    height: 90,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
-                                          offset: const Offset(0,
-                                              5), // changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Wrap(
-                                        children: [
-                                          Center(
-                                              child: Image.asset(
-                                            Assets.vegetais,
-                                            fit: BoxFit.cover,
-                                            height: 48,
-                                          )),
-                                          Container(
-                                            alignment: Alignment.bottomCenter,
-                                            child: const Text(
-                                              'Vegetais',
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              )),
-                          InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, Screens.menu);
-                              },
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 80,
-                                    height: 90,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
-                                          offset: const Offset(0,
-                                              5), // changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Wrap(
-                                        children: [
-                                          Center(
-                                              child: Image.asset(
-                                            Assets.frutas,
-                                            fit: BoxFit.cover,
-                                            height: 48,
-                                          )),
-                                          Container(
-                                            alignment: Alignment.bottomCenter,
-                                            child: const Text(
-                                              'Frutas',
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              )),
-                          InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, Screens.menu);
-                              },
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 80,
-                                    height: 90,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
-                                          offset: const Offset(0,
-                                              5), // changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Wrap(
-                                        children: [
-                                          Center(
-                                              child: Image.asset(
-                                            Assets.folhosos,
-                                            fit: BoxFit.cover,
-                                            height: 48,
-                                          )),
-                                          Container(
-                                            alignment: Alignment.bottomCenter,
-                                            child: const Text(
-                                              'Folhosos',
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              )),
-                          InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, Screens.menu);
-                              },
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 80,
-                                    height: 90,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
-                                          offset: const Offset(0,
-                                              5), // changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Wrap(
-                                        children: [
-                                          Center(
-                                              child: Image.asset(
-                                            Assets.carnes,
-                                            fit: BoxFit.cover,
-                                            height: 48,
-                                          )),
-                                          Container(
-                                            alignment: Alignment.bottomCenter,
-                                            child: const Text(
-                                              'Carnes',
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              )),
-                          InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, Screens.menu);
-                              },
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 80,
-                                    height: 90,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
-                                          offset: const Offset(0,
-                                              5), // changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Wrap(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Center(
-                                                  child: Image.asset(
-                                                Assets.ovos,
-                                                fit: BoxFit.cover,
-                                                height: 30,
-                                              )),
-                                              Image.asset(
-                                                Assets.leite,
-                                                fit: BoxFit.cover,
-                                                height: 50,
-                                              )
-                                            ],
-                                          ),
-                                          Container(
-                                            alignment: Alignment.bottomCenter,
-                                            child: const Text(
-                                              'Leite e Ovos',
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              )),
-                        ],
-                      ),
-                      const VerticalSpacerBox(size: SpacerSize.large),
                       SingleChildScrollView(
                         child: Center(
                           child: Row(

@@ -18,4 +18,6 @@ class Screens {
   static const String selectAdress = '/profile/select_adress_screen';
   static const String selectCard = '/profile/select_card_screen';
   static const String menu = '/profile/menu_screen';
+  static const String menuSeller = '/profile/menu_seller_screen';
+  static const String cart = '/profile/cart_screen';
 }

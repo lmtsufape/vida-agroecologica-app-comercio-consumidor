@@ -4,7 +4,6 @@ import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:ecommercebonito/screens/home/home_screen_controller.dart';
 
@@ -363,47 +362,63 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                   ),
                                   const HorizontalSpacerBox(
-                                      size: SpacerSize.medium),
-                                  Padding(
-                                    padding: const EdgeInsets.all(6.0),
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      child: const Text(
-                                        'João Frutas',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
+                                      size: SpacerSize.large),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: const [
+                                          Text(
+                                            'João Frutas',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          HorizontalSpacerBox(
+                                              size: SpacerSize.huge),
+                                          HorizontalSpacerBox(
+                                              size: SpacerSize.huge),
+                                          HorizontalSpacerBox(
+                                              size: SpacerSize.huge),
+                                          HorizontalSpacerBox(
+                                              size: SpacerSize.huge),
+                                          HorizontalSpacerBox(
+                                              size: SpacerSize.huge),
+                                          IconButton(
+                                              onPressed: null,
+                                              icon: Icon(
+                                                Icons.favorite,
+                                                color: Colors.green,
+                                              )),
+                                        ],
                                       ),
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.favorite,
-                                        color: Colors.green,
-                                      )),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
-                                  Text('Frutas - Legumes - Tempeiros'),
-                                ],
-                              ),
-                              const VerticalSpacerBox(size: SpacerSize.small),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
-                                  Text(
-                                    'Contato: (11) 99999-9999',
-                                  ),
-                                  IconButton(
-                                    icon: Icon(
-                                      Icons.whatsapp,
-                                      color: Colors.green,
-                                    ),
-                                    onPressed: null,
+                                      Row(
+                                        children: const [
+                                          Text(
+                                            'Frutas - Legumes - Tempeiros',
+                                            style: TextStyle(fontSize: 15),
+                                            textAlign: TextAlign.end,
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: const [
+                                          Text(
+                                            'Contato: (11) 99999-9999',
+                                          ),
+                                          IconButton(
+                                            onPressed: null,
+                                            icon: Icon(
+                                              Icons.whatsapp,
+                                              color: Colors.green,
+                                              size: 30,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
@@ -412,109 +427,118 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       onTap: () {
-                        Navigator.pushNamed(context, Screens.menu);
+                        Navigator.pushNamed(context, Screens.menuSeller);
                       },
                     ),
                     const VerticalSpacerBox(size: SpacerSize.small),
                     InkWell(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 440,
-                            height: 125,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(15)),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 5,
-                                  blurRadius: 7,
-                                  offset: const Offset(
-                                      0, 5), // changes position of shadow
-                                ),
-                              ],
+                      child: Container(
+                        width: 440,
+                        height: 125,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(15)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: const Offset(
+                                  0, 5), // changes position of shadow
                             ),
-                            child: Center(
-                              child: Wrap(
+                          ],
+                        ),
+                        child: Center(
+                          child: Wrap(
+                            children: [
+                              Row(
                                 children: [
-                                  Row(
-                                    children: [
-                                      const HorizontalSpacerBox(
-                                          size: SpacerSize.large),
-                                      Container(
-                                        transformAlignment: Alignment.center,
-                                        alignment: Alignment.center,
-                                        width: 65.0,
-                                        height: 65.0,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          image: DecorationImage(
-                                            fit: BoxFit.fill,
-                                            image: NetworkImage(
-                                                "https://expomeat.com.br/img/site/1666/m/5413240.jpg"),
-                                          ),
-                                        ),
+                                  const HorizontalSpacerBox(
+                                      size: SpacerSize.large),
+                                  Container(
+                                    transformAlignment: Alignment.center,
+                                    alignment: Alignment.center,
+                                    width: 65.0,
+                                    height: 65.0,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        fit: BoxFit.fill,
+                                        image: NetworkImage(
+                                            "https://expomeat.com.br/img/site/1666/m/5413240.jpg"),
                                       ),
-                                      const HorizontalSpacerBox(
-                                          size: SpacerSize.medium),
-                                      Padding(
-                                        padding: const EdgeInsets.all(6.0),
-                                        child: Container(
-                                          alignment: Alignment.center,
-                                          child: const Text(
+                                    ),
+                                  ),
+                                  const HorizontalSpacerBox(
+                                      size: SpacerSize.large),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: const [
+                                          Text(
                                             'Leandro Carnes',
                                             style: TextStyle(
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.bold),
                                           ),
-                                        ),
+                                          HorizontalSpacerBox(
+                                              size: SpacerSize.huge),
+                                          HorizontalSpacerBox(
+                                              size: SpacerSize.huge),
+                                          HorizontalSpacerBox(
+                                              size: SpacerSize.huge),
+                                          HorizontalSpacerBox(
+                                              size: SpacerSize.huge),
+                                          IconButton(
+                                              onPressed: null,
+                                              icon: Icon(
+                                                Icons.favorite,
+                                                color: Colors.green,
+                                              )),
+                                        ],
                                       ),
-                                      const Spacer(),
-                                      IconButton(
-                                          onPressed: () {},
-                                          icon: const Icon(
-                                            Icons.favorite,
-                                            color: Colors.green,
-                                          )),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: const [
-                                      Text('Frutas - Legumes - Tempeiros'),
-                                    ],
-                                  ),
-                                  const VerticalSpacerBox(
-                                      size: SpacerSize.small),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: const [
-                                      Text(
-                                        'Contato: (11) 99999-9999',
+                                      Row(
+                                        children: const [
+                                          Text(
+                                            'Frutas - Legumes - Tempeiros',
+                                            style: TextStyle(fontSize: 15),
+                                            textAlign: TextAlign.end,
+                                          ),
+                                        ],
                                       ),
-                                      IconButton(
-                                        icon: Icon(
-                                          Icons.whatsapp,
-                                          color: Colors.green,
-                                        ),
-                                        onPressed: null,
+                                      Row(
+                                        children: const [
+                                          Text(
+                                            'Contato: (11) 99999-9999',
+                                          ),
+                                          IconButton(
+                                            onPressed: null,
+                                            icon: Icon(
+                                              Icons.whatsapp,
+                                              color: Colors.green,
+                                              size: 30,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
-                            ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                       onTap: () {
-                        Navigator.pushNamed(context, Screens.menu);
+                        Navigator.pushNamed(context, Screens.menuSeller);
                       },
                     ),
                     const VerticalSpacerBox(size: SpacerSize.small),
+                
                   ],
                 ),
               ),

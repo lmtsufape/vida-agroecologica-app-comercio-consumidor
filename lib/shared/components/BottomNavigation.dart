@@ -1,6 +1,8 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 import '../../screens/screens_index.dart';
 
+// ignore: must_be_immutable
 class BottomNavigation extends StatelessWidget {
   late int selectedIndex;
   BottomNavigation({super.key, required this.selectedIndex});
@@ -47,7 +49,7 @@ class BottomNavigation extends StatelessWidget {
           ),
         ],
         currentIndex: selectedIndex,
-        unselectedItemColor: Colors.black,
+        unselectedItemColor: Colors.white,
         selectedItemColor: Colors.white,
         backgroundColor: Colors.orange,
         onTap: (index) {
@@ -59,7 +61,7 @@ class BottomNavigation extends StatelessWidget {
           } else if (selectedIndex == 2) {
             Navigator.pushNamed(context, Screens.purchases);
           } else if (selectedIndex == 3) {
-            Navigator.pushNamed(context, Screens.home);
+            Navigator.pushNamed(context, Screens.cart);
           }
         });
   }
