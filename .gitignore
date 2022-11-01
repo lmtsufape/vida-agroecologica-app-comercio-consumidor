@@ -53,3 +53,4 @@ pubspec.lock
 pubspec.yaml
 pubspec.lock
 pubspec.yaml
+linux/flutter/generated_plugin_registrant.cc
