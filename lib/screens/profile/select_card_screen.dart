@@ -3,7 +3,6 @@ import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/utils/vertical_spacer_box.dart';
-import '../../shared/components/dialogs/finish_dialog.dart';
 import '../../shared/constants/app_enums.dart';
 
 class SelectCard extends StatelessWidget {
@@ -50,6 +49,7 @@ class SelectCard extends StatelessWidget {
               const VerticalSpacerBox(size: SpacerSize.large),
               InkWell(
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                       width: 440,
@@ -57,7 +57,7 @@ class SelectCard extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius:
-                            const BorderRadius.all(Radius.circular(20)),
+                            const BorderRadius.all(Radius.circular(15)),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.5),
@@ -73,50 +73,64 @@ class SelectCard extends StatelessWidget {
                           Row(
                             children: [
                               Container(
-                                width: 35.0,
-                                height: 55.0,
+                                width: 30.0,
                                 decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                 ),
                               ),
                               const Text(
-                                'Forma de pagamento',
+                                'Forma de Pagamento',
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.start,
+                              ),
+                              const Spacer(),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const VerticalSpacerBox(
+                                      size: SpacerSize.medium),
+                                  IconButton(
+                                      onPressed: () {
+                                        Navigator.pushNamed(
+                                            context, Screens.adress);
+                                      },
+                                      icon: const Icon(
+                                        Icons.arrow_forward_ios_outlined,
+                                        color: Colors.grey,
+                                      )),
+                                ],
                               ),
                             ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 3),
+                          Center(
                             child: Row(
                               children: const [
-                                HorizontalSpacerBox(size: SpacerSize.large),
-                                Text('Mastercard',
+                                HorizontalSpacerBox(size: SpacerSize.huge),
+                                Text(
+                                  'Mastercard ',
+                                  style: TextStyle(fontSize: 17),
+                                ),
+                                Text('(Crédito) ',
                                     style: TextStyle(
-                                      fontSize: 15,
-                                    )),
-                                Text(' (Crédito) ',
-                                    style: TextStyle(
-                                        fontSize: 15,
+                                        fontSize: 17,
                                         fontWeight: FontWeight.bold)),
-                                Text('com final 1447',
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                    )),
+                                Text(
+                                  'com final 1447 ',
+                                  style: TextStyle(fontSize: 17),
+                                ),
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 3),
+                          Center(
                             child: Row(
                               children: const [
-                                HorizontalSpacerBox(size: SpacerSize.large),
-                                Text('Parcelas não disponíveis',
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                    )),
+                                HorizontalSpacerBox(size: SpacerSize.huge),
+                                Text(
+                                  'Parcelas não disponíveis',
+                                  style: TextStyle(fontSize: 17),
+                                ),
                               ],
                             ),
                           ),
@@ -125,7 +139,9 @@ class SelectCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                onTap: () async {},
+                onTap: () {
+                  Navigator.pushNamed(context, Screens.adress);
+                },
               ),
               const VerticalSpacerBox(size: SpacerSize.medium),
               InkWell(

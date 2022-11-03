@@ -1,7 +1,5 @@
 import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
-import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
 import 'package:flutter/material.dart';
-
 import '../../components/utils/vertical_spacer_box.dart';
 import '../../shared/components/dialogs/finish_dialog.dart';
 import '../../shared/constants/app_enums.dart';
@@ -35,7 +33,7 @@ class PurchasesScreen extends StatelessWidget {
           //IconButton
         ),
         body: Container(
-          color: Colors.white,
+            color: Colors.white,
             width: size.width,
             padding: const EdgeInsets.all(20),
             child: SingleChildScrollView(
@@ -83,14 +81,14 @@ class PurchasesScreen extends StatelessWidget {
                                 ),
                                 const Text(
                                   'Enviado para:',
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(fontSize: 17),
                                 ),
                                 const HorizontalSpacerBox(
                                     size: SpacerSize.medium),
                                 const Text(
                                   'Maria Eduarda',
                                   style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 const Spacer(),
@@ -122,13 +120,13 @@ class PurchasesScreen extends StatelessWidget {
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Vendido por:',
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(fontSize: 17),
                                 ),
                                 Spacer(),
                                 Text(
                                   'Leandro Carnes',
                                   style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 17,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.green),
                                 ),
@@ -144,13 +142,13 @@ class PurchasesScreen extends StatelessWidget {
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Itens:',
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(fontSize: 17),
                                 ),
                                 Spacer(),
                                 Text(
                                   'RS 55,62',
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 17,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -165,13 +163,13 @@ class PurchasesScreen extends StatelessWidget {
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Fretes e manuseio:',
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(fontSize: 17),
                                 ),
                                 Spacer(),
                                 Text(
                                   'RS 55,62',
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 17,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -211,7 +209,7 @@ class PurchasesScreen extends StatelessWidget {
                                 const Text(
                                   '07/10/2022',
                                   style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 17,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 const Spacer(),
@@ -224,7 +222,7 @@ class PurchasesScreen extends StatelessWidget {
                                   child: const Text(
                                     'Em andamento',
                                     style: TextStyle(
-                                        fontSize: 16, color: Colors.white),
+                                        fontSize: 17, color: Colors.white),
                                   ),
                                 ),
                               ],
@@ -280,14 +278,14 @@ class PurchasesScreen extends StatelessWidget {
                                 ),
                                 const Text(
                                   'Enviado para:',
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(fontSize: 17),
                                 ),
                                 const HorizontalSpacerBox(
                                     size: SpacerSize.medium),
                                 const Text(
                                   'Maria Eduarda',
                                   style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 const Spacer(),
@@ -319,13 +317,13 @@ class PurchasesScreen extends StatelessWidget {
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Vendido por:',
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(fontSize: 17),
                                 ),
                                 Spacer(),
                                 Text(
                                   'Leandro Carnes',
                                   style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 17,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.green),
                                 ),
@@ -341,13 +339,13 @@ class PurchasesScreen extends StatelessWidget {
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Itens:',
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(fontSize: 17),
                                 ),
                                 Spacer(),
                                 Text(
                                   'RS 55,62',
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 17,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -362,13 +360,13 @@ class PurchasesScreen extends StatelessWidget {
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Fretes e manuseio:',
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(fontSize: 17),
                                 ),
                                 Spacer(),
                                 Text(
                                   'RS 55,62',
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 17,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -408,7 +406,7 @@ class PurchasesScreen extends StatelessWidget {
                                 const Text(
                                   '07/10/2022',
                                   style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 17,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 const Spacer(),
@@ -421,7 +419,7 @@ class PurchasesScreen extends StatelessWidget {
                                   child: const Text(
                                     'Entregue',
                                     style: TextStyle(
-                                        fontSize: 16, color: Colors.white),
+                                        fontSize: 17, color: Colors.white),
                                   ),
                                 ),
                               ],
@@ -477,14 +475,14 @@ class PurchasesScreen extends StatelessWidget {
                                 ),
                                 const Text(
                                   'Enviado para:',
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(fontSize: 17),
                                 ),
                                 const HorizontalSpacerBox(
                                     size: SpacerSize.medium),
                                 const Text(
                                   'Maria Eduarda',
                                   style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 const Spacer(),
@@ -516,13 +514,13 @@ class PurchasesScreen extends StatelessWidget {
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Vendido por:',
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(fontSize: 17),
                                 ),
                                 Spacer(),
                                 Text(
                                   'Leandro Carnes',
                                   style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 17,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.green),
                                 ),
@@ -538,13 +536,13 @@ class PurchasesScreen extends StatelessWidget {
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Itens:',
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(fontSize: 17),
                                 ),
                                 Spacer(),
                                 Text(
                                   'RS 55,62',
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 17,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -559,13 +557,13 @@ class PurchasesScreen extends StatelessWidget {
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Fretes e manuseio:',
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(fontSize: 17),
                                 ),
                                 Spacer(),
                                 Text(
                                   'RS 55,62',
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 17,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -597,7 +595,7 @@ class PurchasesScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 6),
+                                horizontal: 17, vertical: 6),
                             child: Row(
                               children: [
                                 const HorizontalSpacerBox(
@@ -605,7 +603,7 @@ class PurchasesScreen extends StatelessWidget {
                                 const Text(
                                   '07/10/2022',
                                   style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 17,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 const Spacer(),
@@ -618,7 +616,7 @@ class PurchasesScreen extends StatelessWidget {
                                   child: const Text(
                                     'Cancelado',
                                     style: TextStyle(
-                                        fontSize: 16, color: Colors.white),
+                                        fontSize: 17, color: Colors.white),
                                   ),
                                 ),
                               ],

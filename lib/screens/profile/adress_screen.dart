@@ -165,15 +165,14 @@ class AdressScreen extends StatelessWidget {
                       const VerticalSpacerBox(size: SpacerSize.large),
                       const VerticalSpacerBox(size: SpacerSize.large),
                       const VerticalSpacerBox(size: SpacerSize.large),
-                      Container(
-                        padding: const EdgeInsets.all(kDefaultPadding),
-                        child: PrimaryButton(
-                          text: 'Salvar',
-                          onPressed: () {
-                            Navigator.pushNamed(context, Screens.selectAdress);
-                          },
-                          color: Colors.green,
-                        ),
+                      const VerticalSpacerBox(size: SpacerSize.large),
+                      const VerticalSpacerBox(size: SpacerSize.large),
+                      PrimaryButton(
+                        text: 'Salvar',
+                        onPressed: () {
+                          Navigator.pushNamed(context, Screens.selectAdress);
+                        },
+                        color: Colors.green,
                       ),
                     ])))
               ],
