@@ -1,3 +1,5 @@
+import 'package:ecommercebonito/screens/home/finalize_purchase_screen.dart';
+
 class Screens {
   ///all screens routes names must be here
   ///so you can easily navigate to them.
@@ -20,4 +22,5 @@ class Screens {
   static const String menu = '/profile/menu_screen';
   static const String menuSeller = '/profile/menu_seller_screen';
   static const String cart = '/profile/cart_screen';
+  static const String FinalizePurchase = '/home/finalize_purchase_screen';
 }
