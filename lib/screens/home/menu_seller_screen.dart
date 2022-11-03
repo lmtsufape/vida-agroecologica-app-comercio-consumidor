@@ -64,7 +64,7 @@ class MenuSellerScreen extends StatelessWidget {
                                 spreadRadius: 5,
                                 blurRadius: 7,
                                 offset: const Offset(
-                                    0, 5), // changes position of shadow
+                                    0, 0), // changes position of shadow
                               ),
                             ],
                           ),

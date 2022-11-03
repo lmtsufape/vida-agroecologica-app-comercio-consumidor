@@ -41,7 +41,7 @@ class CardScreen extends StatelessWidget {
         //IconButton
       ),
       body: Container(
-        color: Colors.white,
+          color: Colors.white,
           width: size.width,
           padding: const EdgeInsets.all(20),
           child: Column(
@@ -214,16 +214,15 @@ class CardScreen extends StatelessWidget {
                     const VerticalSpacerBox(size: SpacerSize.large),
                     const VerticalSpacerBox(size: SpacerSize.large),
                     const VerticalSpacerBox(size: SpacerSize.large),
-                    const VerticalSpacerBox(size: SpacerSize.medium),
-                    Container(
-                      padding: const EdgeInsets.all(kDefaultPadding),
-                      child: PrimaryButton(
-                        text: 'Salvar',
-                        onPressed: () {
-                          Navigator.pushNamed(context, Screens.selectCard);
-                        },
-                        color: Colors.green,
-                      ),
+                    const VerticalSpacerBox(size: SpacerSize.large),
+                    const VerticalSpacerBox(size: SpacerSize.large),
+                    const VerticalSpacerBox(size: SpacerSize.large),
+                    PrimaryButton(
+                      text: 'Salvar',
+                      onPressed: () {
+                        Navigator.pushNamed(context, Screens.selectAdress);
+                      },
+                      color: Colors.green,
                     ),
                   ])))
             ],
