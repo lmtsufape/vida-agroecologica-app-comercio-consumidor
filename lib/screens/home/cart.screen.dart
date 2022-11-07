@@ -4,6 +4,7 @@ import 'package:ecommercebonito/screens/home/home_screen_controller.dart';
 import 'package:ecommercebonito/shared/components/BottomNavigation.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
+import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -27,15 +28,15 @@ class CartScreen extends StatelessWidget {
                 appBar: AppBar(
                   title: const Text(
                     'Ecommerce Bonito',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: kOnSurfaceColor),
                   ),
                   centerTitle: true,
-                  backgroundColor: Colors.orange,
+                  backgroundColor: kDetailColor,
                   actions: <Widget>[
                     IconButton(
                       icon: const Icon(
                         Icons.menu,
-                        color: Colors.white,
+                        color: kOnSurfaceColor,
                       ),
                       onPressed: () {
                         Navigator.pushNamed(context, Screens.profile);
@@ -48,7 +49,7 @@ class CartScreen extends StatelessWidget {
                     BottomNavigation(selectedIndex: _selectedIndex),
                 body: SingleChildScrollView(
                   child: Container(
-                    color: Colors.white,
+                    color: kOnSurfaceColor,
                     width: size.width,
                     padding: const EdgeInsets.all(kDefaultPadding),
                     child: Column(children: [
@@ -82,12 +83,12 @@ class CartScreen extends StatelessWidget {
                           width: 420,
                           height: 235,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: kOnSurfaceColor,
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(15)),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
+                                color: kTextButtonColor.withOpacity(0.5),
                                 spreadRadius: 5,
                                 blurRadius: 7,
                                 offset: const Offset(
@@ -222,12 +223,12 @@ class CartScreen extends StatelessWidget {
                                       style: ButtonStyle(
                                         backgroundColor:
                                             MaterialStateProperty.all(
-                                                Colors.white),
+                                                kOnSurfaceColor),
                                       ),
                                       child: const Text(
                                         'Excluir',
                                         style: TextStyle(
-                                            fontSize: 15, color: Colors.grey),
+                                            fontSize: 15, color: kTextButtonColor),
                                       ),
                                     ),
                                   ],
@@ -245,12 +246,12 @@ class CartScreen extends StatelessWidget {
                           width: 420,
                           height: 235,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: kOnSurfaceColor,
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(15)),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
+                                color: kTextButtonColor.withOpacity(0.5),
                                 spreadRadius: 5,
                                 blurRadius: 7,
                                 offset: const Offset(
@@ -383,12 +384,12 @@ class CartScreen extends StatelessWidget {
                                       style: ButtonStyle(
                                         backgroundColor:
                                             MaterialStateProperty.all(
-                                                Colors.white),
+                                                kOnSurfaceColor),
                                       ),
                                       child: const Text(
                                         'Excluir',
                                         style: TextStyle(
-                                            fontSize: 15, color: Colors.grey),
+                                            fontSize: 15, color: kTextButtonColor),
                                       ),
                                     ),
                                   ],

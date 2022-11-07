@@ -2,8 +2,6 @@ import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:flutter/material.dart';
 
-import '../../../screens/home/home_screen.dart';
-
 class FinishVisitDialog extends StatelessWidget {
   const FinishVisitDialog({
     Key? key,

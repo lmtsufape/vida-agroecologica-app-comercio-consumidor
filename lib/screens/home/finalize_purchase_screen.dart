@@ -1,5 +1,6 @@
 import 'package:ecommercebonito/components/buttons/primary_button.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
+import 'package:ecommercebonito/shared/components/dialogs/finish_purchase.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:flutter/material.dart';
 import '../../components/utils/horizontal_spacer_box.dart';
@@ -532,7 +533,9 @@ class FinalizePurchaseScreen extends StatelessWidget {
               PrimaryButton(
                 text: 'Confirmar pedido',
                 onPressed: () {
-                  Navigator.pushNamed(context, Screens.purchases);
+                  showDialog(
+                      context: context,
+                      builder: (context) => const FinishPurchaseDialog());
                 },
                 color: Colors.green,
               ),
