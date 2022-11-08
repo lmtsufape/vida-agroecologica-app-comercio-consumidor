@@ -23,15 +23,15 @@ class CardScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Ecommerce Bonito',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: kOnSurfaceColor),
         ),
         centerTitle: true,
-        backgroundColor: Colors.orange,
+        backgroundColor: kDetailColor,
         actions: <Widget>[
           IconButton(
             icon: const Icon(
               Icons.menu,
-              color: Colors.white,
+              color: kOnSurfaceColor,
             ),
             onPressed: () {
               Navigator.pushNamed(context, Screens.profile);
@@ -41,7 +41,7 @@ class CardScreen extends StatelessWidget {
         //IconButton
       ),
       body: Container(
-          color: Colors.white,
+          color: kOnSurfaceColor,
           width: size.width,
           padding: const EdgeInsets.all(20),
           child: Column(
@@ -114,7 +114,7 @@ class CardScreen extends StatelessWidget {
                         style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.normal,
-                            color: Colors.black),
+                            color: kText),
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
@@ -128,7 +128,7 @@ class CardScreen extends StatelessWidget {
                           hintStyle: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.normal,
-                              color: Colors.black),
+                              color: kText),
                         ),
                         value: mes,
                         items: const [
@@ -162,7 +162,7 @@ class CardScreen extends StatelessWidget {
                         style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.normal,
-                            color: Colors.black),
+                            color: kText),
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
@@ -176,7 +176,7 @@ class CardScreen extends StatelessWidget {
                           hintStyle: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.normal,
-                              color: Colors.black),
+                              color: kText),
                         ),
                         value: ano,
                         items: const [
@@ -222,7 +222,7 @@ class CardScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(context, Screens.selectAdress);
                       },
-                      color: Colors.green,
+                      color: kButtom,
                     ),
                   ])))
             ],

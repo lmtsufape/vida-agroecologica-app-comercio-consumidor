@@ -3,6 +3,7 @@ import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
 import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
+import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ecommercebonito/screens/home/home_screen_controller.dart';
@@ -23,15 +24,15 @@ class HomeScreen extends StatelessWidget {
               appBar: AppBar(
                 title: const Text(
                   'Ecommerce Bonito',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: kOnSurfaceColor),
                 ),
                 centerTitle: true,
-                backgroundColor: Colors.orange,
+                backgroundColor: kDetailColor,
                 actions: <Widget>[
                   IconButton(
                     icon: const Icon(
                       Icons.menu,
-                      color: Colors.white,
+                      color: kOnSurfaceColor,
                     ),
                     onPressed: () {
                       Navigator.pushNamed(context, Screens.profile);
@@ -43,7 +44,7 @@ class HomeScreen extends StatelessWidget {
               bottomNavigationBar:
                   BottomNavigation(selectedIndex: selectedIndex),
               body: Container(
-                color: Colors.white,
+                color: kOnSurfaceColor,
                 width: size.width,
                 padding: const EdgeInsets.all(20),
                 child: Column(
@@ -63,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                             isDense: true,
                             prefixIcon: Icon(
                               Icons.search,
-                              color: Colors.orange,
+                              color: kDetailColor,
                               size: 25,
                             ),
                           )),
@@ -91,12 +92,13 @@ class HomeScreen extends StatelessWidget {
                                   width: 80,
                                   height: 90,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: kOnSurfaceColor,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(10)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
+                                        color:
+                                            kTextButtonColor.withOpacity(0.5),
                                         spreadRadius: 5,
                                         blurRadius: 7,
                                         offset: const Offset(
@@ -135,12 +137,13 @@ class HomeScreen extends StatelessWidget {
                                   width: 80,
                                   height: 90,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: kOnSurfaceColor,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(10)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
+                                        color:
+                                            kTextButtonColor.withOpacity(0.5),
                                         spreadRadius: 5,
                                         blurRadius: 7,
                                         offset: const Offset(
@@ -179,12 +182,13 @@ class HomeScreen extends StatelessWidget {
                                   width: 80,
                                   height: 90,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: kOnSurfaceColor,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(10)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
+                                        color:
+                                            kTextButtonColor.withOpacity(0.5),
                                         spreadRadius: 5,
                                         blurRadius: 7,
                                         offset: const Offset(
@@ -223,12 +227,13 @@ class HomeScreen extends StatelessWidget {
                                   width: 80,
                                   height: 90,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: kOnSurfaceColor,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(10)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
+                                        color:
+                                            kTextButtonColor.withOpacity(0.5),
                                         spreadRadius: 5,
                                         blurRadius: 7,
                                         offset: const Offset(
@@ -267,12 +272,13 @@ class HomeScreen extends StatelessWidget {
                                   width: 80,
                                   height: 90,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: kOnSurfaceColor,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(10)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
+                                        color:
+                                            kTextButtonColor.withOpacity(0.5),
                                         spreadRadius: 5,
                                         blurRadius: 7,
                                         offset: const Offset(
@@ -327,12 +333,12 @@ class HomeScreen extends StatelessWidget {
                         width: 440,
                         height: 125,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: kOnSurfaceColor,
                           borderRadius:
                               const BorderRadius.all(Radius.circular(15)),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
+                              color: kTextButtonColor.withOpacity(0.5),
                               spreadRadius: 5,
                               blurRadius: 7,
                               offset: const Offset(
@@ -390,7 +396,7 @@ class HomeScreen extends StatelessWidget {
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.favorite,
-                                                color: Colors.green,
+                                                color: kButtom,
                                               )),
                                         ],
                                       ),
@@ -412,7 +418,7 @@ class HomeScreen extends StatelessWidget {
                                             onPressed: null,
                                             icon: Icon(
                                               Icons.whatsapp,
-                                              color: Colors.green,
+                                              color: kButtom,
                                               size: 30,
                                             ),
                                           ),
@@ -436,12 +442,12 @@ class HomeScreen extends StatelessWidget {
                         width: 440,
                         height: 125,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: kOnSurfaceColor,
                           borderRadius:
                               const BorderRadius.all(Radius.circular(15)),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
+                              color: kTextButtonColor.withOpacity(0.5),
                               spreadRadius: 5,
                               blurRadius: 7,
                               offset: const Offset(
@@ -497,7 +503,7 @@ class HomeScreen extends StatelessWidget {
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.favorite,
-                                                color: Colors.green,
+                                                color: kButtom,
                                               )),
                                         ],
                                       ),
@@ -519,7 +525,7 @@ class HomeScreen extends StatelessWidget {
                                             onPressed: null,
                                             icon: Icon(
                                               Icons.whatsapp,
-                                              color: Colors.green,
+                                              color: kButtom,
                                               size: 30,
                                             ),
                                           ),

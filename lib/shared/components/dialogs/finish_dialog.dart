@@ -1,5 +1,6 @@
 import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
+import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 
 class FinishVisitDialog extends StatelessWidget {
@@ -13,14 +14,14 @@ class FinishVisitDialog extends StatelessWidget {
       title: const Text(
         'Excluir endereço?',
         style: TextStyle(
-          color: Colors.black,
+          color: kText,
           fontSize: 20,
         ),
       ),
       content: const Text(
         'Você tem certeza que deseja excluir este endereço?',
         style: TextStyle(
-          color: Colors.black,
+          color: kText,
           fontSize: 15,
         ),
       ),
@@ -36,12 +37,12 @@ class FinishVisitDialog extends StatelessWidget {
                 child: const Text(
                   'Cancelar',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: kOnSurfaceColor,
                     fontSize: 20,
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange,
+                  backgroundColor: kDetailColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -56,12 +57,12 @@ class FinishVisitDialog extends StatelessWidget {
                 child: const Text(
                   'Excluir',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: kOnSurfaceColor,
                     fontSize: 20,
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey,
+                  backgroundColor: kTextButtonColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),

@@ -2,6 +2,7 @@ import 'package:ecommercebonito/components/buttons/primary_button.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/shared/components/dialogs/finish_purchase.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
+import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import '../../components/utils/horizontal_spacer_box.dart';
 import '../../components/utils/vertical_spacer_box.dart';
@@ -19,15 +20,15 @@ class FinalizePurchaseScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text(
             'Ecommerce Bonito',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: kOnSurfaceColor),
           ),
           centerTitle: true,
-          backgroundColor: Colors.orange,
+          backgroundColor: kDetailColor,
           actions: <Widget>[
             IconButton(
               icon: const Icon(
                 Icons.menu,
-                color: Colors.white,
+                color: kOnSurfaceColor,
               ),
               onPressed: () {
                 Navigator.pushNamed(context, Screens.profile);
@@ -37,7 +38,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
           //IconButton
         ),
         body: Container(
-            color: Colors.white,
+            color: kOnSurfaceColor,
             width: size.width,
             padding: const EdgeInsets.all(20),
             child: SingleChildScrollView(
@@ -50,12 +51,12 @@ class FinalizePurchaseScreen extends StatelessWidget {
                       width: 440,
                       height: 270,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: kOnSurfaceColor,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(15)),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
+                            color: kTextButtonColor.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 7,
                             offset: const Offset(
@@ -93,13 +94,13 @@ class FinalizePurchaseScreen extends StatelessWidget {
                                     onPressed: () {},
                                     icon: const Icon(
                                       Icons.arrow_forward_ios_outlined,
-                                      color: Colors.grey,
+                                      color: kTextButtonColor,
                                     )),
                               ],
                             ),
                           ),
                           const Divider(
-                            color: Colors.grey,
+                            color: kTextButtonColor,
                             height: 20,
                             thickness: 1,
                             indent: 5,
@@ -120,7 +121,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.green),
+                                      color: kButtom),
                                 ),
                               ],
                             ),
@@ -186,7 +187,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: 23,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.orange),
+                                      color: kDetailColor),
                                 ),
                               ],
                             ),
@@ -211,13 +212,13 @@ class FinalizePurchaseScreen extends StatelessWidget {
                                         context, Screens.selectCard);
                                   },
                                   style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Colors.orange),
+                                    backgroundColor:
+                                        MaterialStateProperty.all(kDetailColor),
                                   ),
                                   child: const Text(
                                     'Alterar',
                                     style: TextStyle(
-                                        fontSize: 16, color: Colors.white),
+                                        fontSize: 16, color: kOnSurfaceColor),
                                   ),
                                 ),
                               ],
@@ -244,8 +245,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                   Row(
                     children: [
                       Radio(
-                          overlayColor:
-                              MaterialStateProperty.all(Colors.orange),
+                          overlayColor: MaterialStateProperty.all(kDetailColor),
                           value: 'Retirada',
                           groupValue: formaEntrega,
                           onChanged: (value) {
@@ -253,7 +253,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                           }),
                       const Text(
                         'Retirada',
-                        style: TextStyle(fontSize: 20, color: Colors.grey),
+                        style: TextStyle(fontSize: 20, color: kTextButtonColor),
                       ),
                     ],
                   ),
@@ -261,8 +261,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                   Row(
                     children: [
                       Radio(
-                          overlayColor:
-                              MaterialStateProperty.all(Colors.orange),
+                          overlayColor: MaterialStateProperty.all(kDetailColor),
                           value: 'Entrega',
                           groupValue: formaEntrega,
                           onChanged: (value) {
@@ -270,7 +269,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                           }),
                       const Text(
                         'Entrega',
-                        style: TextStyle(fontSize: 20, color: Colors.grey),
+                        style: TextStyle(fontSize: 20, color: kTextButtonColor),
                       ),
                     ],
                   ),
@@ -292,12 +291,12 @@ class FinalizePurchaseScreen extends StatelessWidget {
                       width: 440,
                       height: 95,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: kOnSurfaceColor,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(15)),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
+                            color: kTextButtonColor.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 7,
                             offset: const Offset(
@@ -335,7 +334,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                                       },
                                       icon: const Icon(
                                         Icons.arrow_forward_ios_outlined,
-                                        color: Colors.grey,
+                                        color: kTextButtonColor,
                                       )),
                                 ],
                               ),
@@ -348,7 +347,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                                 Text(
                                   'Rua Professora Esmeralda Barros, 71, Apt, ...',
                                   style: TextStyle(
-                                      fontSize: 18, color: Colors.grey),
+                                      fontSize: 18, color: kTextButtonColor),
                                 ),
                               ],
                             ),
@@ -383,8 +382,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                   Row(
                     children: [
                       Radio(
-                          overlayColor:
-                              MaterialStateProperty.all(Colors.orange),
+                          overlayColor: MaterialStateProperty.all(kDetailColor),
                           value: 'Pix',
                           groupValue: formaPag,
                           onChanged: (value) {
@@ -392,7 +390,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                           }),
                       const Text(
                         'Pix',
-                        style: TextStyle(fontSize: 20, color: Colors.grey),
+                        style: TextStyle(fontSize: 20, color: kTextButtonColor),
                       ),
                     ],
                   ),
@@ -400,8 +398,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                   Row(
                     children: [
                       Radio(
-                          overlayColor:
-                              MaterialStateProperty.all(Colors.orange),
+                          overlayColor: MaterialStateProperty.all(kDetailColor),
                           value: 'Espécie',
                           groupValue: formaPag,
                           onChanged: (value) {
@@ -409,7 +406,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                           }),
                       const Text(
                         'Espécie',
-                        style: TextStyle(fontSize: 20, color: Colors.grey),
+                        style: TextStyle(fontSize: 20, color: kTextButtonColor),
                       ),
                     ],
                   ),
@@ -417,8 +414,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                   Row(
                     children: [
                       Radio(
-                          overlayColor:
-                              MaterialStateProperty.all(Colors.orange),
+                          overlayColor: MaterialStateProperty.all(kDetailColor),
                           value: 'Cartão',
                           groupValue: formaPag,
                           onChanged: (value) {
@@ -426,7 +422,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                           }),
                       const Text(
                         'Cartão',
-                        style: TextStyle(fontSize: 20, color: Colors.grey),
+                        style: TextStyle(fontSize: 20, color: kTextButtonColor),
                       ),
                     ],
                   ),
@@ -441,12 +437,12 @@ class FinalizePurchaseScreen extends StatelessWidget {
                       width: 440,
                       height: 110,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: kOnSurfaceColor,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(15)),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
+                            color: kTextButtonColor.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 7,
                             offset: const Offset(
@@ -484,7 +480,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                                       },
                                       icon: const Icon(
                                         Icons.arrow_forward_ios_outlined,
-                                        color: Colors.grey,
+                                        color: kTextButtonColor,
                                       )),
                                 ],
                               ),
@@ -537,11 +533,11 @@ class FinalizePurchaseScreen extends StatelessWidget {
                       context: context,
                       builder: (context) => const FinishPurchaseDialog());
                 },
-                color: Colors.green,
+                color: kButtom,
               ),
               const VerticalSpacerBox(size: SpacerSize.medium),
               const Divider(
-                color: Colors.grey,
+                color: kTextButtonColor,
                 thickness: 1,
               ),
               Row(
@@ -553,7 +549,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                       },
                       child: const Text(
                         'Voltar a cesta',
-                        style: TextStyle(color: Colors.green, fontSize: 17),
+                        style: TextStyle(color: kButtom, fontSize: 17),
                       ))
                 ],
               ),

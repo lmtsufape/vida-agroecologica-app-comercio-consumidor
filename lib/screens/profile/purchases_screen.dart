@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../components/utils/vertical_spacer_box.dart';
 import '../../shared/components/dialogs/finish_dialog.dart';
 import '../../shared/constants/app_enums.dart';
+import '../../shared/constants/style_constants.dart';
 import '../screens_index.dart';
 
 class PurchasesScreen extends StatelessWidget {
@@ -15,15 +16,15 @@ class PurchasesScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text(
             'Ecommerce Bonito',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: kOnSurfaceColor),
           ),
           centerTitle: true,
-          backgroundColor: Colors.orange,
+          backgroundColor: kDetailColor,
           actions: <Widget>[
             IconButton(
               icon: const Icon(
                 Icons.menu,
-                color: Colors.white,
+                color: kOnSurfaceColor,
               ),
               onPressed: () {
                 Navigator.pushNamed(context, Screens.profile);
@@ -33,7 +34,7 @@ class PurchasesScreen extends StatelessWidget {
           //IconButton
         ),
         body: Container(
-            color: Colors.white,
+            color: kOnSurfaceColor,
             width: size.width,
             padding: const EdgeInsets.all(20),
             child: SingleChildScrollView(
@@ -53,12 +54,12 @@ class PurchasesScreen extends StatelessWidget {
                       width: 440,
                       height: 270,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: kOnSurfaceColor,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(15)),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
+                            color: kTextButtonColor.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 7,
                             offset: const Offset(
@@ -101,13 +102,13 @@ class PurchasesScreen extends StatelessWidget {
                                     },
                                     icon: const Icon(
                                       Icons.arrow_forward_ios_outlined,
-                                      color: Colors.grey,
+                                      color: kTextButtonColor,
                                     )),
                               ],
                             ),
                           ),
                           const Divider(
-                            color: Colors.grey,
+                            color: kTextButtonColor,
                             height: 20,
                             thickness: 1,
                             indent: 5,
@@ -128,7 +129,7 @@ class PurchasesScreen extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.green),
+                                      color: kButtom),
                                 ),
                               ],
                             ),
@@ -194,7 +195,7 @@ class PurchasesScreen extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.orange),
+                                      color: kDetailColor),
                                 ),
                               ],
                             ),
@@ -217,12 +218,12 @@ class PurchasesScreen extends StatelessWidget {
                                   onPressed: null,
                                   style: ButtonStyle(
                                     backgroundColor: MaterialStateProperty.all(
-                                        Colors.orange),
+                                        kDetailColor),
                                   ),
                                   child: const Text(
                                     'Em andamento',
                                     style: TextStyle(
-                                        fontSize: 17, color: Colors.white),
+                                        fontSize: 17, color: kOnSurfaceColor),
                                   ),
                                 ),
                               ],
@@ -250,12 +251,12 @@ class PurchasesScreen extends StatelessWidget {
                       width: 440,
                       height: 270,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: kOnSurfaceColor,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(15)),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
+                            color: kTextButtonColor.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 7,
                             offset: const Offset(
@@ -298,13 +299,13 @@ class PurchasesScreen extends StatelessWidget {
                                     },
                                     icon: const Icon(
                                       Icons.arrow_forward_ios_outlined,
-                                      color: Colors.grey,
+                                      color: kTextButtonColor,
                                     )),
                               ],
                             ),
                           ),
                           const Divider(
-                            color: Colors.grey,
+                            color: kTextButtonColor,
                             height: 20,
                             thickness: 1,
                             indent: 5,
@@ -325,7 +326,7 @@ class PurchasesScreen extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.green),
+                                      color: kButtom),
                                 ),
                               ],
                             ),
@@ -391,7 +392,7 @@ class PurchasesScreen extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.orange),
+                                      color: kDetailColor),
                                 ),
                               ],
                             ),
@@ -414,12 +415,12 @@ class PurchasesScreen extends StatelessWidget {
                                   onPressed: null,
                                   style: ButtonStyle(
                                     backgroundColor:
-                                        MaterialStateProperty.all(Colors.green),
+                                        MaterialStateProperty.all(kButtom),
                                   ),
                                   child: const Text(
                                     'Entregue',
                                     style: TextStyle(
-                                        fontSize: 17, color: Colors.white),
+                                        fontSize: 17, color: kOnSurfaceColor),
                                   ),
                                 ),
                               ],
@@ -447,12 +448,12 @@ class PurchasesScreen extends StatelessWidget {
                       width: 440,
                       height: 270,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: kOnSurfaceColor,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(15)),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
+                            color: kTextButtonColor.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 7,
                             offset: const Offset(
@@ -495,13 +496,13 @@ class PurchasesScreen extends StatelessWidget {
                                     },
                                     icon: const Icon(
                                       Icons.arrow_forward_ios_outlined,
-                                      color: Colors.grey,
+                                      color: kTextButtonColor,
                                     )),
                               ],
                             ),
                           ),
                           const Divider(
-                            color: Colors.grey,
+                            color: kTextButtonColor,
                             height: 20,
                             thickness: 1,
                             indent: 5,
@@ -522,7 +523,7 @@ class PurchasesScreen extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.green),
+                                      color: kButtom),
                                 ),
                               ],
                             ),
@@ -588,7 +589,7 @@ class PurchasesScreen extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.orange),
+                                      color: kDetailColor),
                                 ),
                               ],
                             ),
@@ -611,12 +612,12 @@ class PurchasesScreen extends StatelessWidget {
                                   onPressed: null,
                                   style: ButtonStyle(
                                     backgroundColor:
-                                        MaterialStateProperty.all(Colors.red),
+                                        MaterialStateProperty.all(kButtom2),
                                   ),
                                   child: const Text(
                                     'Cancelado',
                                     style: TextStyle(
-                                        fontSize: 17, color: Colors.white),
+                                        fontSize: 17, color: kOnSurfaceColor),
                                   ),
                                 ),
                               ],

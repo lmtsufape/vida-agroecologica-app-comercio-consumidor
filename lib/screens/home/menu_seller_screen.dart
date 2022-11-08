@@ -4,6 +4,7 @@ import 'package:ecommercebonito/screens/home/home_screen_controller.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/shared/components/BottomNavigation.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
+import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../components/utils/horizontal_spacer_box.dart';
@@ -23,15 +24,15 @@ class MenuSellerScreen extends StatelessWidget {
               appBar: AppBar(
                 title: const Text(
                   'Ecommerce Bonito',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: kOnSurfaceColor),
                 ),
                 centerTitle: true,
-                backgroundColor: Colors.orange,
+                backgroundColor: kDetailColor,
                 actions: <Widget>[
                   IconButton(
                     icon: const Icon(
                       Icons.menu,
-                      color: Colors.white,
+                      color: kOnSurfaceColor,
                     ),
                     onPressed: () {
                       Navigator.pushNamed(context, Screens.profile);
@@ -44,7 +45,7 @@ class MenuSellerScreen extends StatelessWidget {
                   BottomNavigation(selectedIndex: _selectedIndex),
               body: SingleChildScrollView(
                 child: Container(
-                  color: Colors.white,
+                  color: kOnSurfaceColor,
                   width: size.width,
                   padding: const EdgeInsets.all(20),
                   child: Column(
@@ -55,12 +56,12 @@ class MenuSellerScreen extends StatelessWidget {
                           width: 440,
                           height: 90,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: kOnSurfaceColor,
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(15)),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
+                                color: kTextButtonColor.withOpacity(0.5),
                                 spreadRadius: 5,
                                 blurRadius: 7,
                                 offset: const Offset(
@@ -118,7 +119,7 @@ class MenuSellerScreen extends StatelessWidget {
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.whatsapp,
-                                                color: Colors.green,
+                                                color: kText,
                                                 size: 30,
                                               ),
                                             ),
@@ -151,7 +152,7 @@ class MenuSellerScreen extends StatelessWidget {
                               isDense: true,
                               prefixIcon: Icon(
                                 Icons.search,
-                                color: Colors.orange,
+                                color: kDetailColor,
                                 size: 25,
                               ),
                             )),
@@ -167,12 +168,12 @@ class MenuSellerScreen extends StatelessWidget {
                                   width: 210,
                                   height: 300,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: kOnSurfaceColor,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(15)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
+                                        color: kTextButtonColor.withOpacity(0.5),
                                         spreadRadius: 5,
                                         blurRadius: 7,
                                         offset: const Offset(
@@ -243,15 +244,14 @@ class MenuSellerScreen extends StatelessWidget {
                                             Text(
                                               'Maria',
                                               style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.green),
+                                                  fontSize: 16, color: kText),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: Colors.green,
+                                                color: kText,
                                                 size: 35,
                                               ),
                                             ),
@@ -269,12 +269,12 @@ class MenuSellerScreen extends StatelessWidget {
                                   width: 210,
                                   height: 300,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: kOnSurfaceColor,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(15)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
+                                        color: kTextButtonColor.withOpacity(0.5),
                                         spreadRadius: 5,
                                         blurRadius: 7,
                                         offset: const Offset(
@@ -345,15 +345,14 @@ class MenuSellerScreen extends StatelessWidget {
                                             Text(
                                               'João',
                                               style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.green),
+                                                  fontSize: 16, color: kText),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: Colors.green,
+                                                color: kText,
                                                 size: 35,
                                               ),
                                             ),
@@ -380,12 +379,12 @@ class MenuSellerScreen extends StatelessWidget {
                                   width: 210,
                                   height: 300,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: kOnSurfaceColor,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(15)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
+                                        color: kTextButtonColor.withOpacity(0.5),
                                         spreadRadius: 5,
                                         blurRadius: 7,
                                         offset: const Offset(
@@ -456,15 +455,14 @@ class MenuSellerScreen extends StatelessWidget {
                                             Text(
                                               'Maria',
                                               style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.green),
+                                                  fontSize: 16, color: kText),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: Colors.green,
+                                                color: kText,
                                                 size: 35,
                                               ),
                                             ),
@@ -482,12 +480,12 @@ class MenuSellerScreen extends StatelessWidget {
                                   width: 210,
                                   height: 300,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: kOnSurfaceColor,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(15)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
+                                        color: kTextButtonColor.withOpacity(0.5),
                                         spreadRadius: 5,
                                         blurRadius: 7,
                                         offset: const Offset(
@@ -558,15 +556,14 @@ class MenuSellerScreen extends StatelessWidget {
                                             Text(
                                               'João',
                                               style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.green),
+                                                  fontSize: 16, color: kText),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: Colors.green,
+                                                color: kText,
                                                 size: 35,
                                               ),
                                             ),

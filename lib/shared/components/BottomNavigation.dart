@@ -1,4 +1,5 @@
 // ignore: file_names
+import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import '../../screens/screens_index.dart';
 
@@ -14,28 +15,28 @@ class BottomNavigation extends StatelessWidget {
         items: const [
           BottomNavigationBarItem(
             label: 'Início',
-            backgroundColor: Colors.white,
+            backgroundColor: kOnSurfaceColor,
             icon: Icon(
               Icons.home,
-              color: Colors.white,
+              color: kOnSurfaceColor,
               size: 40,
             ),
           ),
           BottomNavigationBarItem(
             label: 'Vendedores',
-            backgroundColor: Colors.white,
+            backgroundColor: kOnSurfaceColor,
             icon: Icon(
               Icons.storefront,
-              color: Colors.white,
+              color: kOnSurfaceColor,
               size: 40,
             ),
           ),
           BottomNavigationBarItem(
             label: 'Pedidos',
-            backgroundColor: Colors.white,
+            backgroundColor: kOnSurfaceColor,
             icon: Icon(
               Icons.list_alt,
-              color: Colors.white,
+              color: kOnSurfaceColor,
               size: 40,
             ),
           ),
@@ -43,15 +44,15 @@ class BottomNavigation extends StatelessWidget {
             label: 'Cesta',
             icon: Icon(
               Icons.shopping_basket_outlined,
-              color: Colors.white,
+              color: kOnSurfaceColor,
               size: 40,
             ),
           ),
         ],
         currentIndex: selectedIndex,
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.white,
-        backgroundColor: Colors.orange,
+        unselectedItemColor: kOnSurfaceColor,
+        selectedItemColor: kOnSurfaceColor,
+        backgroundColor: kDetailColor,
         onTap: (index) {
           selectedIndex = index;
           if (selectedIndex == 0) {

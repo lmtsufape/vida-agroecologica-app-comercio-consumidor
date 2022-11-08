@@ -18,7 +18,7 @@ class FinishPurchaseDialog extends StatelessWidget {
         'Seu pedido #001 foi confirmado e enviado ao vendedor João Frutas!',
         textAlign: TextAlign.center,
         style: TextStyle(
-          color: Colors.black,
+          color: kText,
           fontSize: 15,
         ),
       ),
