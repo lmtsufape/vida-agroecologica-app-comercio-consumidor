@@ -75,7 +75,7 @@ class CartScreen extends StatelessWidget {
                           Navigator.pushNamed(
                               context, Screens.FinalizePurchase);
                         },
-                        color: Colors.green,
+                        color: kButtom,
                       ),
                       const VerticalSpacerBox(size: SpacerSize.large),
                       InkWell(
@@ -166,13 +166,13 @@ class CartScreen extends StatelessWidget {
                                               'Maria',
                                               style: TextStyle(
                                                   fontSize: 16,
-                                                  color: Colors.green),
+                                                  color: kButtom),
                                             ),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.whatsapp,
-                                                color: Colors.green,
+                                                color: kButtom,
                                                 size: 30,
                                               ),
                                             ),
@@ -327,13 +327,13 @@ class CartScreen extends StatelessWidget {
                                               'João Frutas',
                                               style: TextStyle(
                                                   fontSize: 16,
-                                                  color: Colors.green),
+                                                  color: kButtom),
                                             ),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.whatsapp,
-                                                color: Colors.green,
+                                                color: kButtom,
                                                 size: 30,
                                               ),
                                             ),

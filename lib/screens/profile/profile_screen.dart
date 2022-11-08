@@ -19,15 +19,15 @@ class ProfileScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text(
             'Ecommerce Bonito',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: kOnSurfaceColor),
           ),
           centerTitle: true,
-          backgroundColor: Colors.orange,
+          backgroundColor: kDetailColor,
           actions: <Widget>[
             IconButton(
               icon: const Icon(
                 Icons.menu,
-                color: Colors.white,
+                color: kOnSurfaceColor,
               ),
               onPressed: () {},
             ), //IconButton
@@ -36,7 +36,7 @@ class ProfileScreen extends StatelessWidget {
         ),
         // ignore: sized_box_for_whitespace
         body: Container(
-          color: Colors.white,
+          color: kOnSurfaceColor,
           child: Column(
             children: [
               InkWell(
@@ -47,7 +47,7 @@ class ProfileScreen extends StatelessWidget {
                       width: 480,
                       height: 100,
                       decoration: const BoxDecoration(
-                        color: Colors.orange,
+                        color: kDetailColor,
                       ),
                       child: Center(
                         child: Wrap(
@@ -75,7 +75,7 @@ class ProfileScreen extends StatelessWidget {
                                 const Text(
                                   'Maria Eduarda',
                                   style: TextStyle(
-                                      fontSize: 22, color: Colors.white),
+                                      fontSize: 22, color: kOnSurfaceColor),
                                   textAlign: TextAlign.end,
                                 ),
                               ],
@@ -97,10 +97,10 @@ class ProfileScreen extends StatelessWidget {
                       width: 480,
                       height: 60,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: kOnSurfaceColor,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
+                            color: kTextButtonColor.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 7,
                             offset: const Offset(
@@ -124,7 +124,7 @@ class ProfileScreen extends StatelessWidget {
                                 Text(
                                   'Pedidos',
                                   style: TextStyle(
-                                      fontSize: 21, color: Colors.grey),
+                                      fontSize: 21, color: kTextButtonColor),
                                   textAlign: TextAlign.end,
                                 ),
                               ],
@@ -146,10 +146,10 @@ class ProfileScreen extends StatelessWidget {
                       width: 480,
                       height: 60,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: kOnSurfaceColor,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
+                            color: kTextButtonColor.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 7,
                             offset: const Offset(
@@ -173,7 +173,7 @@ class ProfileScreen extends StatelessWidget {
                                 Text(
                                   'Endereços',
                                   style: TextStyle(
-                                      fontSize: 21, color: Colors.grey),
+                                      fontSize: 21, color: kTextButtonColor),
                                   textAlign: TextAlign.end,
                                 ),
                               ],
@@ -195,10 +195,10 @@ class ProfileScreen extends StatelessWidget {
                       width: 480,
                       height: 60,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: kOnSurfaceColor,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
+                            color: kTextButtonColor.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 7,
                             offset: const Offset(
@@ -222,7 +222,7 @@ class ProfileScreen extends StatelessWidget {
                                 Text(
                                   'Pagamentos',
                                   style: TextStyle(
-                                      fontSize: 21, color: Colors.grey),
+                                      fontSize: 21, color: kTextButtonColor),
                                   textAlign: TextAlign.end,
                                 ),
                               ],
@@ -244,10 +244,10 @@ class ProfileScreen extends StatelessWidget {
                       width: 480,
                       height: 60,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: kOnSurfaceColor,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
+                            color: kTextButtonColor.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 7,
                             offset: const Offset(
@@ -271,7 +271,7 @@ class ProfileScreen extends StatelessWidget {
                                 Text(
                                   'Favoritos',
                                   style: TextStyle(
-                                      fontSize: 21, color: Colors.grey),
+                                      fontSize: 21, color: kTextButtonColor),
                                   textAlign: TextAlign.end,
                                 ),
                               ],

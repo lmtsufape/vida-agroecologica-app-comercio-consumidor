@@ -32,7 +32,7 @@ class FirstScreen extends StatelessWidget {
                     hasLeading: false,
                   )),
               body: Container(
-                color: Colors.white,
+                color: kOnSurfaceColor,
                 width: size.width,
                 padding: const EdgeInsets.all(kDefaultPadding),
                 child: Column(
@@ -45,7 +45,7 @@ class FirstScreen extends StatelessWidget {
                         Text(
                           'Para começar, que tal entrar com sua conta?',
                           style:
-                              TextStyle(fontSize: 23, color: Colors.blueGrey),
+                              TextStyle(fontSize: 23, color: kTextFirst),
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -64,7 +64,7 @@ class FirstScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(context, Screens.signin);
                       },
-                      color: Colors.grey,
+                      color: kTextButtonColor,
                     ),
                     SizedBox(
                       width: size.width,

@@ -1,5 +1,6 @@
 import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
+import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/utils/vertical_spacer_box.dart';
@@ -14,15 +15,15 @@ class SelectCard extends StatelessWidget {
         appBar: AppBar(
           title: const Text(
             'Ecommerce Bonito',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: kOnSurfaceColor),
           ),
           centerTitle: true,
-          backgroundColor: Colors.orange,
+          backgroundColor: kDetailColor,
           actions: <Widget>[
             IconButton(
               icon: const Icon(
                 Icons.menu,
-                color: Colors.white,
+                color: kOnSurfaceColor,
               ),
               onPressed: () {
                 Navigator.pushNamed(context, Screens.profile);
@@ -32,7 +33,7 @@ class SelectCard extends StatelessWidget {
           //IconButton
         ),
         body: Container(
-            color: Colors.white,
+            color: kOnSurfaceColor,
             width: size.width,
             padding: const EdgeInsets.all(20),
             child: SingleChildScrollView(
@@ -55,12 +56,12 @@ class SelectCard extends StatelessWidget {
                       width: 440,
                       height: 110,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: kOnSurfaceColor,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(15)),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
+                            color: kTextButtonColor.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 7,
                             offset: const Offset(
@@ -98,7 +99,7 @@ class SelectCard extends StatelessWidget {
                                       },
                                       icon: const Icon(
                                         Icons.arrow_forward_ios_outlined,
-                                        color: Colors.grey,
+                                        color: kTextButtonColor,
                                       )),
                                 ],
                               ),
@@ -152,12 +153,12 @@ class SelectCard extends StatelessWidget {
                       width: 440,
                       height: 75,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: kOnSurfaceColor,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(15)),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
+                            color: kTextButtonColor.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 7,
                             offset: const Offset(
@@ -180,7 +181,7 @@ class SelectCard extends StatelessWidget {
                                   'Adicione um novo cartão',
                                   style: TextStyle(
                                       fontSize: 20,
-                                      color: Colors.grey,
+                                      color: kTextButtonColor,
                                       fontWeight: FontWeight.bold),
                                   textAlign: TextAlign.start,
                                 ),
@@ -192,7 +193,7 @@ class SelectCard extends StatelessWidget {
                                     },
                                     icon: const Icon(
                                       Icons.arrow_forward_ios_outlined,
-                                      color: Colors.grey,
+                                      color: kTextButtonColor,
                                     )),
                               ],
                             ),
