@@ -1,19 +1,22 @@
-import 'package:ecommercebonito/components/buttons/primary_button.dart';
+import 'package:flutter/material.dart';
 import 'package:ecommercebonito/components/forms/auth_form_field.dart';
-import 'package:ecommercebonito/components/forms/auth_form_field2.dart';
 import 'package:ecommercebonito/components/forms/auth_form_field3.dart';
 import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
-import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
 import 'package:ecommercebonito/shared/constants/style_constants.dart';
-import 'package:flutter/material.dart';
-
+import '../../components/buttons/primary_button.dart';
+import '../../components/forms/auth_form_field2.dart';
 import '../../components/utils/vertical_spacer_box.dart';
 import '../../shared/constants/app_enums.dart';
 
-class AdressScreen extends StatelessWidget {
+class AdressScreen extends StatefulWidget {
   const AdressScreen({Key? key}) : super(key: key);
 
+  @override
+  State<AdressScreen> createState() => _AdressScreenState();
+}
+
+class _AdressScreenState extends State<AdressScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

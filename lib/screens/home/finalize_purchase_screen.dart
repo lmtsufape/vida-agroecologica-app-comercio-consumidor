@@ -1,20 +1,24 @@
-import 'package:ecommercebonito/components/buttons/primary_button.dart';
+import 'package:flutter/material.dart';
+import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
+import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
-import 'package:ecommercebonito/shared/components/dialogs/finish_purchase.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:ecommercebonito/shared/constants/style_constants.dart';
-import 'package:flutter/material.dart';
-import '../../components/utils/horizontal_spacer_box.dart';
-import '../../components/utils/vertical_spacer_box.dart';
+import '../../components/buttons/primary_button.dart';
+import '../../shared/components/dialogs/finish_purchase.dart';
 
-class FinalizePurchaseScreen extends StatelessWidget {
+class FinalizePurchaseScreen extends StatefulWidget {
   const FinalizePurchaseScreen({Key? key}) : super(key: key);
 
+  @override
+  State<FinalizePurchaseScreen> createState() => _FinalizePurchaseScreenState();
+}
+
+class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
   @override
   Widget build(BuildContext context) {
     String? formaEntrega;
     String? formaPag;
-    ;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
@@ -249,7 +253,9 @@ class FinalizePurchaseScreen extends StatelessWidget {
                           value: 'Retirada',
                           groupValue: formaEntrega,
                           onChanged: (value) {
-                            formaEntrega = value.toString();
+                            setState(() {
+                              formaEntrega = value.toString();
+                            });
                           }),
                       const Text(
                         'Retirada',
@@ -265,7 +271,9 @@ class FinalizePurchaseScreen extends StatelessWidget {
                           value: 'Entrega',
                           groupValue: formaEntrega,
                           onChanged: (value) {
-                            formaEntrega = value.toString();
+                            setState(() {
+                              formaEntrega = value.toString();
+                            });
                           }),
                       const Text(
                         'Entrega',
@@ -386,7 +394,9 @@ class FinalizePurchaseScreen extends StatelessWidget {
                           value: 'Pix',
                           groupValue: formaPag,
                           onChanged: (value) {
-                            formaPag = value.toString();
+                            setState(() {
+                              formaPag = value.toString();
+                            });
                           }),
                       const Text(
                         'Pix',
@@ -402,7 +412,9 @@ class FinalizePurchaseScreen extends StatelessWidget {
                           value: 'Espécie',
                           groupValue: formaPag,
                           onChanged: (value) {
-                            formaPag = value.toString();
+                            setState(() {
+                              formaPag = value.toString();
+                            });
                           }),
                       const Text(
                         'Espécie',
@@ -418,7 +430,9 @@ class FinalizePurchaseScreen extends StatelessWidget {
                           value: 'Cartão',
                           groupValue: formaPag,
                           onChanged: (value) {
-                            formaPag = value.toString();
+                            setState(() {
+                              formaPag = value.toString();
+                            });
                           }),
                       const Text(
                         'Cartão',

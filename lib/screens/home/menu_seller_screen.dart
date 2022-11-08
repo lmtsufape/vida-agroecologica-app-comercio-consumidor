@@ -1,4 +1,4 @@
-import 'package:ecommercebonito/assets/index.dart';
+import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
 import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
 import 'package:ecommercebonito/screens/home/home_screen_controller.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
@@ -7,11 +7,17 @@ import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../components/utils/horizontal_spacer_box.dart';
 
-class MenuSellerScreen extends StatelessWidget {
+import '../../assets/index.dart';
+
+class MenuSellerScreen extends StatefulWidget {
   const MenuSellerScreen({Key? key}) : super(key: key);
 
+  @override
+  State<MenuSellerScreen> createState() => _MenuSellerScreenState();
+}
+
+class _MenuSellerScreenState extends State<MenuSellerScreen> {
   @override
   Widget build(BuildContext context) {
     // ignore: no_leading_underscores_for_local_identifiers
@@ -173,7 +179,8 @@ class MenuSellerScreen extends StatelessWidget {
                                         Radius.circular(15)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: kTextButtonColor.withOpacity(0.5),
+                                        color:
+                                            kTextButtonColor.withOpacity(0.5),
                                         spreadRadius: 5,
                                         blurRadius: 7,
                                         offset: const Offset(
@@ -274,7 +281,8 @@ class MenuSellerScreen extends StatelessWidget {
                                         Radius.circular(15)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: kTextButtonColor.withOpacity(0.5),
+                                        color:
+                                            kTextButtonColor.withOpacity(0.5),
                                         spreadRadius: 5,
                                         blurRadius: 7,
                                         offset: const Offset(
@@ -384,7 +392,8 @@ class MenuSellerScreen extends StatelessWidget {
                                         Radius.circular(15)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: kTextButtonColor.withOpacity(0.5),
+                                        color:
+                                            kTextButtonColor.withOpacity(0.5),
                                         spreadRadius: 5,
                                         blurRadius: 7,
                                         offset: const Offset(
@@ -485,7 +494,8 @@ class MenuSellerScreen extends StatelessWidget {
                                         Radius.circular(15)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: kTextButtonColor.withOpacity(0.5),
+                                        color:
+                                            kTextButtonColor.withOpacity(0.5),
                                         spreadRadius: 5,
                                         blurRadius: 7,
                                         offset: const Offset(

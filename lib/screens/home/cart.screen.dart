@@ -1,25 +1,29 @@
-import 'package:ecommercebonito/assets/index.dart';
 import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
+import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
 import 'package:ecommercebonito/screens/home/home_screen_controller.dart';
+import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/shared/components/BottomNavigation.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
-import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
 import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import '../../assets/index.dart';
 import '../../components/buttons/primary_button.dart';
-import '../../components/utils/vertical_spacer_box.dart';
-import '../screens_index.dart';
+import '../../shared/constants/app_number_constants.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
 
+  @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     late int melancia = 0;
     late int limao = 0;
-    late int _selectedIndex = 0;
+    late int selectedIndex = 0;
     Size size = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
       create: (_) => HomeScreenController(),
@@ -46,7 +50,7 @@ class CartScreen extends StatelessWidget {
                   //IconButton
                 ),
                 bottomNavigationBar:
-                    BottomNavigation(selectedIndex: _selectedIndex),
+                    BottomNavigation(selectedIndex: selectedIndex),
                 body: SingleChildScrollView(
                   child: Container(
                     color: kOnSurfaceColor,
@@ -165,8 +169,7 @@ class CartScreen extends StatelessWidget {
                                             Text(
                                               'Maria',
                                               style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: kButtom),
+                                                  fontSize: 16, color: kButtom),
                                             ),
                                             IconButton(
                                               onPressed: null,
@@ -197,7 +200,9 @@ class CartScreen extends StatelessWidget {
                                       icon: const Icon(Icons.remove),
                                       onPressed: () {
                                         if (melancia > 0) {
-                                          melancia--;
+                                          setState(() {
+                                            melancia = melancia - 1;
+                                          });
                                         }
                                       },
                                     ),
@@ -213,7 +218,9 @@ class CartScreen extends StatelessWidget {
                                     IconButton(
                                       icon: const Icon(Icons.add),
                                       onPressed: () {
-                                        melancia++;
+                                        setState(() {
+                                          melancia = melancia + 1;
+                                        });
                                       },
                                     ),
                                     const HorizontalSpacerBox(
@@ -228,7 +235,8 @@ class CartScreen extends StatelessWidget {
                                       child: const Text(
                                         'Excluir',
                                         style: TextStyle(
-                                            fontSize: 15, color: kTextButtonColor),
+                                            fontSize: 15,
+                                            color: kTextButtonColor),
                                       ),
                                     ),
                                   ],
@@ -326,8 +334,7 @@ class CartScreen extends StatelessWidget {
                                             Text(
                                               'João Frutas',
                                               style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: kButtom),
+                                                  fontSize: 16, color: kButtom),
                                             ),
                                             IconButton(
                                               onPressed: null,
@@ -358,7 +365,9 @@ class CartScreen extends StatelessWidget {
                                       icon: const Icon(Icons.remove),
                                       onPressed: () {
                                         if (limao > 0) {
-                                          limao--;
+                                          setState(() {
+                                            limao = limao - 1;
+                                          });
                                         }
                                       },
                                     ),
@@ -374,7 +383,9 @@ class CartScreen extends StatelessWidget {
                                     IconButton(
                                       icon: const Icon(Icons.add),
                                       onPressed: () {
-                                        limao++;
+                                        setState(() {
+                                          limao = limao + 1;
+                                        });
                                       },
                                     ),
                                     const HorizontalSpacerBox(
@@ -389,7 +400,8 @@ class CartScreen extends StatelessWidget {
                                       child: const Text(
                                         'Excluir',
                                         style: TextStyle(
-                                            fontSize: 15, color: kTextButtonColor),
+                                            fontSize: 15,
+                                            color: kTextButtonColor),
                                       ),
                                     ),
                                   ],

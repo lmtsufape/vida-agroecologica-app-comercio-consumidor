@@ -3,6 +3,7 @@ import 'package:ecommercebonito/screens/first/first_screen.dart';
 import 'package:ecommercebonito/screens/home/cart.screen.dart';
 import 'package:ecommercebonito/screens/home/favorite_screen.dart';
 import 'package:ecommercebonito/screens/home/finalize_purchase_screen.dart';
+import 'package:ecommercebonito/screens/home/home_screen.dart';
 import 'package:ecommercebonito/screens/home/menu_screen.dart';
 import 'package:ecommercebonito/screens/home/menu_seller_screen.dart';
 import 'package:ecommercebonito/screens/profile/adress_screen.dart';
@@ -15,7 +16,6 @@ import 'package:ecommercebonito/screens/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
-import 'screens/home/home_screen.dart';
 import 'screens/profile/purchases_screen.dart';
 import 'screens/signin/sign_in_screen.dart';
 import 'screens/splash/splash_screen.dart';
@@ -53,7 +53,7 @@ class App extends StatelessWidget {
             const RegisterAdress(),
         Screens.first: (BuildContext context) => const FirstScreen(),
         Screens.profile: (BuildContext context) => const ProfileScreen(),
-        Screens.favorite: (BuildContext context) => const FavoriteScreen(),
+        Screens.favorite: (BuildContext context) => FavoriteScreen(),
         Screens.purchases: (BuildContext context) => const PurchasesScreen(),
         Screens.adress: (BuildContext context) => const AdressScreen(),
         Screens.payment: (BuildContext context) => const CardScreen(),

@@ -1,14 +1,19 @@
-import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
 import 'package:flutter/material.dart';
+import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
+import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import '../../components/utils/vertical_spacer_box.dart';
 import '../../shared/components/dialogs/finish_dialog.dart';
 import '../../shared/constants/app_enums.dart';
-import '../../shared/constants/style_constants.dart';
 import '../screens_index.dart';
 
-class PurchasesScreen extends StatelessWidget {
+class PurchasesScreen extends StatefulWidget {
   const PurchasesScreen({Key? key}) : super(key: key);
 
+  @override
+  State<PurchasesScreen> createState() => _PurchasesScreenState();
+}
+
+class _PurchasesScreenState extends State<PurchasesScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -217,8 +222,8 @@ class PurchasesScreen extends StatelessWidget {
                                 ElevatedButton(
                                   onPressed: null,
                                   style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        kDetailColor),
+                                    backgroundColor:
+                                        MaterialStateProperty.all(kDetailColor),
                                   ),
                                   child: const Text(
                                     'Em andamento',

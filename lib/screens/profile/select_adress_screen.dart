@@ -1,15 +1,20 @@
-import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
-import 'package:ecommercebonito/screens/screens_index.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
-
+import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
+import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import '../../components/utils/vertical_spacer_box.dart';
 import '../../shared/components/dialogs/finish_dialog.dart';
 import '../../shared/constants/app_enums.dart';
+import '../screens_index.dart';
 
-class SelectAdress extends StatelessWidget {
+class SelectAdress extends StatefulWidget {
   const SelectAdress({Key? key}) : super(key: key);
 
+  @override
+  State<SelectAdress> createState() => _SelectAdressState();
+}
+
+class _SelectAdressState extends State<SelectAdress> {
+  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -175,8 +180,8 @@ class SelectAdress extends StatelessWidget {
                                         context, Screens.adress);
                                   },
                                   style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        kDetailColor),
+                                    backgroundColor:
+                                        MaterialStateProperty.all(kDetailColor),
                                   ),
                                   child: const Text(
                                     'Editar',
