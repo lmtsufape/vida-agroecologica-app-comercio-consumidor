@@ -1,19 +1,22 @@
-import 'package:ecommercebonito/components/forms/auth_form_field.dart';
-import 'package:ecommercebonito/components/forms/auth_form_field3.dart';
-import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
-import 'package:ecommercebonito/screens/screens_index.dart';
-import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
-
+import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
+import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import '../../components/buttons/primary_button.dart';
+import '../../components/forms/auth_form_field.dart';
 import '../../components/forms/auth_form_field2.dart';
+import '../../components/forms/auth_form_field3.dart';
 import '../../components/utils/vertical_spacer_box.dart';
 import '../../shared/constants/app_enums.dart';
+import '../screens_index.dart';
 
-class CardScreen extends StatelessWidget {
+class CardScreen extends StatefulWidget {
   const CardScreen({Key? key}) : super(key: key);
 
+  @override
+  State<CardScreen> createState() => _CardScreenState();
+}
+
+class _CardScreenState extends State<CardScreen> {
   @override
   Widget build(BuildContext context) {
     String? mes = 'Selecione';

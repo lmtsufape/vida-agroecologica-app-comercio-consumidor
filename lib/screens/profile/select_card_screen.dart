@@ -1,14 +1,20 @@
-import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
-import 'package:ecommercebonito/screens/screens_index.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
-
+import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
+import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import '../../components/utils/vertical_spacer_box.dart';
 import '../../shared/constants/app_enums.dart';
+import '../screens_index.dart';
 
-class SelectCard extends StatelessWidget {
+
+class SelectCard extends StatefulWidget {
   const SelectCard({Key? key}) : super(key: key);
 
+  @override
+  State<SelectCard> createState() => _SelectCardState();
+}
+
+class _SelectCardState extends State<SelectCard> {
+ @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
