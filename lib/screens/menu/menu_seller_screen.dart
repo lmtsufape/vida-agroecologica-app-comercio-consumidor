@@ -7,20 +7,20 @@ import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../assets/index.dart';
 
-class MenuScreen extends StatefulWidget {
-  const MenuScreen({Key? key}) : super(key: key);
+class MenuSellerScreen extends StatefulWidget {
+  const MenuSellerScreen({Key? key}) : super(key: key);
 
   @override
-  State<MenuScreen> createState() => _MenuScreenState();
+  State<MenuSellerScreen> createState() => _MenuSellerScreenState();
 }
 
-class _MenuScreenState extends State<MenuScreen> {
+class _MenuSellerScreenState extends State<MenuSellerScreen> {
   @override
   Widget build(BuildContext context) {
-    int selectedIndex = 0;
+    // ignore: no_leading_underscores_for_local_identifiers
+    int _selectedIndex = 0;
     Size size = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
       create: (_) => HomeScreenController(),
@@ -47,7 +47,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 //IconButton
               ),
               bottomNavigationBar:
-                  BottomNavigation(selectedIndex: selectedIndex),
+                  BottomNavigation(selectedIndex: _selectedIndex),
               body: SingleChildScrollView(
                 child: Container(
                   color: kOnSurfaceColor,
@@ -56,6 +56,93 @@ class _MenuScreenState extends State<MenuScreen> {
                   child: Column(
                     // ignore: prefer_const_literals_to_create_immutables
                     children: [
+                      InkWell(
+                        child: Container(
+                          width: 440,
+                          height: 90,
+                          decoration: BoxDecoration(
+                            color: kOnSurfaceColor,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(15)),
+                            boxShadow: [
+                              BoxShadow(
+                                color: kTextButtonColor.withOpacity(0.5),
+                                spreadRadius: 5,
+                                blurRadius: 7,
+                                offset: const Offset(
+                                    0, 0), // changes position of shadow
+                              ),
+                            ],
+                          ),
+                          child: Center(
+                            child: Wrap(
+                              children: [
+                                Row(
+                                  children: [
+                                    const HorizontalSpacerBox(
+                                        size: SpacerSize.large),
+                                    Container(
+                                      transformAlignment: Alignment.center,
+                                      alignment: Alignment.center,
+                                      width: 65.0,
+                                      height: 65.0,
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                          fit: BoxFit.fill,
+                                          image: NetworkImage(
+                                              "https://gentv.com.br/img/content/266-1"),
+                                        ),
+                                      ),
+                                    ),
+                                    const HorizontalSpacerBox(
+                                        size: SpacerSize.large),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const VerticalSpacerBox(
+                                            size: SpacerSize.medium),
+                                        Row(
+                                          children: const [
+                                            Text(
+                                              'João Frutas',
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: const [
+                                            Text(
+                                              'Contato: (11) 99999-9999',
+                                            ),
+                                            IconButton(
+                                              onPressed: null,
+                                              icon: Icon(
+                                                Icons.whatsapp,
+                                                color: kText,
+                                                size: 30,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(context, Screens.menuSeller);
+                        },
+                      ),
+                      const VerticalSpacerBox(size: SpacerSize.medium),
                       const Padding(
                         padding: EdgeInsets.all(5.0),
                         child: TextField(
@@ -76,246 +163,6 @@ class _MenuScreenState extends State<MenuScreen> {
                             )),
                       ),
                       const VerticalSpacerBox(size: SpacerSize.medium),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, Screens.menu);
-                              },
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 80,
-                                    height: 90,
-                                    decoration: BoxDecoration(
-                                      color: kOnSurfaceColor,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color:
-                                              kTextButtonColor.withOpacity(0.5),
-                                          spreadRadius: 0,
-                                          blurRadius: 3,
-                                          offset: const Offset(
-                                              0, 0), // chaes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Wrap(
-                                        children: [
-                                          Center(
-                                              child: Image.asset(
-                                            Assets.vegetais,
-                                            fit: BoxFit.cover,
-                                            height: 48,
-                                          )),
-                                          Container(
-                                            alignment: Alignment.bottomCenter,
-                                            child: const Text(
-                                              'Vegetais',
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              )),
-                          InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, Screens.menu);
-                              },
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 80,
-                                    height: 90,
-                                    decoration: BoxDecoration(
-                                      color: kOnSurfaceColor,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color:
-                                              kTextButtonColor.withOpacity(0.5),
-                                          spreadRadius: 0,
-                                          blurRadius: 3,
-                                          offset: const Offset(0,
-                                              0), // cha// changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Wrap(
-                                        children: [
-                                          Center(
-                                              child: Image.asset(
-                                            Assets.frutas,
-                                            fit: BoxFit.cover,
-                                            height: 48,
-                                          )),
-                                          Container(
-                                            alignment: Alignment.bottomCenter,
-                                            child: const Text(
-                                              'Frutas',
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              )),
-                          InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, Screens.menu);
-                              },
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 80,
-                                    height: 90,
-                                    decoration: BoxDecoration(
-                                      color: kOnSurfaceColor,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color:
-                                              kTextButtonColor.withOpacity(0.5),
-                                          spreadRadius: 0,
-                                          blurRadius: 3,
-                                          offset: const Offset(0,
-                                              0), // cha/ changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Wrap(
-                                        children: [
-                                          Center(
-                                              child: Image.asset(
-                                            Assets.folhosos,
-                                            fit: BoxFit.cover,
-                                            height: 48,
-                                          )),
-                                          Container(
-                                            alignment: Alignment.bottomCenter,
-                                            child: const Text(
-                                              'Folhosos',
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              )),
-                          InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, Screens.menu);
-                              },
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 80,
-                                    height: 90,
-                                    decoration: BoxDecoration(
-                                      color: kOnSurfaceColor,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color:
-                                              kTextButtonColor.withOpacity(0.5),
-                                          spreadRadius: 0,
-                                          blurRadius: 3,
-                                          offset: const Offset(0,
-                                              0), // cha // changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Wrap(
-                                        children: [
-                                          Center(
-                                              child: Image.asset(
-                                            Assets.carnes,
-                                            fit: BoxFit.cover,
-                                            height: 48,
-                                          )),
-                                          Container(
-                                            alignment: Alignment.bottomCenter,
-                                            child: const Text(
-                                              'Carnes',
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              )),
-                          InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, Screens.menu);
-                              },
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 80,
-                                    height: 90,
-                                    decoration: BoxDecoration(
-                                      color: kOnSurfaceColor,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color:
-                                              kTextButtonColor.withOpacity(0.5),
-                                          spreadRadius: 0,
-                                          blurRadius: 3,
-                                          offset: const Offset(0,
-                                              0), // cha // changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Wrap(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Center(
-                                                  child: Image.asset(
-                                                Assets.ovos,
-                                                fit: BoxFit.cover,
-                                                height: 30,
-                                              )),
-                                              Image.asset(
-                                                Assets.leite,
-                                                fit: BoxFit.cover,
-                                                height: 50,
-                                              )
-                                            ],
-                                          ),
-                                          Container(
-                                            alignment: Alignment.bottomCenter,
-                                            child: const Text(
-                                              'Leite e Ovos',
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              )),
-                        ],
-                      ),
-                      const VerticalSpacerBox(size: SpacerSize.large),
                       SingleChildScrollView(
                         child: Center(
                           child: Row(
@@ -333,10 +180,10 @@ class _MenuScreenState extends State<MenuScreen> {
                                       BoxShadow(
                                         color:
                                             kTextButtonColor.withOpacity(0.5),
-                                        spreadRadius: 0,
-                                        blurRadius: 3,
+                                        spreadRadius: 5,
+                                        blurRadius: 7,
                                         offset: const Offset(
-                                            0, 0), // chages position of shadow
+                                            0, 5), // changes position of shadow
                                       ),
                                     ],
                                   ),
@@ -403,14 +250,14 @@ class _MenuScreenState extends State<MenuScreen> {
                                             Text(
                                               'Maria',
                                               style: TextStyle(
-                                                  fontSize: 16, color: kButtom),
+                                                  fontSize: 16, color: kText),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: kButtom,
+                                                color: kText,
                                                 size: 35,
                                               ),
                                             ),
@@ -435,10 +282,10 @@ class _MenuScreenState extends State<MenuScreen> {
                                       BoxShadow(
                                         color:
                                             kTextButtonColor.withOpacity(0.5),
-                                        spreadRadius: 0,
-                                        blurRadius: 3,
-                                        offset: const Offset(0,
-                                            0), //// changes position of shadow
+                                        spreadRadius: 5,
+                                        blurRadius: 7,
+                                        offset: const Offset(
+                                            0, 5), // changes position of shadow
                                       ),
                                     ],
                                   ),
@@ -505,14 +352,14 @@ class _MenuScreenState extends State<MenuScreen> {
                                             Text(
                                               'João',
                                               style: TextStyle(
-                                                  fontSize: 16, color: kButtom),
+                                                  fontSize: 16, color: kText),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: kButtom,
+                                                color: kText,
                                                 size: 35,
                                               ),
                                             ),
@@ -546,10 +393,10 @@ class _MenuScreenState extends State<MenuScreen> {
                                       BoxShadow(
                                         color:
                                             kTextButtonColor.withOpacity(0.5),
-                                        spreadRadius: 0,
-                                        blurRadius: 3,
-                                        offset: const Offset(0,
-                                            0), // cha/ changes position of shadow
+                                        spreadRadius: 5,
+                                        blurRadius: 7,
+                                        offset: const Offset(
+                                            0, 5), // changes position of shadow
                                       ),
                                     ],
                                   ),
@@ -616,14 +463,14 @@ class _MenuScreenState extends State<MenuScreen> {
                                             Text(
                                               'Maria',
                                               style: TextStyle(
-                                                  fontSize: 16, color: kButtom),
+                                                  fontSize: 16, color: kText),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: kButtom,
+                                                color: kText,
                                                 size: 35,
                                               ),
                                             ),
@@ -648,10 +495,10 @@ class _MenuScreenState extends State<MenuScreen> {
                                       BoxShadow(
                                         color:
                                             kTextButtonColor.withOpacity(0.5),
-                                        spreadRadius: 0,
-                                        blurRadius: 3,
-                                        offset: const Offset(0,
-                                            0), //// changes position of shadow
+                                        spreadRadius: 5,
+                                        blurRadius: 7,
+                                        offset: const Offset(
+                                            0, 5), // changes position of shadow
                                       ),
                                     ],
                                   ),
@@ -718,14 +565,14 @@ class _MenuScreenState extends State<MenuScreen> {
                                             Text(
                                               'João',
                                               style: TextStyle(
-                                                  fontSize: 16, color: kButtom),
+                                                  fontSize: 16, color: kText),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: kButtom,
+                                                color: kText,
                                                 size: 35,
                                               ),
                                             ),
