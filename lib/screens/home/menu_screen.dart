@@ -20,7 +20,7 @@ class MenuScreen extends StatefulWidget {
 class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
-    int _selectedIndex = 0;
+    int selectedIndex = 0;
     Size size = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
       create: (_) => HomeScreenController(),
@@ -47,7 +47,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 //IconButton
               ),
               bottomNavigationBar:
-                  BottomNavigation(selectedIndex: _selectedIndex),
+                  BottomNavigation(selectedIndex: selectedIndex),
               body: SingleChildScrollView(
                 child: Container(
                   color: kOnSurfaceColor,
@@ -96,10 +96,10 @@ class _MenuScreenState extends State<MenuScreen> {
                                         BoxShadow(
                                           color:
                                               kTextButtonColor.withOpacity(0.5),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
-                                          offset: const Offset(0,
-                                              5), // changes position of shadow
+                                          spreadRadius: 0,
+                                          blurRadius: 3,
+                                          offset: const Offset(
+                                              0, 0), // chaes position of shadow
                                         ),
                                       ],
                                     ),
@@ -141,10 +141,10 @@ class _MenuScreenState extends State<MenuScreen> {
                                         BoxShadow(
                                           color:
                                               kTextButtonColor.withOpacity(0.5),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
+                                          spreadRadius: 0,
+                                          blurRadius: 3,
                                           offset: const Offset(0,
-                                              5), // changes position of shadow
+                                              0), // cha// changes position of shadow
                                         ),
                                       ],
                                     ),
@@ -186,10 +186,10 @@ class _MenuScreenState extends State<MenuScreen> {
                                         BoxShadow(
                                           color:
                                               kTextButtonColor.withOpacity(0.5),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
+                                          spreadRadius: 0,
+                                          blurRadius: 3,
                                           offset: const Offset(0,
-                                              5), // changes position of shadow
+                                              0), // cha/ changes position of shadow
                                         ),
                                       ],
                                     ),
@@ -231,10 +231,10 @@ class _MenuScreenState extends State<MenuScreen> {
                                         BoxShadow(
                                           color:
                                               kTextButtonColor.withOpacity(0.5),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
+                                          spreadRadius: 0,
+                                          blurRadius: 3,
                                           offset: const Offset(0,
-                                              5), // changes position of shadow
+                                              0), // cha // changes position of shadow
                                         ),
                                       ],
                                     ),
@@ -276,10 +276,10 @@ class _MenuScreenState extends State<MenuScreen> {
                                         BoxShadow(
                                           color:
                                               kTextButtonColor.withOpacity(0.5),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
+                                          spreadRadius: 0,
+                                          blurRadius: 3,
                                           offset: const Offset(0,
-                                              5), // changes position of shadow
+                                              0), // cha // changes position of shadow
                                         ),
                                       ],
                                     ),
@@ -333,10 +333,10 @@ class _MenuScreenState extends State<MenuScreen> {
                                       BoxShadow(
                                         color:
                                             kTextButtonColor.withOpacity(0.5),
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
+                                        spreadRadius: 0,
+                                        blurRadius: 3,
                                         offset: const Offset(
-                                            0, 5), // changes position of shadow
+                                            0, 0), // chages position of shadow
                                       ),
                                     ],
                                   ),
@@ -403,14 +403,14 @@ class _MenuScreenState extends State<MenuScreen> {
                                             Text(
                                               'Maria',
                                               style: TextStyle(
-                                                  fontSize: 16, color: kText),
+                                                  fontSize: 16, color: kButtom),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: kText,
+                                                color: kButtom,
                                                 size: 35,
                                               ),
                                             ),
@@ -435,10 +435,10 @@ class _MenuScreenState extends State<MenuScreen> {
                                       BoxShadow(
                                         color:
                                             kTextButtonColor.withOpacity(0.5),
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
-                                        offset: const Offset(
-                                            0, 5), // changes position of shadow
+                                        spreadRadius: 0,
+                                        blurRadius: 3,
+                                        offset: const Offset(0,
+                                            0), //// changes position of shadow
                                       ),
                                     ],
                                   ),
@@ -505,14 +505,14 @@ class _MenuScreenState extends State<MenuScreen> {
                                             Text(
                                               'João',
                                               style: TextStyle(
-                                                  fontSize: 16, color: kText),
+                                                  fontSize: 16, color: kButtom),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: kText,
+                                                color: kButtom,
                                                 size: 35,
                                               ),
                                             ),
@@ -546,10 +546,10 @@ class _MenuScreenState extends State<MenuScreen> {
                                       BoxShadow(
                                         color:
                                             kTextButtonColor.withOpacity(0.5),
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
-                                        offset: const Offset(
-                                            0, 5), // changes position of shadow
+                                        spreadRadius: 0,
+                                        blurRadius: 3,
+                                        offset: const Offset(0,
+                                            0), // cha/ changes position of shadow
                                       ),
                                     ],
                                   ),
@@ -616,14 +616,14 @@ class _MenuScreenState extends State<MenuScreen> {
                                             Text(
                                               'Maria',
                                               style: TextStyle(
-                                                  fontSize: 16, color: kText),
+                                                  fontSize: 16, color: kButtom),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: kText,
+                                                color: kButtom,
                                                 size: 35,
                                               ),
                                             ),
@@ -648,10 +648,10 @@ class _MenuScreenState extends State<MenuScreen> {
                                       BoxShadow(
                                         color:
                                             kTextButtonColor.withOpacity(0.5),
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
-                                        offset: const Offset(
-                                            0, 5), // changes position of shadow
+                                        spreadRadius: 0,
+                                        blurRadius: 3,
+                                        offset: const Offset(0,
+                                            0), //// changes position of shadow
                                       ),
                                     ],
                                   ),
@@ -718,14 +718,14 @@ class _MenuScreenState extends State<MenuScreen> {
                                             Text(
                                               'João',
                                               style: TextStyle(
-                                                  fontSize: 16, color: kText),
+                                                  fontSize: 16, color: kButtom),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: kText,
+                                                color: kButtom,
                                                 size: 35,
                                               ),
                                             ),
