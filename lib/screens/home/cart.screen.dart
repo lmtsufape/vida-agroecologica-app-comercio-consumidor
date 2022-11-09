@@ -19,11 +19,9 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+  late int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    late int melancia = 0;
-    late int limao = 0;
-    late int selectedIndex = 0;
     Size size = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
       create: (_) => HomeScreenController(),
@@ -58,23 +56,23 @@ class _CartScreenState extends State<CartScreen> {
                     padding: const EdgeInsets.all(kDefaultPadding),
                     child: Column(children: [
                       Row(
-                        children: const [
-                          Text(
-                            'Subtotal',
+                        children: [
+                          const Text(
+                            'Subtotal:',
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
-                          HorizontalSpacerBox(size: SpacerSize.small),
+                          const HorizontalSpacerBox(size: SpacerSize.small),
                           Text(
-                            'RS 64,50',
-                            style: TextStyle(
+                            'R\$ ${controller.total.toStringAsFixed(2)}',
+                            style: const TextStyle(
                                 fontSize: 30, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
                       const VerticalSpacerBox(size: SpacerSize.medium),
                       PrimaryButton(
-                        text: 'Fechar Pedido (2 itens)',
+                        text: 'Fechar Pedido (${controller.counter} itens)',
                         onPressed: () {
                           Navigator.pushNamed(
                               context, Screens.FinalizePurchase);
@@ -93,8 +91,8 @@ class _CartScreenState extends State<CartScreen> {
                             boxShadow: [
                               BoxShadow(
                                 color: kTextButtonColor.withOpacity(0.5),
-                                spreadRadius: 5,
-                                blurRadius: 7,
+                                spreadRadius: 0,
+                                blurRadius: 3,
                                 offset: const Offset(
                                     0, 0), // changes position of shadow
                               ),
@@ -189,7 +187,9 @@ class _CartScreenState extends State<CartScreen> {
                                     size: SpacerSize.huge),
                                 const Text(
                                   'Quantidade:',
-                                  style: TextStyle(fontSize: 15),
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
                                   textAlign: TextAlign.end,
                                 ),
                                 Row(
@@ -199,9 +199,12 @@ class _CartScreenState extends State<CartScreen> {
                                     IconButton(
                                       icon: const Icon(Icons.remove),
                                       onPressed: () {
-                                        if (melancia > 0) {
+                                        if (controller.melancia > 0 &&
+                                            controller.counter > 0) {
                                           setState(() {
-                                            melancia = melancia - 1;
+                                            controller.melancia--;
+                                            controller.decrementCounter();
+                                            controller.total -= 5.50;
                                           });
                                         }
                                       },
@@ -209,7 +212,7 @@ class _CartScreenState extends State<CartScreen> {
                                     const HorizontalSpacerBox(
                                         size: SpacerSize.small),
                                     Text(
-                                      melancia.toString(),
+                                      controller.melancia.toString(),
                                       style: const TextStyle(fontSize: 15),
                                       textAlign: TextAlign.end,
                                     ),
@@ -219,7 +222,9 @@ class _CartScreenState extends State<CartScreen> {
                                       icon: const Icon(Icons.add),
                                       onPressed: () {
                                         setState(() {
-                                          melancia = melancia + 1;
+                                          controller.melancia++;
+                                          controller.incrementCounter();
+                                          controller.total += 5.50;
                                         });
                                       },
                                     ),
@@ -260,8 +265,8 @@ class _CartScreenState extends State<CartScreen> {
                             boxShadow: [
                               BoxShadow(
                                 color: kTextButtonColor.withOpacity(0.5),
-                                spreadRadius: 5,
-                                blurRadius: 7,
+                                spreadRadius: 0,
+                                blurRadius: 3,
                                 offset: const Offset(
                                     0, 0), // changes position of shadow
                               ),
@@ -354,7 +359,9 @@ class _CartScreenState extends State<CartScreen> {
                                     size: SpacerSize.huge),
                                 const Text(
                                   'Quantidade:',
-                                  style: TextStyle(fontSize: 15),
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
                                   textAlign: TextAlign.end,
                                 ),
                                 Row(
@@ -364,9 +371,12 @@ class _CartScreenState extends State<CartScreen> {
                                     IconButton(
                                       icon: const Icon(Icons.remove),
                                       onPressed: () {
-                                        if (limao > 0) {
+                                        if (controller.limao > 0 &&
+                                            controller.counter > 0) {
                                           setState(() {
-                                            limao = limao - 1;
+                                            controller.limao--;
+                                            controller.decrementCounter();
+                                            controller.total -= 3.50;
                                           });
                                         }
                                       },
@@ -374,7 +384,7 @@ class _CartScreenState extends State<CartScreen> {
                                     const HorizontalSpacerBox(
                                         size: SpacerSize.small),
                                     Text(
-                                      limao.toString(),
+                                      controller.limao.toString(),
                                       style: const TextStyle(fontSize: 15),
                                       textAlign: TextAlign.end,
                                     ),
@@ -384,7 +394,9 @@ class _CartScreenState extends State<CartScreen> {
                                       icon: const Icon(Icons.add),
                                       onPressed: () {
                                         setState(() {
-                                          limao = limao + 1;
+                                          controller.limao++;
+                                          controller.incrementCounter();
+                                          controller.total += 3.50;
                                         });
                                       },
                                     ),
