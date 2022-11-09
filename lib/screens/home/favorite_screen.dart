@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class FavoriteScreen extends StatefulWidget {
-  FavoriteScreen({Key? key}) : super(key: key);
+  const FavoriteScreen({Key? key}) : super(key: key);
 
   @override
   State<FavoriteScreen> createState() => _FavoriteScreenState();
@@ -93,8 +93,8 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                           boxShadow: [
                             BoxShadow(
                               color: kTextButtonColor.withOpacity(0.5),
-                              spreadRadius: 5,
-                              blurRadius: 7,
+                              spreadRadius: 0,
+                              blurRadius: 3,
                               offset: const Offset(
                                   0, 0), // changes position of shadow
                             ),
@@ -202,8 +202,8 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                           boxShadow: [
                             BoxShadow(
                               color: kTextButtonColor.withOpacity(0.5),
-                              spreadRadius: 5,
-                              blurRadius: 7,
+                              spreadRadius: 0,
+                              blurRadius: 3,
                               offset: const Offset(
                                   0, 0), // changes position of shadow
                             ),
