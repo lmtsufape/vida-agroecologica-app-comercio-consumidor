@@ -2,10 +2,10 @@ import 'package:device_preview/device_preview.dart';
 import 'package:ecommercebonito/screens/first/first_screen.dart';
 import 'package:ecommercebonito/screens/home/cart.screen.dart';
 import 'package:ecommercebonito/screens/home/favorite_screen.dart';
-import 'package:ecommercebonito/screens/home/finalize_purchase_screen.dart';
+import 'package:ecommercebonito/screens/menu/menu_screen.dart';
+import 'package:ecommercebonito/screens/menu/menu_seller_screen.dart';
+import 'package:ecommercebonito/screens/purchase/finalize_purchase_screen.dart';
 import 'package:ecommercebonito/screens/home/home_screen.dart';
-import 'package:ecommercebonito/screens/home/menu_screen.dart';
-import 'package:ecommercebonito/screens/home/menu_seller_screen.dart';
 import 'package:ecommercebonito/screens/profile/adress_screen.dart';
 import 'package:ecommercebonito/screens/profile/card_screen.dart';
 import 'package:ecommercebonito/screens/profile/profile_screen.dart';
@@ -16,7 +16,7 @@ import 'package:ecommercebonito/screens/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
-import 'screens/profile/purchases_screen.dart';
+import 'screens/purchase/purchases_screen.dart';
 import 'screens/signin/sign_in_screen.dart';
 import 'screens/splash/splash_screen.dart';
 
@@ -53,7 +53,7 @@ class App extends StatelessWidget {
             const RegisterAdress(),
         Screens.first: (BuildContext context) => const FirstScreen(),
         Screens.profile: (BuildContext context) => const ProfileScreen(),
-        Screens.favorite: (BuildContext context) => FavoriteScreen(),
+        Screens.favorite: (BuildContext context) => const FavoriteScreen(),
         Screens.purchases: (BuildContext context) => const PurchasesScreen(),
         Screens.adress: (BuildContext context) => const AdressScreen(),
         Screens.payment: (BuildContext context) => const CardScreen(),
@@ -62,7 +62,7 @@ class App extends StatelessWidget {
         Screens.menu: (BuildContext context) => const MenuScreen(),
         Screens.menuSeller: (BuildContext context) => const MenuSellerScreen(),
         Screens.cart: (BuildContext context) => const CartScreen(),
-        Screens.FinalizePurchase: (BuildContext context) =>
+        Screens.finalizePurchase: (BuildContext context) =>
             const FinalizePurchaseScreen(),
       },
     );

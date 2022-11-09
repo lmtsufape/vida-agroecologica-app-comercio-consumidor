@@ -13,7 +13,12 @@ main() {
   tz.initializeTimeZones();
   Logger.root.level = Level.ALL; // defaults to Level.INFO
   Logger.root.onRecord.listen((record) {});
-  MultiProvider(providers: [ChangeNotifierProvider(create: (_) => HomeScreenController()), ChangeNotifierProvider(create: (_) => SelectedItem())], child: const App());
+  MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_) => HomeScreenController()),
+    ChangeNotifierProvider(create: (_) => SelectedItem())
+  ], child: const App());
 
-  runApp(DevicePreview(enabled: defaultTargetPlatform == TargetPlatform.android ? false : true, builder: (context) => const App()));
+  runApp(DevicePreview(
+      enabled: defaultTargetPlatform == TargetPlatform.android ? false : true,
+      builder: (context) => const App()));
 }

@@ -75,7 +75,7 @@ class _CartScreenState extends State<CartScreen> {
                         text: 'Fechar Pedido (${controller.counter} itens)',
                         onPressed: () {
                           Navigator.pushNamed(
-                              context, Screens.FinalizePurchase);
+                              context, Screens.finalizePurchase);
                         },
                         color: kButtom,
                       ),
