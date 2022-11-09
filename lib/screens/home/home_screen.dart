@@ -104,8 +104,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       BoxShadow(
                                         color:
                                             kTextButtonColor.withOpacity(0.5),
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
+                                        spreadRadius: 0,
+                                        blurRadius: 3,
                                         offset: const Offset(
                                             0, 0), // changes position of shadow
                                       ),
@@ -149,8 +149,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       BoxShadow(
                                         color:
                                             kTextButtonColor.withOpacity(0.5),
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
+                                        spreadRadius: 0,
+                                        blurRadius: 3,
                                         offset: const Offset(
                                             0, 0), // changes position of shadow
                                       ),
@@ -194,8 +194,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       BoxShadow(
                                         color:
                                             kTextButtonColor.withOpacity(0.5),
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
+                                        spreadRadius: 0,
+                                        blurRadius: 3,
                                         offset: const Offset(
                                             0, 0), // changes position of shadow
                                       ),
@@ -239,8 +239,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       BoxShadow(
                                         color:
                                             kTextButtonColor.withOpacity(0.5),
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
+                                        spreadRadius: 0,
+                                        blurRadius: 3,
                                         offset: const Offset(
                                             0, 0), // changes position of shadow
                                       ),
@@ -284,8 +284,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       BoxShadow(
                                         color:
                                             kTextButtonColor.withOpacity(0.5),
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
+                                        spreadRadius: 0,
+                                        blurRadius: 3,
                                         offset: const Offset(
                                             0, 0), // changes position of shadow
                                       ),
@@ -344,8 +344,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           boxShadow: [
                             BoxShadow(
                               color: kTextButtonColor.withOpacity(0.5),
-                              spreadRadius: 5,
-                              blurRadius: 7,
+                              spreadRadius: 0,
+                              blurRadius: 3,
                               offset: const Offset(
                                   0, 0), // changes position of shadow
                             ),
@@ -453,8 +453,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           boxShadow: [
                             BoxShadow(
                               color: kTextButtonColor.withOpacity(0.5),
-                              spreadRadius: 5,
-                              blurRadius: 7,
+                              spreadRadius: 0,
+                              blurRadius: 3,
                               offset: const Offset(
                                   0, 0), // changes position of shadow
                             ),

@@ -7,7 +7,6 @@ import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../assets/index.dart';
 
 class MenuSellerScreen extends StatefulWidget {

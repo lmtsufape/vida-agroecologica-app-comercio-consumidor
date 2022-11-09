@@ -1,6 +1,8 @@
+import 'package:ecommercebonito/screens/profile/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
 import 'package:ecommercebonito/shared/constants/style_constants.dart';
+import 'package:provider/provider.dart';
 import '../../components/utils/vertical_spacer_box.dart';
 import '../../shared/components/dialogs/finish_dialog.dart';
 import '../../shared/constants/app_enums.dart';
@@ -17,7 +19,10 @@ class _SelectAdressState extends State<SelectAdress> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
+    return ChangeNotifierProvider(
+        create: (_) => ProfileController(),
+        builder: (context, child) => Consumer<ProfileController>(
+            builder: ((context, controller, child) =>  Scaffold(
         appBar: AppBar(
           title: const Text(
             'Ecommerce Bonito',
@@ -67,10 +72,10 @@ class _SelectAdressState extends State<SelectAdress> {
                         boxShadow: [
                           BoxShadow(
                             color: kTextButtonColor.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
+                            spreadRadius: 0,
+                            blurRadius: 3,
                             offset: const Offset(
-                                0, 5), // changes position of shadow
+                                0, 0), // changes position of shadow
                           ),
                         ],
                       ),
@@ -214,10 +219,10 @@ class _SelectAdressState extends State<SelectAdress> {
                         boxShadow: [
                           BoxShadow(
                             color: kTextButtonColor.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
+                            spreadRadius: 0,
+                            blurRadius: 3,
                             offset: const Offset(
-                                0, 5), // changes position of shadow
+                                0, 0), // changes position of shadow
                           ),
                         ],
                       ),
@@ -262,6 +267,6 @@ class _SelectAdressState extends State<SelectAdress> {
                   Navigator.pushNamed(context, Screens.adress);
                 },
               ),
-            ]))));
+            ])))))));
   }
 }
