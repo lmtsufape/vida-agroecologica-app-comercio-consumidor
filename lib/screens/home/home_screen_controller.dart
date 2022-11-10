@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 
 class HomeScreenController with ChangeNotifier {
   int _counter = 0;
-  double total = 0;
+  double total = 0.00;
   int quantidade = 0;
+  double taxaEntrega = 7.00;
   late int melancia = 0;
   late int limao = 0;
   late int selectedIndex = 0;

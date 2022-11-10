@@ -58,7 +58,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                             children: [
                               Container(
                                 width: 440,
-                                height: 270,
+                                height: 280,
                                 decoration: BoxDecoration(
                                   color: kOnSurfaceColor,
                                   borderRadius: const BorderRadius.all(
@@ -88,7 +88,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                           ),
                                           const Text(
                                             'Enviado para:',
-                                            style: TextStyle(fontSize: 16),
+                                            style: TextStyle(fontSize: 17),
                                           ),
                                           const HorizontalSpacerBox(
                                               size: SpacerSize.medium),
@@ -130,7 +130,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                           Text(
                                             'João Frutas',
                                             style: TextStyle(
-                                                fontSize: 17,
+                                                fontSize: 20,
                                                 fontWeight: FontWeight.bold,
                                                 color: kButtom),
                                           ),
@@ -143,18 +143,18 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 15, vertical: 6),
                                       child: Row(
-                                        children: const [
-                                          HorizontalSpacerBox(
+                                        children: [
+                                          const HorizontalSpacerBox(
                                               size: SpacerSize.large),
-                                          Text(
+                                          const Text(
                                             'Itens:',
                                             style: TextStyle(fontSize: 17),
                                           ),
-                                          Spacer(),
+                                          const Spacer(),
                                           Text(
-                                            'RS 55,62',
-                                            style: TextStyle(
-                                              fontSize: 17,
+                                            'R\$ ${controller.total}',
+                                            style: const TextStyle(
+                                              fontSize: 20,
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
@@ -165,18 +165,18 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 15, vertical: 6),
                                       child: Row(
-                                        children: const [
-                                          HorizontalSpacerBox(
+                                        children: [
+                                          const HorizontalSpacerBox(
                                               size: SpacerSize.large),
-                                          Text(
+                                          const Text(
                                             'Taxa de entrega:',
                                             style: TextStyle(fontSize: 17),
                                           ),
-                                          Spacer(),
+                                          const Spacer(),
                                           Text(
-                                            'RS 7,00',
-                                            style: TextStyle(
-                                              fontSize: 17,
+                                            'R\$ ${controller.taxaEntrega}',
+                                            style: const TextStyle(
+                                              fontSize: 20,
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
@@ -187,19 +187,19 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 15, vertical: 6),
                                       child: Row(
-                                        children: const [
-                                          HorizontalSpacerBox(
+                                        children: [
+                                          const HorizontalSpacerBox(
                                               size: SpacerSize.large),
-                                          Text(
+                                          const Text(
                                             'Total do pedido:',
                                             style: TextStyle(
                                                 fontSize: 23,
                                                 fontWeight: FontWeight.bold),
                                           ),
-                                          Spacer(),
+                                          const Spacer(),
                                           Text(
-                                            'RS 64,50',
-                                            style: TextStyle(
+                                            'R\$ ${controller.taxaEntrega + controller.total}',
+                                            style: const TextStyle(
                                                 fontSize: 23,
                                                 fontWeight: FontWeight.bold,
                                                 color: kDetailColor),
@@ -217,7 +217,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                           const Text(
                                             'Em 1x de RS 64,50 sem juros',
                                             style: TextStyle(
-                                                fontSize: 16,
+                                                fontSize: 17,
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           const Spacer(),
@@ -234,7 +234,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                             child: const Text(
                                               'Alterar',
                                               style: TextStyle(
-                                                  fontSize: 16,
+                                                  fontSize: 17,
                                                   color: kOnSurfaceColor),
                                             ),
                                           ),
@@ -577,6 +577,156 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                           onTap: () {
                             Navigator.pushNamed(context, Screens.selectCard);
                           },
+                        ),
+                        const VerticalSpacerBox(size: SpacerSize.large),
+                        InkWell(
+                          child: Container(
+                            width: 440,
+                            height: 250,
+                            decoration: BoxDecoration(
+                              color: kOnSurfaceColor,
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(15)),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: kTextButtonColor.withOpacity(0.5),
+                                  spreadRadius: 0,
+                                  blurRadius: 3,
+                                  offset: const Offset(
+                                      0, 0), // changes position of shadow
+                                ),
+                              ],
+                            ),
+                            child: Center(
+                              child: Wrap(
+                                children: [
+                                  Row(
+                                    children: [
+                                      const HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      Container(
+                                        transformAlignment: Alignment.center,
+                                        alignment: Alignment.center,
+                                        width: 75.0,
+                                        height: 75.0,
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.rectangle,
+                                          image: DecorationImage(
+                                            fit: BoxFit.fill,
+                                            image: NetworkImage(
+                                              "http://faq-login-unico.servicos.gov.br/en/latest/_images/imagem_qrcode_exemplo.jpg",
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      const HorizontalSpacerBox(
+                                          size: SpacerSize.large),
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: const [
+                                              HorizontalSpacerBox(
+                                                  size: SpacerSize.large),
+                                              Text(
+                                                'PIX: CHAVES',
+                                                style: TextStyle(
+                                                    fontSize: 26,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ],
+                                          ),
+                                          const VerticalSpacerBox(
+                                              size: SpacerSize.huge),
+                                          Row(
+                                            children: const [
+                                              Text(
+                                                'Nome: João da Silva',
+                                                style: TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                                selectionColor: kText,
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: const [
+                                              Text(
+                                                'Tipo de Chave: QR Code',
+                                                style: TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                                selectionColor: kText,
+                                              ),
+                                            ],
+                                          ),
+                                          const VerticalSpacerBox(
+                                              size: SpacerSize.medium),
+                                          Row(
+                                            children: const [
+                                              HorizontalSpacerBox(
+                                                  size: SpacerSize.huge),
+                                              HorizontalSpacerBox(
+                                                  size: SpacerSize.medium),
+                                              Text(
+                                                'Chave aleatória',
+                                                style: TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                                selectionColor: kText,
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Container(
+                                                color: kColorBottom,
+                                                height: 25,
+                                                width: 225,
+                                                child: const Center(
+                                                  child: Text(
+                                                    'edjsd-574757-dsdijsd4',
+                                                    style: TextStyle(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                    selectionColor: kText,
+                                                  ),
+                                                ),
+                                              ),
+                                              IconButton(
+                                                onPressed: () => {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(const SnackBar(
+                                                          backgroundColor:
+                                                              kDetailColor,
+                                                          content: Text(
+                                                              'Copiado para área de transferência')))
+                                                },
+                                                icon: const Icon(
+                                                  Icons.copy,
+                                                  color: kTextButtonColor,
+                                                  size: 30,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          onTap: () {},
                         ),
                         const VerticalSpacerBox(size: SpacerSize.large),
                         PrimaryButton(
