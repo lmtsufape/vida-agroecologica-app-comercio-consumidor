@@ -7,6 +7,7 @@ import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../assets/index.dart';
 
@@ -20,6 +21,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final whats =
+        Uri.parse('https://api.whatsapp.com/send?phone=5581997128385');
     int selectedIndex = 0;
     Size size = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
@@ -415,13 +418,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ],
                                       ),
                                       Row(
-                                        children: const [
-                                          Text(
+                                        children: [
+                                          const Text(
                                             'Contato: (11) 99999-9999',
                                           ),
                                           IconButton(
-                                            onPressed: null,
-                                            icon: Icon(
+                                            onPressed: () async {
+                                              if (await canLaunchUrl(whats)) {
+                                                await launchUrl(whats);
+                                              }
+                                            },
+                                            icon: const Icon(
                                               Icons.whatsapp,
                                               color: kButtom,
                                               size: 30,
@@ -522,13 +529,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ],
                                       ),
                                       Row(
-                                        children: const [
-                                          Text(
+                                        children: [
+                                          const Text(
                                             'Contato: (11) 99999-9999',
                                           ),
                                           IconButton(
-                                            onPressed: null,
-                                            icon: Icon(
+                                            onPressed: () async {
+                                              if (await canLaunchUrl(whats)) {
+                                                await launchUrl(whats);
+                                              }
+                                            },
+                                            icon: const Icon(
                                               Icons.whatsapp,
                                               color: kButtom,
                                               size: 30,
