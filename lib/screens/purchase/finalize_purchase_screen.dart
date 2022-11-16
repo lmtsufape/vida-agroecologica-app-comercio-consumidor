@@ -1,3 +1,4 @@
+import 'package:ecommercebonito/assets/index.dart';
 import 'package:ecommercebonito/screens/home/home_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
@@ -6,8 +7,8 @@ import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:provider/provider.dart';
+import 'package:rating_dialog/rating_dialog.dart';
 import '../../components/buttons/primary_button.dart';
-import '../../shared/components/dialogs/finish_purchase.dart';
 
 class FinalizePurchaseScreen extends StatefulWidget {
   const FinalizePurchaseScreen({Key? key}) : super(key: key);
@@ -19,8 +20,6 @@ class FinalizePurchaseScreen extends StatefulWidget {
 class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
   @override
   Widget build(BuildContext context) {
-    String? formaEntrega;
-    String? formaPag;
     Size size = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
         create: (_) => HomeScreenController(),
@@ -266,10 +265,13 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                     overlayColor:
                                         MaterialStateProperty.all(kDetailColor),
                                     value: 'Retirada',
-                                    groupValue: formaEntrega,
+                                    groupValue: 'Retirada',
+                                    activeColor: kDetailColor,
+                                    focusColor: kDetailColor,
+                                    hoverColor: kDetailColor,
                                     onChanged: (value) {
                                       setState(() {
-                                        formaEntrega = value.toString();
+                                        controller.setFormEnt(value.toString());
                                       });
                                     }),
                                 const Text(
@@ -286,10 +288,13 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                     overlayColor:
                                         MaterialStateProperty.all(kDetailColor),
                                     value: 'Entrega',
-                                    groupValue: formaEntrega,
+                                    groupValue: 'Entrega',
+                                    activeColor: kDetailColor,
+                                    focusColor: kDetailColor,
+                                    hoverColor: kDetailColor,
                                     onChanged: (value) {
                                       setState(() {
-                                        formaEntrega = value.toString();
+                                        controller.setFormEnt(value.toString());
                                       });
                                     }),
                                 const Text(
@@ -419,11 +424,14 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                 Radio(
                                     overlayColor:
                                         MaterialStateProperty.all(kDetailColor),
+                                    activeColor: kDetailColor,
+                                    focusColor: kDetailColor,
+                                    hoverColor: kDetailColor,
                                     value: 'Pix',
-                                    groupValue: formaPag,
+                                    groupValue: 'Pix',
                                     onChanged: (value) {
                                       setState(() {
-                                        formaPag = value.toString();
+                                        controller.setFormPag(value.toString());
                                       });
                                     }),
                                 const Text(
@@ -439,11 +447,14 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                 Radio(
                                     overlayColor:
                                         MaterialStateProperty.all(kDetailColor),
+                                    activeColor: kDetailColor,
+                                    focusColor: kDetailColor,
+                                    hoverColor: kDetailColor,
                                     value: 'Espécie',
-                                    groupValue: formaPag,
+                                    groupValue: 'Espécie',
                                     onChanged: (value) {
                                       setState(() {
-                                        formaPag = value.toString();
+                                        controller.setFormPag(value.toString());
                                       });
                                     }),
                                 const Text(
@@ -460,10 +471,13 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                     overlayColor:
                                         MaterialStateProperty.all(kDetailColor),
                                     value: 'Cartão',
-                                    groupValue: formaPag,
+                                    activeColor: kDetailColor,
+                                    focusColor: kDetailColor,
+                                    hoverColor: kDetailColor,
+                                    groupValue: 'Cartão',
                                     onChanged: (value) {
                                       setState(() {
-                                        formaPag = value.toString();
+                                        controller.setFormPag(value.toString());
                                       });
                                     }),
                                 const Text(
@@ -582,7 +596,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                         InkWell(
                           child: Container(
                             width: 440,
-                            height: 250,
+                            height: 300,
                             decoration: BoxDecoration(
                               color: kOnSurfaceColor,
                               borderRadius:
@@ -628,20 +642,23 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Row(
-                                            children: const [
-                                              HorizontalSpacerBox(
-                                                  size: SpacerSize.large),
-                                              Text(
-                                                'PIX: CHAVES',
-                                                style: TextStyle(
-                                                    fontSize: 26,
-                                                    fontWeight:
-                                                        FontWeight.bold),
+                                            children: [
+                                              Image.asset(
+                                                Assets.pix,
+                                                width: 180,
+                                                height: 100,
                                               ),
+                                              // Text(
+                                              //   'PIX: CHAVES',
+                                              //   style: TextStyle(
+                                              //       fontSize: 26,
+                                              //       fontWeight:
+                                              //           FontWeight.bold),
+                                              // ),
                                             ],
                                           ),
                                           const VerticalSpacerBox(
-                                              size: SpacerSize.huge),
+                                              size: SpacerSize.small),
                                           Row(
                                             children: const [
                                               Text(
@@ -718,6 +735,36 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                               ),
                                             ],
                                           ),
+                                          InkWell(
+                                            onTap: null,
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  color: kDetailColor,
+                                                  height: 30,
+                                                  width: 225,
+                                                  child: const Center(
+                                                    child: Text(
+                                                      'Comprovante de pagamento',
+                                                      style: TextStyle(
+                                                          fontSize: 15,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: kText),
+                                                    ),
+                                                  ),
+                                                ),
+                                                IconButton(
+                                                  onPressed: () => {},
+                                                  icon: const Icon(
+                                                    Icons.archive,
+                                                    color: kDetailColor,
+                                                    size: 30,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ],
@@ -732,10 +779,33 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                         PrimaryButton(
                           text: 'Confirmar pedido',
                           onPressed: () {
+                            // showDialog(
+                            //     context: context,
+                            //     builder: (context) =>
+                            //         const FinishPurchaseDialog());
                             showDialog(
                                 context: context,
-                                builder: (context) =>
-                                    const FinishPurchaseDialog());
+                                builder: (context) => RatingDialog(
+                                      starColor: Colors.amber,
+                                      title: const Text('Que tal nos avaliar?'),
+                                      message: const Text(
+                                          'Dê uma nota para o seu pedido'),
+                                      image: Image.asset(
+                                        Assets.feedback,
+                                        height: 250,
+                                      ),
+                                      submitButtonText: 'Enviar',
+                                      // ignore: avoid_print
+                                      onCancelled: () =>
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(const SnackBar(
+                                                  backgroundColor: kButtom2,
+                                                  content: Text('Cancelado'))),
+                                      onSubmitted: (response) {
+                                        controller.setRating(response.rating);
+                                        controller.setComment(response.comment);
+                                      },
+                                    ));
                           },
                           color: kButtom,
                         ),

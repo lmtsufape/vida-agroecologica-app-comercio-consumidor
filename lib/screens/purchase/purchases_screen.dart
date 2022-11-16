@@ -63,7 +63,7 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                           children: [
                             Container(
                               width: 440,
-                              height: 270,
+                              height: 280,
                               decoration: BoxDecoration(
                                 color: kOnSurfaceColor,
                                 borderRadius:
@@ -139,7 +139,7 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                         Text(
                                           'Leandro Carnes',
                                           style: TextStyle(
-                                              fontSize: 17,
+                                              fontSize: 20,
                                               fontWeight: FontWeight.bold,
                                               color: kButtom),
                                         ),
@@ -161,9 +161,9 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                         ),
                                         Spacer(),
                                         Text(
-                                          'RS 55,62',
+                                          'R\$  55,62',
                                           style: TextStyle(
-                                            fontSize: 17,
+                                            fontSize: 20,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -183,9 +183,9 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                         ),
                                         Spacer(),
                                         Text(
-                                          'RS 55,62',
+                                          'R\$  55,62',
                                           style: TextStyle(
-                                            fontSize: 17,
+                                            fontSize: 20,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -207,7 +207,7 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                         ),
                                         Spacer(),
                                         Text(
-                                          'RS 64,50',
+                                          'R\$  64,50',
                                           style: TextStyle(
                                               fontSize: 22,
                                               fontWeight: FontWeight.bold,
@@ -268,7 +268,7 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                           children: [
                             Container(
                               width: 440,
-                              height: 270,
+                              height: 280,
                               decoration: BoxDecoration(
                                 color: kOnSurfaceColor,
                                 borderRadius:
@@ -344,7 +344,7 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                         Text(
                                           'Leandro Carnes',
                                           style: TextStyle(
-                                              fontSize: 17,
+                                              fontSize: 20,
                                               fontWeight: FontWeight.bold,
                                               color: kButtom),
                                         ),
@@ -366,9 +366,9 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                         ),
                                         Spacer(),
                                         Text(
-                                          'RS 55,62',
+                                          'R\$  55,62',
                                           style: TextStyle(
-                                            fontSize: 17,
+                                            fontSize: 20,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -388,9 +388,9 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                         ),
                                         Spacer(),
                                         Text(
-                                          'RS 55,62',
+                                          'R\$ 55,62',
                                           style: TextStyle(
-                                            fontSize: 17,
+                                            fontSize: 20,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -473,7 +473,7 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                           children: [
                             Container(
                               width: 440,
-                              height: 270,
+                              height: 280,
                               decoration: BoxDecoration(
                                 color: kOnSurfaceColor,
                                 borderRadius:
@@ -549,7 +549,7 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                         Text(
                                           'Leandro Carnes',
                                           style: TextStyle(
-                                              fontSize: 17,
+                                              fontSize: 20,
                                               fontWeight: FontWeight.bold,
                                               color: kButtom),
                                         ),
@@ -571,9 +571,9 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                         ),
                                         Spacer(),
                                         Text(
-                                          'RS 55,62',
+                                          'R\$ 55,62',
                                           style: TextStyle(
-                                            fontSize: 17,
+                                            fontSize: 20,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -593,9 +593,9 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                         ),
                                         Spacer(),
                                         Text(
-                                          'RS 55,62',
+                                          'R\$ 55,62',
                                           style: TextStyle(
-                                            fontSize: 17,
+                                            fontSize: 20,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -617,7 +617,7 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                         ),
                                         Spacer(),
                                         Text(
-                                          'RS 64,50',
+                                          'R\$ 64,50',
                                           style: TextStyle(
                                               fontSize: 22,
                                               fontWeight: FontWeight.bold,
