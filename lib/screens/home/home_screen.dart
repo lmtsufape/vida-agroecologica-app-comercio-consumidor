@@ -8,7 +8,6 @@ import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../assets/index.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -425,7 +424,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           IconButton(
                                             onPressed: () async {
                                               if (await canLaunchUrl(whats)) {
-                                                await launchUrl(whats);
+                                                launchUrl(whats);
                                               }
                                             },
                                             icon: const Icon(

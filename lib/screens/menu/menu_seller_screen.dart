@@ -257,14 +257,14 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                             Text(
                                               'Maria',
                                               style: TextStyle(
-                                                  fontSize: 16, color: kText),
+                                                  fontSize: 16, color: kButtom),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: kText,
+                                                color: kButtom,
                                                 size: 35,
                                               ),
                                             ),
@@ -359,14 +359,14 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                             Text(
                                               'João',
                                               style: TextStyle(
-                                                  fontSize: 16, color: kText),
+                                                  fontSize: 16, color: kButtom),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: kText,
+                                                color: kButtom,
                                                 size: 35,
                                               ),
                                             ),
@@ -470,14 +470,14 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                             Text(
                                               'Maria',
                                               style: TextStyle(
-                                                  fontSize: 16, color: kText),
+                                                  fontSize: 16, color: kButtom),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: kText,
+                                                color: kButtom,
                                                 size: 35,
                                               ),
                                             ),
@@ -572,14 +572,14 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                             Text(
                                               'João',
                                               style: TextStyle(
-                                                  fontSize: 16, color: kText),
+                                                  fontSize: 16, color: kButtom),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: kText,
+                                                color: kButtom,
                                                 size: 35,
                                               ),
                                             ),
