@@ -114,11 +114,11 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                       thickness: 1,
                                       indent: 5,
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
+                                    const Padding(
+                                      padding: EdgeInsets.symmetric(
                                           horizontal: 15, vertical: 6),
                                       child: Row(
-                                        children: const [
+                                        children: [
                                           HorizontalSpacerBox(
                                               size: SpacerSize.large),
                                           Text(
@@ -248,7 +248,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                           onTap: () async {},
                         ),
                         const VerticalSpacerBox(size: SpacerSize.medium),
-                        Row(children: const [
+                        const Row(children: [
                           Text(
                             'Forma de entrega',
                             style: TextStyle(
@@ -307,7 +307,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                           ],
                         ),
                         const VerticalSpacerBox(size: SpacerSize.small),
-                        Row(children: const [
+                        const Row(children: [
                           Text(
                             'Endereço de entrega',
                             style: TextStyle(
@@ -376,9 +376,9 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                         ),
                                       ],
                                     ),
-                                    Center(
+                                    const Center(
                                       child: Row(
-                                        children: const [
+                                        children: [
                                           HorizontalSpacerBox(
                                               size: SpacerSize.huge),
                                           Text(
@@ -400,7 +400,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                           },
                         ),
                         const VerticalSpacerBox(size: SpacerSize.medium),
-                        Row(children: const [
+                        const Row(children: [
                           Text(
                             'Informações de pagamento',
                             style: TextStyle(
@@ -408,7 +408,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                           ),
                         ]),
                         const VerticalSpacerBox(size: SpacerSize.medium),
-                        Row(children: const [
+                        const Row(children: [
                           Text(
                             'Formas de pagamento:',
                             style: TextStyle(
@@ -551,9 +551,9 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                         ),
                                       ],
                                     ),
-                                    Center(
+                                    const Center(
                                       child: Row(
-                                        children: const [
+                                        children: [
                                           HorizontalSpacerBox(
                                               size: SpacerSize.huge),
                                           Text(
@@ -571,9 +571,9 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                         ],
                                       ),
                                     ),
-                                    Center(
+                                    const Center(
                                       child: Row(
-                                        children: const [
+                                        children: [
                                           HorizontalSpacerBox(
                                               size: SpacerSize.huge),
                                           Text(
@@ -659,8 +659,8 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                           ),
                                           const VerticalSpacerBox(
                                               size: SpacerSize.small),
-                                          Row(
-                                            children: const [
+                                          const Row(
+                                            children: [
                                               Text(
                                                 'Nome: João da Silva',
                                                 style: TextStyle(
@@ -671,8 +671,8 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                               ),
                                             ],
                                           ),
-                                          Row(
-                                            children: const [
+                                          const Row(
+                                            children: [
                                               Text(
                                                 'Tipo de Chave: QR Code',
                                                 style: TextStyle(
@@ -685,8 +685,8 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                           ),
                                           const VerticalSpacerBox(
                                               size: SpacerSize.medium),
-                                          Row(
-                                            children: const [
+                                          const Row(
+                                            children: [
                                               HorizontalSpacerBox(
                                                   size: SpacerSize.huge),
                                               HorizontalSpacerBox(

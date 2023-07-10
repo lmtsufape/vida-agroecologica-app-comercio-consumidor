@@ -1,27 +1,18 @@
-import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
+import 'package:ecommercebonito/assets/index.dart';
 import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
 import 'package:ecommercebonito/screens/home/home_screen_controller.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/shared/components/BottomNavigation.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
-import '../../assets/index.dart';
+import '../../components/utils/horizontal_spacer_box.dart';
 
-class MenuSellerScreen extends StatefulWidget {
+class MenuSellerScreen extends StatelessWidget {
   const MenuSellerScreen({Key? key}) : super(key: key);
 
   @override
-  State<MenuSellerScreen> createState() => _MenuSellerScreenState();
-}
-
-class _MenuSellerScreenState extends State<MenuSellerScreen> {
-  @override
   Widget build(BuildContext context) {
-    final whats =
-        Uri.parse('https://api.whatsapp.com/send?phone=5581997128385');
     // ignore: no_leading_underscores_for_local_identifiers
     int _selectedIndex = 0;
     Size size = MediaQuery.of(context).size;
@@ -32,15 +23,15 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
               appBar: AppBar(
                 title: const Text(
                   'Ecommerce Bonito',
-                  style: TextStyle(color: kOnSurfaceColor),
+                  style: TextStyle(color: Colors.white),
                 ),
                 centerTitle: true,
-                backgroundColor: kDetailColor,
+                backgroundColor: Colors.orange,
                 actions: <Widget>[
                   IconButton(
                     icon: const Icon(
                       Icons.menu,
-                      color: kOnSurfaceColor,
+                      color: Colors.white,
                     ),
                     onPressed: () {
                       Navigator.pushNamed(context, Screens.profile);
@@ -53,7 +44,7 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                   BottomNavigation(selectedIndex: _selectedIndex),
               body: SingleChildScrollView(
                 child: Container(
-                  color: kOnSurfaceColor,
+                  color: Colors.white,
                   width: size.width,
                   padding: const EdgeInsets.all(20),
                   child: Column(
@@ -64,12 +55,12 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                           width: 440,
                           height: 90,
                           decoration: BoxDecoration(
-                            color: kOnSurfaceColor,
+                            color: Colors.white,
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(15)),
                             boxShadow: [
                               BoxShadow(
-                                color: kTextButtonColor.withOpacity(0.5),
+                                color: Colors.grey.withOpacity(0.5),
                                 spreadRadius: 5,
                                 blurRadius: 7,
                                 offset: const Offset(
@@ -100,16 +91,16 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                     ),
                                     const HorizontalSpacerBox(
                                         size: SpacerSize.large),
-                                    Column(
+                                    const Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        const VerticalSpacerBox(
+                                        VerticalSpacerBox(
                                             size: SpacerSize.medium),
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
                                               'João Frutas',
                                               style: TextStyle(
@@ -120,18 +111,14 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                         ),
                                         Row(
                                           children: [
-                                            const Text(
+                                            Text(
                                               'Contato: (11) 99999-9999',
                                             ),
                                             IconButton(
-                                              onPressed: () async {
-                                                if (await canLaunchUrl(whats)) {
-                                                  await launchUrl(whats);
-                                                }
-                                              },
-                                              icon: const Icon(
-                                                Icons.whatsapp,
-                                                color: kButtom,
+                                              onPressed: null,
+                                              icon: Icon(
+                                                Icons.phone,
+                                                color: Colors.green,
                                                 size: 30,
                                               ),
                                             ),
@@ -164,7 +151,7 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                               isDense: true,
                               prefixIcon: Icon(
                                 Icons.search,
-                                color: kDetailColor,
+                                color: Colors.orange,
                                 size: 25,
                               ),
                             )),
@@ -180,13 +167,12 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                   width: 210,
                                   height: 300,
                                   decoration: BoxDecoration(
-                                    color: kOnSurfaceColor,
+                                    color: Colors.white,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(15)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color:
-                                            kTextButtonColor.withOpacity(0.5),
+                                        color: Colors.grey.withOpacity(0.5),
                                         spreadRadius: 5,
                                         blurRadius: 7,
                                         offset: const Offset(
@@ -230,8 +216,8 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                         const Text(
                                           'Unidade',
                                         ),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -244,8 +230,8 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                         ),
                                         const VerticalSpacerBox(
                                             size: SpacerSize.tiny),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -257,14 +243,15 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                             Text(
                                               'Maria',
                                               style: TextStyle(
-                                                  fontSize: 16, color: kButtom),
+                                                  fontSize: 16,
+                                                  color: Colors.green),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: kButtom,
+                                                color: Colors.green,
                                                 size: 35,
                                               ),
                                             ),
@@ -282,13 +269,12 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                   width: 210,
                                   height: 300,
                                   decoration: BoxDecoration(
-                                    color: kOnSurfaceColor,
+                                    color: Colors.white,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(15)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color:
-                                            kTextButtonColor.withOpacity(0.5),
+                                        color: Colors.grey.withOpacity(0.5),
                                         spreadRadius: 5,
                                         blurRadius: 7,
                                         offset: const Offset(
@@ -332,8 +318,8 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                         const Text(
                                           'Unidade',
                                         ),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -346,8 +332,8 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                         ),
                                         const VerticalSpacerBox(
                                             size: SpacerSize.tiny),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -359,14 +345,15 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                             Text(
                                               'João',
                                               style: TextStyle(
-                                                  fontSize: 16, color: kButtom),
+                                                  fontSize: 16,
+                                                  color: Colors.green),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: kButtom,
+                                                color: Colors.green,
                                                 size: 35,
                                               ),
                                             ),
@@ -393,13 +380,12 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                   width: 210,
                                   height: 300,
                                   decoration: BoxDecoration(
-                                    color: kOnSurfaceColor,
+                                    color: Colors.white,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(15)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color:
-                                            kTextButtonColor.withOpacity(0.5),
+                                        color: Colors.grey.withOpacity(0.5),
                                         spreadRadius: 5,
                                         blurRadius: 7,
                                         offset: const Offset(
@@ -443,8 +429,8 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                         const Text(
                                           'Unidade',
                                         ),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -457,8 +443,8 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                         ),
                                         const VerticalSpacerBox(
                                             size: SpacerSize.tiny),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -470,14 +456,15 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                             Text(
                                               'Maria',
                                               style: TextStyle(
-                                                  fontSize: 16, color: kButtom),
+                                                  fontSize: 16,
+                                                  color: Colors.green),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: kButtom,
+                                                color: Colors.green,
                                                 size: 35,
                                               ),
                                             ),
@@ -495,13 +482,12 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                   width: 210,
                                   height: 300,
                                   decoration: BoxDecoration(
-                                    color: kOnSurfaceColor,
+                                    color: Colors.white,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(15)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color:
-                                            kTextButtonColor.withOpacity(0.5),
+                                        color: Colors.grey.withOpacity(0.5),
                                         spreadRadius: 5,
                                         blurRadius: 7,
                                         offset: const Offset(
@@ -545,8 +531,8 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                         const Text(
                                           'Unidade',
                                         ),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -559,8 +545,8 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                         ),
                                         const VerticalSpacerBox(
                                             size: SpacerSize.tiny),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -572,14 +558,15 @@ class _MenuSellerScreenState extends State<MenuSellerScreen> {
                                             Text(
                                               'João',
                                               style: TextStyle(
-                                                  fontSize: 16, color: kButtom),
+                                                  fontSize: 16,
+                                                  color: Colors.green),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: kButtom,
+                                                color: Colors.green,
                                                 size: 35,
                                               ),
                                             ),

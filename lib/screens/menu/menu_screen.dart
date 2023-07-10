@@ -376,8 +376,8 @@ class _MenuScreenState extends State<MenuScreen> {
                                         const Text(
                                           'Unidade',
                                         ),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -390,8 +390,8 @@ class _MenuScreenState extends State<MenuScreen> {
                                         ),
                                         const VerticalSpacerBox(
                                             size: SpacerSize.tiny),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -478,8 +478,8 @@ class _MenuScreenState extends State<MenuScreen> {
                                         const Text(
                                           'Unidade',
                                         ),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -492,8 +492,8 @@ class _MenuScreenState extends State<MenuScreen> {
                                         ),
                                         const VerticalSpacerBox(
                                             size: SpacerSize.tiny),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -589,8 +589,8 @@ class _MenuScreenState extends State<MenuScreen> {
                                         const Text(
                                           'Unidade',
                                         ),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -603,8 +603,8 @@ class _MenuScreenState extends State<MenuScreen> {
                                         ),
                                         const VerticalSpacerBox(
                                             size: SpacerSize.tiny),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -691,8 +691,8 @@ class _MenuScreenState extends State<MenuScreen> {
                                         const Text(
                                           'Unidade',
                                         ),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -705,8 +705,8 @@ class _MenuScreenState extends State<MenuScreen> {
                                         ),
                                         const VerticalSpacerBox(
                                             size: SpacerSize.tiny),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(

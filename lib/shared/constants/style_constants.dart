@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 //**FONT CONFIGURATION*/
-final kDefaultFontFamily = GoogleFonts.fredokaOne().fontFamily;
+//final kDefaultFontFamily = GoogleFonts.fredokaOne().fontFamily;
 final kSecondaryFontFamily = GoogleFonts.nunito().fontFamily;
 final kDescriptionFontFamily = GoogleFonts.firaSans().fontFamily;
 //**LIGHT COLORS */

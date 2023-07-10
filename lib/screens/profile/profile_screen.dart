@@ -108,13 +108,13 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Wrap(
                           children: [
-                            const VerticalSpacerBox(size: SpacerSize.large),
+                            VerticalSpacerBox(size: SpacerSize.large),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Icon(
                                   Icons.list_alt,
@@ -157,13 +157,13 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Wrap(
                           children: [
-                            const VerticalSpacerBox(size: SpacerSize.large),
+                            VerticalSpacerBox(size: SpacerSize.large),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Icon(
                                   Icons.pin_drop,
@@ -206,13 +206,13 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Wrap(
                           children: [
-                            const VerticalSpacerBox(size: SpacerSize.large),
+                            VerticalSpacerBox(size: SpacerSize.large),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Icon(
                                   Icons.credit_card,
@@ -255,13 +255,13 @@ class ProfileScreen extends StatelessWidget {
                           )
                         ],
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Wrap(
                           children: [
-                            const VerticalSpacerBox(size: SpacerSize.large),
+                            VerticalSpacerBox(size: SpacerSize.large),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Icon(
                                   Icons.favorite,

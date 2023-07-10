@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:ecommercebonito/components/forms/auth_form_field.dart';
+import 'package:ecommercebonito/components/forms/auth_form_field3.dart';
 import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
+import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/shared/constants/style_constants.dart';
+import 'package:flutter/material.dart';
 import '../../components/buttons/primary_button.dart';
-import '../../components/forms/auth_form_field.dart';
 import '../../components/forms/auth_form_field2.dart';
-import '../../components/forms/auth_form_field3.dart';
 import '../../components/utils/vertical_spacer_box.dart';
 import '../../shared/constants/app_enums.dart';
-import '../screens_index.dart';
 
 class CardScreen extends StatefulWidget {
   const CardScreen({Key? key}) : super(key: key);
@@ -50,8 +50,8 @@ class _CardScreenState extends State<CardScreen> {
           child: Column(
             children: [
               const VerticalSpacerBox(size: SpacerSize.small),
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Text(
                     'Adicione um novo cartão',
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
@@ -63,8 +63,8 @@ class _CardScreenState extends State<CardScreen> {
                   padding: const EdgeInsets.all(10),
                   child: Form(
                       child: Column(children: [
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         Text(
                           'Nome do cartão',
                         ),
@@ -77,8 +77,8 @@ class _CardScreenState extends State<CardScreen> {
                         inputType: TextInputType.streetAddress,
                         onChanged: (String value) {}),
                     const VerticalSpacerBox(size: SpacerSize.small),
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         Text(
                           'Número do cartão',
                         ),
@@ -105,8 +105,8 @@ class _CardScreenState extends State<CardScreen> {
                       ],
                     ),
                     const VerticalSpacerBox(size: SpacerSize.small),
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         Text(
                           'Data de expiração',
                         ),

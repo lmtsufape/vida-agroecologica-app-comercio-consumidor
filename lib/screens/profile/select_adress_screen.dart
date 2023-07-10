@@ -8,14 +8,9 @@ import '../../shared/components/dialogs/finish_dialog.dart';
 import '../../shared/constants/app_enums.dart';
 import '../screens_index.dart';
 
-class SelectAdress extends StatefulWidget {
+class SelectAdress extends StatelessWidget {
   const SelectAdress({Key? key}) : super(key: key);
 
-  @override
-  State<SelectAdress> createState() => _SelectAdressState();
-}
-
-class _SelectAdressState extends State<SelectAdress> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -50,8 +45,8 @@ class _SelectAdressState extends State<SelectAdress> {
             child: SingleChildScrollView(
                 child: Column(children: [
               const VerticalSpacerBox(size: SpacerSize.small),
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Text(
                     'Selecionar um endereço de envio',
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -110,64 +105,64 @@ class _SelectAdressState extends State<SelectAdress> {
                                   iconSize: 30),
                             ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 5),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text('Eduarda', style: TextStyle(fontSize: 17)),
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 5),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text('Rua Professora Esmeralda Barros, 67',
                                     style: TextStyle(fontSize: 17)),
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 5),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text('Apartamento',
                                     style: TextStyle(fontSize: 17)),
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 5),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text('Caruaru, PE, 55044-070',
                                     style: TextStyle(fontSize: 17)),
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 5),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text('Brasil', style: TextStyle(fontSize: 17)),
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 5),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text('Telefone: (81) 99699-7476',
                                     style: TextStyle(fontSize: 17)),

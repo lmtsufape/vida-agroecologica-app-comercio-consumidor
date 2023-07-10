@@ -50,7 +50,7 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                     child: SingleChildScrollView(
                         child: Column(children: [
                       const VerticalSpacerBox(size: SpacerSize.small),
-                      Row(children: const [
+                      const Row(children: [
                         Text(
                           'Pedido #000001',
                           style: TextStyle(
@@ -124,11 +124,11 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                     thickness: 1,
                                     indent: 5,
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 6),
                                     child: Row(
-                                      children: const [
+                                      children: [
                                         HorizontalSpacerBox(
                                             size: SpacerSize.large),
                                         Text(
@@ -148,11 +148,11 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                   ),
                                   const VerticalSpacerBox(
                                       size: SpacerSize.small),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 6),
                                     child: Row(
-                                      children: const [
+                                      children: [
                                         HorizontalSpacerBox(
                                             size: SpacerSize.large),
                                         Text(
@@ -170,11 +170,11 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                       ],
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 6),
                                     child: Row(
-                                      children: const [
+                                      children: [
                                         HorizontalSpacerBox(
                                             size: SpacerSize.large),
                                         Text(
@@ -192,11 +192,11 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                       ],
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 6),
                                     child: Row(
-                                      children: const [
+                                      children: [
                                         HorizontalSpacerBox(
                                             size: SpacerSize.large),
                                         Text(
@@ -255,7 +255,7 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                         onTap: () async {},
                       ),
                       const VerticalSpacerBox(size: SpacerSize.medium),
-                      Row(children: const [
+                      const Row(children: [
                         Text(
                           'Pedido #000002',
                           style: TextStyle(
@@ -329,11 +329,11 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                     thickness: 1,
                                     indent: 5,
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 6),
                                     child: Row(
-                                      children: const [
+                                      children: [
                                         HorizontalSpacerBox(
                                             size: SpacerSize.large),
                                         Text(
@@ -353,11 +353,11 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                   ),
                                   const VerticalSpacerBox(
                                       size: SpacerSize.small),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 6),
                                     child: Row(
-                                      children: const [
+                                      children: [
                                         HorizontalSpacerBox(
                                             size: SpacerSize.large),
                                         Text(
@@ -375,11 +375,11 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                       ],
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 6),
                                     child: Row(
-                                      children: const [
+                                      children: [
                                         HorizontalSpacerBox(
                                             size: SpacerSize.large),
                                         Text(
@@ -397,11 +397,11 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                       ],
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 6),
                                     child: Row(
-                                      children: const [
+                                      children: [
                                         HorizontalSpacerBox(
                                             size: SpacerSize.large),
                                         Text(
@@ -460,7 +460,7 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                         onTap: () async {},
                       ),
                       const VerticalSpacerBox(size: SpacerSize.medium),
-                      Row(children: const [
+                      const Row(children: [
                         Text(
                           'Pedido #000003',
                           style: TextStyle(
@@ -534,11 +534,11 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                     thickness: 1,
                                     indent: 5,
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 6),
                                     child: Row(
-                                      children: const [
+                                      children: [
                                         HorizontalSpacerBox(
                                             size: SpacerSize.large),
                                         Text(
@@ -558,11 +558,11 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                   ),
                                   const VerticalSpacerBox(
                                       size: SpacerSize.small),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 6),
                                     child: Row(
-                                      children: const [
+                                      children: [
                                         HorizontalSpacerBox(
                                             size: SpacerSize.large),
                                         Text(
@@ -580,11 +580,11 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                       ],
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 6),
                                     child: Row(
-                                      children: const [
+                                      children: [
                                         HorizontalSpacerBox(
                                             size: SpacerSize.large),
                                         Text(
@@ -602,11 +602,11 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                                       ],
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 6),
                                     child: Row(
-                                      children: const [
+                                      children: [
                                         HorizontalSpacerBox(
                                             size: SpacerSize.large),
                                         Text(

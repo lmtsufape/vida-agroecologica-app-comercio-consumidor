@@ -3,11 +3,12 @@ import 'package:ecommercebonito/components/forms/auth_form_field.dart';
 import 'package:ecommercebonito/components/forms/auth_form_field3.dart';
 import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
+
 import '../../components/buttons/primary_button.dart';
 import '../../components/forms/auth_form_field2.dart';
 import '../../components/utils/vertical_spacer_box.dart';
 import '../../shared/constants/app_enums.dart';
+import '../../shared/constants/style_constants.dart';
 
 class AdressScreen extends StatefulWidget {
   const AdressScreen({Key? key}) : super(key: key);
@@ -49,8 +50,8 @@ class _AdressScreenState extends State<AdressScreen> {
             child: Column(
               children: [
                 const VerticalSpacerBox(size: SpacerSize.small),
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     Text(
                       'Adicione um novo endereço',
                       style:
@@ -63,8 +64,8 @@ class _AdressScreenState extends State<AdressScreen> {
                     padding: const EdgeInsets.all(10),
                     child: Form(
                         child: Column(children: [
-                      Row(
-                        children: const [
+                      const Row(
+                        children: [
                           Text(
                             'Nome',
                           ),
@@ -77,8 +78,8 @@ class _AdressScreenState extends State<AdressScreen> {
                           inputType: TextInputType.streetAddress,
                           onChanged: (String value) {}),
                       const VerticalSpacerBox(size: SpacerSize.small),
-                      Row(
-                        children: const [
+                      const Row(
+                        children: [
                           Text(
                             'Rua',
                           ),
@@ -105,8 +106,8 @@ class _AdressScreenState extends State<AdressScreen> {
                         ],
                       ),
                       const VerticalSpacerBox(size: SpacerSize.small),
-                      Row(
-                        children: const [
+                      const Row(
+                        children: [
                           Text(
                             'Cidade',
                           ),
@@ -133,8 +134,8 @@ class _AdressScreenState extends State<AdressScreen> {
                         ],
                       ),
                       const VerticalSpacerBox(size: SpacerSize.small),
-                      Row(
-                        children: const [
+                      const Row(
+                        children: [
                           Text(
                             'Complemento',
                           ),
@@ -147,8 +148,8 @@ class _AdressScreenState extends State<AdressScreen> {
                           inputType: TextInputType.text,
                           onChanged: (String value) {}),
                       const VerticalSpacerBox(size: SpacerSize.small),
-                      Row(
-                        children: const [
+                      const Row(
+                        children: [
                           Text(
                             'CEP',
                           ),

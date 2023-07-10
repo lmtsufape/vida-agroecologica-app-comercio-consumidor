@@ -7,7 +7,6 @@ import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../assets/index.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -77,8 +76,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           )),
                     ),
                     const VerticalSpacerBox(size: SpacerSize.medium),
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         Text(
                           'Categorias',
                           style: TextStyle(fontSize: 25),
@@ -326,8 +325,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                     const VerticalSpacerBox(size: SpacerSize.large),
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         Text(
                           'Vendedores',
                           style: TextStyle(fontSize: 25),
@@ -376,13 +375,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   const HorizontalSpacerBox(
                                       size: SpacerSize.large),
-                                  Column(
+                                  const Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Row(
-                                        children: const [
+                                        children: [
                                           Text(
                                             'João Frutas',
                                             style: TextStyle(
@@ -408,7 +407,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ],
                                       ),
                                       Row(
-                                        children: const [
+                                        children: [
                                           Text(
                                             'Frutas - Legumes - Tempeiros',
                                             style: TextStyle(fontSize: 15),
@@ -418,18 +417,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                       Row(
                                         children: [
-                                          const Text(
+                                          Text(
                                             'Contato: (11) 99999-9999',
                                           ),
                                           IconButton(
-                                            onPressed: () async {
-                                              if (await canLaunchUrl(whats)) {
-                                                launchUrl(whats);
-                                              }
-                                            },
-                                            icon: const Icon(
-                                              Icons.whatsapp,
-                                              color: kButtom,
+                                            onPressed: null,
+                                            icon: Icon(
+                                              Icons.phone,
+                                              color: Colors.green,
                                               size: 30,
                                             ),
                                           ),
@@ -489,13 +484,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   const HorizontalSpacerBox(
                                       size: SpacerSize.large),
-                                  Column(
+                                  const Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Row(
-                                        children: const [
+                                        children: [
                                           Text(
                                             'Leandro Carnes',
                                             style: TextStyle(
@@ -519,7 +514,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ],
                                       ),
                                       Row(
-                                        children: const [
+                                        children: [
                                           Text(
                                             'Frutas - Legumes - Tempeiros',
                                             style: TextStyle(fontSize: 15),
@@ -529,18 +524,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                       Row(
                                         children: [
-                                          const Text(
+                                          Text(
                                             'Contato: (11) 99999-9999',
                                           ),
                                           IconButton(
-                                            onPressed: () async {
-                                              if (await canLaunchUrl(whats)) {
-                                                await launchUrl(whats);
-                                              }
-                                            },
-                                            icon: const Icon(
-                                              Icons.whatsapp,
-                                              color: kButtom,
+                                            onPressed: null,
+                                            icon: Icon(
+                                              Icons.phone,
+                                              color: Colors.green,
                                               size: 30,
                                             ),
                                           ),

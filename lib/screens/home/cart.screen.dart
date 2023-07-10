@@ -22,6 +22,9 @@ class _CartScreenState extends State<CartScreen> {
   late int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
+    late int melancia = 0;
+    late int limao = 0;
+    late int selectedIndex = 0;
     Size size = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
       create: (_) => HomeScreenController(),
@@ -55,14 +58,14 @@ class _CartScreenState extends State<CartScreen> {
                     width: size.width,
                     padding: const EdgeInsets.all(kDefaultPadding),
                     child: Column(children: [
-                      Row(
+                       Row(
                         children: [
                           const Text(
-                            'Subtotal:',
+                            'Subtotal',
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
-                          const HorizontalSpacerBox(size: SpacerSize.small),
+                           const HorizontalSpacerBox(size: SpacerSize.small),
                           Text(
                             'R\$ ${controller.total.toStringAsFixed(2)}',
                             style: const TextStyle(
@@ -117,16 +120,16 @@ class _CartScreenState extends State<CartScreen> {
                                     ),
                                     const HorizontalSpacerBox(
                                         size: SpacerSize.small),
-                                    Column(
+                                    const Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        const VerticalSpacerBox(
+                                        VerticalSpacerBox(
                                             size: SpacerSize.large),
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
                                               'Melancia',
                                               style: TextStyle(
@@ -135,10 +138,10 @@ class _CartScreenState extends State<CartScreen> {
                                             ),
                                           ],
                                         ),
-                                        const VerticalSpacerBox(
+                                        VerticalSpacerBox(
                                             size: SpacerSize.medium),
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
                                               'RS 5,50',
                                               style: TextStyle(
@@ -154,10 +157,10 @@ class _CartScreenState extends State<CartScreen> {
                                             ),
                                           ],
                                         ),
-                                        const VerticalSpacerBox(
+                                        VerticalSpacerBox(
                                             size: SpacerSize.small),
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
                                               'Vendido por ',
                                               style: TextStyle(
@@ -172,8 +175,8 @@ class _CartScreenState extends State<CartScreen> {
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
-                                                Icons.whatsapp,
-                                                color: kButtom,
+                                                Icons.phone,
+                                                color: Colors.green,
                                                 size: 30,
                                               ),
                                             ),
@@ -289,16 +292,16 @@ class _CartScreenState extends State<CartScreen> {
                                         ),
                                       ),
                                     ),
-                                    Column(
+                                    const Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        const VerticalSpacerBox(
+                                        VerticalSpacerBox(
                                             size: SpacerSize.large),
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
                                               'Limão',
                                               style: TextStyle(
@@ -307,10 +310,10 @@ class _CartScreenState extends State<CartScreen> {
                                             ),
                                           ],
                                         ),
-                                        const VerticalSpacerBox(
+                                        VerticalSpacerBox(
                                             size: SpacerSize.medium),
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
                                               'RS 3,50',
                                               style: TextStyle(
@@ -326,10 +329,10 @@ class _CartScreenState extends State<CartScreen> {
                                             ),
                                           ],
                                         ),
-                                        const VerticalSpacerBox(
+                                        VerticalSpacerBox(
                                             size: SpacerSize.small),
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
                                               'Vendido por ',
                                               style: TextStyle(
@@ -344,8 +347,8 @@ class _CartScreenState extends State<CartScreen> {
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
-                                                Icons.whatsapp,
-                                                color: kButtom,
+                                                Icons.phone,
+                                                color: Colors.green,
                                                 size: 30,
                                               ),
                                             ),

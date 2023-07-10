@@ -27,7 +27,6 @@ class AppTheme with ChangeNotifier {
     return ThemeData(
       scaffoldBackgroundColor: kBackgroundColor,
       useMaterial3: true,
-      fontFamily: kDefaultFontFamily,
       textTheme: TextTheme(titleMedium: kTitle2.copyWith(color: kTextColor)),
       inputDecorationTheme: const InputDecorationTheme(hintStyle: kCaption2, labelStyle: kCaption2, counterStyle: kCaption2),
       appBarTheme: AppBarTheme.of(context).copyWith(iconTheme: const IconThemeData(color: kDetailColor), elevation: 0, backgroundColor: Colors.transparent),
