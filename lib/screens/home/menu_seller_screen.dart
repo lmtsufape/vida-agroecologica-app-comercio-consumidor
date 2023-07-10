@@ -91,16 +91,16 @@ class MenuSellerScreen extends StatelessWidget {
                                     ),
                                     const HorizontalSpacerBox(
                                         size: SpacerSize.large),
-                                    Column(
+                                    const Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        const VerticalSpacerBox(
+                                        VerticalSpacerBox(
                                             size: SpacerSize.medium),
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
                                               'João Frutas',
                                               style: TextStyle(
@@ -110,14 +110,14 @@ class MenuSellerScreen extends StatelessWidget {
                                           ],
                                         ),
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
                                               'Contato: (11) 99999-9999',
                                             ),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
-                                                Icons.whatsapp,
+                                                Icons.phone,
                                                 color: Colors.green,
                                                 size: 30,
                                               ),
@@ -216,8 +216,8 @@ class MenuSellerScreen extends StatelessWidget {
                                         const Text(
                                           'Unidade',
                                         ),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -230,8 +230,8 @@ class MenuSellerScreen extends StatelessWidget {
                                         ),
                                         const VerticalSpacerBox(
                                             size: SpacerSize.tiny),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -318,8 +318,8 @@ class MenuSellerScreen extends StatelessWidget {
                                         const Text(
                                           'Unidade',
                                         ),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -332,8 +332,8 @@ class MenuSellerScreen extends StatelessWidget {
                                         ),
                                         const VerticalSpacerBox(
                                             size: SpacerSize.tiny),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -429,8 +429,8 @@ class MenuSellerScreen extends StatelessWidget {
                                         const Text(
                                           'Unidade',
                                         ),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -443,8 +443,8 @@ class MenuSellerScreen extends StatelessWidget {
                                         ),
                                         const VerticalSpacerBox(
                                             size: SpacerSize.tiny),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -531,8 +531,8 @@ class MenuSellerScreen extends StatelessWidget {
                                         const Text(
                                           'Unidade',
                                         ),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -545,8 +545,8 @@ class MenuSellerScreen extends StatelessWidget {
                                         ),
                                         const VerticalSpacerBox(
                                             size: SpacerSize.tiny),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(

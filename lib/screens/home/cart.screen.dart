@@ -18,7 +18,7 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     late int melancia = 0;
     late int limao = 0;
-    late int _selectedIndex = 0;
+    late int selectedIndex = 0;
     Size size = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
       create: (_) => HomeScreenController(),
@@ -45,15 +45,15 @@ class CartScreen extends StatelessWidget {
                   //IconButton
                 ),
                 bottomNavigationBar:
-                    BottomNavigation(selectedIndex: _selectedIndex),
+                    BottomNavigation(selectedIndex: selectedIndex),
                 body: SingleChildScrollView(
                   child: Container(
                     color: Colors.white,
                     width: size.width,
                     padding: const EdgeInsets.all(kDefaultPadding),
                     child: Column(children: [
-                      Row(
-                        children: const [
+                      const Row(
+                        children: [
                           Text(
                             'Subtotal',
                             style: TextStyle(
@@ -114,16 +114,16 @@ class CartScreen extends StatelessWidget {
                                     ),
                                     const HorizontalSpacerBox(
                                         size: SpacerSize.small),
-                                    Column(
+                                    const Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        const VerticalSpacerBox(
+                                        VerticalSpacerBox(
                                             size: SpacerSize.large),
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
                                               'Melancia',
                                               style: TextStyle(
@@ -132,10 +132,10 @@ class CartScreen extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                        const VerticalSpacerBox(
+                                        VerticalSpacerBox(
                                             size: SpacerSize.medium),
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
                                               'RS 5,50',
                                               style: TextStyle(
@@ -151,10 +151,10 @@ class CartScreen extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                        const VerticalSpacerBox(
+                                        VerticalSpacerBox(
                                             size: SpacerSize.small),
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
                                               'Vendido por ',
                                               style: TextStyle(
@@ -170,7 +170,7 @@ class CartScreen extends StatelessWidget {
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
-                                                Icons.whatsapp,
+                                                Icons.phone,
                                                 color: Colors.green,
                                                 size: 30,
                                               ),
@@ -275,16 +275,16 @@ class CartScreen extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    Column(
+                                    const Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        const VerticalSpacerBox(
+                                        VerticalSpacerBox(
                                             size: SpacerSize.large),
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
                                               'Limão',
                                               style: TextStyle(
@@ -293,10 +293,10 @@ class CartScreen extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                        const VerticalSpacerBox(
+                                        VerticalSpacerBox(
                                             size: SpacerSize.medium),
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
                                               'RS 3,50',
                                               style: TextStyle(
@@ -312,10 +312,10 @@ class CartScreen extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                        const VerticalSpacerBox(
+                                        VerticalSpacerBox(
                                             size: SpacerSize.small),
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
                                               'Vendido por ',
                                               style: TextStyle(
@@ -331,7 +331,7 @@ class CartScreen extends StatelessWidget {
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
-                                                Icons.whatsapp,
+                                                Icons.phone,
                                                 color: Colors.green,
                                                 size: 30,
                                               ),

@@ -13,7 +13,7 @@ class MenuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int _selectedIndex = 0;
+    int selectedIndex = 0;
     Size size = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
       create: (_) => HomeScreenController(),
@@ -40,7 +40,7 @@ class MenuScreen extends StatelessWidget {
                 //IconButton
               ),
               bottomNavigationBar:
-                  BottomNavigation(selectedIndex: _selectedIndex),
+                  BottomNavigation(selectedIndex: selectedIndex),
               body: SingleChildScrollView(
                 child: Container(
                   color: Colors.white,
@@ -363,8 +363,8 @@ class MenuScreen extends StatelessWidget {
                                         const Text(
                                           'Unidade',
                                         ),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -377,8 +377,8 @@ class MenuScreen extends StatelessWidget {
                                         ),
                                         const VerticalSpacerBox(
                                             size: SpacerSize.tiny),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -465,8 +465,8 @@ class MenuScreen extends StatelessWidget {
                                         const Text(
                                           'Unidade',
                                         ),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -479,8 +479,8 @@ class MenuScreen extends StatelessWidget {
                                         ),
                                         const VerticalSpacerBox(
                                             size: SpacerSize.tiny),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -576,8 +576,8 @@ class MenuScreen extends StatelessWidget {
                                         const Text(
                                           'Unidade',
                                         ),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -590,8 +590,8 @@ class MenuScreen extends StatelessWidget {
                                         ),
                                         const VerticalSpacerBox(
                                             size: SpacerSize.tiny),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -678,8 +678,8 @@ class MenuScreen extends StatelessWidget {
                                         const Text(
                                           'Unidade',
                                         ),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(
@@ -692,8 +692,8 @@ class MenuScreen extends StatelessWidget {
                                         ),
                                         const VerticalSpacerBox(
                                             size: SpacerSize.tiny),
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             HorizontalSpacerBox(
                                                 size: SpacerSize.small),
                                             Text(

@@ -8,6 +8,7 @@ import '../../shared/constants/app_enums.dart';
 class SelectCard extends StatelessWidget {
   const SelectCard({Key? key}) : super(key: key);
 
+  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -38,8 +39,8 @@ class SelectCard extends StatelessWidget {
             child: SingleChildScrollView(
                 child: Column(children: [
               const VerticalSpacerBox(size: SpacerSize.small),
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Text(
                     'Informações de pagamento',
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -104,9 +105,9 @@ class SelectCard extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Center(
+                          const Center(
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.huge),
                                 Text(
                                   'Mastercard ',
@@ -123,9 +124,9 @@ class SelectCard extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Center(
+                          const Center(
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.huge),
                                 Text(
                                   'Parcelas não disponíveis',

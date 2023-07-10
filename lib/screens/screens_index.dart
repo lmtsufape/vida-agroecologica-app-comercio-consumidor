@@ -1,4 +1,3 @@
-import 'package:ecommercebonito/screens/home/finalize_purchase_screen.dart';
 
 class Screens {
   ///all screens routes names must be here

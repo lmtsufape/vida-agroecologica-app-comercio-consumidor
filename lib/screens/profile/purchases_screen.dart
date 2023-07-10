@@ -39,7 +39,7 @@ class PurchasesScreen extends StatelessWidget {
             child: SingleChildScrollView(
                 child: Column(children: [
               const VerticalSpacerBox(size: SpacerSize.small),
-              Row(children: const [
+              const Row(children: [
                 Text(
                   'Pedido #000001',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -112,11 +112,11 @@ class PurchasesScreen extends StatelessWidget {
                             thickness: 1,
                             indent: 5,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 6),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Vendido por:',
@@ -134,11 +134,11 @@ class PurchasesScreen extends StatelessWidget {
                             ),
                           ),
                           const VerticalSpacerBox(size: SpacerSize.small),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 6),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Itens:',
@@ -155,11 +155,11 @@ class PurchasesScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 6),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Fretes e manuseio:',
@@ -176,11 +176,11 @@ class PurchasesScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 6),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Total do pedido:',
@@ -236,7 +236,7 @@ class PurchasesScreen extends StatelessWidget {
                 onTap: () async {},
               ),
               const VerticalSpacerBox(size: SpacerSize.medium),
-              Row(children: const [
+              const Row(children: [
                 Text(
                   'Pedido #000002',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -309,11 +309,11 @@ class PurchasesScreen extends StatelessWidget {
                             thickness: 1,
                             indent: 5,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 6),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Vendido por:',
@@ -331,11 +331,11 @@ class PurchasesScreen extends StatelessWidget {
                             ),
                           ),
                           const VerticalSpacerBox(size: SpacerSize.small),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 6),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Itens:',
@@ -352,11 +352,11 @@ class PurchasesScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 6),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Fretes e manuseio:',
@@ -373,11 +373,11 @@ class PurchasesScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 6),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Total do pedido:',
@@ -433,7 +433,7 @@ class PurchasesScreen extends StatelessWidget {
                 onTap: () async {},
               ),
               const VerticalSpacerBox(size: SpacerSize.medium),
-              Row(children: const [
+              const Row(children: [
                 Text(
                   'Pedido #000003',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -506,11 +506,11 @@ class PurchasesScreen extends StatelessWidget {
                             thickness: 1,
                             indent: 5,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 6),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Vendido por:',
@@ -528,11 +528,11 @@ class PurchasesScreen extends StatelessWidget {
                             ),
                           ),
                           const VerticalSpacerBox(size: SpacerSize.small),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 6),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Itens:',
@@ -549,11 +549,11 @@ class PurchasesScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 6),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Fretes e manuseio:',
@@ -570,11 +570,11 @@ class PurchasesScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 6),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Total do pedido:',

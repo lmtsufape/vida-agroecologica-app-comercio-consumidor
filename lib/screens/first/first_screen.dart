@@ -40,8 +40,8 @@ class FirstScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Spacer(),
-                    Wrap(
-                      children: const [
+                    const Wrap(
+                      children: [
                         Text(
                           'Para começar, que tal entrar com sua conta?',
                           style:

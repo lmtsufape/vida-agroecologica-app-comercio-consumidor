@@ -4,7 +4,6 @@ import 'package:ecommercebonito/components/forms/auth_form_field2.dart';
 import 'package:ecommercebonito/components/forms/auth_form_field3.dart';
 import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
-import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/utils/vertical_spacer_box.dart';
@@ -45,8 +44,8 @@ class AdressScreen extends StatelessWidget {
             child: Column(
               children: [
                 const VerticalSpacerBox(size: SpacerSize.small),
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     Text(
                       'Adicione um novo endereço',
                       style:
@@ -59,8 +58,8 @@ class AdressScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(10),
                     child: Form(
                         child: Column(children: [
-                      Row(
-                        children: const [
+                      const Row(
+                        children: [
                           Text(
                             'Nome',
                           ),
@@ -73,8 +72,8 @@ class AdressScreen extends StatelessWidget {
                           inputType: TextInputType.streetAddress,
                           onChanged: (String value) {}),
                       const VerticalSpacerBox(size: SpacerSize.small),
-                      Row(
-                        children: const [
+                      const Row(
+                        children: [
                           Text(
                             'Rua',
                           ),
@@ -101,8 +100,8 @@ class AdressScreen extends StatelessWidget {
                         ],
                       ),
                       const VerticalSpacerBox(size: SpacerSize.small),
-                      Row(
-                        children: const [
+                      const Row(
+                        children: [
                           Text(
                             'Cidade',
                           ),
@@ -129,8 +128,8 @@ class AdressScreen extends StatelessWidget {
                         ],
                       ),
                       const VerticalSpacerBox(size: SpacerSize.small),
-                      Row(
-                        children: const [
+                      const Row(
+                        children: [
                           Text(
                             'Complemento',
                           ),
@@ -143,8 +142,8 @@ class AdressScreen extends StatelessWidget {
                           inputType: TextInputType.text,
                           onChanged: (String value) {}),
                       const VerticalSpacerBox(size: SpacerSize.small),
-                      Row(
-                        children: const [
+                      const Row(
+                        children: [
                           Text(
                             'CEP',
                           ),

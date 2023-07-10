@@ -12,7 +12,6 @@ class FinalizePurchaseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     String? formaEntrega;
     String? formaPag;
-    ;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
@@ -103,11 +102,11 @@ class FinalizePurchaseScreen extends StatelessWidget {
                             thickness: 1,
                             indent: 5,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 6),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Vendido por:',
@@ -125,11 +124,11 @@ class FinalizePurchaseScreen extends StatelessWidget {
                             ),
                           ),
                           const VerticalSpacerBox(size: SpacerSize.small),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 6),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Itens:',
@@ -146,11 +145,11 @@ class FinalizePurchaseScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 6),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Taxa de entrega:',
@@ -167,11 +166,11 @@ class FinalizePurchaseScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 6),
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.large),
                                 Text(
                                   'Total do pedido:',
@@ -230,7 +229,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                 onTap: () async {},
               ),
               const VerticalSpacerBox(size: SpacerSize.medium),
-              Row(children: const [
+              const Row(children: [
                 Text(
                   'Forma de entrega',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -276,7 +275,7 @@ class FinalizePurchaseScreen extends StatelessWidget {
                 ],
               ),
               const VerticalSpacerBox(size: SpacerSize.small),
-              Row(children: const [
+              const Row(children: [
                 Text(
                   'Endereço de entrega',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -340,9 +339,9 @@ class FinalizePurchaseScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Center(
+                          const Center(
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.huge),
                                 Text(
                                   'Rua Professora Esmeralda Barros, 71, Apt, ...',
@@ -362,14 +361,14 @@ class FinalizePurchaseScreen extends StatelessWidget {
                 },
               ),
               const VerticalSpacerBox(size: SpacerSize.medium),
-              Row(children: const [
+              const Row(children: [
                 Text(
                   'Informações de pagamento',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
               ]),
               const VerticalSpacerBox(size: SpacerSize.medium),
-              Row(children: const [
+              const Row(children: [
                 Text(
                   'Formas de pagamento:',
                   style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
@@ -489,9 +488,9 @@ class FinalizePurchaseScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Center(
+                          const Center(
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.huge),
                                 Text(
                                   'Mastercard ',
@@ -508,9 +507,9 @@ class FinalizePurchaseScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Center(
+                          const Center(
                             child: Row(
-                              children: const [
+                              children: [
                                 HorizontalSpacerBox(size: SpacerSize.huge),
                                 Text(
                                   'Parcelas não disponíveis',

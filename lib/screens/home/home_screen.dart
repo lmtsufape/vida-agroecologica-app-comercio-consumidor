@@ -69,8 +69,8 @@ class HomeScreen extends StatelessWidget {
                           )),
                     ),
                     const VerticalSpacerBox(size: SpacerSize.medium),
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         Text(
                           'Categorias',
                           style: TextStyle(fontSize: 25),
@@ -313,8 +313,8 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                     const VerticalSpacerBox(size: SpacerSize.large),
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         Text(
                           'Vendedores',
                           style: TextStyle(fontSize: 25),
@@ -363,13 +363,13 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                   const HorizontalSpacerBox(
                                       size: SpacerSize.large),
-                                  Column(
+                                  const Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Row(
-                                        children: const [
+                                        children: [
                                           Text(
                                             'João Frutas',
                                             style: TextStyle(
@@ -395,7 +395,7 @@ class HomeScreen extends StatelessWidget {
                                         ],
                                       ),
                                       Row(
-                                        children: const [
+                                        children: [
                                           Text(
                                             'Frutas - Legumes - Tempeiros',
                                             style: TextStyle(fontSize: 15),
@@ -404,14 +404,14 @@ class HomeScreen extends StatelessWidget {
                                         ],
                                       ),
                                       Row(
-                                        children: const [
+                                        children: [
                                           Text(
                                             'Contato: (11) 99999-9999',
                                           ),
                                           IconButton(
                                             onPressed: null,
                                             icon: Icon(
-                                              Icons.whatsapp,
+                                              Icons.phone,
                                               color: Colors.green,
                                               size: 30,
                                             ),
@@ -472,13 +472,13 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                   const HorizontalSpacerBox(
                                       size: SpacerSize.large),
-                                  Column(
+                                  const Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Row(
-                                        children: const [
+                                        children: [
                                           Text(
                                             'Leandro Carnes',
                                             style: TextStyle(
@@ -502,7 +502,7 @@ class HomeScreen extends StatelessWidget {
                                         ],
                                       ),
                                       Row(
-                                        children: const [
+                                        children: [
                                           Text(
                                             'Frutas - Legumes - Tempeiros',
                                             style: TextStyle(fontSize: 15),
@@ -511,14 +511,14 @@ class HomeScreen extends StatelessWidget {
                                         ],
                                       ),
                                       Row(
-                                        children: const [
+                                        children: [
                                           Text(
                                             'Contato: (11) 99999-9999',
                                           ),
                                           IconButton(
                                             onPressed: null,
                                             icon: Icon(
-                                              Icons.whatsapp,
+                                              Icons.phone,
                                               color: Colors.green,
                                               size: 30,
                                             ),

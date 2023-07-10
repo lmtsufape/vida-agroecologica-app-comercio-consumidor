@@ -76,9 +76,9 @@ class SignInScreen extends StatelessWidget {
                             color: kDetailColor,
                           ),
                     const VerticalSpacerBox(size: SpacerSize.large),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Divider(
                           color: kTextButtonColor,
                         ),
