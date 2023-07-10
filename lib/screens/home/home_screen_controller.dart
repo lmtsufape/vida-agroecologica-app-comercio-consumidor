@@ -1,20 +1,52 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class HomeScreenController with ChangeNotifier {
-  void requestUserGalleryPermission() async {
-    var status = await Permission.camera.status;
-    if (status.isDenied) {
-      // We didn't ask for permission yet or the permission has been denied before but not permanently.
-      log('user has denied access, try again');
-    }
+  int _counter = 0;
+  double total = 0.00;
+  int quantidade = 0;
+  double taxaEntrega = 7.00;
 
-// You can can also directly ask the permission about its status.
-    if (await Permission.mediaLibrary.request().isGranted) {
-      log('User has granted access');
-      // The OS restricts access, for example because of parental controls.
-    }
+  late int melancia = 0;
+  late int limao = 0;
+  late int selectedIndex = 0;
+  int get counter => _counter;
+  double rating = 0.0;
+  String comment = '';
+  String formaPag = '';
+  String formEnt = '';
+
+  void incrementCounter() {
+    _counter++;
+    notifyListeners();
+  }
+
+  void decrementCounter() {
+    _counter--;
+    notifyListeners();
+  }
+
+  void incrementTotal(double valor) {
+    total += valor;
+    notifyListeners();
+  }
+
+  setRating(double value) {
+    rating = value;
+    notifyListeners();
+  }
+
+  setComment(String value) {
+    comment = value;
+    notifyListeners();
+  }
+
+  setFormPag(String value) {
+    formaPag = value;
+    notifyListeners();
+  }
+
+   setFormEnt(String value) {
+    formEnt = value;
+    notifyListeners();
   }
 }

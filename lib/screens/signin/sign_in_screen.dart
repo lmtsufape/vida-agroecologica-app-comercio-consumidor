@@ -31,7 +31,7 @@ class SignInScreen extends StatelessWidget {
                   child: StyleBar(
                       title: 'Bem vindo(a) ao App bonito', hasLeading: true)),
               body: Container(
-                color: Colors.white,
+                color: kOnSurfaceColor,
                 width: size.width,
                 padding: const EdgeInsets.all(kDefaultPadding),
                 child: Column(
@@ -95,12 +95,12 @@ class SignInScreen extends StatelessWidget {
                         IconButton(
                             onPressed: () {},
                             icon: const Icon(FontAwesomeIcons.google,
-                                color: Colors.red),
+                                color: kErrorColor),
                             iconSize: 38),
                         IconButton(
                             onPressed: () {},
                             icon: const Icon(FontAwesomeIcons.facebook,
-                                color: Colors.blue),
+                                color: kTextSign),
                             iconSize: 38)
                       ],
                     ),

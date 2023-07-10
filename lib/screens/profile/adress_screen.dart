@@ -1,17 +1,23 @@
-import 'package:ecommercebonito/components/buttons/primary_button.dart';
+import 'package:flutter/material.dart';
 import 'package:ecommercebonito/components/forms/auth_form_field.dart';
-import 'package:ecommercebonito/components/forms/auth_form_field2.dart';
 import 'package:ecommercebonito/components/forms/auth_form_field3.dart';
 import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
-import 'package:flutter/material.dart';
 
+import '../../components/buttons/primary_button.dart';
+import '../../components/forms/auth_form_field2.dart';
 import '../../components/utils/vertical_spacer_box.dart';
 import '../../shared/constants/app_enums.dart';
+import '../../shared/constants/style_constants.dart';
 
-class AdressScreen extends StatelessWidget {
+class AdressScreen extends StatefulWidget {
   const AdressScreen({Key? key}) : super(key: key);
 
+  @override
+  State<AdressScreen> createState() => _AdressScreenState();
+}
+
+class _AdressScreenState extends State<AdressScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -19,15 +25,15 @@ class AdressScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Ecommerce Bonito',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: kOnSurfaceColor),
         ),
         centerTitle: true,
-        backgroundColor: Colors.orange,
+        backgroundColor: kDetailColor,
         actions: <Widget>[
           IconButton(
             icon: const Icon(
               Icons.menu,
-              color: Colors.white,
+              color: kOnSurfaceColor,
             ),
             onPressed: () {
               Navigator.pushNamed(context, Screens.profile);
@@ -37,7 +43,7 @@ class AdressScreen extends StatelessWidget {
         //IconButton
       ),
       body: Container(
-          color: Colors.white,
+          color: kOnSurfaceColor,
           width: size.width,
           padding: const EdgeInsets.all(20),
           child: SingleChildScrollView(
@@ -171,7 +177,7 @@ class AdressScreen extends StatelessWidget {
                         onPressed: () {
                           Navigator.pushNamed(context, Screens.selectAdress);
                         },
-                        color: Colors.green,
+                        color: kButtom,
                       ),
                     ])))
               ],

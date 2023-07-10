@@ -1,16 +1,23 @@
-import 'package:ecommercebonito/assets/index.dart';
 import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
 import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
+import 'package:ecommercebonito/screens/home/home_screen_controller.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/shared/components/BottomNavigation.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
+import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ecommercebonito/screens/home/home_screen_controller.dart';
 
-class MenuScreen extends StatelessWidget {
+import '../../assets/index.dart';
+
+class MenuScreen extends StatefulWidget {
   const MenuScreen({Key? key}) : super(key: key);
 
+  @override
+  State<MenuScreen> createState() => _MenuScreenState();
+}
+
+class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     int selectedIndex = 0;
@@ -22,15 +29,15 @@ class MenuScreen extends StatelessWidget {
               appBar: AppBar(
                 title: const Text(
                   'Ecommerce Bonito',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: kOnSurfaceColor),
                 ),
                 centerTitle: true,
-                backgroundColor: Colors.orange,
+                backgroundColor: kDetailColor,
                 actions: <Widget>[
                   IconButton(
                     icon: const Icon(
                       Icons.menu,
-                      color: Colors.white,
+                      color: kOnSurfaceColor,
                     ),
                     onPressed: () {
                       Navigator.pushNamed(context, Screens.profile);
@@ -43,7 +50,7 @@ class MenuScreen extends StatelessWidget {
                   BottomNavigation(selectedIndex: selectedIndex),
               body: SingleChildScrollView(
                 child: Container(
-                  color: Colors.white,
+                  color: kOnSurfaceColor,
                   width: size.width,
                   padding: const EdgeInsets.all(20),
                   child: Column(
@@ -63,7 +70,7 @@ class MenuScreen extends StatelessWidget {
                               isDense: true,
                               prefixIcon: Icon(
                                 Icons.search,
-                                color: Colors.orange,
+                                color: kDetailColor,
                                 size: 25,
                               ),
                             )),
@@ -82,16 +89,17 @@ class MenuScreen extends StatelessWidget {
                                     width: 80,
                                     height: 90,
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: kOnSurfaceColor,
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(10)),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
-                                          offset: const Offset(0,
-                                              5), // changes position of shadow
+                                          color:
+                                              kTextButtonColor.withOpacity(0.5),
+                                          spreadRadius: 0,
+                                          blurRadius: 3,
+                                          offset: const Offset(
+                                              0, 0), // chaes position of shadow
                                         ),
                                       ],
                                     ),
@@ -126,16 +134,17 @@ class MenuScreen extends StatelessWidget {
                                     width: 80,
                                     height: 90,
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: kOnSurfaceColor,
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(10)),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
+                                          color:
+                                              kTextButtonColor.withOpacity(0.5),
+                                          spreadRadius: 0,
+                                          blurRadius: 3,
                                           offset: const Offset(0,
-                                              5), // changes position of shadow
+                                              0), // cha// changes position of shadow
                                         ),
                                       ],
                                     ),
@@ -170,16 +179,17 @@ class MenuScreen extends StatelessWidget {
                                     width: 80,
                                     height: 90,
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: kOnSurfaceColor,
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(10)),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
+                                          color:
+                                              kTextButtonColor.withOpacity(0.5),
+                                          spreadRadius: 0,
+                                          blurRadius: 3,
                                           offset: const Offset(0,
-                                              5), // changes position of shadow
+                                              0), // cha/ changes position of shadow
                                         ),
                                       ],
                                     ),
@@ -214,16 +224,17 @@ class MenuScreen extends StatelessWidget {
                                     width: 80,
                                     height: 90,
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: kOnSurfaceColor,
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(10)),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
+                                          color:
+                                              kTextButtonColor.withOpacity(0.5),
+                                          spreadRadius: 0,
+                                          blurRadius: 3,
                                           offset: const Offset(0,
-                                              5), // changes position of shadow
+                                              0), // cha // changes position of shadow
                                         ),
                                       ],
                                     ),
@@ -258,16 +269,17 @@ class MenuScreen extends StatelessWidget {
                                     width: 80,
                                     height: 90,
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: kOnSurfaceColor,
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(10)),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
+                                          color:
+                                              kTextButtonColor.withOpacity(0.5),
+                                          spreadRadius: 0,
+                                          blurRadius: 3,
                                           offset: const Offset(0,
-                                              5), // changes position of shadow
+                                              0), // cha // changes position of shadow
                                         ),
                                       ],
                                     ),
@@ -314,16 +326,17 @@ class MenuScreen extends StatelessWidget {
                                   width: 210,
                                   height: 300,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: kOnSurfaceColor,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(15)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
+                                        color:
+                                            kTextButtonColor.withOpacity(0.5),
+                                        spreadRadius: 0,
+                                        blurRadius: 3,
                                         offset: const Offset(
-                                            0, 5), // changes position of shadow
+                                            0, 0), // chages position of shadow
                                       ),
                                     ],
                                   ),
@@ -390,15 +403,14 @@ class MenuScreen extends StatelessWidget {
                                             Text(
                                               'Maria',
                                               style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.green),
+                                                  fontSize: 16, color: kButtom),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: Colors.green,
+                                                color: kButtom,
                                                 size: 35,
                                               ),
                                             ),
@@ -416,16 +428,17 @@ class MenuScreen extends StatelessWidget {
                                   width: 210,
                                   height: 300,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: kOnSurfaceColor,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(15)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
-                                        offset: const Offset(
-                                            0, 5), // changes position of shadow
+                                        color:
+                                            kTextButtonColor.withOpacity(0.5),
+                                        spreadRadius: 0,
+                                        blurRadius: 3,
+                                        offset: const Offset(0,
+                                            0), //// changes position of shadow
                                       ),
                                     ],
                                   ),
@@ -492,15 +505,14 @@ class MenuScreen extends StatelessWidget {
                                             Text(
                                               'João',
                                               style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.green),
+                                                  fontSize: 16, color: kButtom),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: Colors.green,
+                                                color: kButtom,
                                                 size: 35,
                                               ),
                                             ),
@@ -527,16 +539,17 @@ class MenuScreen extends StatelessWidget {
                                   width: 210,
                                   height: 300,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: kOnSurfaceColor,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(15)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
-                                        offset: const Offset(
-                                            0, 5), // changes position of shadow
+                                        color:
+                                            kTextButtonColor.withOpacity(0.5),
+                                        spreadRadius: 0,
+                                        blurRadius: 3,
+                                        offset: const Offset(0,
+                                            0), // cha/ changes position of shadow
                                       ),
                                     ],
                                   ),
@@ -603,15 +616,14 @@ class MenuScreen extends StatelessWidget {
                                             Text(
                                               'Maria',
                                               style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.green),
+                                                  fontSize: 16, color: kButtom),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: Colors.green,
+                                                color: kButtom,
                                                 size: 35,
                                               ),
                                             ),
@@ -629,16 +641,17 @@ class MenuScreen extends StatelessWidget {
                                   width: 210,
                                   height: 300,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: kOnSurfaceColor,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(15)),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
-                                        offset: const Offset(
-                                            0, 5), // changes position of shadow
+                                        color:
+                                            kTextButtonColor.withOpacity(0.5),
+                                        spreadRadius: 0,
+                                        blurRadius: 3,
+                                        offset: const Offset(0,
+                                            0), //// changes position of shadow
                                       ),
                                     ],
                                   ),
@@ -705,15 +718,14 @@ class MenuScreen extends StatelessWidget {
                                             Text(
                                               'João',
                                               style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.green),
+                                                  fontSize: 16, color: kButtom),
                                             ),
                                             Spacer(),
                                             IconButton(
                                               onPressed: null,
                                               icon: Icon(
                                                 Icons.add_box,
-                                                color: Colors.green,
+                                                color: kButtom,
                                                 size: 35,
                                               ),
                                             ),

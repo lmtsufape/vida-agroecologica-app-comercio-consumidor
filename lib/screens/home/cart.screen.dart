@@ -1,19 +1,25 @@
-import 'package:ecommercebonito/assets/index.dart';
 import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
+import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
 import 'package:ecommercebonito/screens/home/home_screen_controller.dart';
+import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:ecommercebonito/shared/components/BottomNavigation.dart';
 import 'package:ecommercebonito/shared/constants/app_enums.dart';
-import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
+import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import '../../assets/index.dart';
 import '../../components/buttons/primary_button.dart';
-import '../../components/utils/vertical_spacer_box.dart';
-import '../screens_index.dart';
+import '../../shared/constants/app_number_constants.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
 
+  @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  late int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     late int melancia = 0;
@@ -27,15 +33,15 @@ class CartScreen extends StatelessWidget {
                 appBar: AppBar(
                   title: const Text(
                     'Ecommerce Bonito',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: kOnSurfaceColor),
                   ),
                   centerTitle: true,
-                  backgroundColor: Colors.orange,
+                  backgroundColor: kDetailColor,
                   actions: <Widget>[
                     IconButton(
                       icon: const Icon(
                         Icons.menu,
-                        color: Colors.white,
+                        color: kOnSurfaceColor,
                       ),
                       onPressed: () {
                         Navigator.pushNamed(context, Screens.profile);
@@ -48,33 +54,33 @@ class CartScreen extends StatelessWidget {
                     BottomNavigation(selectedIndex: selectedIndex),
                 body: SingleChildScrollView(
                   child: Container(
-                    color: Colors.white,
+                    color: kOnSurfaceColor,
                     width: size.width,
                     padding: const EdgeInsets.all(kDefaultPadding),
                     child: Column(children: [
-                      const Row(
+                       Row(
                         children: [
-                          Text(
+                          const Text(
                             'Subtotal',
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
-                          HorizontalSpacerBox(size: SpacerSize.small),
+                           const HorizontalSpacerBox(size: SpacerSize.small),
                           Text(
-                            'RS 64,50',
-                            style: TextStyle(
+                            'R\$ ${controller.total.toStringAsFixed(2)}',
+                            style: const TextStyle(
                                 fontSize: 30, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
                       const VerticalSpacerBox(size: SpacerSize.medium),
                       PrimaryButton(
-                        text: 'Fechar Pedido (2 itens)',
+                        text: 'Fechar Pedido (${controller.counter} itens)',
                         onPressed: () {
                           Navigator.pushNamed(
-                              context, Screens.FinalizePurchase);
+                              context, Screens.finalizePurchase);
                         },
-                        color: Colors.green,
+                        color: kButtom,
                       ),
                       const VerticalSpacerBox(size: SpacerSize.large),
                       InkWell(
@@ -82,14 +88,14 @@ class CartScreen extends StatelessWidget {
                           width: 420,
                           height: 235,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: kOnSurfaceColor,
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(15)),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 5,
-                                blurRadius: 7,
+                                color: kTextButtonColor.withOpacity(0.5),
+                                spreadRadius: 0,
+                                blurRadius: 3,
                                 offset: const Offset(
                                     0, 0), // changes position of shadow
                               ),
@@ -164,8 +170,7 @@ class CartScreen extends StatelessWidget {
                                             Text(
                                               'Maria',
                                               style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.green),
+                                                  fontSize: 16, color: kButtom),
                                             ),
                                             IconButton(
                                               onPressed: null,
@@ -185,7 +190,9 @@ class CartScreen extends StatelessWidget {
                                     size: SpacerSize.huge),
                                 const Text(
                                   'Quantidade:',
-                                  style: TextStyle(fontSize: 15),
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
                                   textAlign: TextAlign.end,
                                 ),
                                 Row(
@@ -195,15 +202,20 @@ class CartScreen extends StatelessWidget {
                                     IconButton(
                                       icon: const Icon(Icons.remove),
                                       onPressed: () {
-                                        if (melancia > 0) {
-                                          melancia--;
+                                        if (controller.melancia > 0 &&
+                                            controller.counter > 0) {
+                                          setState(() {
+                                            controller.melancia--;
+                                            controller.decrementCounter();
+                                            controller.total -= 5.50;
+                                          });
                                         }
                                       },
                                     ),
                                     const HorizontalSpacerBox(
                                         size: SpacerSize.small),
                                     Text(
-                                      melancia.toString(),
+                                      controller.melancia.toString(),
                                       style: const TextStyle(fontSize: 15),
                                       textAlign: TextAlign.end,
                                     ),
@@ -212,7 +224,11 @@ class CartScreen extends StatelessWidget {
                                     IconButton(
                                       icon: const Icon(Icons.add),
                                       onPressed: () {
-                                        melancia++;
+                                        setState(() {
+                                          controller.melancia++;
+                                          controller.incrementCounter();
+                                          controller.total += 5.50;
+                                        });
                                       },
                                     ),
                                     const HorizontalSpacerBox(
@@ -222,12 +238,13 @@ class CartScreen extends StatelessWidget {
                                       style: ButtonStyle(
                                         backgroundColor:
                                             MaterialStateProperty.all(
-                                                Colors.white),
+                                                kOnSurfaceColor),
                                       ),
                                       child: const Text(
                                         'Excluir',
                                         style: TextStyle(
-                                            fontSize: 15, color: Colors.grey),
+                                            fontSize: 15,
+                                            color: kTextButtonColor),
                                       ),
                                     ),
                                   ],
@@ -245,14 +262,14 @@ class CartScreen extends StatelessWidget {
                           width: 420,
                           height: 235,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: kOnSurfaceColor,
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(15)),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 5,
-                                blurRadius: 7,
+                                color: kTextButtonColor.withOpacity(0.5),
+                                spreadRadius: 0,
+                                blurRadius: 3,
                                 offset: const Offset(
                                     0, 0), // changes position of shadow
                               ),
@@ -325,8 +342,7 @@ class CartScreen extends StatelessWidget {
                                             Text(
                                               'João Frutas',
                                               style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.green),
+                                                  fontSize: 16, color: kButtom),
                                             ),
                                             IconButton(
                                               onPressed: null,
@@ -346,7 +362,9 @@ class CartScreen extends StatelessWidget {
                                     size: SpacerSize.huge),
                                 const Text(
                                   'Quantidade:',
-                                  style: TextStyle(fontSize: 15),
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
                                   textAlign: TextAlign.end,
                                 ),
                                 Row(
@@ -356,15 +374,20 @@ class CartScreen extends StatelessWidget {
                                     IconButton(
                                       icon: const Icon(Icons.remove),
                                       onPressed: () {
-                                        if (limao > 0) {
-                                          limao--;
+                                        if (controller.limao > 0 &&
+                                            controller.counter > 0) {
+                                          setState(() {
+                                            controller.limao--;
+                                            controller.decrementCounter();
+                                            controller.total -= 3.50;
+                                          });
                                         }
                                       },
                                     ),
                                     const HorizontalSpacerBox(
                                         size: SpacerSize.small),
                                     Text(
-                                      limao.toString(),
+                                      controller.limao.toString(),
                                       style: const TextStyle(fontSize: 15),
                                       textAlign: TextAlign.end,
                                     ),
@@ -373,7 +396,11 @@ class CartScreen extends StatelessWidget {
                                     IconButton(
                                       icon: const Icon(Icons.add),
                                       onPressed: () {
-                                        limao++;
+                                        setState(() {
+                                          controller.limao++;
+                                          controller.incrementCounter();
+                                          controller.total += 3.50;
+                                        });
                                       },
                                     ),
                                     const HorizontalSpacerBox(
@@ -383,12 +410,13 @@ class CartScreen extends StatelessWidget {
                                       style: ButtonStyle(
                                         backgroundColor:
                                             MaterialStateProperty.all(
-                                                Colors.white),
+                                                kOnSurfaceColor),
                                       ),
                                       child: const Text(
                                         'Excluir',
                                         style: TextStyle(
-                                            fontSize: 15, color: Colors.grey),
+                                            fontSize: 15,
+                                            color: kTextButtonColor),
                                       ),
                                     ),
                                   ],

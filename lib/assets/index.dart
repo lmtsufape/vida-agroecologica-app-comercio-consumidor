@@ -16,4 +16,7 @@ class Assets {
   static const String melancia = 'lib/assets/images/melancia.png';
   static const String maca = 'lib/assets/images/maça.png';
   static const String banana = 'lib/assets/images/banana.png';
+  static const String qr = 'lib/assets/images/qrcode.jpg';
+  static const String pix = 'lib/assets/images/pix.png';
+  static const String feedback = 'lib/assets/images/feedback.jpg';
 }

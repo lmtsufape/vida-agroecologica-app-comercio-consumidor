@@ -1,9 +1,8 @@
-import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
-import 'package:ecommercebonito/screens/screens_index.dart';
 import 'package:flutter/material.dart';
-
+import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
 import '../../components/utils/vertical_spacer_box.dart';
 import '../../shared/constants/app_enums.dart';
+import '../screens_index.dart';
 
 class SelectCard extends StatelessWidget {
   const SelectCard({Key? key}) : super(key: key);
