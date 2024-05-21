@@ -16,7 +16,7 @@ class HorizontalSpacerBox extends StatelessWidget {
         return const SizedBox(
           width: kSmallSize,
         );
-      case SpacerSize.medium: 
+      case SpacerSize.medium:
         return const SizedBox(
           width: kMediumSize,
         );
@@ -28,9 +28,10 @@ class HorizontalSpacerBox extends StatelessWidget {
         return const SizedBox(
           width: kHugeSize,
         );
-      default: return const SizedBox(
-        width: kSmallSize,
-      );
+      default:
+        return const SizedBox(
+          width: kSmallSize,
+        );
     }
   }
 }

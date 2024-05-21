@@ -37,7 +37,8 @@ class CarrouselScreenController with ChangeNotifier {
   }
 
   void changePage(int index) {
-    _pageController.animateToPage(index, duration: const Duration(milliseconds: 200), curve: Curves.easeInBack);
+    _pageController.animateToPage(index,
+        duration: const Duration(milliseconds: 200), curve: Curves.easeInBack);
     notifyListeners();
   }
 }

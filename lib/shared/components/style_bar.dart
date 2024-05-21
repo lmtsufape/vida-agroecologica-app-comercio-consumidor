@@ -5,8 +5,8 @@ import '../constants/style_constants.dart';
 class StyleBar extends StatelessWidget {
   final String title;
   final bool hasLeading;
-  const StyleBar({Key? key, required this.title, required this.hasLeading})
-      : super(key: key);
+
+  const StyleBar({super.key, required this.title, this.hasLeading = false});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +18,13 @@ class StyleBar extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              title,
-              style: kTitle1,
-              textAlign: TextAlign.center,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                title,
+                style: kTitle1,
+                textAlign: TextAlign.center,
+              ),
             ),
           ],
         ),

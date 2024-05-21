@@ -12,12 +12,17 @@ final kDescriptionFontFamily = GoogleFonts.firaSans().fontFamily;
 //**LIGHT COLORS */
 const Color kPrimaryColor = Color(0xFFFECA01);
 // const Color kBackgroundColor = Colors.white;
+const Color kButtomBackgroundColor = Color.fromRGBO(224, 224, 224, 1);
 const Color kBackgroundColor = Color.fromARGB(255, 225, 225, 225);
+const Color kOnBackgroundColorText = Color.fromRGBO(238, 238, 238, 1);
 const Color kSecondaryColor = Color(0xFF435969);
-const Color kDetailColor = Color(0xFFF87F01);
+const Color kDetailColor = Color.fromRGBO(245, 130, 31, 1);
+const Color borderEnabledForm = Color(0xFF008000);
 const Color kOnBackgroundColor = Color(0xFF212931);
 const Color kTextColor = Color(0xFF435969);
+const Color kTextNavColor = Colors.black;
 const Color kOnSurfaceColor = Colors.white;
+const Color kTextColorBlack = Color.fromARGB(255, 0, 0, 0);
 const Color kTextButtonColor = Colors.grey;
 const Color kTextSign = Colors.blue;
 const Color kButtom = Colors.green;
@@ -34,8 +39,9 @@ const Color kDarkTextColor = Colors.white;
 //**DARK COLORS */
 
 //*GENERAL COLORS*//
-const Color kSuccessColor = Colors.greenAccent;
-const Color kErrorColor = Colors.redAccent;
+const Color kSuccessColorPurshase = Colors.green;
+const Color kSuccessColor = Color.fromARGB(255, 1, 201, 104);
+const Color kErrorColor = Color.fromARGB(255, 189, 13, 0);
 const Color kAlertColor = Colors.orangeAccent;
 //*GENERAL COLORS*//
 
@@ -44,7 +50,7 @@ const Color kAlertColor = Colors.orangeAccent;
 const TextStyle kTitle = TextStyle(
   fontSize: 28,
   fontWeight: FontWeight.w900,
-  color: kTextButtonColor,
+  color: kPrimaryDarkColor,
 );
 
 const TextStyle kTitle1 = TextStyle(

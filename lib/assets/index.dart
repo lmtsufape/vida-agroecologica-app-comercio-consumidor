@@ -7,10 +7,17 @@ class Assets {
   //**IMAGES */
   static const String logo = 'lib/assets/images/logo_lmts.png';
   static const String vegetais = 'lib/assets/images/Carrot.png';
+  static const String beneficiados = 'lib/assets/images/beneficiados.png';
+  static const String mel = 'lib/assets/images/mel.png';
+  static const String polpa = 'lib/assets/images/polpa.png';
+  static const String raizes = 'lib/assets/images/raizes.png';
+  static const String medicinal = 'lib/assets/images/medicinal.png';
+  static const String graos = 'lib/assets/images/grao.png';
   static const String frutas = 'lib/assets/images/Bitten Apple.png';
   static const String folhosos = 'lib/assets/images/Spinach.png';
   static const String carnes = 'lib/assets/images/Meat.png';
   static const String leite = 'lib/assets/images/Milk Carton.png';
+  static const String leiteOvos = 'lib/assets/images/leite ovos.png';
   static const String ovos = 'lib/assets/images/Eggs.png';
   static const String limao = 'lib/assets/images/limão.png';
   static const String melancia = 'lib/assets/images/melancia.png';
@@ -19,4 +26,5 @@ class Assets {
   static const String qr = 'lib/assets/images/qrcode.jpg';
   static const String pix = 'lib/assets/images/pix.png';
   static const String feedback = 'lib/assets/images/feedback.jpg';
+  static const String document = 'lib/assets/images/ufape-edu-br.pem';
 }

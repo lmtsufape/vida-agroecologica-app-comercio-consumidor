@@ -22,7 +22,6 @@ class FinishPurchaseDialog extends StatelessWidget {
           fontSize: 15,
         ),
       ),
-      
     );
   }
 }

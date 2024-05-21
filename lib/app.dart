@@ -1,45 +1,46 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:ecommercebonito/screens/banca/banca_screen.dart';
+
 import 'package:ecommercebonito/screens/first/first_screen.dart';
-import 'package:ecommercebonito/screens/home/cart.screen.dart';
-import 'package:ecommercebonito/screens/home/favorite_screen.dart';
-import 'package:ecommercebonito/screens/menu/menu_screen.dart';
-import 'package:ecommercebonito/screens/menu/menu_seller_screen.dart';
-import 'package:ecommercebonito/screens/purchase/finalize_purchase_screen.dart';
+import 'package:ecommercebonito/screens/cesta/cart.screen.dart';
+import 'package:ecommercebonito/screens/favorito/favorite_screen.dart';
+import 'package:ecommercebonito/screens/favorito/favorite_seller_screen.dart';
+import 'package:ecommercebonito/screens/produto/detalhes/products_details_screen.dart';
+import 'package:ecommercebonito/screens/produto/products_screen.dart';
+import 'package:ecommercebonito/screens/pedidos/finalizar/finalize_purchase_screen.dart';
 import 'package:ecommercebonito/screens/home/home_screen.dart';
-import 'package:ecommercebonito/screens/profile/adress_screen.dart';
-import 'package:ecommercebonito/screens/profile/card_screen.dart';
+import 'package:ecommercebonito/screens/profile/editar/endereco/adress_edit_screen.dart';
+import 'package:ecommercebonito/screens/profile/endereco/adress_screen.dart';
+import 'package:ecommercebonito/screens/profile/editar/perfil/profile_edit_screen.dart';
 import 'package:ecommercebonito/screens/profile/profile_screen.dart';
-import 'package:ecommercebonito/screens/profile/select_adress_screen.dart';
-import 'package:ecommercebonito/screens/profile/select_card_screen.dart';
-import 'package:ecommercebonito/screens/register/register_adress.dart';
-import 'package:ecommercebonito/screens/register/register_screen.dart';
+import 'package:ecommercebonito/screens/profile/endereco/select_adress_screen.dart';
+import 'package:ecommercebonito/screens/signup/sign_up_screen.dart';
+import 'package:ecommercebonito/shared/core/navigator.dart';
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_wrapper.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:ecommercebonito/screens/screens_index.dart';
-import 'screens/purchase/purchases_screen.dart';
+import 'screens/pedidos/purchases_screen.dart';
 import 'screens/signin/sign_in_screen.dart';
 import 'screens/splash/splash_screen.dart';
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      debugShowMaterialGrid: false,
+      localizationsDelegates: const [GlobalMaterialLocalizations.delegate],
+      supportedLocales: const [Locale('en'), Locale('pt, BR')],
       useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),
-      builder: (context, child) {
+      navigatorKey: navigatorKey,
+      builder: (context, widget) {
         return DevicePreview.appBuilder(
-            context,
-            ResponsiveWrapper.builder(child,
-                minWidth: 640,
-                maxWidth: 1980,
-                defaultScale: true,
-                breakpoints: const [
-                  ResponsiveBreakpoint.resize(480, name: MOBILE),
-                  ResponsiveBreakpoint.resize(768, name: TABLET),
-                  ResponsiveBreakpoint.resize(1024, name: DESKTOP),
-                ]));
+          context,
+          widget!,
+        );
       },
       debugShowCheckedModeBanner: false,
       home: const SplashScreen(),
@@ -47,21 +48,25 @@ class App extends StatelessWidget {
         Screens.splash: (BuildContext context) => const SplashScreen(),
         // Screens.carrousel: (BuildContext context) => const CarrouselScreen(),
         Screens.home: (BuildContext context) => const HomeScreen(),
-        Screens.signin: (BuildContext context) => const SignInScreen(),
-        Screens.register: (BuildContext context) => const RegisterScreen(),
-        Screens.registerAdress: (BuildContext context) =>
-            const RegisterAdress(),
+        Screens.signin: (BuildContext context) => SignInScreen(),
+        Screens.register: (BuildContext context) => const SignUpScreen(),
         Screens.first: (BuildContext context) => const FirstScreen(),
         Screens.profile: (BuildContext context) => const ProfileScreen(),
         Screens.favorite: (BuildContext context) => const FavoriteScreen(),
         Screens.purchases: (BuildContext context) => const PurchasesScreen(),
-        Screens.adress: (BuildContext context) => const AdressScreen(),
-        Screens.payment: (BuildContext context) => const CardScreen(),
-        Screens.selectAdress: (BuildContext context) => const SelectAdress(),
-        Screens.selectCard: (BuildContext context) => const SelectCard(),
-        Screens.menu: (BuildContext context) => const MenuScreen(),
+        Screens.adress: (BuildContext context) => const AddressScreen(),
+        Screens.addressEdit: (BuildContext context) => const AdressEditScreen(),
+        Screens.selectAdress: (BuildContext context) => const SelectAddress(),
         Screens.menuSeller: (BuildContext context) => const MenuSellerScreen(),
+        Screens.menuProducts: (BuildContext context) =>
+            const MenuProductsScreen(),
         Screens.cart: (BuildContext context) => const CartScreen(),
+
+        Screens.bancas: (BuildContext context) => const Bancas(),
+        Screens.produtoDetalhe: (BuildContext context) =>
+            const ProdutoDetalheScreen(),
+        Screens.perfilEditar: (BuildContext context) =>
+            const ProfileEditScreen(),
         Screens.finalizePurchase: (BuildContext context) =>
             const FinalizePurchaseScreen(),
       },

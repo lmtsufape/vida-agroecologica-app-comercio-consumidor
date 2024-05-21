@@ -4,8 +4,7 @@ import 'package:ecommercebonito/shared/constants/app_enums.dart';
 import 'package:ecommercebonito/shared/constants/style_constants.dart';
 
 class AppNotificationManager {
-  static void showSimpleNotification(NotificationType type,
-      [String? title]) {
+  static void showSimpleNotification(NotificationType type, [String? title]) {
     Color typeColor;
     String notificationTitle;
 

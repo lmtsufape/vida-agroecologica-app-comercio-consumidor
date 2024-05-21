@@ -5,14 +5,20 @@ class AuthFormField extends StatefulWidget {
   final String label;
   final bool isPassword;
   final TextInputType inputType;
-  final Function(String) onChanged;
+  final Function(String)? onChanged;
+  final Color backgroundColor;
+  final TextEditingController? controller;
+  final String? initialValue;
 
   const AuthFormField({
     Key? key,
     required this.label,
     required this.isPassword,
     required this.inputType,
-    required this.onChanged,
+    this.onChanged,
+    this.backgroundColor = kOnBackgroundColorText,
+    this.controller,
+    this.initialValue,
   }) : super(key: key);
 
   @override
@@ -20,18 +26,29 @@ class AuthFormField extends StatefulWidget {
 }
 
 class _AuthFormFieldState extends State<AuthFormField> {
+  late TextEditingController _controller;
   bool showPassword = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: widget.initialValue);
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SizedBox(
       height: size.height * 0.06,
       child: TextFormField(
+        controller: _controller,
         onChanged: widget.onChanged,
         style: const TextStyle(color: kSecondaryColor),
         obscureText: widget.isPassword ? showPassword : false,
         keyboardType: widget.inputType,
         decoration: InputDecoration(
+          filled: true,
+          fillColor: widget.backgroundColor,
           suffixIcon: widget.isPassword
               ? InkWell(
                   onTap: () {
@@ -40,14 +57,24 @@ class _AuthFormFieldState extends State<AuthFormField> {
                     });
                   },
                   child: Icon(
-                      showPassword ? Icons.visibility : Icons.visibility_off,
-                      color: kDetailColor))
+                    showPassword ? Icons.visibility : Icons.visibility_off,
+                    color: kDetailColor,
+                  ),
+                )
               : null,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide.none,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(
               color: kDetailColor,
-              width: 1,
+              width: 1.5,
             ),
           ),
         ),
