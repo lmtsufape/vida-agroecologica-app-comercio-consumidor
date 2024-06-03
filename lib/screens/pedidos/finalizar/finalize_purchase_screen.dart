@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:ecommercebonito/assets/index.dart';
 import 'package:ecommercebonito/components/appBar/custom_app_bar.dart';
 import 'package:ecommercebonito/shared/core/controllers/home_screen_controller.dart';
@@ -10,6 +12,8 @@ import 'package:ecommercebonito/shared/constants/style_constants.dart';
 import 'package:provider/provider.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 import '../../../components/buttons/primary_button.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:path/path.dart' as path;
 
 class FinalizePurchaseScreen extends StatefulWidget {
   const FinalizePurchaseScreen({super.key});
@@ -19,6 +23,9 @@ class FinalizePurchaseScreen extends StatefulWidget {
 }
 
 class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
+  String _deliveryMethod = 'Retirada'; // valor padrão
+  String _paymentMethod = 'Pix'; // Valor padrão
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -246,12 +253,13 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                     overlayColor:
                                         MaterialStateProperty.all(kDetailColor),
                                     value: 'Retirada',
-                                    groupValue: 'Retirada',
+                                    groupValue: _deliveryMethod,
                                     activeColor: kDetailColor,
                                     focusColor: kDetailColor,
                                     hoverColor: kDetailColor,
                                     onChanged: (value) {
                                       setState(() {
+                                        _deliveryMethod = value.toString();
                                         controller.setFormEnt(value.toString());
                                       });
                                     }),
@@ -269,12 +277,13 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                     overlayColor:
                                         MaterialStateProperty.all(kDetailColor),
                                     value: 'Entrega',
-                                    groupValue: 'Entrega',
+                                    groupValue: _deliveryMethod,
                                     activeColor: kDetailColor,
                                     focusColor: kDetailColor,
                                     hoverColor: kDetailColor,
                                     onChanged: (value) {
                                       setState(() {
+                                        _deliveryMethod = value.toString();
                                         controller.setFormEnt(value.toString());
                                       });
                                     }),
@@ -296,53 +305,55 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                           ),
                         ]),
                         const VerticalSpacerBox(size: SpacerSize.small),
-                        InkWell(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 350,
-                                height: 95,
-                                decoration: BoxDecoration(
-                                  color: kOnSurfaceColor,
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(15)),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: kTextButtonColor.withOpacity(0.5),
-                                      spreadRadius: 0,
-                                      blurRadius: 3,
-                                      offset: const Offset(0, 0),
-                                    ),
-                                  ],
-                                ),
-                                child: Wrap(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: 30.0,
-                                          decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
+                        if (_deliveryMethod == 'Entrega')
+                          InkWell(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 350,
+                                  height: 95,
+                                  decoration: BoxDecoration(
+                                    color: kOnSurfaceColor,
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(15)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color:
+                                            kTextButtonColor.withOpacity(0.5),
+                                        spreadRadius: 0,
+                                        blurRadius: 3,
+                                        offset: const Offset(0, 0),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Wrap(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Container(
+                                            width: 30.0,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
                                           ),
-                                        ),
-                                        const Text(
-                                          'Endereço',
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
-                                          textAlign: TextAlign.start,
-                                        ),
-                                        const Spacer(),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            const VerticalSpacerBox(
-                                                size: SpacerSize.medium),
-                                            IconButton(
+                                          const Text(
+                                            'Endereço',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold),
+                                            textAlign: TextAlign.start,
+                                          ),
+                                          const Spacer(),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              const VerticalSpacerBox(
+                                                  size: SpacerSize.medium),
+                                              IconButton(
                                                 onPressed: () {
                                                   Navigator.pushNamed(context,
                                                       Screens.selectAdress);
@@ -351,34 +362,36 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                                   Icons
                                                       .arrow_forward_ios_outlined,
                                                   color: kTextButtonColor,
-                                                )),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    const Center(
-                                      child: Row(
-                                        children: [
-                                          HorizontalSpacerBox(
-                                              size: SpacerSize.huge),
-                                          Text(
-                                            'Rua Professora Esmeralda Barros, 71, Apt, ...',
-                                            style: TextStyle(
-                                                fontSize: 1,
-                                                color: kTextButtonColor),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
-                                    ),
-                                  ],
+                                      const Center(
+                                        child: Row(
+                                          children: [
+                                            HorizontalSpacerBox(
+                                                size: SpacerSize.huge),
+                                            Text(
+                                              'Rua Professora Esmeralda Barros, 71, Apt, ...',
+                                              style: TextStyle(
+                                                  fontSize: 1,
+                                                  color: kTextButtonColor),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, Screens.selectAdress);
+                            },
                           ),
-                          onTap: () {
-                            Navigator.pushNamed(context, Screens.selectAdress);
-                          },
-                        ),
                         const VerticalSpacerBox(size: SpacerSize.medium),
                         const Row(children: [
                           Text(
@@ -408,9 +421,10 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                     focusColor: kDetailColor,
                                     hoverColor: kDetailColor,
                                     value: 'Pix',
-                                    groupValue: 'Pix',
+                                    groupValue: _paymentMethod,
                                     onChanged: (value) {
                                       setState(() {
+                                        _paymentMethod = value.toString();
                                         controller.setFormPag(value.toString());
                                       });
                                     }),
@@ -431,9 +445,10 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                     focusColor: kDetailColor,
                                     hoverColor: kDetailColor,
                                     value: 'Espécie',
-                                    groupValue: 'Espécie',
+                                    groupValue: _paymentMethod,
                                     onChanged: (value) {
                                       setState(() {
+                                        _paymentMethod = value.toString();
                                         controller.setFormPag(value.toString());
                                       });
                                     }),
@@ -454,9 +469,10 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                     activeColor: kDetailColor,
                                     focusColor: kDetailColor,
                                     hoverColor: kDetailColor,
-                                    groupValue: 'Cartão',
+                                    groupValue: _paymentMethod,
                                     onChanged: (value) {
                                       setState(() {
+                                        _paymentMethod = value.toString();
                                         controller.setFormPag(value.toString());
                                       });
                                     }),
@@ -470,53 +486,249 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                           ],
                         ),
                         const VerticalSpacerBox(size: SpacerSize.small),
-                        InkWell(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 350,
-                                height: 110,
-                                decoration: BoxDecoration(
-                                  color: kOnSurfaceColor,
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(15)),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: kTextButtonColor.withOpacity(0.5),
-                                      spreadRadius: 0,
-                                      blurRadius: 3,
-                                      offset: const Offset(0, 0),
-                                    ),
-                                  ],
-                                ),
+                        if (_paymentMethod == 'Pix')
+                          InkWell(
+                            child: Container(
+                              width: 350,
+                              height: 320,
+                              decoration: BoxDecoration(
+                                color: kOnSurfaceColor,
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(15)),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: kTextButtonColor.withOpacity(0.5),
+                                    spreadRadius: 0,
+                                    blurRadius: 3,
+                                    offset: const Offset(0, 0),
+                                  ),
+                                ],
+                              ),
+                              child: Center(
                                 child: Wrap(
                                   children: [
                                     Row(
                                       children: [
+                                        const HorizontalSpacerBox(
+                                            size: SpacerSize.large),
                                         Container(
-                                          width: 30.0,
+                                          transformAlignment: Alignment.center,
+                                          alignment: Alignment.center,
+                                          height: 75.0,
                                           decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
+                                            shape: BoxShape.rectangle,
+                                            image: DecorationImage(
+                                              fit: BoxFit.fill,
+                                              image: NetworkImage(
+                                                "http://faq-login-unico.servicos.gov.br/en/latest/_images/imagem_qrcode_exemplo.jpg",
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                        const Text(
-                                          'Forma de Pagamento',
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
-                                          textAlign: TextAlign.start,
-                                        ),
-                                        const Spacer(),
+                                        const HorizontalSpacerBox(
+                                            size: SpacerSize.large),
                                         Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
+                                            Row(
+                                              children: [
+                                                Image.asset(
+                                                  Assets.pix,
+                                                  width: 180,
+                                                  height: 100,
+                                                ),
+                                              ],
+                                            ),
+                                            const VerticalSpacerBox(
+                                                size: SpacerSize.small),
+                                            const Row(
+                                              children: [
+                                                Text(
+                                                  'Nome: João da Silva',
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                  selectionColor: kText,
+                                                ),
+                                              ],
+                                            ),
+                                            const Row(
+                                              children: [
+                                                Text(
+                                                  'Tipo de Chave: QR Code',
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                  selectionColor: kText,
+                                                ),
+                                              ],
+                                            ),
                                             const VerticalSpacerBox(
                                                 size: SpacerSize.medium),
-                                            IconButton(
+                                            const Row(
+                                              children: [
+                                                HorizontalSpacerBox(
+                                                    size: SpacerSize.huge),
+                                                HorizontalSpacerBox(
+                                                    size: SpacerSize.medium),
+                                                Text(
+                                                  'Chave aleatória',
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                  selectionColor: kText,
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                Container(
+                                                  color: kColorBottom,
+                                                  height: 25,
+                                                  width: 225,
+                                                  child: const Center(
+                                                    child: Text(
+                                                      'edjsd-574757-dsdijsd4',
+                                                      style: TextStyle(
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                      selectionColor: kText,
+                                                    ),
+                                                  ),
+                                                ),
+                                                IconButton(
+                                                  onPressed: () => {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(const SnackBar(
+                                                            backgroundColor:
+                                                                kDetailColor,
+                                                            content: Text(
+                                                                'Copiado para área de transferência')))
+                                                  },
+                                                  icon: const Icon(
+                                                    Icons.copy,
+                                                    color: kTextButtonColor,
+                                                    size: 30,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            GestureDetector(
+                                              onTap: () async {
+                                                FilePickerResult? result =
+                                                    await FilePicker.platform
+                                                        .pickFiles();
+
+                                                if (result != null) {
+                                                  File file = File(result
+                                                      .files.single.path!);
+                                                  String nome =
+                                                      path.basename(file.path);
+                                                  print(
+                                                      'Arquivo selecionado: $nome');
+                                                } else {
+                                                  print(
+                                                      'Nenhum arquivo selecionado.');
+                                                }
+                                              },
+                                              child: Row(
+                                                children: [
+                                                  Container(
+                                                    color: kDetailColor,
+                                                    height: 30,
+                                                    width: 225,
+                                                    child: const Center(
+                                                      child: Text(
+                                                        'Comprovante de pagamento',
+                                                        style: TextStyle(
+                                                            fontSize: 15,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color: kText),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  IconButton(
+                                                    onPressed: () {
+                                                      // Aqui você pode implementar a lógica para mostrar o arquivo anexado, se houver algum
+                                                      // Por exemplo, você pode exibir uma caixa de diálogo com o arquivo anexado ou abrir o arquivo em um visualizador
+                                                    },
+                                                    icon: const Icon(
+                                                      Icons.archive,
+                                                      color: kDetailColor,
+                                                      size: 30,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            onTap: () {},
+                          ),
+                        if (_paymentMethod == 'Cartão')
+                          InkWell(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 350,
+                                  height: 110,
+                                  decoration: BoxDecoration(
+                                    color: kOnSurfaceColor,
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(15)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color:
+                                            kTextButtonColor.withOpacity(0.5),
+                                        spreadRadius: 0,
+                                        blurRadius: 3,
+                                        offset: const Offset(0, 0),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Wrap(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Container(
+                                            width: 30.0,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                          ),
+                                          const Text(
+                                            'Forma de Pagamento',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold),
+                                            textAlign: TextAlign.start,
+                                          ),
+                                          const Spacer(),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              const VerticalSpacerBox(
+                                                  size: SpacerSize.medium),
+                                              IconButton(
                                                 onPressed: () {
                                                   Navigator.pushNamed(context,
                                                       Screens.selectCard);
@@ -525,233 +737,54 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                                   Icons
                                                       .arrow_forward_ios_outlined,
                                                   color: kTextButtonColor,
-                                                )),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      const Center(
+                                        child: Row(
+                                          children: [
+                                            HorizontalSpacerBox(
+                                                size: SpacerSize.huge),
+                                            Text(
+                                              'Mastercard ',
+                                              style: TextStyle(fontSize: 16),
+                                            ),
+                                            Text('(Crédito) ',
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                            Text(
+                                              'com final 1447 ',
+                                              style: TextStyle(fontSize: 16),
+                                            ),
                                           ],
                                         ),
-                                      ],
-                                    ),
-                                    const Center(
-                                      child: Row(
-                                        children: [
-                                          HorizontalSpacerBox(
-                                              size: SpacerSize.huge),
-                                          Text(
-                                            'Mastercard ',
-                                            style: TextStyle(fontSize: 16),
-                                          ),
-                                          Text('(Crédito) ',
-                                              style: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.bold)),
-                                          Text(
-                                            'com final 1447 ',
-                                            style: TextStyle(fontSize: 16),
-                                          ),
-                                        ],
                                       ),
-                                    ),
-                                    const Center(
-                                      child: Row(
-                                        children: [
-                                          HorizontalSpacerBox(
-                                              size: SpacerSize.huge),
-                                          Text(
-                                            'Parcelas não disponíveis',
-                                            style: TextStyle(fontSize: 16),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          onTap: () {
-                            Navigator.pushNamed(context, Screens.selectCard);
-                          },
-                        ),
-                        const VerticalSpacerBox(size: SpacerSize.large),
-                        InkWell(
-                          child: Container(
-                            width: 350,
-                            height: 320,
-                            decoration: BoxDecoration(
-                              color: kOnSurfaceColor,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(15)),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: kTextButtonColor.withOpacity(0.5),
-                                  spreadRadius: 0,
-                                  blurRadius: 3,
-                                  offset: const Offset(0, 0),
-                                ),
-                              ],
-                            ),
-                            child: Center(
-                              child: Wrap(
-                                children: [
-                                  Row(
-                                    children: [
-                                      const HorizontalSpacerBox(
-                                          size: SpacerSize.large),
-                                      Container(
-                                        transformAlignment: Alignment.center,
-                                        alignment: Alignment.center,
-                                        height: 75.0,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.rectangle,
-                                          image: DecorationImage(
-                                            fit: BoxFit.fill,
-                                            image: NetworkImage(
-                                              "http://faq-login-unico.servicos.gov.br/en/latest/_images/imagem_qrcode_exemplo.jpg",
+                                      const Center(
+                                        child: Row(
+                                          children: [
+                                            HorizontalSpacerBox(
+                                                size: SpacerSize.huge),
+                                            Text(
+                                              'Parcelas não disponíveis',
+                                              style: TextStyle(fontSize: 16),
                                             ),
-                                          ),
+                                          ],
                                         ),
-                                      ),
-                                      const HorizontalSpacerBox(
-                                          size: SpacerSize.large),
-                                      Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Image.asset(
-                                                Assets.pix,
-                                                width: 180,
-                                                height: 100,
-                                              ),
-                                              // Text(
-                                              //   'PIX: CHAVES',
-                                              //   style: TextStyle(
-                                              //       fontSize: 26,
-                                              //       fontWeight:
-                                              //           FontWeight.bold),
-                                              // ),
-                                            ],
-                                          ),
-                                          const VerticalSpacerBox(
-                                              size: SpacerSize.small),
-                                          const Row(
-                                            children: [
-                                              Text(
-                                                'Nome: João da Silva',
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                                selectionColor: kText,
-                                              ),
-                                            ],
-                                          ),
-                                          const Row(
-                                            children: [
-                                              Text(
-                                                'Tipo de Chave: QR Code',
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                                selectionColor: kText,
-                                              ),
-                                            ],
-                                          ),
-                                          const VerticalSpacerBox(
-                                              size: SpacerSize.medium),
-                                          const Row(
-                                            children: [
-                                              HorizontalSpacerBox(
-                                                  size: SpacerSize.huge),
-                                              HorizontalSpacerBox(
-                                                  size: SpacerSize.medium),
-                                              Text(
-                                                'Chave aleatória',
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                                selectionColor: kText,
-                                              ),
-                                            ],
-                                          ),
-                                          Row(
-                                            children: [
-                                              Container(
-                                                color: kColorBottom,
-                                                height: 25,
-                                                width: 225,
-                                                child: const Center(
-                                                  child: Text(
-                                                    'edjsd-574757-dsdijsd4',
-                                                    style: TextStyle(
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                    selectionColor: kText,
-                                                  ),
-                                                ),
-                                              ),
-                                              IconButton(
-                                                onPressed: () => {
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(const SnackBar(
-                                                          backgroundColor:
-                                                              kDetailColor,
-                                                          content: Text(
-                                                              'Copiado para área de transferência')))
-                                                },
-                                                icon: const Icon(
-                                                  Icons.copy,
-                                                  color: kTextButtonColor,
-                                                  size: 30,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          InkWell(
-                                            onTap: null,
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                  color: kDetailColor,
-                                                  height: 30,
-                                                  width: 225,
-                                                  child: const Center(
-                                                    child: Text(
-                                                      'Comprovante de pagamento',
-                                                      style: TextStyle(
-                                                          fontSize: 15,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: kText),
-                                                    ),
-                                                  ),
-                                                ),
-                                                IconButton(
-                                                  onPressed: () => {},
-                                                  icon: const Icon(
-                                                    Icons.archive,
-                                                    color: kDetailColor,
-                                                    size: 30,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
+                            onTap: () {
+                              Navigator.pushNamed(context, Screens.selectCard);
+                            },
                           ),
-                          onTap: () {},
-                        ),
                         const VerticalSpacerBox(size: SpacerSize.large),
                         PrimaryButton(
                           text: 'Confirmar pedido',

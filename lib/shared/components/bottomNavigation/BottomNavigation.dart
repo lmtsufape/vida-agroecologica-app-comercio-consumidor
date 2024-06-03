@@ -57,7 +57,7 @@ class BottomNavigation extends StatelessWidget {
         selectedItemColor: kDetailColor,
         backgroundColor: kOnSurfaceColor,
         onTap: (index) {
-          bottomNavigatorController.mudarAba(index, context, paginaSelecionada);
+          bottomNavigatorController.mudarAba(index, context);
         });
   }
 }
