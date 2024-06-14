@@ -14,6 +14,7 @@ class PedidoController with ChangeNotifier {
 
   PedidosStatus status = PedidosStatus.idle;
   List<PedidoModel> orders = [];
+  List<PedidoModel> filteredOrders = [];
 
   PedidoController(this._pedidosRepository) {
     loadOrders();
@@ -24,13 +25,23 @@ class PedidoController with ChangeNotifier {
     notifyListeners();
     try {
       orders = await _pedidosRepository.getOrders();
-      if (orders.isEmpty) {
-        status = PedidosStatus.done;
-      } else {
-        status = PedidosStatus.done;
-      }
+      filteredOrders = orders;
+      status = PedidosStatus.done;
     } catch (e) {
       status = PedidosStatus.error;
+    }
+    notifyListeners();
+  }
+
+  void searchOrders(String query) {
+    if (query.isEmpty) {
+      filteredOrders = orders;
+    } else {
+      filteredOrders = orders
+          .where((order) =>
+              order.bancaNome != null &&
+              order.bancaNome!.toLowerCase().contains(query.toLowerCase()))
+          .toList();
     }
     notifyListeners();
   }

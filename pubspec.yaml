@@ -63,6 +63,7 @@ dependencies:
   flutter_secure_storage: ^9.0.0
   http: ^1.2.1
   cpf_cnpj_validator: ^2.0.0
+  file_picker: ^8.0.3
 
 
 dev_dependencies:
@@ -91,7 +92,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/assets/images/
-
+    - lib/assets/certificates/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

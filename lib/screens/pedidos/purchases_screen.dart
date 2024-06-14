@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'package:ecommercebonito/shared/components/bottomNavigation/BottomNavigation.dart';
 import 'package:ecommercebonito/shared/core/repositories/pedidos_repository.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +8,7 @@ import 'package:ecommercebonito/shared/core/controllers/pedidos_controller.dart'
 import 'package:ecommercebonito/components/appBar/custom_app_bar.dart';
 import 'package:ecommercebonito/components/forms/custom_order.dart';
 import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
+import 'package:ecommercebonito/components/buttons/custom_search_field.dart';
 import '../../shared/constants/app_enums.dart';
 
 class PurchasesScreen extends StatefulWidget {
@@ -56,29 +55,44 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
               color: kOnSurfaceColor,
               width: MediaQuery.of(context).size.width,
               padding: const EdgeInsets.all(20),
-              child: controller.orders.isNotEmpty
-                  ? SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          const VerticalSpacerBox(size: SpacerSize.small),
-                          ...List.generate(controller.orders.length, (index) {
-                            var order = controller.orders[index];
-                            return OrderCard(
-                              orderNumber: '#${index + 1}',
-                              sellerName:
-                                  order.bancaNome ?? 'Banca Desconhecida',
-                              itemsTotal: order.subtotal,
-                              shippingHandling: order.taxaEntrega,
-                              date: formatDate(order.dataPedido),
-                              status: order.status,
-                              onTap: () => _onOrderTapped(order.id),
-                            );
-                          }),
-                          const VerticalSpacerBox(size: SpacerSize.medium),
-                        ],
-                      ),
-                    )
-                  : _buildEmptyListWidget(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomSearchField(
+                    fillColor: kOnBackgroundColorText,
+                    iconColor: kDetailColor,
+                    hintText: 'Buscar por pedidos',
+                    padding: const EdgeInsets.all(5.0),
+                    onSearch: (query) {
+                      controller.searchOrders(query);
+                    },
+                    setLoading: (bool loading) {
+                      // Implementar estado de carregamento se necessário
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  controller.filteredOrders.isNotEmpty
+                      ? Expanded(
+                          child: ListView.builder(
+                            itemCount: controller.filteredOrders.length,
+                            itemBuilder: (context, index) {
+                              var order = controller.filteredOrders[index];
+                              return OrderCard(
+                                orderNumber: '#${index + 1}',
+                                sellerName:
+                                    order.bancaNome ?? 'Banca Desconhecida',
+                                itemsTotal: order.subtotal,
+                                shippingHandling: order.taxaEntrega,
+                                date: formatDate(order.dataPedido),
+                                status: order.status,
+                                onTap: () => _onOrderTapped(order.id),
+                              );
+                            },
+                          ),
+                        )
+                      : _buildEmptyListWidget(),
+                ],
+              ),
             ),
           );
         },
