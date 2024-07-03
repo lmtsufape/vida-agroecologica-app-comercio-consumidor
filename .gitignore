@@ -9,7 +9,7 @@
 .history
 .svn/
 migrate_working_dir/
-
+.vscode/settings.json
 # IntelliJ related
 *.iml
 *.ipr
@@ -55,3 +55,6 @@ windows/flutter/generated_plugin_registrant.cc
 windows/flutter/generated_plugin_registrant.h
 .vscode/settings.json
 pubspec.lock
+
+# FVM Version Cache
+.fvm/
