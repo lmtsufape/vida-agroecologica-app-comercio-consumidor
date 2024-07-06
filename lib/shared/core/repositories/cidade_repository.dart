@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:ecommercebonito/shared/core/models/cidade_model.dart';
-import 'package:ecommercebonito/shared/core/user_storage.dart';
+import 'package:ecommerceassim/shared/core/models/cidade_model.dart';
+import 'package:ecommerceassim/shared/core/user_storage.dart';
 
 import '../../constants/app_text_constants.dart';
 

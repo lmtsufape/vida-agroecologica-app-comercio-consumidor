@@ -4,15 +4,14 @@ import '../../core/navigator.dart';
 
 class DefaultAlertDialog extends StatelessWidget {
   const DefaultAlertDialog(
-      {Key? key,
+      {super.key,
       required this.title,
       required this.body,
       required this.cancelText,
       required this.onConfirm,
       required this.confirmText,
       required this.confirmColor,
-      required this.cancelColor})
-      : super(key: key);
+      required this.cancelColor});
 
   final String title;
   final String body;
@@ -102,13 +101,12 @@ class DefaultAlertDialog extends StatelessWidget {
 
 class DefaultAlertDialogOneButton extends StatelessWidget {
   const DefaultAlertDialogOneButton(
-      {Key? key,
+      {super.key,
       required this.title,
       required this.body,
       required this.onConfirm,
       required this.confirmText,
-      required this.buttonColor})
-      : super(key: key);
+      required this.buttonColor});
 
   final String title;
   final String body;

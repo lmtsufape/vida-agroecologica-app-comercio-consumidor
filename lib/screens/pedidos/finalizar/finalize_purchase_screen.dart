@@ -1,52 +1,324 @@
-import 'dart:io';
+// ignore_for_file: avoid_print, use_build_context_synchronously
 
-import 'package:ecommercebonito/assets/index.dart';
-import 'package:ecommercebonito/components/appBar/custom_app_bar.dart';
-import 'package:ecommercebonito/shared/core/controllers/home_screen_controller.dart';
+import 'package:ecommerceassim/components/appBar/custom_app_bar.dart';
+import 'package:ecommerceassim/screens/cesta/cart_provider.dart';
+import 'package:ecommerceassim/shared/core/controllers/profile_controller.dart';
+import 'package:ecommerceassim/shared/core/controllers/purchase_controller.dart';
+import 'package:ecommerceassim/shared/core/models/cart_model.dart';
+import 'package:ecommerceassim/shared/core/models/endereco_model.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
-import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
-import 'package:ecommercebonito/screens/screens_index.dart';
-import 'package:ecommercebonito/shared/constants/app_enums.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
+import 'package:ecommerceassim/components/utils/horizontal_spacer_box.dart';
+import 'package:ecommerceassim/components/utils/vertical_spacer_box.dart';
+import 'package:ecommerceassim/screens/screens_index.dart';
+import 'package:ecommerceassim/shared/constants/app_enums.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import 'package:rating_dialog/rating_dialog.dart';
 import '../../../components/buttons/primary_button.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:path/path.dart' as path;
 
 class FinalizePurchaseScreen extends StatefulWidget {
-  const FinalizePurchaseScreen({super.key});
+  final List<CartModel> cartModel;
+  final Map<String, dynamic>? addressData;
+
+  const FinalizePurchaseScreen(this.cartModel, {this.addressData, super.key});
 
   @override
   State<FinalizePurchaseScreen> createState() => _FinalizePurchaseScreenState();
 }
 
 class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
-  String _deliveryMethod = 'Retirada'; // valor padrão
-  String _paymentMethod = 'Pix'; // Valor padrão
+  String _deliveryMethod = 'retirada';
+  int _paymentMethodId = 1;
+  AddressModel? userAddress;
+  bool isLoading = true;
+  late int selectedAddressId;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserAddress();
+  }
+
+  Future<void> _loadUserAddress() async {
+    final profileController =
+        Provider.of<ProfileController>(context, listen: false);
+    await profileController.fetchUserAddresses();
+    setState(() {
+      if (profileController.addresses.isNotEmpty) {
+        userAddress = profileController.addresses.first;
+        selectedAddressId = userAddress!.id;
+      }
+      isLoading = false;
+    });
+  }
+
+  void _chooseAddress(
+      BuildContext context, ProfileController controller) async {
+    final AddressModel? selectedAddress = await showDialog<AddressModel>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          title: const Text(
+            'Escolha um endereço!',
+            style: TextStyle(fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          content: SizedBox(
+            width: double.minPositive,
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: controller.addresses.length,
+              itemBuilder: (BuildContext context, int index) {
+                var address = controller.addresses[index];
+                return ListTile(
+                  leading: Text(
+                    '${index + 1}',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  title: Text('${address.rua}, ${address.numero}'),
+                  subtitle:
+                      Text('${address.cidadeNome}, ${address.bairroNome} '),
+                  onTap: () => Navigator.pop(context, address),
+                );
+              },
+            ),
+          ),
+        );
+      },
+    );
+    if (selectedAddress != null) {
+      setState(() {
+        userAddress = selectedAddress;
+        selectedAddressId = selectedAddress.id;
+        print("ENDEREÇO: $selectedAddressId");
+      });
+    }
+  }
+
+  void showSuccessDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text(
+            'Pedido realizado!',
+            style: TextStyle(fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          backgroundColor: Colors.white,
+          content:
+              const Icon(Icons.shopping_bag, size: 100, color: kDetailColor),
+          actions: <Widget>[
+            PrimaryButton(
+              text: "OK",
+              onPressed: () {
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  Screens.home,
+                  (Route<dynamic> route) => false,
+                );
+              },
+              color: kDetailColor,
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void showErrorDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text(
+            'Erro',
+            style: TextStyle(fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          backgroundColor: Colors.white,
+          content: Text(
+            message,
+            style: const TextStyle(fontSize: 16),
+            textAlign: TextAlign.center,
+          ),
+          actions: <Widget>[
+            PrimaryButton(
+              text: "OK",
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              color: kDetailColor,
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    final cartListProvider = Provider.of<CartProvider>(context);
     Size size = MediaQuery.of(context).size;
-    return ChangeNotifierProvider(
-        create: (_) => HomeScreenController(),
-        builder: (context, child) => Consumer<HomeScreenController>(
-              builder: ((context, controller, child) => Scaffold(
+    final profileController =
+        Provider.of<ProfileController>(context, listen: false);
+
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: isLoading
+          ? const Scaffold(
+              backgroundColor: Colors.white,
+              appBar: CustomAppBar(),
+              body:
+                  Center(child: CircularProgressIndicator(color: kDetailColor)))
+          : GetBuilder<PurchaseController>(
+              init: PurchaseController(listCartModel: widget.cartModel),
+              builder: (controller) {
+                controller.listCartModel = widget.cartModel;
+                return Scaffold(
+                  backgroundColor: Colors.white,
                   appBar: const CustomAppBar(),
                   body: Container(
-                      color: kOnSurfaceColor,
-                      width: size.width,
-                      padding: const EdgeInsets.all(20),
-                      child: SingleChildScrollView(
-                          child: Column(children: [
-                        const VerticalSpacerBox(size: SpacerSize.medium),
-                        InkWell(
-                          child: Row(
+                    color: Colors.white,
+                    width: size.width,
+                    padding: const EdgeInsets.all(20),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Row(
                             children: [
-                              Container(
-                                width: 350,
-                                height: 310,
+                              Text(
+                                'Forma de entrega',
+                                style: TextStyle(
+                                    fontSize: 22, fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Radio(
+                                  overlayColor:
+                                      MaterialStateProperty.all(kDetailColor),
+                                  value: 'retirada',
+                                  groupValue: _deliveryMethod,
+                                  activeColor: kDetailColor,
+                                  focusColor: kDetailColor,
+                                  hoverColor: kDetailColor,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _deliveryMethod = value.toString();
+                                      print(
+                                          "Tipo de entrega: $_deliveryMethod");
+                                    });
+                                  }),
+                              const Text(
+                                'Retirada',
+                                style: TextStyle(
+                                    fontSize: 20, color: kTextButtonColor),
+                              ),
+                              const HorizontalSpacerBox(size: SpacerSize.small),
+                              /* Radio(
+                                  overlayColor:
+                                      MaterialStateProperty.all(kDetailColor),
+                                  value: 'entrega',
+                                  groupValue: _deliveryMethod,
+                                  activeColor: kDetailColor,
+                                  focusColor: kDetailColor,
+                                  hoverColor: kDetailColor,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _deliveryMethod = value.toString();
+                                      print(
+                                          "Tipo de entrega: $_deliveryMethod");
+                                    });
+                                  }),
+                              const Text(
+                                'Entrega',
+                                style: TextStyle(
+                                    fontSize: 20, color: kTextButtonColor),
+                              ), */
+                              const HorizontalSpacerBox(size: SpacerSize.small),
+                            ],
+                          ),
+                          const VerticalSpacerBox(size: SpacerSize.medium),
+                          const Row(
+                            children: [
+                              Text(
+                                'Forma de pagamento',
+                                style: TextStyle(
+                                    fontSize: 22, fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                          const VerticalSpacerBox(size: SpacerSize.small),
+                          DropdownButtonFormField<int>(
+                            value: _paymentMethodId,
+                            onChanged: (int? value) {
+                              setState(() {
+                                _paymentMethodId = value ?? 1;
+                              });
+                            },
+                            items: const [
+                              DropdownMenuItem<int>(
+                                value: 1,
+                                child: Text(
+                                  'Dinheiro',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.normal),
+                                ),
+                              ),
+                              DropdownMenuItem<int>(
+                                value: 2,
+                                child: Text(
+                                  'Pix',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.normal),
+                                ),
+                              ),
+                              /* DropdownMenuItem<int>(
+                                value: 3,
+                                child: Text(
+                                  'Crédito',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.normal),
+                                ),
+                              ),
+                              DropdownMenuItem<int>(
+                                value: 4,
+                                child: Text(
+                                  'Débito',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.normal),
+                                ),
+                              ),
+                              DropdownMenuItem<int>(
+                                value: 5,
+                                child: Text(
+                                  'Boleto',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.normal),
+                                ),
+                              ), */
+                            ],
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                                borderSide: BorderSide.none,
+                              ),
+                              filled: true,
+                              fillColor: Colors.grey[100],
+                              contentPadding:
+                                  const EdgeInsets.fromLTRB(13, 13, 13, 13),
+                            ),
+                          ),
+                          const VerticalSpacerBox(size: SpacerSize.large),
+                          if (_deliveryMethod == 'entrega')
+                            InkWell(
+                              child: Container(
+                                width: double.infinity,
+                                padding: const EdgeInsets.all(16),
                                 decoration: BoxDecoration(
                                   color: kOnSurfaceColor,
                                   borderRadius: const BorderRadius.all(
@@ -59,438 +331,79 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                       offset: const Offset(0, 0),
                                     ),
                                   ],
+                                  border: Border(
+                                    left: BorderSide(
+                                      color: kTextButtonColor.withOpacity(0.5),
+                                      width: 1,
+                                    ),
+                                    right: BorderSide(
+                                      color: kTextButtonColor.withOpacity(0.5),
+                                      width: 1,
+                                    ),
+                                  ),
                                 ),
-                                child: Wrap(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(0.5),
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            width: 35.0,
-                                            height: 55.0,
-                                            decoration: const BoxDecoration(
-                                              shape: BoxShape.circle,
-                                            ),
-                                          ),
-                                          const Text(
-                                            'Enviado para:',
-                                            style: TextStyle(fontSize: 17),
-                                          ),
-                                          const HorizontalSpacerBox(
-                                              size: SpacerSize.medium),
-                                          const Text(
-                                            'Maria Eduarda',
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          const Spacer(),
-                                          IconButton(
-                                              onPressed: () {},
-                                              icon: const Icon(
-                                                Icons
-                                                    .arrow_forward_ios_outlined,
-                                                color: kTextButtonColor,
-                                              )),
-                                        ],
-                                      ),
-                                    ),
-                                    const Divider(
-                                      color: kTextButtonColor,
-                                      height: 20,
-                                      thickness: 1,
-                                      indent: 5,
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 6),
-                                      child: Row(
-                                        children: [
-                                          HorizontalSpacerBox(
-                                              size: SpacerSize.large),
-                                          Text(
-                                            'Vendido por:',
-                                            style: TextStyle(fontSize: 17),
-                                          ),
-                                          Spacer(),
-                                          Text(
-                                            'João Frutas',
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                                color: kButtom),
-                                          ),
-                                        ],
-                                      ),
+                                    Row(
+                                      children: [
+                                        const Text(
+                                          'Endereço de entrega',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        const Spacer(),
+                                        IconButton(
+                                            onPressed: () => _chooseAddress(
+                                                context, profileController),
+                                            icon: const Icon(
+                                              Icons.arrow_forward_ios_outlined,
+                                              color: kTextButtonColor,
+                                            )),
+                                      ],
                                     ),
                                     const VerticalSpacerBox(
-                                        size: SpacerSize.small),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 6),
-                                      child: Row(
-                                        children: [
-                                          const HorizontalSpacerBox(
-                                              size: SpacerSize.large),
-                                          const Text(
-                                            'Itens:',
-                                            style: TextStyle(fontSize: 17),
-                                          ),
-                                          const Spacer(),
-                                          Text(
-                                            'R\$ ${controller.total}',
-                                            style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                        size: SpacerSize.tiny),
+                                    Text(
+                                      'Bairro: ${userAddress?.bairroNome ?? 'Bairro não disponível'}',
+                                      style: const TextStyle(fontSize: 13),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 6),
-                                      child: Row(
-                                        children: [
-                                          const HorizontalSpacerBox(
-                                              size: SpacerSize.large),
-                                          const Text(
-                                            'Taxa de entrega:',
-                                            style: TextStyle(fontSize: 17),
-                                          ),
-                                          const Spacer(),
-                                          Text(
-                                            'R\$ ${controller.taxaEntrega}',
-                                            style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                    const VerticalSpacerBox(
+                                        size: SpacerSize.tiny),
+                                    Text(
+                                      'Cidade: ${userAddress?.cidadeNome ?? 'Cidade não disponível'}',
+                                      style: const TextStyle(fontSize: 13),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 6),
-                                      child: Row(
-                                        children: [
-                                          const HorizontalSpacerBox(
-                                              size: SpacerSize.large),
-                                          const Text(
-                                            'Total do pedido:',
-                                            style: TextStyle(
-                                                fontSize: 23,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          const Spacer(),
-                                          Text(
-                                            'R\$ ${controller.taxaEntrega + controller.total}',
-                                            style: const TextStyle(
-                                                fontSize: 23,
-                                                fontWeight: FontWeight.bold,
-                                                color: kDetailColor),
-                                          ),
-                                        ],
-                                      ),
+                                    const VerticalSpacerBox(
+                                        size: SpacerSize.tiny),
+                                    Text(
+                                      'Rua: ${userAddress?.rua ?? 'Rua não disponível'}',
+                                      style: const TextStyle(fontSize: 13),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 6),
-                                      child: Row(
-                                        children: [
-                                          const HorizontalSpacerBox(
-                                              size: SpacerSize.large),
-                                          const Text(
-                                            'Em 1x de RS 64,50 sem juros',
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          const Spacer(),
-                                          ElevatedButton(
-                                            onPressed: () {
-                                              Navigator.pushNamed(
-                                                  context, Screens.selectCard);
-                                            },
-                                            style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStateProperty.all(
-                                                      kDetailColor),
-                                            ),
-                                            child: const Text(
-                                              'Alterar',
-                                              style: TextStyle(
-                                                  fontSize: 17,
-                                                  color: kOnSurfaceColor),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                    const VerticalSpacerBox(
+                                        size: SpacerSize.tiny),
+                                    Text(
+                                      'Número: ${userAddress?.numero ?? 'Número não disponível'}',
+                                      style: const TextStyle(fontSize: 13),
                                     ),
+                                    const VerticalSpacerBox(
+                                        size: SpacerSize.tiny),
+                                    if (userAddress?.complemento != null)
+                                      Text(
+                                        'Complemento: ${userAddress?.complemento}',
+                                        style: const TextStyle(fontSize: 13),
+                                      ),
                                   ],
                                 ),
                               ),
-                            ],
-                          ),
-                          onTap: () async {},
-                        ),
-                        const VerticalSpacerBox(size: SpacerSize.medium),
-                        const Row(children: [
-                          Text(
-                            'Forma de entrega',
-                            style: TextStyle(
-                                fontSize: 22, fontWeight: FontWeight.bold),
-                          ),
-                        ]),
-                        const VerticalSpacerBox(size: SpacerSize.small),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Radio(
-                                    overlayColor:
-                                        MaterialStateProperty.all(kDetailColor),
-                                    value: 'Retirada',
-                                    groupValue: _deliveryMethod,
-                                    activeColor: kDetailColor,
-                                    focusColor: kDetailColor,
-                                    hoverColor: kDetailColor,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _deliveryMethod = value.toString();
-                                        controller.setFormEnt(value.toString());
-                                      });
-                                    }),
-                                const Text(
-                                  'Retirada',
-                                  style: TextStyle(
-                                      fontSize: 20, color: kTextButtonColor),
-                                ),
-                              ],
+                              onTap: () {},
                             ),
-                            const HorizontalSpacerBox(size: SpacerSize.small),
-                            Row(
-                              children: [
-                                Radio(
-                                    overlayColor:
-                                        MaterialStateProperty.all(kDetailColor),
-                                    value: 'Entrega',
-                                    groupValue: _deliveryMethod,
-                                    activeColor: kDetailColor,
-                                    focusColor: kDetailColor,
-                                    hoverColor: kDetailColor,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _deliveryMethod = value.toString();
-                                        controller.setFormEnt(value.toString());
-                                      });
-                                    }),
-                                const Text(
-                                  'Entrega',
-                                  style: TextStyle(
-                                      fontSize: 20, color: kTextButtonColor),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        const VerticalSpacerBox(size: SpacerSize.small),
-                        const Row(children: [
-                          Text(
-                            'Endereço de entrega',
-                            style: TextStyle(
-                                fontSize: 22, fontWeight: FontWeight.bold),
-                          ),
-                        ]),
-                        const VerticalSpacerBox(size: SpacerSize.small),
-                        if (_deliveryMethod == 'Entrega')
-                          InkWell(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 350,
-                                  height: 95,
-                                  decoration: BoxDecoration(
-                                    color: kOnSurfaceColor,
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(15)),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color:
-                                            kTextButtonColor.withOpacity(0.5),
-                                        spreadRadius: 0,
-                                        blurRadius: 3,
-                                        offset: const Offset(0, 0),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Wrap(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Container(
-                                            width: 30.0,
-                                            decoration: const BoxDecoration(
-                                              shape: BoxShape.circle,
-                                            ),
-                                          ),
-                                          const Text(
-                                            'Endereço',
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold),
-                                            textAlign: TextAlign.start,
-                                          ),
-                                          const Spacer(),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.end,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              const VerticalSpacerBox(
-                                                  size: SpacerSize.medium),
-                                              IconButton(
-                                                onPressed: () {
-                                                  Navigator.pushNamed(context,
-                                                      Screens.selectAdress);
-                                                },
-                                                icon: const Icon(
-                                                  Icons
-                                                      .arrow_forward_ios_outlined,
-                                                  color: kTextButtonColor,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      const Center(
-                                        child: Row(
-                                          children: [
-                                            HorizontalSpacerBox(
-                                                size: SpacerSize.huge),
-                                            Text(
-                                              'Rua Professora Esmeralda Barros, 71, Apt, ...',
-                                              style: TextStyle(
-                                                  fontSize: 1,
-                                                  color: kTextButtonColor),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            onTap: () {
-                              Navigator.pushNamed(
-                                  context, Screens.selectAdress);
-                            },
-                          ),
-                        const VerticalSpacerBox(size: SpacerSize.medium),
-                        const Row(children: [
-                          Text(
-                            'Informações de pagamento',
-                            style: TextStyle(
-                                fontSize: 22, fontWeight: FontWeight.bold),
-                          ),
-                        ]),
-                        const VerticalSpacerBox(size: SpacerSize.medium),
-                        const Row(children: [
-                          Text(
-                            'Formas de pagamento:',
-                            style: TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.bold),
-                          ),
-                        ]),
-                        const VerticalSpacerBox(size: SpacerSize.small),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Radio(
-                                    overlayColor:
-                                        MaterialStateProperty.all(kDetailColor),
-                                    activeColor: kDetailColor,
-                                    focusColor: kDetailColor,
-                                    hoverColor: kDetailColor,
-                                    value: 'Pix',
-                                    groupValue: _paymentMethod,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _paymentMethod = value.toString();
-                                        controller.setFormPag(value.toString());
-                                      });
-                                    }),
-                                const Text(
-                                  'Pix',
-                                  style: TextStyle(
-                                      fontSize: 20, color: kTextButtonColor),
-                                ),
-                              ],
-                            ),
-                            const HorizontalSpacerBox(size: SpacerSize.small),
-                            Row(
-                              children: [
-                                Radio(
-                                    overlayColor:
-                                        MaterialStateProperty.all(kDetailColor),
-                                    activeColor: kDetailColor,
-                                    focusColor: kDetailColor,
-                                    hoverColor: kDetailColor,
-                                    value: 'Espécie',
-                                    groupValue: _paymentMethod,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _paymentMethod = value.toString();
-                                        controller.setFormPag(value.toString());
-                                      });
-                                    }),
-                                const Text(
-                                  'Espécie',
-                                  style: TextStyle(
-                                      fontSize: 20, color: kTextButtonColor),
-                                ),
-                              ],
-                            ),
-                            const HorizontalSpacerBox(size: SpacerSize.small),
-                            Row(
-                              children: [
-                                Radio(
-                                    overlayColor:
-                                        MaterialStateProperty.all(kDetailColor),
-                                    value: 'Cartão',
-                                    activeColor: kDetailColor,
-                                    focusColor: kDetailColor,
-                                    hoverColor: kDetailColor,
-                                    groupValue: _paymentMethod,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _paymentMethod = value.toString();
-                                        controller.setFormPag(value.toString());
-                                      });
-                                    }),
-                                const Text(
-                                  'Cartão',
-                                  style: TextStyle(
-                                      fontSize: 20, color: kTextButtonColor),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        const VerticalSpacerBox(size: SpacerSize.small),
-                        if (_paymentMethod == 'Pix')
+                          const VerticalSpacerBox(size: SpacerSize.medium),
                           InkWell(
                             child: Container(
-                              width: 350,
-                              height: 320,
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(16),
                               decoration: BoxDecoration(
                                 color: kOnSurfaceColor,
                                 borderRadius:
@@ -503,342 +416,174 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                     offset: const Offset(0, 0),
                                   ),
                                 ],
+                                border: Border(
+                                  left: BorderSide(
+                                    color: kTextButtonColor.withOpacity(0.5),
+                                    width: 1,
+                                  ),
+                                  right: BorderSide(
+                                    color: kTextButtonColor.withOpacity(0.5),
+                                    width: 1,
+                                  ),
+                                ),
                               ),
-                              child: Center(
-                                child: Wrap(
-                                  children: [
-                                    Row(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Row(
+                                    children: [
+                                      Text(
+                                        'Resumo de valores',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Spacer(),
+                                    ],
+                                  ),
+                                  const VerticalSpacerBox(
+                                      size: SpacerSize.tiny),
+                                  /*  Row(
+                                    children: [
+                                      const Text(
+                                        'Total:',
+                                        style: TextStyle(fontSize: 17),
+                                      ),
+                                      const Spacer(),
+                                      Text(
+                                        'R\$ ${controller.totalValue.toStringAsFixed(2)}',
+                                        style: const TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                            color: kTextButtonColor),
+                                      ),
+                                    ],
+                                  ), */
+                                  const VerticalSpacerBox(
+                                      size: SpacerSize.small),
+                                  /*  if (_deliveryMethod == 'entrega')
+                                    const Row(
                                       children: [
-                                        const HorizontalSpacerBox(
-                                            size: SpacerSize.large),
-                                        Container(
-                                          transformAlignment: Alignment.center,
-                                          alignment: Alignment.center,
-                                          height: 75.0,
-                                          decoration: const BoxDecoration(
-                                            shape: BoxShape.rectangle,
-                                            image: DecorationImage(
-                                              fit: BoxFit.fill,
-                                              image: NetworkImage(
-                                                "http://faq-login-unico.servicos.gov.br/en/latest/_images/imagem_qrcode_exemplo.jpg",
-                                              ),
-                                            ),
-                                          ),
+                                        Text(
+                                          'Frete:',
+                                          style: TextStyle(fontSize: 17),
                                         ),
-                                        const HorizontalSpacerBox(
-                                            size: SpacerSize.large),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Image.asset(
-                                                  Assets.pix,
-                                                  width: 180,
-                                                  height: 100,
-                                                ),
-                                              ],
-                                            ),
-                                            const VerticalSpacerBox(
-                                                size: SpacerSize.small),
-                                            const Row(
-                                              children: [
-                                                Text(
-                                                  'Nome: João da Silva',
-                                                  style: TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                  selectionColor: kText,
-                                                ),
-                                              ],
-                                            ),
-                                            const Row(
-                                              children: [
-                                                Text(
-                                                  'Tipo de Chave: QR Code',
-                                                  style: TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                  selectionColor: kText,
-                                                ),
-                                              ],
-                                            ),
-                                            const VerticalSpacerBox(
-                                                size: SpacerSize.medium),
-                                            const Row(
-                                              children: [
-                                                HorizontalSpacerBox(
-                                                    size: SpacerSize.huge),
-                                                HorizontalSpacerBox(
-                                                    size: SpacerSize.medium),
-                                                Text(
-                                                  'Chave aleatória',
-                                                  style: TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                  selectionColor: kText,
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                Container(
-                                                  color: kColorBottom,
-                                                  height: 25,
-                                                  width: 225,
-                                                  child: const Center(
-                                                    child: Text(
-                                                      'edjsd-574757-dsdijsd4',
-                                                      style: TextStyle(
-                                                          fontSize: 20,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                      selectionColor: kText,
-                                                    ),
-                                                  ),
-                                                ),
-                                                IconButton(
-                                                  onPressed: () => {
-                                                    ScaffoldMessenger.of(
-                                                            context)
-                                                        .showSnackBar(const SnackBar(
-                                                            backgroundColor:
-                                                                kDetailColor,
-                                                            content: Text(
-                                                                'Copiado para área de transferência')))
-                                                  },
-                                                  icon: const Icon(
-                                                    Icons.copy,
-                                                    color: kTextButtonColor,
-                                                    size: 30,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            GestureDetector(
-                                              onTap: () async {
-                                                FilePickerResult? result =
-                                                    await FilePicker.platform
-                                                        .pickFiles();
-
-                                                if (result != null) {
-                                                  File file = File(result
-                                                      .files.single.path!);
-                                                  String nome =
-                                                      path.basename(file.path);
-                                                  print(
-                                                      'Arquivo selecionado: $nome');
-                                                } else {
-                                                  print(
-                                                      'Nenhum arquivo selecionado.');
-                                                }
-                                              },
-                                              child: Row(
-                                                children: [
-                                                  Container(
-                                                    color: kDetailColor,
-                                                    height: 30,
-                                                    width: 225,
-                                                    child: const Center(
-                                                      child: Text(
-                                                        'Comprovante de pagamento',
-                                                        style: TextStyle(
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color: kText),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  IconButton(
-                                                    onPressed: () {
-                                                      // Aqui você pode implementar a lógica para mostrar o arquivo anexado, se houver algum
-                                                      // Por exemplo, você pode exibir uma caixa de diálogo com o arquivo anexado ou abrir o arquivo em um visualizador
-                                                    },
-                                                    icon: const Icon(
-                                                      Icons.archive,
-                                                      color: kDetailColor,
-                                                      size: 30,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
+                                        Spacer(),
+                                        Text(
+                                          'R\$ 5.00',
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                              color: kTextButtonColor),
                                         ),
                                       ],
+                                    ), */
+                                  if (_deliveryMethod == 'retirada')
+                                    const Row(
+                                      children: [
+                                        /*  Text(
+                                          'Frete:',
+                                          style: TextStyle(fontSize: 17),
+                                        ),
+                                        Spacer(),
+                                        Text(
+                                          'R\$ 0.00',
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                              color: kTextButtonColor),
+                                        ), */
+                                      ],
                                     ),
-                                  ],
-                                ),
+                                  /*             const VerticalSpacerBox(
+                                      size: SpacerSize.small), */
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        'Total:',
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      const Spacer(),
+                                      Text(
+                                        _deliveryMethod == 'entrega'
+                                            ? 'R\$ ${(controller.totalValue + 5).toStringAsFixed(2)}'
+                                            : 'R\$ ${controller.totalValue.toStringAsFixed(2)}',
+                                        style: const TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                            color: kTextButtonColor),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                             onTap: () {},
                           ),
-                        if (_paymentMethod == 'Cartão')
-                          InkWell(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 350,
-                                  height: 110,
-                                  decoration: BoxDecoration(
-                                    color: kOnSurfaceColor,
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(15)),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color:
-                                            kTextButtonColor.withOpacity(0.5),
-                                        spreadRadius: 0,
-                                        blurRadius: 3,
-                                        offset: const Offset(0, 0),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Wrap(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Container(
-                                            width: 30.0,
-                                            decoration: const BoxDecoration(
-                                              shape: BoxShape.circle,
-                                            ),
-                                          ),
-                                          const Text(
-                                            'Forma de Pagamento',
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold),
-                                            textAlign: TextAlign.start,
-                                          ),
-                                          const Spacer(),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.end,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              const VerticalSpacerBox(
-                                                  size: SpacerSize.medium),
-                                              IconButton(
-                                                onPressed: () {
-                                                  Navigator.pushNamed(context,
-                                                      Screens.selectCard);
-                                                },
-                                                icon: const Icon(
-                                                  Icons
-                                                      .arrow_forward_ios_outlined,
-                                                  color: kTextButtonColor,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      const Center(
-                                        child: Row(
-                                          children: [
-                                            HorizontalSpacerBox(
-                                                size: SpacerSize.huge),
-                                            Text(
-                                              'Mastercard ',
-                                              style: TextStyle(fontSize: 16),
-                                            ),
-                                            Text('(Crédito) ',
-                                                style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                            Text(
-                                              'com final 1447 ',
-                                              style: TextStyle(fontSize: 16),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      const Center(
-                                        child: Row(
-                                          children: [
-                                            HorizontalSpacerBox(
-                                                size: SpacerSize.huge),
-                                            Text(
-                                              'Parcelas não disponíveis',
-                                              style: TextStyle(fontSize: 16),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            onTap: () {
-                              Navigator.pushNamed(context, Screens.selectCard);
+                          const VerticalSpacerBox(size: SpacerSize.large),
+                          PrimaryButton(
+                            text: 'Confirmar pedido',
+                            onPressed: () async {
+                              bool success;
+                              try {
+                                success = await controller.purchase(
+                                  selectedAddressId,
+                                  _deliveryMethod,
+                                  _paymentMethodId,
+                                );
+                              } catch (e) {
+                                String errorMessage = e.toString();
+                                if (errorMessage.startsWith('Exception: ')) {
+                                  errorMessage = errorMessage.replaceFirst(
+                                      'Exception: ', '');
+                                } else if (errorMessage
+                                    .contains('Exception: ')) {
+                                  errorMessage =
+                                      errorMessage.split('Exception: ')[1];
+                                }
+                                showErrorDialog(context, errorMessage);
+                                return;
+                              }
+                              if (success) {
+                                cartListProvider.clearCart();
+                                print("ENDEREÇO: $selectedAddressId");
+                                print("Tipo de entrega: $_deliveryMethod");
+                                print("Forma de pagamento: $_paymentMethodId");
+                                print("Compra realizada com sucesso!");
+                                showSuccessDialog(context);
+                              } else {
+                                print("Falha na compra.");
+                                showErrorDialog(
+                                    context, 'Falha ao realizar a compra.');
+                              }
                             },
+                            color: kDetailColor,
                           ),
-                        const VerticalSpacerBox(size: SpacerSize.large),
-                        PrimaryButton(
-                          text: 'Confirmar pedido',
-                          onPressed: () {
-                            // showDialog(
-                            //     context: context,
-                            //     builder: (context) =>
-                            //         const FinishPurchaseDialog());
-                            showDialog(
-                                context: context,
-                                builder: (context) => RatingDialog(
-                                      starColor: Colors.amber,
-                                      title: const Text('Que tal nos avaliar?'),
-                                      message: const Text(
-                                          'Dê uma nota para o seu pedido'),
-                                      image: Image.asset(
-                                        Assets.feedback,
-                                        height: 250,
-                                      ),
-                                      submitButtonText: 'Enviar',
-                                      // ignore: avoid_print
-                                      onCancelled: () =>
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(const SnackBar(
-                                                  backgroundColor: kButtom2,
-                                                  content: Text('Cancelado'))),
-                                      onSubmitted: (response) {
-                                        controller.setRating(response.rating);
-                                        controller.setComment(response.comment);
-                                      },
-                                    ));
-                          },
-                          color: kButtom,
-                        ),
-                        const VerticalSpacerBox(size: SpacerSize.medium),
-                        const Divider(
-                          color: kTextButtonColor,
-                          thickness: 1,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            TextButton(
+                          const VerticalSpacerBox(size: SpacerSize.medium),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              TextButton(
                                 onPressed: () {
                                   Navigator.pushNamed(context, Screens.cart);
                                 },
                                 child: const Text(
                                   'Voltar a cesta',
-                                  style:
-                                      TextStyle(color: kButtom, fontSize: 16),
-                                ))
-                          ],
-                        ),
-                      ]))))),
-            ));
+                                  style: TextStyle(
+                                      color: kDetailColor, fontSize: 16),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+    );
   }
 }

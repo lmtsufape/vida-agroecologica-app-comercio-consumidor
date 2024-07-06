@@ -31,9 +31,9 @@ mixin ValidationMixin {
     if (value.isEmpty) {
       return 'Insira um E-mail.';
     } else if (!value.contains('@')) {
-      return 'O E-mail deve conter o simbolo "@".';
+      return 'Deve conter o simbolo "@".';
     } else if (!value.contains('.com')) {
-      return 'O E-mail deve conter o ".com" no final.';
+      return 'Deve conter o ".com" no final.';
     }
     return null;
   }

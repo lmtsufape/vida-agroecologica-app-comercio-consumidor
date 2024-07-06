@@ -1,10 +1,11 @@
-import 'package:ecommercebonito/assets/index.dart';
-import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
-import 'package:ecommercebonito/shared/constants/app_enums.dart';
-import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
+import 'package:ecommerceassim/components/utils/vertical_spacer_box.dart';
+import 'package:ecommerceassim/shared/components/bottomLogos/bottom_logos.dart';
+import 'package:ecommerceassim/shared/components/header_start_app/header_start_app.dart';
+import 'package:ecommerceassim/shared/constants/app_enums.dart';
+import 'package:ecommerceassim/shared/constants/app_number_constants.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommercebonito/screens/splash/splash_screen_controller.dart';
+import 'package:ecommerceassim/screens/splash/splash_screen_controller.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -21,8 +22,10 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
-    animController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 2));
+    animController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2)
+    );
     _controller = SplashScreenController(context);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setController();
@@ -67,11 +70,7 @@ class _SplashScreenState extends State<SplashScreen>
                 AnimatedOpacity(
                   duration: const Duration(milliseconds: 600),
                   opacity: opacity,
-                  child: Text(
-                    'E-commerce Bonito'.toUpperCase(),
-                    textAlign: TextAlign.center,
-                    style: kTitle1.copyWith(color: kOnSurfaceColor),
-                  ),
+                  child:  HeaderStartApp(kOnSurfaceColor)
                 ),
                 const VerticalSpacerBox(size: SpacerSize.huge),
                 const CircularProgressIndicator(
@@ -80,26 +79,7 @@ class _SplashScreenState extends State<SplashScreen>
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(kDefaultPadding),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  'Desenvolvido por:',
-                  textAlign: TextAlign.center,
-                  style: kBody2.copyWith(fontFamily: 'Roboto'),
-                ),
-                const VerticalSpacerBox(size: SpacerSize.small),
-                Center(child: Image.asset(Assets.logo)),
-                Text(
-                  'LMTS - Laboratório Multidisciplinar de Tecnologias Sociais',
-                  textAlign: TextAlign.center,
-                  style: kBody2.copyWith(fontFamily: 'Roboto'),
-                ),
-              ],
-            ),
-          )
+          BottomLogos(150)
         ],
       ),
     );

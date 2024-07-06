@@ -1,16 +1,16 @@
-import 'package:ecommercebonito/assets/index.dart';
-import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
-import 'package:ecommercebonito/shared/components/bottomNavigation/BottomNavigation.dart';
-import 'package:ecommercebonito/shared/core/controllers/home_screen_controller.dart';
-import 'package:ecommercebonito/screens/screens_index.dart';
-import 'package:ecommercebonito/shared/constants/app_enums.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
+import 'package:ecommerceassim/assets/index.dart';
+import 'package:ecommerceassim/components/utils/vertical_spacer_box.dart';
+import 'package:ecommerceassim/shared/components/bottomNavigation/BottomNavigation.dart';
+import 'package:ecommerceassim/shared/core/controllers/home_screen_controller.dart';
+import 'package:ecommerceassim/screens/screens_index.dart';
+import 'package:ecommerceassim/shared/constants/app_enums.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../components/utils/horizontal_spacer_box.dart';
 
 class MenuSellerScreen extends StatelessWidget {
-  const MenuSellerScreen({Key? key}) : super(key: key);
+  const MenuSellerScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

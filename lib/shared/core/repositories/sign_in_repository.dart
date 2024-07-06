@@ -1,6 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:dio/dio.dart';
-import 'package:ecommercebonito/shared/constants/app_text_constants.dart';
-import 'package:ecommercebonito/shared/core/user_storage.dart';
+import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
+import 'package:ecommerceassim/shared/core/user_storage.dart';
 
 class SignInRepository {
   final userStorage = UserStorage();
@@ -8,6 +10,69 @@ class SignInRepository {
   String userToken = "0";
 
   final _dio = Dio();
+
+  Future<bool> checkEmailExists(String email) async {
+    try {
+      String? token = "401|SdE56cPwKTJSSAA5Rn4pc4LprbxYhrSiT28QPOLtdeaf5e31";
+      print('Token used for checking email existence: $token');
+
+      final response = await _dio.get(
+        '$kBaseURL/users',
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $token',
+            'Content-Type': 'application/json',
+          },
+        ),
+      );
+
+      if (response.statusCode == 200) {
+        List users = response.data['users'];
+        print('Users fetched: ${users.length}');
+        for (var user in users) {
+          print('Checking user email: ${user['email']}');
+          if (user['email'] == email) {
+            print('Email matched: ${user['email']}');
+            return true;
+          }
+        }
+        print('Email not found: $email');
+        return false;
+      } else {
+        print('Failed to fetch users, status code: ${response.statusCode}');
+        return false;
+      }
+    } catch (error) {
+      print('Error checking email existence: $error');
+      return false;
+    }
+  }
+
+  Future<void> sendResetPasswordEmail(String email) async {
+    try {
+      String? token = await userStorage.getUserToken();
+      print('Token used for sending reset password email: $token');
+
+      final response = await _dio.post(
+        '$kBaseURL/forgot-password',
+        data: {'email': email},
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $token',
+            'Content-Type': 'application/json',
+          },
+        ),
+      );
+
+      if (response.statusCode != 200) {
+        throw Exception('Failed to send reset password email');
+      }
+    } catch (error) {
+      print('Error sending reset password email: $error');
+      throw Exception('Failed to send reset password email');
+    }
+  }
+
   Future<int> signIn({
     required String email,
     required String password,

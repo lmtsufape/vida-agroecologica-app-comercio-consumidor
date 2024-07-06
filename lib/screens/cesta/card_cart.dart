@@ -1,16 +1,17 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
-import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
-import 'package:ecommercebonito/screens/cesta/cart_controller.dart';
-import 'package:ecommercebonito/shared/constants/app_enums.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
-import 'package:ecommercebonito/shared/core/models/cart_model.dart';
-import 'package:ecommercebonito/shared/core/models/table_products_model.dart';
+import 'package:ecommerceassim/shared/constants/app_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:ecommerceassim/shared/components/dialogs/confirm_dialog.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
+import 'package:ecommerceassim/shared/core/models/cart_model.dart';
+import 'package:ecommerceassim/shared/core/models/table_products_model.dart';
+import 'package:ecommerceassim/screens/cesta/cart_controller.dart';
+import 'package:ecommerceassim/components/utils/horizontal_spacer_box.dart';
+import 'package:ecommerceassim/components/utils/vertical_spacer_box.dart';
 import 'cart_provider.dart';
 
 // ignore: must_be_immutable
@@ -18,7 +19,7 @@ class CardCart extends StatefulWidget {
   CartModel model;
   CartController? controller;
 
-  CardCart(this.model, this.controller, {super.key});
+  CardCart(this.model, this.controller, {Key? key}) : super(key: key);
 
   @override
   State<CardCart> createState() => _CardCartState();
@@ -42,6 +43,9 @@ class _CardCartState extends State<CardCart> {
         NumberFormat.simpleCurrency(locale: 'pt-BR', decimalDigits: 2)
             .format(doublePrice);
     return InkWell(
+      onTap: () {
+        _showProductDetailsModal(context);
+      },
       child: Container(
         width: size.width * 0.7,
         height: size.height * 0.3,
@@ -56,6 +60,10 @@ class _CardCartState extends State<CardCart> {
               offset: const Offset(0, 0),
             ),
           ],
+          border: Border.all(
+            color: kTextButtonColor.withOpacity(0.5),
+            width: 1,
+          ),
         ),
         child: Center(
           child: Wrap(
@@ -66,17 +74,15 @@ class _CardCartState extends State<CardCart> {
                   SizedBox(
                     width: size.width * 0.3,
                     height: size.height * 0.1,
-                    child: Expanded(
-                      child: Center(
-                        child: base64Image != null
-                            ? Image.memory(
-                                base64Decode(base64Image.split(',').last))
-                            : const Icon(
-                                Icons.shopping_bag,
-                                size: 80,
-                                color: kDetailColor,
-                              ),
-                      ),
+                    child: Center(
+                      child: base64Image != null
+                          ? Image.memory(
+                              base64Decode(base64Image.split(',').last))
+                          : const Icon(
+                              Icons.shopping_bag,
+                              size: 80,
+                              color: kDetailColor,
+                            ),
                     ),
                   ),
                   const HorizontalSpacerBox(size: SpacerSize.small),
@@ -127,13 +133,24 @@ class _CardCartState extends State<CardCart> {
                   IconButton(
                     icon: const Icon(Icons.remove),
                     onPressed: () {
-                      if (widget.model.amount > 0) {
+                      if (widget.model.amount > 1) {
                         setState(() {
                           widget.model.amount--;
                           widget.controller?.decrementCounter();
                           cartListProvider.itens--;
                           cartListProvider.total -= doublePrice!;
                         });
+                      } else {
+                        confirmDialog(
+                          context,
+                          "Remover produto",
+                          "Tem certeza que deseja remover esse produto da cesta?",
+                          "Cancelar",
+                          "Remover",
+                          onConfirm: () {
+                            cartListProvider.removeCart(widget.model);
+                          },
+                        );
                       }
                     },
                   ),
@@ -157,27 +174,24 @@ class _CardCartState extends State<CardCart> {
                       });
                     },
                   ),
-                  const HorizontalSpacerBox(size: SpacerSize.large),
-                  ElevatedButton(
+                  const Spacer(),
+                  IconButton(
+                    icon: const Icon(Icons.delete),
+                    color: kTextButtonColor,
                     onPressed: () {
-                      // setState(() {
-                      //   widget.controller?.amount--;
-                      //   widget.controller?.decrementCounter();
-                      //   widget.controller?.total -= 5.50;
-                      // });
-                      cartListProvider.removeCart(widget.model);
+                      confirmDialog(
+                        context,
+                        "Remover produto",
+                        "Tem certeza que deseja remover esse produto da cesta?",
+                        "Cancelar",
+                        "Remover",
+                        onConfirm: () {
+                          cartListProvider.removeCart(widget.model);
+                        },
+                      );
                     },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(kErrorColor),
-                    ),
-                    child: const Text(
-                      'Excluir',
-                      style: TextStyle(
-                        color: kOnSurfaceColor,
-                        fontSize: 15,
-                      ),
-                    ),
                   ),
+                  const HorizontalSpacerBox(size: SpacerSize.medium),
                 ],
               ),
               const VerticalSpacerBox(size: SpacerSize.tiny),
@@ -185,7 +199,56 @@ class _CardCartState extends State<CardCart> {
           ),
         ),
       ),
-      onTap: () {},
+    );
+  }
+
+  // Método para mostrar o modal de detalhes do produto
+  void _showProductDetailsModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext ctx) {
+        return Container(
+          // Container que irá subir ao clicar no produto
+          width: 400, // Largura do container
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16), //Borda do Container
+            color: kOnBackgroundColorText, // Cor de fundo do caontainer
+          ),
+          padding: EdgeInsets.all(16), // Espaçamento interno do Container
+          child: Column(
+            // Forma que os Widgets irão fiar alinhados no Container
+            crossAxisAlignment: CrossAxisAlignment
+                .start, // Widgets ficarão alinhados ao lado esquerdo do container
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                widget.model.nameProduct ?? 'Nome do Produto',
+                style: TextStyle(
+                    fontSize: 18, // Tamanho da fonte do texto
+                    fontWeight: FontWeight.bold, // Adicionando Negrito no texto
+                    color: kDetailColor),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'Preço: ${widget.model.price ?? 'Preço Indisponível'}', // Buscando valores no Model da aplicação
+                style: TextStyle(fontSize: 16, color: kDetailColor),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'Descrição do Produto',
+                style: TextStyle(fontSize: 16, color: kDetailColor),
+              ),
+              SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('Fechar'),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

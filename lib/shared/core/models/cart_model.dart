@@ -7,6 +7,6 @@ class CartModel {
   int amount;
   int stock;
 
-  CartModel(
-      this.productId, this.storeId, this.nameProduct, this.price,this.produtoTabeladoId, this.amount, this.stock);
+  CartModel(this.productId, this.storeId, this.nameProduct, this.price,
+      this.produtoTabeladoId, this.amount, this.stock);
 }

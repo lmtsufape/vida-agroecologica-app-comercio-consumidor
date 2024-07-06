@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ecommercebonito/shared/constants/app_enums.dart';
-import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
+import 'package:ecommerceassim/shared/constants/app_enums.dart';
+import 'package:ecommerceassim/shared/constants/app_number_constants.dart';
 
 class HorizontalSpacerBox extends StatelessWidget {
-  const HorizontalSpacerBox({Key? key, required this.size}) : super(key: key);
+  const HorizontalSpacerBox({super.key, required this.size});
   final SpacerSize size;
   @override
   Widget build(BuildContext context) {

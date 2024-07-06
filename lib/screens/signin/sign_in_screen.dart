@@ -1,18 +1,21 @@
-import 'package:ecommercebonito/shared/constants/app_number_constants.dart';
-import 'package:ecommercebonito/shared/validation/validate_mixin.dart';
+import 'package:ecommerceassim/components/appBar/custom_app_bar.dart';
+import 'package:ecommerceassim/screens/forgot-password/forgot_password_screen.dart';
+import 'package:ecommerceassim/screens/screens_index.dart';
+import 'package:ecommerceassim/shared/constants/app_enums.dart';
+import 'package:ecommerceassim/shared/constants/app_number_constants.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ecommercebonito/components/buttons/custom_text_button.dart';
-import 'package:ecommercebonito/components/forms/custom_text_form_field.dart';
-import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
-import 'package:ecommercebonito/shared/core/controllers/sign_in_controller.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
-import 'package:ecommercebonito/screens/screens_index.dart';
-import '../../shared/constants/app_enums.dart';
+import 'package:ecommerceassim/components/buttons/custom_text_button.dart';
+import 'package:ecommerceassim/components/forms/custom_text_form_field.dart';
+import 'package:ecommerceassim/components/utils/vertical_spacer_box.dart';
+import 'package:ecommerceassim/shared/validation/validate_mixin.dart';
+import 'package:ecommerceassim/shared/core/controllers/sign_in_controller.dart';
 
 class SignInScreen extends StatelessWidget with ValidationMixin {
   SignInScreen({super.key});
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -21,11 +24,7 @@ class SignInScreen extends StatelessWidget with ValidationMixin {
         builder: (context, controller, child) => Scaffold(
           resizeToAvoidBottomInset: true,
           backgroundColor: kOnSurfaceColor,
-          appBar: AppBar(
-            backgroundColor: kOnSurfaceColor,
-            iconTheme: const IconThemeData(color: kDetailColor),
-            elevation: 0,
-          ),
+          appBar: const CustomAppBar(),
           body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(kDefaultPadding),
@@ -59,7 +58,14 @@ class SignInScreen extends StatelessWidget with ValidationMixin {
                       alignment: Alignment.centerRight,
                       child: CustomTextButton(
                         title: 'Esqueceu a senha?',
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ForgotPasswordScreen(),
+                            ),
+                          );
+                        },
                       ),
                     ),
                     const VerticalSpacerBox(size: SpacerSize.medium),
@@ -70,7 +76,7 @@ class SignInScreen extends StatelessWidget with ValidationMixin {
                     else
                       ElevatedButton(
                         onPressed: () {
-                          if (formkey.currentState!.validate() == true) {
+                          if (formkey.currentState!.validate()) {
                             controller.signIn(context);
                           }
                         },

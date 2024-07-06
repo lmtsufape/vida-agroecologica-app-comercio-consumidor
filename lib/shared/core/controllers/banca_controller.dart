@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:ecommercebonito/shared/core/models/banca_model.dart';
-import 'package:ecommercebonito/shared/core/repositories/banca_repository.dart';
+import 'package:ecommerceassim/shared/core/models/banca_model.dart';
+import 'package:ecommerceassim/shared/core/repositories/banca_repository.dart';
 import 'package:flutter/material.dart';
 
 class BancaController with ChangeNotifier {
   List<BancaModel> _bancas = [];
   List<BancaModel> _allBancas = []; // Lista completa de bancas
-  final BancaRepository _bancaRepository = BancaRepository(Dio());
+  final BancaRepository _bancaRepository = BancaRepository();
 
   List<BancaModel> get bancas => _bancas;
 

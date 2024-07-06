@@ -1,12 +1,13 @@
-import 'package:ecommercebonito/components/utils/horizontal_spacer_box.dart';
-import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
-import 'package:ecommercebonito/components/appBar/custom_app_bar.dart';
-import 'package:ecommercebonito/screens/cesta/card_cart.dart';
-import 'package:ecommercebonito/screens/screens_index.dart';
-import 'package:ecommercebonito/shared/components/bottomNavigation/BottomNavigation.dart';
-import 'package:ecommercebonito/shared/constants/app_enums.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
-import 'package:ecommercebonito/shared/core/models/produto_model.dart';
+import 'package:ecommerceassim/components/utils/horizontal_spacer_box.dart';
+import 'package:ecommerceassim/components/utils/vertical_spacer_box.dart';
+import 'package:ecommerceassim/components/appBar/custom_app_bar.dart';
+import 'package:ecommerceassim/screens/cesta/card_cart.dart';
+import 'package:ecommerceassim/screens/pedidos/finalizar/finalize_purchase_screen.dart';
+import 'package:ecommerceassim/shared/components/bottomNavigation/BottomNavigation.dart';
+import 'package:ecommerceassim/shared/components/dialogs/notice_dialog.dart';
+import 'package:ecommerceassim/shared/constants/app_enums.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
+import 'package:ecommerceassim/shared/core/models/produto_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:intl/intl.dart';
@@ -31,8 +32,6 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     final cartListProvider = Provider.of<CartProvider>(context);
-    //late int melancia = 0;
-    //late int limao = 0;
     late int selectedIndex = 1;
     Size size = MediaQuery.of(context).size;
     return GetBuilder<CartController>(
@@ -50,8 +49,8 @@ class _CartScreenState extends State<CartScreen> {
               Row(
                 children: [
                   const Text(
-                    'Subtotal',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    'Total:',
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                   const HorizontalSpacerBox(size: SpacerSize.small),
                   Text(
@@ -67,7 +66,16 @@ class _CartScreenState extends State<CartScreen> {
               PrimaryButton(
                 text: 'Fechar Pedido (${cartListProvider.itens} itens)',
                 onPressed: () {
-                  Navigator.pushNamed(context, Screens.finalizePurchase);
+                  if (cartListProvider.itens != 0) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FinalizePurchaseScreen(
+                                cartListProvider.listCart)));
+                  } else {
+                    alertDialog(context, 'Aviso',
+                        'Sua cesta está vazia. Para fechar um pedido, adicione produtos a ela primeiro.');
+                  }
                 },
                 color: kDetailColor,
               ),
@@ -81,7 +89,7 @@ class _CartScreenState extends State<CartScreen> {
                     },
                     separatorBuilder: (context, index) {
                       return Divider(
-                        height: size.height * 0.015,
+                        height: size.height * 0.03,
                         color: Colors.transparent,
                       );
                     },

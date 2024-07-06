@@ -1,7 +1,9 @@
-import 'package:ecommercebonito/assets/index.dart';
-import 'package:ecommercebonito/components/spacer/verticalSpacer.dart';
+import 'package:ecommerceassim/assets/index.dart';
+import 'package:ecommerceassim/components/spacer/verticalSpacer.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
+import 'package:ecommerceassim/shared/core/controllers/products_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
+import 'package:get/get.dart';
 
 class CategoryMenu extends StatelessWidget {
   final String categoryName;
@@ -79,6 +81,10 @@ class CategoryMenuList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> categories = [
+      {
+        "categoryName": "Todos",
+        "assetPath": Assets.shoppingBag
+      }, // Botão para exibir todos os produtos
       {"categoryName": "Mel", "assetPath": Assets.mel},
       {"categoryName": "Legumes", "assetPath": Assets.vegetais},
       {"categoryName": "Polpa de Frutas", "assetPath": Assets.polpa},
@@ -93,16 +99,18 @@ class CategoryMenuList extends StatelessWidget {
       {
         "categoryName": "Plantas/Ervas Medicinais",
         "assetPath": Assets.medicinal
-      },
+      }
     ];
 
-    void handleCategoryTap(String categoryName) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Produtos da categoria de $categoryName'),
-          duration: const Duration(seconds: 1),
-        ),
-      );
+    void handleCategoryTap(int index) {
+      final produtoController = Get.find<ProductsController>();
+      if (index == 0) {
+        // Exibir todos os produtos
+        produtoController.filterProdutosByCategoryIndex(-1);
+      } else {
+        // Exibir produtos pela categoria
+        produtoController.filterProdutosByCategoryIndex(index - 1);
+      }
     }
 
     return SizedBox(
@@ -116,8 +124,7 @@ class CategoryMenuList extends StatelessWidget {
             child: CategoryMenu(
               categoryName: categories[index]["categoryName"]!,
               assetPath: categories[index]["assetPath"]!,
-              onTap: () =>
-                  handleCategoryTap(categories[index]["categoryName"]!),
+              onTap: () => handleCategoryTap(index),
             ),
           );
         },

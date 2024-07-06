@@ -1,7 +1,3 @@
-///This file should contain all the constants style used in the app
-///like texts, fonts, colors, etc.
-///you should use the standard naming convention for constants like the following:
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,13 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 final kSecondaryFontFamily = GoogleFonts.nunito().fontFamily;
 final kDescriptionFontFamily = GoogleFonts.firaSans().fontFamily;
 //**LIGHT COLORS */
-const Color kPrimaryColor = Color(0xFFFECA01);
+const Color kPrimaryColor = Color(0xFFF5821F);
 // const Color kBackgroundColor = Colors.white;
 const Color kButtomBackgroundColor = Color.fromRGBO(224, 224, 224, 1);
 const Color kBackgroundColor = Color.fromARGB(255, 225, 225, 225);
 const Color kOnBackgroundColorText = Color.fromRGBO(238, 238, 238, 1);
 const Color kSecondaryColor = Color(0xFF435969);
-const Color kDetailColor = Color.fromRGBO(245, 130, 31, 1);
+const Color kDetailColor = Color(0xFFF5821F);
 const Color borderEnabledForm = Color(0xFF008000);
 const Color kOnBackgroundColor = Color(0xFF212931);
 const Color kTextColor = Color(0xFF435969);

@@ -1,8 +1,8 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:ecommercebonito/shared/constants/app_text_constants.dart';
-import 'package:ecommercebonito/shared/core/models/pedidos_model.dart';
-import 'package:ecommercebonito/shared/core/user_storage.dart';
+import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
+import 'package:ecommerceassim/shared/core/models/pedidos_model.dart';
+import 'package:ecommerceassim/shared/core/user_storage.dart';
 
 class PedidosRepository {
   late String userToken;
@@ -30,7 +30,7 @@ class PedidosRepository {
           ));
 
       if (response.statusCode == 200) {
-        log('Response data: ${response.data}');
+        /*  log('Response data: ${response.data}'); */
 
         if (response.data['compras'] != null) {
           final jsonData = Map<String, dynamic>.from(response.data);
@@ -44,6 +44,9 @@ class PedidosRepository {
             order.bancaNome = await fetchBancaName(order.bancaId);
             orders.add(order);
           }
+
+          // Ordenar os pedidos pela data
+          orders.sort((a, b) => a.dataPedido!.compareTo(b.dataPedido!));
 
           return orders;
         } else {

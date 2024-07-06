@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:ecommercebonito/shared/constants/app_text_constants.dart';
-import 'package:ecommercebonito/shared/core/user_storage.dart';
-import 'package:ecommercebonito/shared/core/models/bairro_model.dart';
+import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
+import 'package:ecommerceassim/shared/core/user_storage.dart';
+import 'package:ecommerceassim/shared/core/models/bairro_model.dart';
 
 class BairroRepository {
   late String userToken;

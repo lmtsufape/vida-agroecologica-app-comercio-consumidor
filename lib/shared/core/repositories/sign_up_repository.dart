@@ -2,8 +2,8 @@
 
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:ecommercebonito/shared/constants/app_text_constants.dart';
-import 'package:ecommercebonito/shared/core/models/cidade_model.dart';
+import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
+import 'package:ecommerceassim/shared/core/models/cidade_model.dart';
 import 'package:flutter/material.dart';
 import '../../constants/style_constants.dart';
 import '../models/bairro_model.dart';

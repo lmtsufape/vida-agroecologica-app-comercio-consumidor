@@ -1,9 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:ecommercebonito/screens/screens_index.dart';
-import 'package:ecommercebonito/shared/core/repositories/sign_up_repository.dart';
-import 'package:ecommercebonito/shared/core/models/bairro_model.dart';
-import 'package:ecommercebonito/shared/core/models/cidade_model.dart';
+import 'package:ecommerceassim/screens/screens_index.dart';
+import 'package:ecommerceassim/shared/core/repositories/sign_up_repository.dart';
+import 'package:ecommerceassim/shared/core/models/bairro_model.dart';
+import 'package:ecommerceassim/shared/core/models/cidade_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -23,7 +23,7 @@ class SignUpController extends GetxController {
   bool? signupSuccess;
   RegExp numReg = RegExp(r".*[0-9].*");
   RegExp letterReg = RegExp(r".*[A-Z].*");
-  String displayText = 'Digite sua Senha';
+  String displayText = '';
   String? errorMessage;
   String specificErrorMessage = '';
   var status = SignUpStatus.idle;
@@ -123,7 +123,7 @@ class SignUpController extends GetxController {
     password = password.trim();
     if (password.isEmpty) {
       strength = 0;
-      displayText = 'Digite sua Senha';
+      displayText = '';
     } else if (password.length <= 6) {
       strength = 1 / 4;
       displayText = 'Senha muito fraca';

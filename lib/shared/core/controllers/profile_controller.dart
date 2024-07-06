@@ -2,9 +2,9 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommercebonito/shared/constants/app_text_constants.dart';
-import 'package:ecommercebonito/shared/core/models/endereco_model.dart';
-import 'package:ecommercebonito/shared/core/user_storage.dart';
+import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
+import 'package:ecommerceassim/shared/core/models/endereco_model.dart';
+import 'package:ecommerceassim/shared/core/user_storage.dart';
 
 class ProfileController with ChangeNotifier {
   List<AddressModel> addresses = [];

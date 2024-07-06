@@ -1,4 +1,4 @@
-import 'package:ecommercebonito/shared/validation/validate_mixin.dart';
+import 'package:ecommerceassim/shared/validation/validate_mixin.dart';
 import 'package:flutter/material.dart';
 import '../../../components/forms/custom_text_form_field.dart';
 import '../../../components/utils/vertical_spacer_box.dart';
@@ -53,21 +53,28 @@ class InfoFirstScreen extends StatelessWidget with ValidationMixin {
             controller: controller.passwordController,
             validateForm: (value) => isValidPassword(value)),
         const VerticalSpacerBox(size: SpacerSize.small),
-        LinearProgressIndicator(
-          value: controller.strength,
-          backgroundColor: Colors.grey.withOpacity(0.1),
-          color: controller.strength <= 1 / 4
-              ? Colors.red
-              : controller.strength == 2 / 4
-                  ? Colors.yellow
-                  : controller.strength == 3 / 4
-                      ? Colors.blue
-                      : Colors.green,
-          minHeight: 15,
-        ),
-        Text(
-          controller.displayText,
-          style: const TextStyle(color: Colors.black, fontSize: 16),
+        Visibility(
+          visible: controller.passwordController.text.isNotEmpty,
+          child: Column(
+            children: [
+              LinearProgressIndicator(
+                value: controller.strength,
+                backgroundColor: Colors.grey.withOpacity(0.1),
+                color: controller.strength <= 1 / 4
+                    ? Colors.red
+                    : controller.strength == 2 / 4
+                        ? Colors.yellow
+                        : controller.strength == 3 / 4
+                            ? Colors.blue
+                            : Colors.green,
+                minHeight: 15,
+              ),
+              Text(
+                controller.displayText,
+                style: const TextStyle(color: Colors.black, fontSize: 16),
+              ),
+            ],
+          ),
         ),
         const VerticalSpacerBox(size: SpacerSize.small),
       ],

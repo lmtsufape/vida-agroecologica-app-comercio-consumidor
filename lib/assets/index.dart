@@ -5,7 +5,8 @@ class Assets {
   ///the assets should be separated by sections
 
   //**IMAGES */
-  static const String logo = 'lib/assets/images/logo_lmts.png';
+  static const String lmtsLogo = 'lib/assets/images/logo_lmts.png';
+  static const String ufapeLogo = 'lib/assets/images/ufape-logo.png';
   static const String vegetais = 'lib/assets/images/Carrot.png';
   static const String beneficiados = 'lib/assets/images/beneficiados.png';
   static const String mel = 'lib/assets/images/mel.png';
@@ -27,4 +28,7 @@ class Assets {
   static const String pix = 'lib/assets/images/pix.png';
   static const String feedback = 'lib/assets/images/feedback.jpg';
   static const String document = 'lib/assets/images/ufape-edu-br.pem';
+  static const String shoppingBag = 'lib/assets/images/shopping-bag.png';
+  static const String logoAssim = 'lib/assets/images/logoAssim.png';
+  static const String logoPosGraduacao = 'lib/assets/images/LogoPosGraduacao.jpg';
 }

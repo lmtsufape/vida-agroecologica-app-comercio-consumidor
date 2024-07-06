@@ -1,4 +1,4 @@
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 
 class AuthFormField2 extends StatefulWidget {
@@ -54,12 +54,13 @@ class _AuthFormField2State extends State<AuthFormField2> {
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide.none,
+            borderSide: BorderSide.none, 
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(
-              color: kDetailColor,
+              color:
+                  kDetailColor, 
               width: 1.5,
             ),
           ),

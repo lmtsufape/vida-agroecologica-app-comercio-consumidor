@@ -1,4 +1,4 @@
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 
 class AuthFormField extends StatefulWidget {
@@ -11,7 +11,7 @@ class AuthFormField extends StatefulWidget {
   final String? initialValue;
 
   const AuthFormField({
-    Key? key,
+    super.key,
     required this.label,
     required this.isPassword,
     required this.inputType,
@@ -19,7 +19,7 @@ class AuthFormField extends StatefulWidget {
     this.backgroundColor = kOnBackgroundColorText,
     this.controller,
     this.initialValue,
-  }) : super(key: key);
+  });
 
   @override
   State<AuthFormField> createState() => _AuthFormFieldState();

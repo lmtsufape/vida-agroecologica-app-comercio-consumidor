@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:ecommercebonito/shared/constants/app_text_constants.dart';
-import 'package:ecommercebonito/shared/core/models/produto_model.dart';
-import 'package:ecommercebonito/shared/core/user_storage.dart';
+import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
+import 'package:ecommerceassim/shared/core/models/produto_model.dart';
+import 'package:ecommerceassim/shared/core/user_storage.dart';
 
 class ProdutoRepository {
   late String userToken;

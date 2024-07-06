@@ -1,9 +1,9 @@
-import 'package:ecommercebonito/shared/validation/validate_mixin.dart';
-import 'package:ecommercebonito/shared/constants/app_enums.dart';
+import 'package:ecommerceassim/shared/validation/validate_mixin.dart';
+import 'package:ecommerceassim/shared/constants/app_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ecommercebonito/shared/core/controllers/sign_up_controller.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
+import 'package:ecommerceassim/shared/core/controllers/sign_up_controller.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
 import '../../components/buttons/custom_text_button.dart';
 import '../../components/buttons/primary_button.dart';
 import '../../components/utils/vertical_spacer_box.dart';
