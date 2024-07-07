@@ -29,11 +29,6 @@ class _SignUpScreenState extends State<SignUpScreen> with ValidationMixin {
     return GetBuilder<SignUpController>(
       init: SignUpController(),
       builder: (controller) => Scaffold(
-        appBar: AppBar(
-          backgroundColor: kOnSurfaceColor,
-          iconTheme: const IconThemeData(color: kDetailColor),
-          elevation: 0,
-        ),
         backgroundColor: kOnSurfaceColor,
         body: SingleChildScrollView(
           child: Padding(
