@@ -1,9 +1,10 @@
-// ignore: file_names
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class VerticalSpacer extends StatelessWidget {
   final double size;
-  const VerticalSpacer({Key? key, required this.size}) : super(key: key);
+  const VerticalSpacer({super.key, required this.size});
 
   @override
   Widget build(BuildContext context) {

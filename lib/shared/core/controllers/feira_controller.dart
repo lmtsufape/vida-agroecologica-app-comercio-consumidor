@@ -1,11 +1,11 @@
 // ignore_for_file: avoid_print
 
 import 'package:dio/dio.dart';
-import 'package:ecommercebonito/shared/constants/app_text_constants.dart';
-import 'package:ecommercebonito/shared/core/controllers/bairro_controller.dart';
-import 'package:ecommercebonito/shared/core/models/feira_model.dart';
-import 'package:ecommercebonito/shared/core/repositories/feira_repository.dart';
-import 'package:ecommercebonito/shared/core/user_storage.dart';
+import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
+import 'package:ecommerceassim/shared/core/controllers/bairro_controller.dart';
+import 'package:ecommerceassim/shared/core/models/feira_model.dart';
+import 'package:ecommerceassim/shared/core/repositories/feira_repository.dart';
+import 'package:ecommerceassim/shared/core/user_storage.dart';
 import 'package:flutter/material.dart';
 
 class FeiraController with ChangeNotifier {

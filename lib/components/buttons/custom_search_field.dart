@@ -1,4 +1,4 @@
-import 'package:ecommercebonito/components/buttons/debouncer.dart';
+import 'package:ecommerceassim/components/buttons/debouncer.dart';
 import 'package:flutter/material.dart';
 
 class CustomSearchField extends StatelessWidget {

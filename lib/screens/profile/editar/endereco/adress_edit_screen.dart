@@ -1,21 +1,21 @@
 // ignore_for_file: use_build_context_synchronously
 import 'dart:convert';
-import 'package:ecommercebonito/shared/validation/validate_mixin.dart';
+import 'package:ecommerceassim/shared/validation/validate_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:ecommercebonito/shared/constants/app_enums.dart';
-import 'package:ecommercebonito/shared/constants/app_text_constants.dart';
+import 'package:ecommerceassim/shared/constants/app_enums.dart';
+import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:ecommercebonito/components/utils/vertical_spacer_box.dart';
-import 'package:ecommercebonito/screens/screens_index.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
-import 'package:ecommercebonito/components/appBar/custom_app_bar.dart';
-import 'package:ecommercebonito/components/buttons/primary_button.dart';
-import 'package:ecommercebonito/components/forms/address_form_field.dart';
-import 'package:ecommercebonito/shared/core/user_storage.dart';
-import 'package:ecommercebonito/shared/core/models/bairro_model.dart';
-import 'package:ecommercebonito/shared/core/models/cidade_model.dart';
-import 'package:ecommercebonito/shared/core/repositories/sign_up_repository.dart';
+import 'package:ecommerceassim/components/utils/vertical_spacer_box.dart';
+import 'package:ecommerceassim/screens/screens_index.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
+import 'package:ecommerceassim/components/appBar/custom_app_bar.dart';
+import 'package:ecommerceassim/components/buttons/primary_button.dart';
+import 'package:ecommerceassim/components/forms/address_form_field.dart';
+import 'package:ecommerceassim/shared/core/user_storage.dart';
+import 'package:ecommerceassim/shared/core/models/bairro_model.dart';
+import 'package:ecommerceassim/shared/core/models/cidade_model.dart';
+import 'package:ecommerceassim/shared/core/repositories/sign_up_repository.dart';
 
 class AdressEditScreen extends StatefulWidget {
   const AdressEditScreen({super.key});
@@ -145,6 +145,7 @@ class _AdressEditScreenState extends State<AdressEditScreen>
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: const CustomAppBar(),
+      backgroundColor: Colors.white,
       body: Container(
         color: kOnSurfaceColor,
         width: size.width,

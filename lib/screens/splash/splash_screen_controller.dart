@@ -1,15 +1,14 @@
 import 'dart:convert';
 import 'dart:math';
-
 import 'package:dio/dio.dart';
-import 'package:ecommercebonito/shared/constants/app_text_constants.dart';
-import 'package:ecommercebonito/shared/core/models/table_products_model.dart';
+import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
+import 'package:ecommerceassim/shared/core/models/table_products_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
-import 'package:ecommercebonito/screens/screens_index.dart';
-import 'package:ecommercebonito/shared/core/navigator.dart';
-import 'package:ecommercebonito/shared/core/user_storage.dart';
+import 'package:ecommerceassim/screens/screens_index.dart';
+import 'package:ecommerceassim/shared/core/navigator.dart';
+import 'package:ecommerceassim/shared/core/user_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreenController {
@@ -17,7 +16,7 @@ class SplashScreenController {
   bool isFirstTime = false;
   SplashScreenController(this.context);
   final Logger _logger =
-      Logger('Splash screen logger'); //a logger is always good to have
+      Logger('Splash screen logger');
   final userStorage = UserStorage();
 
   void initApplication(Function onComplete) async {

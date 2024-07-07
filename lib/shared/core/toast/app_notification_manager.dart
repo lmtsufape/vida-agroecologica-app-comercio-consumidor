@@ -1,10 +1,11 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommercebonito/shared/constants/app_enums.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
+import 'package:ecommerceassim/shared/constants/app_enums.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
 
 class AppNotificationManager {
-  static void showSimpleNotification(NotificationType type, [String? title]) {
+  static void showSimpleNotification(NotificationType type,
+      [String? title]) {
     Color typeColor;
     String notificationTitle;
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
 
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField(
@@ -98,7 +98,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           ),
           errorStyle: const TextStyle(
             color: kErrorColor,
-            backgroundColor: Colors.white,
           ),
           labelText: widget.label,
           hintText: widget.hintText,
@@ -125,9 +124,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     });
   }
 
-  void _updateObscureText() {
+  /* void _updateObscureText() {
     setState(() {
       _obscureText = widget.controller?.text.isEmpty ?? true;
     });
-  }
+  } */
 }

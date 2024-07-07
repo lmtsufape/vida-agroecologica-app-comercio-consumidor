@@ -1,11 +1,11 @@
 // ignore_for_file: avoid_print
 
 import 'package:dio/dio.dart';
-import 'package:ecommercebonito/shared/core/user_storage.dart';
+import 'package:ecommerceassim/shared/core/user_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommercebonito/shared/core/models/cidade_model.dart';
-import 'package:ecommercebonito/shared/constants/app_text_constants.dart';
-import 'package:ecommercebonito/shared/core/repositories/cidade_repository.dart';
+import 'package:ecommerceassim/shared/core/models/cidade_model.dart';
+import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
+import 'package:ecommerceassim/shared/core/repositories/cidade_repository.dart';
 
 class CidadeController with ChangeNotifier {
   final CidadeRepository _cidadeRepository = CidadeRepository(Dio());

@@ -1,19 +1,24 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
-import 'package:ecommercebonito/screens/screens_index.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
-import 'package:ecommercebonito/shared/core/models/produto_model.dart';
-import 'package:ecommercebonito/shared/core/models/table_products_model.dart';
+import 'package:ecommerceassim/screens/screens_index.dart';
+import 'package:ecommerceassim/shared/components/dialogs/notice_dialog.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
+import 'package:ecommerceassim/shared/core/models/produto_model.dart';
+import 'package:ecommerceassim/shared/core/models/table_products_model.dart';
 import 'package:flutter/material.dart';
 import '../../../shared/core/models/cart_model.dart';
 import '../../cesta/cart_provider.dart';
 import '../../../shared/core/controllers/products_controller.dart';
 
+// ignore: must_be_immutable
 class BuildProductCard extends StatefulWidget {
-  ProdutoModel produto;
-  ProductsController controller;
-  CartProvider cartProvider;
-  BuildProductCard(this.produto, this.controller, this.cartProvider,
+  final ProdutoModel produto;
+  final ProductsController controller;
+  final CartProvider cartProvider;
+  CartModel? cartModel;
+
+   BuildProductCard(this.produto, this.controller, this.cartProvider,
       {super.key});
 
   @override
@@ -30,19 +35,23 @@ class _BuildProductCardState extends State<BuildProductCard> {
             tableProductsModel.imagem != null
         ? 'data:image/jpeg;base64,${base64Encode(tableProductsModel.imagem!)}'
         : null;
+
+    void addToCart(int quantity) {
+      CartModel cart = widget.controller.createCart(context, quantity, widget.produto);
+      widget.cartProvider.addCart(cart);
+    }
+
     return InkWell(
       onTap: () {
         Navigator.pushNamed(
           context,
           Screens.produtoDetalhe,
           arguments: {
-            'id': widget.produto.id,
-            'titulo': widget.produto.titulo,
-            'descricao': widget.produto.descricao,
-            'tipoUnidade': widget.produto.tipoUnidade,
-            'preco': widget.produto.preco,
-            'estoque': widget.produto.estoque,
-            'produtoImage': base64Image,
+            'produto': widget.produto,
+            'base64Image': base64Image,
+            'controller': widget.controller,
+            'cartProvider': widget.cartProvider,
+            'addToCart': addToCart,
           },
         );
       },
@@ -93,10 +102,14 @@ class _BuildProductCardState extends State<BuildProductCard> {
                     style: const TextStyle(fontSize: 18, color: kDetailColor),
                   ),
                   IconButton(
-                    onPressed: () {
-                      CartModel card = widget.controller
-                          .createCart(context, 1, widget.produto);
-                      widget.cartProvider.addCart(card);
+                    onPressed: (){
+                      if(widget.produto.estoque > widget.cartProvider.getProductQuantity(widget.produto.id)){
+                        addToCart(1);
+                        print('Produto adicionado ao carrinho +1');
+                      }else {
+                    alertDialog(context, 'Produto Esgotado', 'A quantidade disponível do produto já foi adicionada à cesta ou não está mais em estoque.');
+                        print("Produto nao adicionado a cesta porque nao tem mais o produto no estoque");
+                      }
                     },
                     icon: const Icon(
                       Icons.add_circle_outline,

@@ -1,5 +1,7 @@
-import 'package:ecommercebonito/shared/core/repositories/first_repository.dart';
-import 'package:ecommercebonito/shared/core/user_storage.dart';
+// ignore_for_file: non_constant_identifier_names, avoid_print
+
+import 'package:ecommerceassim/shared/core/repositories/first_repository.dart';
+import 'package:ecommerceassim/shared/core/user_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../navigator.dart';

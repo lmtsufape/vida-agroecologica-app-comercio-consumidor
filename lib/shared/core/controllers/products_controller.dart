@@ -1,17 +1,15 @@
 // ignore_for_file: avoid_print
-
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:ecommercebonito/shared/constants/app_text_constants.dart';
-import 'package:ecommercebonito/shared/core/models/table_products_model.dart';
-import 'package:ecommercebonito/shared/core/repositories/banca_repository.dart';
-import 'package:ecommercebonito/shared/core/user_storage.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
+import 'package:ecommerceassim/shared/core/models/cart_model.dart';
+import 'package:ecommerceassim/shared/core/models/produto_model.dart';
+import 'package:ecommerceassim/shared/core/models/table_products_model.dart';
+import 'package:ecommerceassim/shared/core/repositories/banca_repository.dart';
+import 'package:ecommerceassim/shared/core/repositories/produto_repository.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../models/cart_model.dart';
-import '../models/produto_model.dart';
-import '../repositories/produto_repository.dart';
 
 class ProductsController extends GetxController {
   List<CartModel> listCart = [];
@@ -20,20 +18,20 @@ class ProductsController extends GetxController {
   ProdutoModel? produto;
 
   List<ProdutoModel> _produtos = [];
-  bool _hasError = false;
+  List<ProdutoModel> filteredProdutos = [];
+  final _hasError = false;
 
   RxBool isLoading = false.obs;
   List<ProdutoModel?> cartProduct = [];
-  Dio _dio;
+  Dio dio;
 
-  ProductsController(this._dio);
+  ProductsController(this.dio);
 
   final ProdutoRepository produtoRepository = ProdutoRepository(Dio());
-  final BancaRepository bancaRepository = BancaRepository(Dio());
+  final BancaRepository bancaRepository = BancaRepository();
 
   CartModel createCart(BuildContext context, int amount, ProdutoModel produto) {
-    final Map<String, dynamic> arguments =
-        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
+    final Map<String, dynamic> arguments = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     final int bancaId = arguments['id'];
 
     CartModel cart = CartModel(produto.id, bancaId, produto.titulo,
@@ -55,6 +53,7 @@ class ProductsController extends GetxController {
       isLoading(true);
       produtos1 = await produtoRepository.getProdutos(bancaId);
       _produtos = produtos1;
+      filteredProdutos = _produtos;
       update();
     } catch (error) {
       print('Erro ao carregar os produtos: $error');
@@ -63,51 +62,43 @@ class ProductsController extends GetxController {
     }
   }
 
-  Future<void> searchProdutos(int bancaId, String query) async {
-    UserStorage userStorage = UserStorage();
-    String userToken = await userStorage.getUserToken();
-
+  void searchProdutosLocalmente(String query) {
     if (query.isEmpty) {
-      await loadProdutos(bancaId);
-      return;
+      filteredProdutos = _produtos;
+    } else {
+      filteredProdutos = _produtos
+          .where((produto) =>
+              produto.titulo.toLowerCase().contains(query.toLowerCase()))
+          .toList();
     }
+    update();
+  }
 
-    try {
-      isLoading(true);
+  void filterProdutosByCategoryIndex(int categoryIndex) {
+    const List<String> categories = [
+      "Mel",
+      "Legumes",
+      "Polpa de Frutas",
+      "Grãos",
+      "Verduras",
+      "Raízes",
+      "Frutas",
+      "Produtos Beneficiados",
+      "Plantas/Ervas Medicinais"
+    ];
 
-      var options = Options(headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        'Cache-Control': 'no-cache',
-        "Authorization": "Bearer $userToken",
-      });
-
-      var response = await _dio.get(
-          '$kBaseURL/bancas/$bancaId/produtos?search=$query',
-          options: options);
-
-      if (response.statusCode == 200) {
-        var json = response.data;
-        if (json['produtos'].isEmpty) {
-          _produtos = [];
-          _hasError = true;
-        } else {
-          _produtos = List<ProdutoModel>.from(
-              json['produtos'].map((x) => ProdutoModel.fromJson(x)));
-          _hasError = false;
-        }
-      } else {
-        _produtos = [];
-        _hasError = true;
-      }
-    } catch (error) {
-      print('Erro na busca de produtos: $error');
-      _produtos = [];
-      _hasError = true;
-    } finally {
-      isLoading(false);
-      update();
+    if (categoryIndex == -1) {
+      filteredProdutos = _produtos;
+    } else if (categoryIndex >= 0 && categoryIndex < categories.length) {
+      String categoryName = categories[categoryIndex];
+      filteredProdutos = _produtos
+          .where((produto) =>
+              produto.categoria.toLowerCase() == categoryName.toLowerCase())
+          .toList();
+    } else {
+      filteredProdutos = _produtos;
     }
+    update();
   }
 
   @override
@@ -121,7 +112,7 @@ class ProductsController extends GetxController {
     await loadProdutos(bancaId);
   }
 
-  List<ProdutoModel> get produtos => _produtos;
+  List<ProdutoModel> get produtos => filteredProdutos;
 
   bool get hasError => _hasError;
 }

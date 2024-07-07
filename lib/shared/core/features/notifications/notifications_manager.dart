@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -8,7 +10,8 @@ class NotificationManager {
   static final _notifications = FlutterLocalNotificationsPlugin();
   static Future _notificationDetails() async {
     return const NotificationDetails(
-      android: AndroidNotificationDetails('channelId', 'channelName', importance: Importance.max, icon: 'ic_notification'),
+      android: AndroidNotificationDetails('channelId', 'channelName',
+          importance: Importance.max, icon: 'ic_notification'),
     );
   }
 
@@ -20,7 +23,10 @@ class NotificationManager {
     //     ((route) => false));
   }
 
-  Future init({bool initScheduled = false, required BuildContext context, required GlobalKey<NavigatorState> key}) async {
+  Future init(
+      {bool initScheduled = false,
+      required BuildContext context,
+      required GlobalKey<NavigatorState> key}) async {
     log('Initializing notification manager...');
 
     const settings = InitializationSettings(
@@ -46,7 +52,14 @@ class NotificationManager {
   }) async =>
       _notifications.show(id, title, body, await _notificationDetails());
 
-  static Future showNotificationAfterTime({int id = 0, required String teaTitle, String? title, String? body, String? payload, required DateTime scheduleDate, required BuildContext context}) async {
+  static Future showNotificationAfterTime(
+      {int id = 0,
+      required String teaTitle,
+      String? title,
+      String? body,
+      String? payload,
+      required DateTime scheduleDate,
+      required BuildContext context}) async {
     return _notifications
         .zonedSchedule(
       id,
@@ -55,7 +68,8 @@ class NotificationManager {
       tz.TZDateTime.from(scheduleDate, tz.local),
       await _notificationDetails(),
       androidAllowWhileIdle: true,
-      uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
     )
         .then((value) {
       // Provider.of<TeaAlarmController>(context, listen: false)
@@ -64,7 +78,8 @@ class NotificationManager {
   }
 
   static Future getActiveAlarm() async {
-    final List<PendingNotificationRequest> pendingNotificationRequests = await _notifications.pendingNotificationRequests();
+    final List<PendingNotificationRequest> pendingNotificationRequests =
+        await _notifications.pendingNotificationRequests();
     return pendingNotificationRequests;
   }
 }

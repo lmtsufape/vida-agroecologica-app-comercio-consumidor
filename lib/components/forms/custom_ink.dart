@@ -1,4 +1,4 @@
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomInkWell extends StatelessWidget {

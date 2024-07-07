@@ -1,6 +1,7 @@
-// ignore: file_names
-import 'package:ecommercebonito/shared/components/bottomNavigation/bottom_navigator_controller.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
+// ignore_for_file: file_names
+
+import 'package:ecommerceassim/shared/components/bottomNavigation/bottom_navigator_controller.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -57,7 +58,7 @@ class BottomNavigation extends StatelessWidget {
         selectedItemColor: kDetailColor,
         backgroundColor: kOnSurfaceColor,
         onTap: (index) {
-          bottomNavigatorController.mudarAba(index, context);
+          bottomNavigatorController.mudarAba(index, context, paginaSelecionada);
         });
   }
 }

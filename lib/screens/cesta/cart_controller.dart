@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 import 'dart:developer';
-import 'package:ecommercebonito/shared/core/models/cart_model.dart';
+import 'package:ecommerceassim/shared/core/models/cart_model.dart';
 
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';

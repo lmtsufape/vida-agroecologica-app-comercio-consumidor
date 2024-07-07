@@ -1,17 +1,16 @@
 // ignore_for_file: use_build_context_synchronously, avoid_print
-
-import 'package:ecommercebonito/components/buttons/primary_button.dart';
-import 'package:ecommercebonito/components/spacer/verticalSpacer.dart';
-import 'package:ecommercebonito/screens/screens_index.dart';
-import 'package:ecommercebonito/shared/components/bottomNavigation/BottomNavigation.dart';
-import 'package:ecommercebonito/shared/constants/app_text_constants.dart';
-import 'package:ecommercebonito/shared/core/user_storage.dart';
+import 'package:ecommerceassim/components/buttons/primary_button.dart';
+import 'package:ecommerceassim/components/spacer/verticalSpacer.dart';
+import 'package:ecommerceassim/screens/screens_index.dart';
+import 'package:ecommerceassim/shared/components/bottomNavigation/BottomNavigation.dart';
+import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
+import 'package:ecommerceassim/shared/core/user_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
-import 'package:ecommercebonito/components/appBar/custom_app_bar.dart';
-import 'package:ecommercebonito/shared/core/controllers/profile_controller.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
+import 'package:ecommerceassim/components/appBar/custom_app_bar.dart';
+import 'package:ecommerceassim/shared/core/controllers/profile_controller.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
 import '../../../components/utils/vertical_spacer_box.dart';
 import '../../../shared/constants/app_enums.dart';
 
@@ -138,8 +137,12 @@ class _SelectAddressState extends State<SelectAddress> {
                                               borderRadius:
                                                   BorderRadius.circular(15),
                                             ),
-                                            title:
-                                                const Text('Excluir endereço'),
+                                            title: const Text(
+                                              'Excluir endereço',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
                                             content: const Text(
                                               'Tem certeza de que deseja excluir este endereço?',
                                               textAlign: TextAlign.center,

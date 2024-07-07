@@ -1,13 +1,10 @@
 // ignore_for_file: must_be_immutable
 
-import 'dart:ui';
-
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
-import 'package:ecommercebonito/shared/core/models/cidade_model.dart';
-import 'package:ecommercebonito/shared/validation/validate_mixin.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
+import 'package:ecommerceassim/shared/core/models/cidade_model.dart';
+import 'package:ecommerceassim/shared/validation/validate_mixin.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+
 import '../../../components/forms/custom_text_form_field.dart';
 import '../../../components/utils/vertical_spacer_box.dart';
 import '../../../shared/constants/app_enums.dart';

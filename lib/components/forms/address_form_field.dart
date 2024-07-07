@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ecommercebonito/shared/constants/style_constants.dart';
+import 'package:ecommerceassim/shared/constants/style_constants.dart';
 
 class AddressFormField extends StatefulWidget {
   final TextEditingController controller;

@@ -1,6 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:dio/dio.dart';
-import 'package:ecommercebonito/shared/core/models/bairro_model.dart';
-import 'package:ecommercebonito/shared/core/repositories/bairro_repository.dart';
+import 'package:ecommerceassim/shared/core/models/bairro_model.dart';
+import 'package:ecommerceassim/shared/core/repositories/bairro_repository.dart';
 import 'package:flutter/cupertino.dart';
 
 class BairroController with ChangeNotifier {
