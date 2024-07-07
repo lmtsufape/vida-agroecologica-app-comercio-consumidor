@@ -29,6 +29,6 @@ class Assets {
   static const String feedback = 'lib/assets/images/feedback.jpg';
   static const String document = 'lib/assets/images/ufape-edu-br.pem';
   static const String shoppingBag = 'lib/assets/images/shopping-bag.png';
-  static const String logoAssim = 'lib/assets/images/logoAssim.png';
+  static const String logoVidaAgro = 'lib/assets/images/logoVidaAgro.png';
   static const String logoPosGraduacao = 'lib/assets/images/LogoPosGraduacao.jpg';
 }

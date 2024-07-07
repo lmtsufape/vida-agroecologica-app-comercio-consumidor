@@ -17,7 +17,7 @@ class HeaderStartApp extends StatelessWidget {
       children: [
         Center(
           child: Image.asset(
-            Assets.logoAssim,
+            Assets.logoVidaAgro,
             width: 160,
           ),
         ),
@@ -27,7 +27,7 @@ class HeaderStartApp extends StatelessWidget {
         Column(
           children: [
             Text(
-              'E-COMMERCE ASSIM',
+              'VIDA AGROECOLÓGICA',
               textAlign: TextAlign.center,
               style: kTitle1.copyWith(
                   color: textColor,

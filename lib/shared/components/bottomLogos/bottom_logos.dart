@@ -61,7 +61,7 @@ class BottomLogos extends StatelessWidget {
                       MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      Assets.logoAssim,
+                      Assets.logoVidaAgro,
                       width: 65,
                     ),
                     const SizedBox(width: 20),
