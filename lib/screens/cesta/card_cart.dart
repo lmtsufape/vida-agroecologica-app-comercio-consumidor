@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'dart:developer';
 
@@ -19,7 +21,7 @@ class CardCart extends StatefulWidget {
   CartModel model;
   CartController? controller;
 
-  CardCart(this.model, this.controller, {Key? key}) : super(key: key);
+  CardCart(this.model, this.controller, {super.key});
 
   @override
   State<CardCart> createState() => _CardCartState();
@@ -214,7 +216,7 @@ class _CardCartState extends State<CardCart> {
             borderRadius: BorderRadius.circular(16), //Borda do Container
             color: kOnBackgroundColorText, // Cor de fundo do caontainer
           ),
-          padding: EdgeInsets.all(16), // Espaçamento interno do Container
+          padding: const EdgeInsets.all(16), // Espaçamento interno do Container
           child: Column(
             // Forma que os Widgets irão fiar alinhados no Container
             crossAxisAlignment: CrossAxisAlignment
@@ -223,27 +225,27 @@ class _CardCartState extends State<CardCart> {
             children: [
               Text(
                 widget.model.nameProduct ?? 'Nome do Produto',
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 18, // Tamanho da fonte do texto
                     fontWeight: FontWeight.bold, // Adicionando Negrito no texto
                     color: kDetailColor),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Text(
                 'Preço: ${widget.model.price ?? 'Preço Indisponível'}', // Buscando valores no Model da aplicação
-                style: TextStyle(fontSize: 16, color: kDetailColor),
+                style: const TextStyle(fontSize: 16, color: kDetailColor),
               ),
-              SizedBox(height: 8),
-              Text(
+              const SizedBox(height: 8),
+              const Text(
                 'Descrição do Produto',
                 style: TextStyle(fontSize: 16, color: kDetailColor),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('Fechar'),
+                child: const Text('Fechar'),
               ),
             ],
           ),

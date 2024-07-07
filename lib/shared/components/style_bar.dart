@@ -13,9 +13,9 @@ class StyleBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: hasLeading,
-      flexibleSpace: Column(
+      flexibleSpace: const Column(
         children: [
-          const SizedBox(height: 40,),
+          SizedBox(height: 40,),
           HeaderStartApp(kOnSurfaceColor),
         ],
       ),

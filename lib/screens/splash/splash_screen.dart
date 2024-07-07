@@ -70,7 +70,7 @@ class _SplashScreenState extends State<SplashScreen>
                 AnimatedOpacity(
                   duration: const Duration(milliseconds: 600),
                   opacity: opacity,
-                  child:  HeaderStartApp(kOnSurfaceColor)
+                  child:  const HeaderStartApp(kOnSurfaceColor)
                 ),
                 const VerticalSpacerBox(size: SpacerSize.huge),
                 const CircularProgressIndicator(

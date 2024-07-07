@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // Import necessário para SystemUiOverlayStyle
+// Import necessário para SystemUiOverlayStyle
 import 'package:ecommerceassim/shared/constants/style_constants.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool automaticallyImplyLeading;
 
   const CustomAppBar({
-    Key? key,
+    super.key,
     this.automaticallyImplyLeading = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -27,6 +27,7 @@ final _dio = Dio();
         throw Exception(
             'Failed to load bancas with status code: ${response.statusCode}.');
       }
+    // ignore: deprecated_member_use
     } on DioError catch (dioError) {
       // Handle Dio-specific errors here
       throw Exception('DioError caught: ${dioError.message}');

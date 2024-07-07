@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:ecommerceassim/components/appBar/custom_app_bar.dart';
 import 'package:ecommerceassim/screens/cesta/cart_provider.dart';
@@ -199,7 +201,6 @@ class _ProdutoDetalheScreenState extends State<ProdutoDetalheScreen> {
                             setState(() {
                               quantity = 1;
                             });
-                            // ignore: avoid_print
                             print('Produto adicionado a cesta');
                           } else {
                             setState(() {

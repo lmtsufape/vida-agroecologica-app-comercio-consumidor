@@ -5,8 +5,8 @@ import 'package:ecommerceassim/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 
 class HeaderStartApp extends StatelessWidget {
-  Color textColor;
-  HeaderStartApp( this.textColor,{super.key});
+  final Color textColor;
+  const HeaderStartApp( this.textColor,{super.key});
 
   @override
   Widget build(BuildContext context) {

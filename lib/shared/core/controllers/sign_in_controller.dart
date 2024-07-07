@@ -108,6 +108,7 @@ class SignInController with ChangeNotifier {
       setErrorMessage(e is Exception
           ? e.toString().replaceAll('Exception: ', '')
           : 'Falha ao enviar email de redefinição de senha. Tente novamente mais tarde.');
+      // ignore: use_rethrow_when_possible
       throw e;
     }
   }

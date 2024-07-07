@@ -165,7 +165,7 @@ class Bancas extends StatelessWidget {
 
 class BancaCard extends StatelessWidget {
   final BancaModel banca;
-  const BancaCard({required this.banca, Key? key}) : super(key: key);
+  const BancaCard({required this.banca, super.key});
 
   @override
   Widget build(BuildContext context) {
