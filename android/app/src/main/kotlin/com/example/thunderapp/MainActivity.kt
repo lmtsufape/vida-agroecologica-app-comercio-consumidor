@@ -1,4 +1,4 @@
-package com.example.thunderapp
+package com.lmts.vidaagroconsumidor
 
 import io.flutter.embedding.android.FlutterActivity
 
