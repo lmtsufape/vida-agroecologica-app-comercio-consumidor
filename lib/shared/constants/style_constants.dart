@@ -23,6 +23,7 @@ const Color kTextButtonColor = Colors.grey;
 const Color kTextSign = Color.fromRGBO(0, 0, 0, 0.603);
 const Color kButtom = Colors.green;
 const Color kText = Colors.black;
+const Color kTextLight = Colors.white;
 const Color kButtom2 = Colors.red;
 const Color kTextFirst = Colors.blueGrey;
 const Color kColorBottom = Color.fromARGB(255, 228, 255, 198);
