@@ -1,7 +1,7 @@
 // ignore_for_file: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
 
-import 'package:vidaagroconsumidor/components/appBar/custom_app_bar.dart';
 import 'package:vidaagroconsumidor/shared/components/dialogs/confirm_dialog.dart';
+import 'package:vidaagroconsumidor/shared/components/header_start_app/header_start_app.dart';
 import 'package:vidaagroconsumidor/shared/constants/app_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -46,95 +46,121 @@ class ForgotPasswordScreen extends StatelessWidget with ValidationMixin {
       create: (_) => ForgotPasswordController(),
       child: Consumer<ForgotPasswordController>(
         builder: (context, controller, child) => Scaffold(
-          backgroundColor: kOnSurfaceColor,
-          appBar: const CustomAppBar(
-            automaticallyImplyLeading: true,
-          ),
-          body: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(kDefaultPadding),
-              child: Form(
-                key: formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      'Esqueceu a senha?',
-                      style: kTitle.copyWith(fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
+          backgroundColor: kPrimaryColor,
+          body: Column(
+            children: [
+              Expanded(
+                flex: 2,
+                // ignore: avoid_unnecessary_containers
+                child: Container(
+                  child: const SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 35),
+                      child: HeaderStartApp(kTextLight),
                     ),
-                    const VerticalSpacerBox(size: SpacerSize.huge),
-                    CustomTextFormField(
-                      hintText: 'Informe o e-mail:',
-                      icon: Icons.email,
-                      controller: controller.emailController,
-                      validateForm: (value) => isValidEmail(value),
                     ),
-                    const VerticalSpacerBox(size: SpacerSize.medium),
-                    ElevatedButton(
-                      onPressed: () async {
-                        if (formKey.currentState!.validate()) {
-                          controller.status = ForgotPasswordStatus.loading;
-                          controller.notifyListeners();
-                          try {
-                            await controller.sendResetPasswordEmail();
-                            if (context.mounted) {
-                              controller.status = ForgotPasswordStatus.done;
-                              controller.notifyListeners();
-                              _showSuccessMessage(context);
-                            }
-                          } catch (e) {
-                            if (context.mounted) {
-                              controller.status = ForgotPasswordStatus.idle;
-                              controller.notifyListeners();
-                              _showErrorMessage(context,
-                                  e.toString().replaceAll('Exception: ', ''));
-                            }
-                          }
-                        } else {
-                          controller.setErrorMessage(
-                              'Por favor, forneça um email válido.');
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: kDetailColor,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        textStyle: const TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500),
-                      ),
-                      child: const Text(
-                        'Recuperar senha',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    const VerticalSpacerBox(size: SpacerSize.medium),
-                    if (controller.status == ForgotPasswordStatus.loading)
-                      const Center(
-                        child: CircularProgressIndicator(color: kDetailColor),
-                      ),
-                    const VerticalSpacerBox(size: SpacerSize.medium),
-                    if (controller.errorMessage != null)
-                      Text(
-                        controller.errorMessage!,
-                        style: kCaption1,
-                        textAlign: TextAlign.center,
-                      ),
-                    CustomTextButton(
-                      title: 'Cancelar',
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ],
                 ),
               ),
-            ),
+              Expanded(
+                flex: 3,
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(
+                    color: kOnSurfaceColor,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(kRadiusCircular),
+                      topRight: Radius.circular(kRadiusCircular),
+                    )
+                  ),
+                  child: SingleChildScrollView(
+                    child: Padding(
+                    padding: const EdgeInsets.all(kDefaultPadding),
+                    child: Form(
+                      key: formKey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                            'Esqueceu a senha?',
+                            style: kTitle.copyWith(fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          ),
+                          const VerticalSpacerBox(size: SpacerSize.huge),
+                          CustomTextFormField(
+                            hintText: 'Informe o e-mail:',
+                            icon: Icons.email,
+                            controller: controller.emailController,
+                            validateForm: (value) => isValidEmail(value),
+                          ),
+                          const VerticalSpacerBox(size: SpacerSize.huge),
+                          ElevatedButton(
+                            onPressed: () async {
+                              if (formKey.currentState!.validate()) {
+                                controller.status = ForgotPasswordStatus.loading;
+                                controller.notifyListeners();
+                                try {
+                                  await controller.sendResetPasswordEmail();
+                                  if (context.mounted) {
+                                    controller.status = ForgotPasswordStatus.done;
+                                    controller.notifyListeners();
+                                    _showSuccessMessage(context);
+                                  }
+                                } catch (e) {
+                                  if (context.mounted) {
+                                    controller.status = ForgotPasswordStatus.idle;
+                                    controller.notifyListeners();
+                                    _showErrorMessage(context,
+                                        e.toString().replaceAll('Exception: ', ''));
+                                  }
+                                }
+                              } else {
+                                controller.setErrorMessage(
+                                    'Por favor, forneça um email válido.');
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: kDetailColor,
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                              ),
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              textStyle: const TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w500),
+                            ),
+                            child: const Text(
+                              'Recuperar senha',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          const VerticalSpacerBox(size: SpacerSize.medium),
+                          if (controller.status == ForgotPasswordStatus.loading)
+                            const Center(
+                              child: CircularProgressIndicator(color: kDetailColor),
+                            ),
+                          const VerticalSpacerBox(size: SpacerSize.medium),
+                          if (controller.errorMessage != null)
+                            Text(
+                              controller.errorMessage!,
+                              style: kCaption1,
+                              textAlign: TextAlign.center,
+                            ),
+                          CustomTextButton(
+                            title: 'Cancelar',
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                                ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
