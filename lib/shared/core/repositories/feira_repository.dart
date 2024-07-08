@@ -1,8 +1,6 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
-import 'package:ecommerceassim/shared/core/user_storage.dart';
-
+import 'package:vidaagroconsumidor/shared/core/user_storage.dart';
 import '../../constants/app_text_constants.dart';
 import '../models/feira_model.dart';
 

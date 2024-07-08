@@ -1,11 +1,11 @@
-import 'package:ecommerceassim/components/utils/horizontal_spacer_box.dart';
-import 'package:ecommerceassim/components/utils/vertical_spacer_box.dart';
-import 'package:ecommerceassim/components/appBar/custom_app_bar.dart';
-import 'package:ecommerceassim/shared/components/bottomNavigation/BottomNavigation.dart';
-import 'package:ecommerceassim/shared/core/controllers/home_screen_controller.dart';
-import 'package:ecommerceassim/screens/screens_index.dart';
-import 'package:ecommerceassim/shared/constants/app_enums.dart';
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/components/utils/horizontal_spacer_box.dart';
+import 'package:vidaagroconsumidor/components/utils/vertical_spacer_box.dart';
+import 'package:vidaagroconsumidor/components/appBar/custom_app_bar.dart';
+import 'package:vidaagroconsumidor/shared/components/bottomNavigation/BottomNavigation.dart';
+import 'package:vidaagroconsumidor/shared/core/controllers/home_screen_controller.dart';
+import 'package:vidaagroconsumidor/screens/screens_index.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_enums.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

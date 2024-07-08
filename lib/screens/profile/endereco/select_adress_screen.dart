@@ -1,16 +1,16 @@
 // ignore_for_file: use_build_context_synchronously, avoid_print
-import 'package:ecommerceassim/components/buttons/primary_button.dart';
-import 'package:ecommerceassim/components/spacer/verticalSpacer.dart';
-import 'package:ecommerceassim/screens/screens_index.dart';
-import 'package:ecommerceassim/shared/components/bottomNavigation/BottomNavigation.dart';
-import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
-import 'package:ecommerceassim/shared/core/user_storage.dart';
+import 'package:vidaagroconsumidor/components/buttons/primary_button.dart';
+import 'package:vidaagroconsumidor/components/spacer/verticalSpacer.dart';
+import 'package:vidaagroconsumidor/screens/screens_index.dart';
+import 'package:vidaagroconsumidor/shared/components/bottomNavigation/BottomNavigation.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_text_constants.dart';
+import 'package:vidaagroconsumidor/shared/core/user_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
-import 'package:ecommerceassim/components/appBar/custom_app_bar.dart';
-import 'package:ecommerceassim/shared/core/controllers/profile_controller.dart';
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/components/appBar/custom_app_bar.dart';
+import 'package:vidaagroconsumidor/shared/core/controllers/profile_controller.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
 import '../../../components/utils/vertical_spacer_box.dart';
 import '../../../shared/constants/app_enums.dart';
 

@@ -1,11 +1,11 @@
 // ignore_for_file: avoid_print
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:ecommerceassim/shared/core/models/cart_model.dart';
-import 'package:ecommerceassim/shared/core/models/produto_model.dart';
-import 'package:ecommerceassim/shared/core/models/table_products_model.dart';
-import 'package:ecommerceassim/shared/core/repositories/banca_repository.dart';
-import 'package:ecommerceassim/shared/core/repositories/produto_repository.dart';
+import 'package:vidaagroconsumidor/shared/core/models/cart_model.dart';
+import 'package:vidaagroconsumidor/shared/core/models/produto_model.dart';
+import 'package:vidaagroconsumidor/shared/core/models/table_products_model.dart';
+import 'package:vidaagroconsumidor/shared/core/repositories/banca_repository.dart';
+import 'package:vidaagroconsumidor/shared/core/repositories/produto_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';

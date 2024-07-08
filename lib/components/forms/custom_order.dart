@@ -1,9 +1,9 @@
-import 'package:ecommerceassim/components/spacer/verticalSpacer.dart';
-import 'package:ecommerceassim/shared/constants/app_enums.dart';
+import 'package:vidaagroconsumidor/components/spacer/verticalSpacer.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_enums.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerceassim/components/utils/horizontal_spacer_box.dart';
-import 'package:ecommerceassim/components/utils/vertical_spacer_box.dart';
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/components/utils/horizontal_spacer_box.dart';
+import 'package:vidaagroconsumidor/components/utils/vertical_spacer_box.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
 
 class OrderCard extends StatelessWidget {
   final String orderNumber;

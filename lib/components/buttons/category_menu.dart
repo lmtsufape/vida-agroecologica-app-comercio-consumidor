@@ -1,7 +1,7 @@
-import 'package:ecommerceassim/assets/index.dart';
-import 'package:ecommerceassim/components/spacer/verticalSpacer.dart';
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
-import 'package:ecommerceassim/shared/core/controllers/products_controller.dart';
+import 'package:vidaagroconsumidor/assets/index.dart';
+import 'package:vidaagroconsumidor/components/spacer/verticalSpacer.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/shared/core/controllers/products_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

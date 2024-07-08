@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ecommerceassim/shared/core/repositories/sign_in_repository.dart';
+import 'package:vidaagroconsumidor/shared/core/repositories/sign_in_repository.dart';
 
 class ForgotPasswordController with ChangeNotifier {
   final SignInRepository _repository = SignInRepository();

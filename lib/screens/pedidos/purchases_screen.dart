@@ -1,14 +1,14 @@
 // ignore_for_file: avoid_print
 
-import 'package:ecommerceassim/screens/screens_index.dart';
-import 'package:ecommerceassim/shared/components/bottomNavigation/BottomNavigation.dart';
+import 'package:vidaagroconsumidor/screens/screens_index.dart';
+import 'package:vidaagroconsumidor/shared/components/bottomNavigation/BottomNavigation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
-import 'package:ecommerceassim/shared/core/controllers/pedidos_controller.dart';
-import 'package:ecommerceassim/components/appBar/custom_app_bar.dart';
-import 'package:ecommerceassim/components/forms/custom_order.dart';
-import 'package:ecommerceassim/components/utils/vertical_spacer_box.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/shared/core/controllers/pedidos_controller.dart';
+import 'package:vidaagroconsumidor/components/appBar/custom_app_bar.dart';
+import 'package:vidaagroconsumidor/components/forms/custom_order.dart';
+import 'package:vidaagroconsumidor/components/utils/vertical_spacer_box.dart';
 import '../../shared/constants/app_enums.dart';
 
 class PurchasesScreen extends StatefulWidget {

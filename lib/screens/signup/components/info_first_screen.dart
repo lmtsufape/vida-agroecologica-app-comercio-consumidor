@@ -1,4 +1,4 @@
-import 'package:ecommerceassim/shared/validation/validate_mixin.dart';
+import 'package:vidaagroconsumidor/shared/validation/validate_mixin.dart';
 import 'package:flutter/material.dart';
 import '../../../components/forms/custom_text_form_field.dart';
 import '../../../components/utils/vertical_spacer_box.dart';

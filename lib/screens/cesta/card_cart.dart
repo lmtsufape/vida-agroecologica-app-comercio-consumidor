@@ -3,17 +3,17 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:ecommerceassim/shared/constants/app_enums.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:ecommerceassim/shared/components/dialogs/confirm_dialog.dart';
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
-import 'package:ecommerceassim/shared/core/models/cart_model.dart';
-import 'package:ecommerceassim/shared/core/models/table_products_model.dart';
-import 'package:ecommerceassim/screens/cesta/cart_controller.dart';
-import 'package:ecommerceassim/components/utils/horizontal_spacer_box.dart';
-import 'package:ecommerceassim/components/utils/vertical_spacer_box.dart';
+import 'package:vidaagroconsumidor/shared/components/dialogs/confirm_dialog.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/shared/core/models/cart_model.dart';
+import 'package:vidaagroconsumidor/shared/core/models/table_products_model.dart';
+import 'package:vidaagroconsumidor/screens/cesta/cart_controller.dart';
+import 'package:vidaagroconsumidor/components/utils/horizontal_spacer_box.dart';
+import 'package:vidaagroconsumidor/components/utils/vertical_spacer_box.dart';
 import 'cart_provider.dart';
 
 // ignore: must_be_immutable

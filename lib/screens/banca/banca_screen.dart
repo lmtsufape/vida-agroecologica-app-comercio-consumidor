@@ -1,9 +1,9 @@
-import 'package:ecommerceassim/components/buttons/custom_search_field.dart';
-import 'package:ecommerceassim/components/spacer/verticalSpacer.dart';
-import 'package:ecommerceassim/screens/screens_index.dart';
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
-import 'package:ecommerceassim/shared/core/controllers/banca_controller.dart';
-import 'package:ecommerceassim/shared/core/models/banca_model.dart';
+import 'package:vidaagroconsumidor/components/buttons/custom_search_field.dart';
+import 'package:vidaagroconsumidor/components/spacer/verticalSpacer.dart';
+import 'package:vidaagroconsumidor/screens/screens_index.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/shared/core/controllers/banca_controller.dart';
+import 'package:vidaagroconsumidor/shared/core/models/banca_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

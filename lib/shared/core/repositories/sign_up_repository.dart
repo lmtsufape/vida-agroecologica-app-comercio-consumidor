@@ -1,10 +1,9 @@
 // ignore_for_file: deprecated_member_use, avoid_print, use_build_context_synchronously
-
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
-import 'package:ecommerceassim/shared/core/models/cidade_model.dart';
 import 'package:flutter/material.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_text_constants.dart';
+import 'package:vidaagroconsumidor/shared/core/models/cidade_model.dart';
 import '../../constants/style_constants.dart';
 import '../models/bairro_model.dart';
 import '../user_storage.dart';

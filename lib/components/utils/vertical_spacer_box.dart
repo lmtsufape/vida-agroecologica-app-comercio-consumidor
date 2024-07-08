@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ecommerceassim/shared/constants/app_enums.dart';
-import 'package:ecommerceassim/shared/constants/app_number_constants.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_enums.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_number_constants.dart';
 
 class VerticalSpacerBox extends StatelessWidget {
   const VerticalSpacerBox({super.key, required this.size});

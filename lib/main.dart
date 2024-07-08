@@ -1,22 +1,22 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:ecommerceassim/app.dart';
-import 'package:ecommerceassim/assets/index.dart';
-import 'package:ecommerceassim/screens/cesta/cart_provider.dart';
-import 'package:ecommerceassim/shared/components/bottomNavigation/bottom_navigator_controller.dart';
-import 'package:ecommerceassim/shared/core/controllers/bairro_controller.dart';
-import 'package:ecommerceassim/shared/core/controllers/banca_controller.dart';
-import 'package:ecommerceassim/shared/core/controllers/cidade_controllers.dart';
-import 'package:ecommerceassim/shared/core/controllers/feira_controller.dart';
-import 'package:ecommerceassim/shared/core/controllers/home_screen_controller.dart';
-import 'package:ecommerceassim/shared/core/controllers/products_controller.dart';
-import 'package:ecommerceassim/shared/core/controllers/profile_controller.dart';
-import 'package:ecommerceassim/shared/core/selected_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
+import 'package:vidaagroconsumidor/app.dart';
+import 'package:vidaagroconsumidor/assets/index.dart';
+import 'package:vidaagroconsumidor/screens/cesta/cart_provider.dart';
+import 'package:vidaagroconsumidor/shared/components/bottomNavigation/bottom_navigator_controller.dart';
+import 'package:vidaagroconsumidor/shared/core/controllers/bairro_controller.dart';
+import 'package:vidaagroconsumidor/shared/core/controllers/banca_controller.dart';
+import 'package:vidaagroconsumidor/shared/core/controllers/cidade_controllers.dart';
+import 'package:vidaagroconsumidor/shared/core/controllers/feira_controller.dart';
+import 'package:vidaagroconsumidor/shared/core/controllers/home_screen_controller.dart';
+import 'package:vidaagroconsumidor/shared/core/controllers/products_controller.dart';
+import 'package:vidaagroconsumidor/shared/core/controllers/profile_controller.dart';
+import 'package:vidaagroconsumidor/shared/core/selected_item.dart';
 import 'shared/core/controllers/sign_in_controller.dart';
 
 Future<void> main() async {

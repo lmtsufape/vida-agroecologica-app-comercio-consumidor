@@ -1,17 +1,17 @@
 // ignore_for_file: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
 
-import 'package:ecommerceassim/components/appBar/custom_app_bar.dart';
-import 'package:ecommerceassim/shared/components/dialogs/confirm_dialog.dart';
-import 'package:ecommerceassim/shared/constants/app_enums.dart';
+import 'package:vidaagroconsumidor/components/appBar/custom_app_bar.dart';
+import 'package:vidaagroconsumidor/shared/components/dialogs/confirm_dialog.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ecommerceassim/components/buttons/custom_text_button.dart';
-import 'package:ecommerceassim/components/forms/custom_text_form_field.dart';
-import 'package:ecommerceassim/components/utils/vertical_spacer_box.dart';
-import 'package:ecommerceassim/shared/constants/app_number_constants.dart';
-import 'package:ecommerceassim/shared/validation/validate_mixin.dart';
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
-import 'package:ecommerceassim/shared/core/controllers/forgot_password_controller.dart';
+import 'package:vidaagroconsumidor/components/buttons/custom_text_button.dart';
+import 'package:vidaagroconsumidor/components/forms/custom_text_form_field.dart';
+import 'package:vidaagroconsumidor/components/utils/vertical_spacer_box.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_number_constants.dart';
+import 'package:vidaagroconsumidor/shared/validation/validate_mixin.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/shared/core/controllers/forgot_password_controller.dart';
 
 class ForgotPasswordScreen extends StatelessWidget with ValidationMixin {
   ForgotPasswordScreen({super.key});

@@ -1,13 +1,13 @@
 // ignore_for_file: sized_box_for_whitespace, use_build_context_synchronously
 
-import 'package:ecommerceassim/screens/pedidos/components/file_view.dart';
+import 'package:vidaagroconsumidor/screens/pedidos/components/file_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
-import 'package:ecommerceassim/shared/core/controllers/pagamento_controller.dart';
-import 'package:ecommerceassim/shared/core/repositories/pagamento_repository.dart';
-import 'package:ecommerceassim/components/appBar/custom_app_bar.dart';
-import 'package:ecommerceassim/shared/components/bottomNavigation/BottomNavigation.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/shared/core/controllers/pagamento_controller.dart';
+import 'package:vidaagroconsumidor/shared/core/repositories/pagamento_repository.dart';
+import 'package:vidaagroconsumidor/components/appBar/custom_app_bar.dart';
+import 'package:vidaagroconsumidor/shared/components/bottomNavigation/BottomNavigation.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 
 class PaymentScreen extends StatelessWidget {

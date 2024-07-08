@@ -1,11 +1,10 @@
 import 'dart:typed_data';
-
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
-import 'package:ecommerceassim/shared/core/models/pagamento_model.dart';
-import 'package:ecommerceassim/shared/core/user_storage.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_text_constants.dart';
+import 'package:vidaagroconsumidor/shared/core/models/pagamento_model.dart';
+import 'package:vidaagroconsumidor/shared/core/user_storage.dart';
 import 'dart:io';
 
 class PagamentoRepository {
