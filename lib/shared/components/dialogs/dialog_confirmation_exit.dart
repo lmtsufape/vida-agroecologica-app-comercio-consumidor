@@ -20,35 +20,41 @@ class _ExitAlertState extends State<ExitAlert> {
           builder: (context) => AlertDialog(
             // Alert Dialog irá ser a caixa de aviso caso o usuário queira sair
             title: const Text('Confirmação de Saída'),
-            content: const Text(
-                'Tem certeza que quer sair do aplicativo?'), // Conteúdo da caixa de diálogo
+            content: const Text('Tem certeza que quer sair do aplicativo?'), // Conteúdo da caixa de diálogo
             actions: <Widget>[
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor:
-                      kDetailColor, //define a cor do background do botão
-                ),
-                onPressed: () => Navigator.of(context).pop(
-                    false), //caso o usuário pressionar "Não" retorna um valor falso para o sistema e cancelará a operação
-                child: const Text(
-                  'Não',
-                  style: TextStyle(
-                    color: Colors.white, // cor do texto do botão
+              const SizedBox(height: 10,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  TextButton(
+                    style: const ButtonStyle(
+                      minimumSize: MaterialStatePropertyAll(Size(114, 50)),
+                  backgroundColor: MaterialStatePropertyAll(kDetailColor),
+                    ),
+                    onPressed: () => Navigator.of(context).pop(
+                        false), //caso o usuário pressionar "Não" retorna um valor falso para o sistema e cancelará a operação
+                    child: const Text(
+                      'Não',
+                      style: TextStyle(
+                        color: Colors.white, // cor do texto do botão
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: kDetailColor,
-                ),
-                onPressed: () => Navigator.of(context).pop(
-                    true), //caso o usuário pressionar "Sim" retorna um valor verdadeiro para o sistema e sairá do app
-                child: const Text(
-                  'Sim',
-                  style: TextStyle(
-                    color: Colors.white, // Cor do texto do botão
+                   TextButton(
+                    
+                    style: const ButtonStyle(
+                      minimumSize: MaterialStatePropertyAll(Size(114, 50)),
+                  backgroundColor: MaterialStatePropertyAll(kErrorColor),
+                    ),
+                    onPressed: () => Navigator.of(context).pop(true), //caso o usuário pressionar "Sim" retorna um valor verdadeiro para o sistema e sairá do app
+                    child: const Text(
+                      'Sim',
+                      style: TextStyle(
+                        color: Colors.white, // Cor do texto do botão
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             ],
           ),
