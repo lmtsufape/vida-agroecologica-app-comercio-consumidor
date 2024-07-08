@@ -27,10 +27,16 @@ class _ExitAlertState extends State<ExitAlert> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   TextButton(
-                    style: const ButtonStyle(
-                      minimumSize: MaterialStatePropertyAll(Size(114, 50)),
-                  backgroundColor: MaterialStatePropertyAll(kDetailColor),
+                    style: ButtonStyle(
+                      minimumSize: const MaterialStatePropertyAll(Size(114, 50)),
+                  backgroundColor: const MaterialStatePropertyAll(kDetailColor),
+                   shape: MaterialStatePropertyAll(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
                     ),
+                  ),
+                    ),
+                    
                     onPressed: () => Navigator.of(context).pop(
                         false), //caso o usuário pressionar "Não" retorna um valor falso para o sistema e cancelará a operação
                     child: const Text(
@@ -42,9 +48,14 @@ class _ExitAlertState extends State<ExitAlert> {
                   ),
                    TextButton(
                     
-                    style: const ButtonStyle(
-                      minimumSize: MaterialStatePropertyAll(Size(114, 50)),
-                  backgroundColor: MaterialStatePropertyAll(kErrorColor),
+                    style: ButtonStyle(
+                      minimumSize: const MaterialStatePropertyAll(Size(114, 50)),
+                  backgroundColor: const MaterialStatePropertyAll(kErrorColor),
+                   shape: MaterialStatePropertyAll(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
                     ),
                     onPressed: () => Navigator.of(context).pop(true), //caso o usuário pressionar "Sim" retorna um valor verdadeiro para o sistema e sairá do app
                     child: const Text(
