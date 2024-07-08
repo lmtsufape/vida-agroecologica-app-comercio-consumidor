@@ -1,11 +1,11 @@
-import 'package:ecommerceassim/components/utils/vertical_spacer_box.dart';
-import 'package:ecommerceassim/shared/components/bottomLogos/bottom_logos.dart';
-import 'package:ecommerceassim/shared/components/header_start_app/header_start_app.dart';
-import 'package:ecommerceassim/shared/constants/app_enums.dart';
-import 'package:ecommerceassim/shared/constants/app_number_constants.dart';
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/components/utils/vertical_spacer_box.dart';
+import 'package:vidaagroconsumidor/shared/components/bottomLogos/bottom_logos.dart';
+import 'package:vidaagroconsumidor/shared/components/header_start_app/header_start_app.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_enums.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_number_constants.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerceassim/screens/splash/splash_screen_controller.dart';
+import 'package:vidaagroconsumidor/screens/splash/splash_screen_controller.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -70,7 +70,7 @@ class _SplashScreenState extends State<SplashScreen>
                 AnimatedOpacity(
                   duration: const Duration(milliseconds: 600),
                   opacity: opacity,
-                  child:  HeaderStartApp(kOnSurfaceColor)
+                  child:  const HeaderStartApp(kOnSurfaceColor)
                 ),
                 const VerticalSpacerBox(size: SpacerSize.huge),
                 const CircularProgressIndicator(

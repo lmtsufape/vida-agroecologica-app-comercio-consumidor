@@ -1,6 +1,6 @@
-import 'package:ecommerceassim/shared/core/repositories/pedidos_repository.dart';
+import 'package:vidaagroconsumidor/shared/core/repositories/pedidos_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerceassim/shared/core/models/pedidos_model.dart';
+import 'package:vidaagroconsumidor/shared/core/models/pedidos_model.dart';
 
 enum PedidosStatus {
   done,

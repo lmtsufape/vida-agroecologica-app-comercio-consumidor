@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
-import 'package:ecommerceassim/shared/components/bottomNavigation/bottom_navigator_controller.dart';
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/shared/components/bottomNavigation/bottom_navigator_controller.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

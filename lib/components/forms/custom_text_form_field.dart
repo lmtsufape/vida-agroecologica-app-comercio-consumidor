@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
 
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField(

@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:ecommerceassim/screens/screens_index.dart';
-import 'package:ecommerceassim/shared/core/repositories/sign_in_repository.dart';
+import 'package:vidaagroconsumidor/screens/screens_index.dart';
+import 'package:vidaagroconsumidor/shared/core/repositories/sign_in_repository.dart';
 import 'package:flutter/material.dart';
 
 enum SignInStatus {
@@ -108,6 +108,7 @@ class SignInController with ChangeNotifier {
       setErrorMessage(e is Exception
           ? e.toString().replaceAll('Exception: ', '')
           : 'Falha ao enviar email de redefinição de senha. Tente novamente mais tarde.');
+      // ignore: use_rethrow_when_possible
       throw e;
     }
   }

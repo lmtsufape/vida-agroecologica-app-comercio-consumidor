@@ -1,12 +1,12 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:ecommerceassim/components/appBar/custom_app_bar.dart';
-import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
-import 'package:ecommerceassim/shared/core/user_storage.dart';
+import 'package:vidaagroconsumidor/components/appBar/custom_app_bar.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_text_constants.dart';
+import 'package:vidaagroconsumidor/shared/core/user_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ecommerceassim/shared/core/controllers/pedidos_controller.dart';
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/shared/core/controllers/pedidos_controller.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
 import 'package:http/http.dart' as http;
 
 class MarkAsDeliveredScreen extends StatelessWidget {

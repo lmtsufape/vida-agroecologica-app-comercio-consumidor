@@ -1,9 +1,9 @@
-import 'package:ecommerceassim/components/appBar/custom_app_bar.dart';
-import 'package:ecommerceassim/screens/banca/banca_screen.dart';
-import 'package:ecommerceassim/shared/components/bottomNavigation/BottomNavigation.dart';
-import 'package:ecommerceassim/shared/components/dialogs/dialog_confirmation_exit.dart';
-import 'package:ecommerceassim/shared/core/controllers/home_screen_controller.dart';
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/components/appBar/custom_app_bar.dart';
+import 'package:vidaagroconsumidor/screens/banca/banca_screen.dart';
+import 'package:vidaagroconsumidor/shared/components/bottomNavigation/BottomNavigation.dart';
+import 'package:vidaagroconsumidor/shared/components/dialogs/dialog_confirmation_exit.dart';
+import 'package:vidaagroconsumidor/shared/core/controllers/home_screen_controller.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

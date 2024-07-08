@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ecommerceassim/shared/core/repositories/sign_in_repository.dart';
+import 'package:vidaagroconsumidor/shared/core/repositories/sign_in_repository.dart';
 
 class ForgotPasswordController with ChangeNotifier {
   final SignInRepository _repository = SignInRepository();
@@ -36,6 +36,7 @@ class ForgotPasswordController with ChangeNotifier {
       setErrorMessage(e is Exception
           ? e.toString().replaceAll('Exception: ', '')
           : 'Falha ao enviar email de redefinição de senha. Tente novamente mais tarde.');
+      // ignore: use_rethrow_when_possible
       throw e;
     }
   }

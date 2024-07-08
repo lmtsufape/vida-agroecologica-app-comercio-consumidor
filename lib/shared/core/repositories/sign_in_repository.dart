@@ -1,8 +1,8 @@
 // ignore_for_file: avoid_print
 
 import 'package:dio/dio.dart';
-import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
-import 'package:ecommerceassim/shared/core/user_storage.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_text_constants.dart';
+import 'package:vidaagroconsumidor/shared/core/user_storage.dart';
 
 class SignInRepository {
   final userStorage = UserStorage();

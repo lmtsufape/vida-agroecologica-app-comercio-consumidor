@@ -1,8 +1,7 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
-import 'package:ecommerceassim/shared/core/models/cidade_model.dart';
-import 'package:ecommerceassim/shared/core/user_storage.dart';
+import 'package:vidaagroconsumidor/shared/core/models/cidade_model.dart';
+import 'package:vidaagroconsumidor/shared/core/user_storage.dart';
 
 import '../../constants/app_text_constants.dart';
 

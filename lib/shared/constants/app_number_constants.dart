@@ -8,3 +8,5 @@ const double kSmallSize = 12;
 const double kMediumSize = 16;
 const double kLargeSize = 24;
 const double kHugeSize = 32;
+
+const double kRadiusCircular = 35;

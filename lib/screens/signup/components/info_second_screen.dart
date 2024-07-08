@@ -1,8 +1,8 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
-import 'package:ecommerceassim/shared/core/models/cidade_model.dart';
-import 'package:ecommerceassim/shared/validation/validate_mixin.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/shared/core/models/cidade_model.dart';
+import 'package:vidaagroconsumidor/shared/validation/validate_mixin.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/forms/custom_text_form_field.dart';

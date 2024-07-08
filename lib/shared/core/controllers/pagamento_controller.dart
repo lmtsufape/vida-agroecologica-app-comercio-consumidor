@@ -2,11 +2,11 @@
 
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:ecommerceassim/screens/screens_index.dart';
+import 'package:vidaagroconsumidor/screens/screens_index.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:ecommerceassim/shared/core/models/pagamento_model.dart';
-import 'package:ecommerceassim/shared/core/repositories/pagamento_repository.dart';
+import 'package:vidaagroconsumidor/shared/core/models/pagamento_model.dart';
+import 'package:vidaagroconsumidor/shared/core/repositories/pagamento_repository.dart';
 
 class PagamentoController with ChangeNotifier {
   final PagamentoRepository _repository;

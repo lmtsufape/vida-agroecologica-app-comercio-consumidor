@@ -1,9 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:ecommerceassim/screens/screens_index.dart';
-import 'package:ecommerceassim/shared/core/repositories/sign_up_repository.dart';
-import 'package:ecommerceassim/shared/core/models/bairro_model.dart';
-import 'package:ecommerceassim/shared/core/models/cidade_model.dart';
+import 'package:vidaagroconsumidor/screens/screens_index.dart';
+import 'package:vidaagroconsumidor/shared/core/repositories/sign_up_repository.dart';
+import 'package:vidaagroconsumidor/shared/core/models/bairro_model.dart';
+import 'package:vidaagroconsumidor/shared/core/models/cidade_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';

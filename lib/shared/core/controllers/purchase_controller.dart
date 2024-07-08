@@ -1,11 +1,11 @@
 // ignore_for_file: avoid_print, deprecated_member_use
 
 import 'package:dio/dio.dart';
-import 'package:ecommerceassim/shared/core/models/banca_model.dart';
-import 'package:ecommerceassim/shared/core/models/cart_model.dart';
-import 'package:ecommerceassim/shared/core/repositories/banca_repository.dart';
-import 'package:ecommerceassim/shared/core/repositories/purchase_repository.dart';
-import 'package:ecommerceassim/shared/core/user_storage.dart';
+import 'package:vidaagroconsumidor/shared/core/models/banca_model.dart';
+import 'package:vidaagroconsumidor/shared/core/models/cart_model.dart';
+import 'package:vidaagroconsumidor/shared/core/repositories/banca_repository.dart';
+import 'package:vidaagroconsumidor/shared/core/repositories/purchase_repository.dart';
+import 'package:vidaagroconsumidor/shared/core/user_storage.dart';
 import 'package:get/get.dart';
 
 class PurchaseController extends GetxController {

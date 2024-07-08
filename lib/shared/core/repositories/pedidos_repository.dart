@@ -1,8 +1,8 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
-import 'package:ecommerceassim/shared/core/models/pedidos_model.dart';
-import 'package:ecommerceassim/shared/core/user_storage.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_text_constants.dart';
+import 'package:vidaagroconsumidor/shared/core/models/pedidos_model.dart';
+import 'package:vidaagroconsumidor/shared/core/user_storage.dart';
 
 class PedidosRepository {
   late String userToken;

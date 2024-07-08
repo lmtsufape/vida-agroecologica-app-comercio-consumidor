@@ -1,4 +1,4 @@
-import 'package:ecommerceassim/screens/screens_index.dart';
+import 'package:vidaagroconsumidor/screens/screens_index.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationController extends ChangeNotifier {

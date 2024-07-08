@@ -1,12 +1,12 @@
-import 'package:ecommerceassim/assets/index.dart';
-import 'package:ecommerceassim/components/utils/vertical_spacer_box.dart';
-import 'package:ecommerceassim/shared/constants/app_enums.dart';
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/assets/index.dart';
+import 'package:vidaagroconsumidor/components/utils/vertical_spacer_box.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_enums.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
 
 class HeaderStartApp extends StatelessWidget {
-  Color textColor;
-  HeaderStartApp( this.textColor,{super.key});
+  final Color textColor;
+  const HeaderStartApp( this.textColor,{super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class HeaderStartApp extends StatelessWidget {
       children: [
         Center(
           child: Image.asset(
-            Assets.logoAssim,
+            Assets.logoVidaAgro,
             width: 160,
           ),
         ),
@@ -27,7 +27,7 @@ class HeaderStartApp extends StatelessWidget {
         Column(
           children: [
             Text(
-              'E-COMMERCE ASSIM',
+              'VIDA AGROECOLÓGICA',
               textAlign: TextAlign.center,
               style: kTitle1.copyWith(
                   color: textColor,

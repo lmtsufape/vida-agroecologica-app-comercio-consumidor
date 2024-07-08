@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, avoid_print
 
-import 'package:ecommerceassim/shared/core/repositories/first_repository.dart';
-import 'package:ecommerceassim/shared/core/user_storage.dart';
+import 'package:vidaagroconsumidor/shared/core/repositories/first_repository.dart';
+import 'package:vidaagroconsumidor/shared/core/user_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../navigator.dart';

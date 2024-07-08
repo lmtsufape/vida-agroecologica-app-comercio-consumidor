@@ -1,11 +1,11 @@
 // ignore_for_file: avoid_print
 
 import 'dart:convert';
-import 'package:ecommerceassim/screens/screens_index.dart';
-import 'package:ecommerceassim/shared/components/dialogs/notice_dialog.dart';
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
-import 'package:ecommerceassim/shared/core/models/produto_model.dart';
-import 'package:ecommerceassim/shared/core/models/table_products_model.dart';
+import 'package:vidaagroconsumidor/screens/screens_index.dart';
+import 'package:vidaagroconsumidor/shared/components/dialogs/notice_dialog.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/shared/core/models/produto_model.dart';
+import 'package:vidaagroconsumidor/shared/core/models/table_products_model.dart';
 import 'package:flutter/material.dart';
 import '../../../shared/core/models/cart_model.dart';
 import '../../cesta/cart_provider.dart';

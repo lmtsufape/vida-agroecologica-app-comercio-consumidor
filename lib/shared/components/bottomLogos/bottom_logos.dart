@@ -1,7 +1,7 @@
-import 'package:ecommerceassim/assets/index.dart';
-import 'package:ecommerceassim/components/utils/vertical_spacer_box.dart';
-import 'package:ecommerceassim/shared/constants/app_enums.dart';
-import 'package:ecommerceassim/shared/constants/app_number_constants.dart';
+import 'package:vidaagroconsumidor/assets/index.dart';
+import 'package:vidaagroconsumidor/components/utils/vertical_spacer_box.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_enums.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_number_constants.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -61,7 +61,7 @@ class BottomLogos extends StatelessWidget {
                       MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      Assets.logoAssim,
+                      Assets.logoVidaAgro,
                       width: 65,
                     ),
                     const SizedBox(width: 20),

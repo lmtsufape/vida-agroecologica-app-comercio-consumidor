@@ -1,6 +1,7 @@
-import 'package:dio/dio.dart';
-import 'package:ecommerceassim/shared/core/models/banca_model.dart';
-import 'package:ecommerceassim/shared/core/repositories/banca_repository.dart';
+// ignore_for_file: avoid_print
+
+import 'package:vidaagroconsumidor/shared/core/models/banca_model.dart';
+import 'package:vidaagroconsumidor/shared/core/repositories/banca_repository.dart';
 import 'package:flutter/material.dart';
 
 class BancaController with ChangeNotifier {

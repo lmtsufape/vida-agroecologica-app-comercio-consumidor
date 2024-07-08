@@ -1,6 +1,5 @@
-import 'package:ecommerceassim/shared/components/header_start_app/header_start_app.dart';
+import 'package:vidaagroconsumidor/shared/components/header_start_app/header_start_app.dart';
 import 'package:flutter/material.dart';
-
 import '../constants/style_constants.dart';
 
 class StyleBar extends StatelessWidget {
@@ -13,16 +12,11 @@ class StyleBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: hasLeading,
-      flexibleSpace: Column(
+      flexibleSpace: const Column(
         children: [
-          const SizedBox(height: 40,),
+          SizedBox(height: 40,),
           HeaderStartApp(kOnSurfaceColor),
         ],
-      ),
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(30),
-        ),
       ),
       backgroundColor: kDetailColor,
     );

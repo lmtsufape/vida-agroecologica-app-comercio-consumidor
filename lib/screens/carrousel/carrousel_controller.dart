@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:ecommerceassim/screens/screens_index.dart';
-import 'package:ecommerceassim/shared/core/navigator.dart';
+import 'package:vidaagroconsumidor/screens/screens_index.dart';
+import 'package:vidaagroconsumidor/shared/core/navigator.dart';
 
 class CarrouselScreenController with ChangeNotifier {
   final PageController _pageController = PageController(initialPage: 0);

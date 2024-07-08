@@ -5,12 +5,16 @@ class PrimaryButton extends StatelessWidget {
     super.key,
     required this.text,
     this.onPressed,
-    required this.color,
+    required this.color, 
+    this.borderColor = const Color.fromARGB(0, 255, 255, 255),
+    this.textColor = Colors.white
   });
 
   final String text;
+  final Color textColor;
   final VoidCallback? onPressed;
   final Color color;
+  final Color borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +24,19 @@ class PrimaryButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: color,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+          shape: RoundedRectangleBorder(
+          
+            side: BorderSide(color: borderColor, width: 2),
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
           ),
           elevation: 0,
         ),
         onPressed: onPressed,
         child: Text(
           text,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 15,
-            color: Colors.white,
+            color: textColor,
           ),
         ),
       ),

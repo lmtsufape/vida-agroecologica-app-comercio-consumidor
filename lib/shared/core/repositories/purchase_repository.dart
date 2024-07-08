@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print, camel_case_types, deprecated_member_use
 
 import 'package:dio/dio.dart';
-import 'package:ecommerceassim/shared/constants/app_text_constants.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_text_constants.dart';
 
 class purchaseRepository {
   Dio dio = Dio();

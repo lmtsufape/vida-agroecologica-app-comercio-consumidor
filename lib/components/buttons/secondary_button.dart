@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ecommerceassim/shared/constants/app_number_constants.dart';
-import 'package:ecommerceassim/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/shared/constants/app_number_constants.dart';
+import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
 
 class SecondaryButton extends StatelessWidget {
   const SecondaryButton(

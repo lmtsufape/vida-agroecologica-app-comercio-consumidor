@@ -1,9 +1,11 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
-import 'package:ecommerceassim/components/appBar/custom_app_bar.dart';
-import 'package:ecommerceassim/screens/cesta/cart_provider.dart';
-import 'package:ecommerceassim/shared/components/bottomNavigation/BottomNavigation.dart';
-import 'package:ecommerceassim/shared/components/dialogs/notice_dialog.dart';
-import 'package:ecommerceassim/shared/core/models/produto_model.dart';
+import 'package:vidaagroconsumidor/components/appBar/custom_app_bar.dart';
+import 'package:vidaagroconsumidor/screens/cesta/cart_provider.dart';
+import 'package:vidaagroconsumidor/shared/components/bottomNavigation/BottomNavigation.dart';
+import 'package:vidaagroconsumidor/shared/components/dialogs/notice_dialog.dart';
+import 'package:vidaagroconsumidor/shared/core/models/produto_model.dart';
 import 'package:flutter/material.dart';
 import '../../../shared/constants/style_constants.dart';
 
@@ -199,7 +201,6 @@ class _ProdutoDetalheScreenState extends State<ProdutoDetalheScreen> {
                             setState(() {
                               quantity = 1;
                             });
-                            // ignore: avoid_print
                             print('Produto adicionado a cesta');
                           } else {
                             setState(() {
