@@ -16,7 +16,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       scrolledUnderElevation: 0,
       automaticallyImplyLeading: automaticallyImplyLeading,
       title: const Text(
-        "APP-VIDA AGROECOLÓGICA",
+        "VIDA AGROECOLÓGICA",
         style: TextStyle(
           fontSize: 18,
           color: kDetailColor,
