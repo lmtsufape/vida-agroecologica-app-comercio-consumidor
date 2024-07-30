@@ -41,6 +41,7 @@ class SignInScreen extends StatelessWidget with ValidationMixin {
               Expanded(
                 flex: 3,
                 child: Container(
+                  alignment: Alignment.center,
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
