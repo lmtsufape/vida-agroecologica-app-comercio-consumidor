@@ -7,7 +7,6 @@ import 'package:vidaagroconsumidor/shared/core/models/banca_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
 class Bancas extends StatelessWidget {
   const Bancas({super.key});
 
@@ -69,7 +68,7 @@ class Bancas extends StatelessWidget {
                     : ListView.builder(
                         itemCount: bancaController.bancas.length,
                         itemBuilder: (context, index) {
-                          BancaModel banca = bancaController.bancas[index];
+                          BancaModel banca = bancaController.bancas[index]!;
                           return BancaCard(banca: banca);
                         },
                       ),

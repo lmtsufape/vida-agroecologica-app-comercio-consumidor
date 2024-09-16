@@ -5,11 +5,11 @@ import 'package:vidaagroconsumidor/shared/core/repositories/banca_repository.dar
 import 'package:flutter/material.dart';
 
 class BancaController with ChangeNotifier {
-  List<BancaModel> _bancas = [];
-  List<BancaModel> _allBancas = []; // Lista completa de bancas
+  List<BancaModel?> _bancas = [];
+  List<BancaModel?> _allBancas = []; // Lista completa de bancas
   final BancaRepository _bancaRepository = BancaRepository();
 
-  List<BancaModel> get bancas => _bancas;
+  List<BancaModel?> get bancas => _bancas;
 
   Future<void> loadBancas() async {
     try {
@@ -26,7 +26,7 @@ class BancaController with ChangeNotifier {
       _bancas = _allBancas;
     } else {
       _bancas = _allBancas.where((banca) {
-        return banca.nome.toLowerCase().contains(query.toLowerCase());
+        return banca!.nome.toLowerCase().contains(query.toLowerCase());
       }).toList();
     }
     notifyListeners();
