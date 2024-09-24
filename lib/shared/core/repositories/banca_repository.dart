@@ -4,9 +4,8 @@ import 'package:vidaagroconsumidor/shared/core/models/banca_model.dart';
 import 'package:vidaagroconsumidor/shared/core/user_storage.dart';
 
 class BancaRepository {
-
   BancaRepository();
-final _dio = Dio();
+  final _dio = Dio();
   Future<List<BancaModel>> getBancas() async {
     final userToken = await UserStorage().getUserToken();
 
@@ -27,7 +26,7 @@ final _dio = Dio();
         throw Exception(
             'Failed to load bancas with status code: ${response.statusCode}.');
       }
-    // ignore: deprecated_member_use
+      // ignore: deprecated_member_use
     } on DioError catch (dioError) {
       // Handle Dio-specific errors here
       throw Exception('DioError caught: ${dioError.message}');

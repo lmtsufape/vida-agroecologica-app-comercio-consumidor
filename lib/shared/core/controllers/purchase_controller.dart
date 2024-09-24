@@ -9,6 +9,8 @@ import 'package:vidaagroconsumidor/shared/core/user_storage.dart';
 import 'package:get/get.dart';
 
 class PurchaseController extends GetxController {
+  int idStore = 0;
+  List<BancaModel> bancas = [];
   BancaModel? bancaModel;
   List<CartModel>? listCartModel;
   int? enderecoId;
@@ -23,9 +25,10 @@ class PurchaseController extends GetxController {
 
   PurchaseController({required this.listCartModel});
 
-  Future<void> loadBanca() async {
+  Future<void> loadBancas() async {
     try {
-      bancaModel = (await _bancaRepository.getBancas() as BancaModel?);
+      bancas = await _bancaRepository.getBancas();
+      print(bancas);
       update();
     } catch (error) {
       print('Erro ao carregar a banca: $error');
@@ -36,6 +39,13 @@ class PurchaseController extends GetxController {
       int enderecoId, String tipoEntrega, int formaPagamento) async {
     List<List> listCartModelSplited = [];
     for (var cart in listCartModel!) {
+      for (int idBanca = 0; idBanca < bancas.length; idBanca++) {
+        if (bancas[idBanca].id == cart.storeId!) {
+          idStore = idBanca;
+        }
+      }
+      bancaModel = bancas[idStore];
+      print(bancaModel!.nome);
       List listItem = [];
       listItem.add(cart.productId);
       listItem.add(cart.amount);
@@ -54,6 +64,7 @@ class PurchaseController extends GetxController {
         throw Exception('Erro ao realizar a compra: ${dioError.message}');
       }
     } catch (error) {
+      print(error.toString());
       rethrow;
     }
   }
@@ -82,7 +93,7 @@ class PurchaseController extends GetxController {
 
   @override
   void onInit() async {
-    await loadBanca();
+    await loadBancas();
     userName = await userStorage.getUserName();
     userToken = await userStorage.getUserToken();
     removeZeroQuantityItems(); // Ensure no zero quantity items at the start
