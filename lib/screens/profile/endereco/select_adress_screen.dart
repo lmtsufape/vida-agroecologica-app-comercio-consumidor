@@ -281,9 +281,9 @@ class _SelectAddressState extends State<SelectAddress> {
                                       },
                                       style: ButtonStyle(
                                         backgroundColor:
-                                            MaterialStateProperty.all(
+                                            WidgetStateProperty.all(
                                                 Colors.white),
-                                        shape: MaterialStateProperty.all<
+                                        shape: WidgetStateProperty.all<
                                             RoundedRectangleBorder>(
                                           RoundedRectangleBorder(
                                             borderRadius:
@@ -292,7 +292,7 @@ class _SelectAddressState extends State<SelectAddress> {
                                                 color: Colors.grey),
                                           ),
                                         ),
-                                        elevation: MaterialStateProperty.all(0),
+                                        elevation: WidgetStateProperty.all(0),
                                       ),
                                       child: const Text(
                                         'Editar',

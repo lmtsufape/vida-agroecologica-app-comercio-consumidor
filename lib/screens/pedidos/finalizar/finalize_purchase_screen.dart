@@ -200,7 +200,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                             children: [
                               Radio(
                                   overlayColor:
-                                      MaterialStateProperty.all(kDetailColor),
+                                      WidgetStateProperty.all(kDetailColor),
                                   value: 'retirada',
                                   groupValue: _deliveryMethod,
                                   activeColor: kDetailColor,

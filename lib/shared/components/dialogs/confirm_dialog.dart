@@ -43,9 +43,9 @@ class AlertMessage extends StatelessWidget {
             children: [
               TextButton(
                 style: ButtonStyle(
-                  minimumSize: const MaterialStatePropertyAll(Size(114, 50)),
-                  backgroundColor: const MaterialStatePropertyAll(kDetailColor),
-                  shape: MaterialStatePropertyAll(
+                  minimumSize: const WidgetStatePropertyAll(Size(114, 50)),
+                  backgroundColor: const WidgetStatePropertyAll(kDetailColor),
+                  shape: WidgetStatePropertyAll(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -64,9 +64,9 @@ class AlertMessage extends StatelessWidget {
               ),
               TextButton(
                 style: ButtonStyle(
-                  minimumSize: const MaterialStatePropertyAll(Size(114, 50)),
-                  backgroundColor: const MaterialStatePropertyAll(kErrorColor),
-                  shape: MaterialStatePropertyAll(
+                  minimumSize: const WidgetStatePropertyAll(Size(114, 50)),
+                  backgroundColor: const WidgetStatePropertyAll(kErrorColor),
+                  shape: WidgetStatePropertyAll(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),

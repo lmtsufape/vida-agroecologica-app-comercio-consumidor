@@ -39,9 +39,9 @@ class NoticeDialog extends StatelessWidget {
             children: [
               TextButton(
                 style: ButtonStyle(
-                  minimumSize: const MaterialStatePropertyAll(Size(114, 50)),
-                  backgroundColor: const MaterialStatePropertyAll(kDetailColor),
-                  shape: MaterialStatePropertyAll(
+                  minimumSize: const WidgetStatePropertyAll(Size(114, 50)),
+                  backgroundColor: const WidgetStatePropertyAll(kDetailColor),
+                  shape: WidgetStatePropertyAll(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
