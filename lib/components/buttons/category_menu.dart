@@ -80,55 +80,61 @@ class CategoryMenuList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, String>> categories = [
-      {
-        "categoryName": "Todos",
-        "assetPath": Assets.shoppingBag
-      }, // Botão para exibir todos os produtos
-      {"categoryName": "Mel", "assetPath": Assets.mel},
-      {"categoryName": "Legumes", "assetPath": Assets.vegetais},
-      {"categoryName": "Polpa de Frutas", "assetPath": Assets.polpa},
-      {"categoryName": "Grãos", "assetPath": Assets.graos},
-      {"categoryName": "Verduras", "assetPath": Assets.folhosos},
-      {"categoryName": "Raízes", "assetPath": Assets.raizes},
-      {"categoryName": "Frutas", "assetPath": Assets.frutas},
-      {
-        "categoryName": "Produtos Beneficiados",
-        "assetPath": Assets.beneficiados
-      },
-      {
-        "categoryName": "Plantas/Ervas Medicinais",
-        "assetPath": Assets.medicinal
-      }
-    ];
+    final produtoController = Get.find<ProductsController>();
 
-    void handleCategoryTap(int index) {
-      final produtoController = Get.find<ProductsController>();
-      if (index == 0) {
-        // Exibir todos os produtos
-        produtoController.filterProdutosByCategoryIndex(-1);
-      } else {
-        // Exibir produtos pela categoria
-        produtoController.filterProdutosByCategoryIndex(index - 1);
+    return Obx(() {
+      if (produtoController.isLoading.value) {
+        return const Center(child: CircularProgressIndicator());
       }
-    }
 
-    return SizedBox(
-      height: 80,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.only(left: index == 0 ? 22.0 : 0, right: 10.0),
-            child: CategoryMenu(
-              categoryName: categories[index]["categoryName"]!,
-              assetPath: categories[index]["assetPath"]!,
-              onTap: () => handleCategoryTap(index),
-            ),
-          );
+      final availableCategories = produtoController.getAvailableCategories();
+      final List<Map<String, String>> categories = [
+        {"categoryName": "Todos", "assetPath": Assets.shoppingBag},
+        {"categoryName": "Mel", "assetPath": Assets.mel},
+        {"categoryName": "Legumes", "assetPath": Assets.vegetais},
+        {"categoryName": "Polpa de Frutas", "assetPath": Assets.polpa},
+        {"categoryName": "Grãos", "assetPath": Assets.graos},
+        {"categoryName": "Verduras", "assetPath": Assets.folhosos},
+        {"categoryName": "Raízes", "assetPath": Assets.raizes},
+        {"categoryName": "Frutas", "assetPath": Assets.frutas},
+        {
+          "categoryName": "Produtos Beneficiados",
+          "assetPath": Assets.beneficiados
         },
-      ),
-    );
+        {
+          "categoryName": "Plantas/Ervas Medicinais",
+          "assetPath": Assets.medicinal
+        }
+      ];
+
+      void handleCategoryTap(int index) {
+        if (index == 0) {
+          produtoController.filterProdutosByCategoryIndex(-1);
+        } else {
+          produtoController.filterProdutosByCategoryIndex(index - 1);
+        }
+      }
+
+      return SizedBox(
+        height: 80,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: availableCategories.length + 1,
+          itemBuilder: (context, index) {
+            final categoryIndex =
+                index == 0 ? 0 : availableCategories[index - 1];
+            return Padding(
+              padding:
+                  EdgeInsets.only(left: index == 0 ? 22.0 : 0, right: 10.0),
+              child: CategoryMenu(
+                categoryName: categories[categoryIndex]["categoryName"]!,
+                assetPath: categories[categoryIndex]["assetPath"]!,
+                onTap: () => handleCategoryTap(categoryIndex),
+              ),
+            );
+          },
+        ),
+      );
+    });
   }
 }
