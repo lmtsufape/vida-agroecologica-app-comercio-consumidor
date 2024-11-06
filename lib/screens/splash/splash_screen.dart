@@ -22,10 +22,8 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
-    animController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 2)
-    );
+    animController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
     _controller = SplashScreenController(context);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setController();
@@ -68,10 +66,9 @@ class _SplashScreenState extends State<SplashScreen>
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 AnimatedOpacity(
-                  duration: const Duration(milliseconds: 600),
-                  opacity: opacity,
-                  child:  const HeaderStartApp(kOnSurfaceColor)
-                ),
+                    duration: const Duration(milliseconds: 600),
+                    opacity: opacity,
+                    child: const HeaderStartApp(kOnSurfaceColor)),
                 const VerticalSpacerBox(size: SpacerSize.huge),
                 const CircularProgressIndicator(
                   color: Colors.white,
@@ -79,7 +76,12 @@ class _SplashScreenState extends State<SplashScreen>
               ],
             ),
           ),
-          BottomLogos(150)
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: BottomLogos(150),
+          ),
         ],
       ),
     );
