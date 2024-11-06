@@ -1,44 +1,44 @@
 // ignore_for_file: deprecated_member_use
-/**
-import 'dart:developer';
 
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 
 class NotificationManager {
   static final _notifications = FlutterLocalNotificationsPlugin();
+
   static Future _notificationDetails() async {
     return const NotificationDetails(
-      android: AndroidNotificationDetails('channelId', 'channelName',
-          importance: Importance.max, icon: 'ic_notification'),
+      android: AndroidNotificationDetails(
+        'channelId', 
+        'channelName',
+        importance: Importance.max,
+        icon: 'ic_notification',
+      ),
     );
   }
 
   @pragma('vm:entry-point')
   void notificationTapBackground(NotificationResponse notificationResponse) {
-    // navigatorKey.currentState?.pushAndRemoveUntil(
-    //     MaterialPageRoute(
-    //         builder: ((context) => const EggReadyScreen())),
-    //     ((route) => false));
+    // Código para lidar com a ação ao clicar na notificação em background
   }
 
-  Future init(
-      {bool initScheduled = false,
-      required BuildContext context,
-      required GlobalKey<NavigatorState> key}) async {
+  Future init({
+    bool initScheduled = false,
+    required BuildContext context,
+    required GlobalKey<NavigatorState> key,
+  }) async {
     log('Initializing notification manager...');
 
     const settings = InitializationSettings(
       android: AndroidInitializationSettings('ic_notification'),
     );
+
     await _notifications.initialize(
       settings,
       onDidReceiveNotificationResponse: ((NotificationResponse response) async {
-        // key.currentState?.pushAndRemoveUntil(MaterialPageRoute(builder: ((context) => const EggReadyScreen())), ((route) => false));
-
-        // Provider.of<TeaAlarmController>(context, listen: false)
-        //     .setAlarm(teaTitle: 'teaTitle', isAlarmOn: false);
+        // Lógica ao receber a resposta da notificação
       }),
       onDidReceiveBackgroundNotificationResponse: notificationTapBackground,
     );
@@ -52,28 +52,26 @@ class NotificationManager {
   }) async =>
       _notifications.show(id, title, body, await _notificationDetails());
 
-  static Future showNotificationAfterTime(
-      {int id = 0,
-      required String teaTitle,
-      String? title,
-      String? body,
-      String? payload,
-      required DateTime scheduleDate,
-      required BuildContext context}) async {
-    return _notifications
-        .zonedSchedule(
+  static Future showNotificationAfterTime({
+    int id = 0,
+    required String teaTitle,
+    String? title,
+    String? body,
+    String? payload,
+    required DateTime scheduleDate,
+    required BuildContext context,
+  }) async {
+    return _notifications.zonedSchedule(
       id,
       title,
       body,
       tz.TZDateTime.from(scheduleDate, tz.local),
       await _notificationDetails(),
-      androidAllowWhileIdle: true,
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
-    )
-        .then((value) {
-      // Provider.of<TeaAlarmController>(context, listen: false)
-      //     .setAlarm(teaTitle: teaTitle, isAlarmOn: true);
+      androidScheduleMode: AndroidScheduleMode.exact, // Corrigido com parâmetro necessário
+    ).then((value) {
+      // Atualize o estado de alarme ou faça outras ações aqui
     });
   }
 
@@ -83,4 +81,3 @@ class NotificationManager {
     return pendingNotificationRequests;
   }
 }
-*/
