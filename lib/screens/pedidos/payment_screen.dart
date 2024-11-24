@@ -7,7 +7,7 @@ import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
 import 'package:vidaagroconsumidor/shared/core/controllers/pagamento_controller.dart';
 import 'package:vidaagroconsumidor/shared/core/repositories/pagamento_repository.dart';
 import 'package:vidaagroconsumidor/components/appBar/custom_app_bar.dart';
-import 'package:vidaagroconsumidor/shared/components/bottomNavigation/BottomNavigation.dart';
+import 'package:vidaagroconsumidor/shared/components/bottomNavigation/bottom_navigation.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 
 class PaymentScreen extends StatelessWidget {

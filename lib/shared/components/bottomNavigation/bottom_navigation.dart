@@ -1,4 +1,5 @@
 import 'package:vidaagroconsumidor/screens/cesta/cart_provider.dart';
+
 import 'package:vidaagroconsumidor/shared/components/bottomNavigation/bottom_navigator_controller.dart';
 import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
 import 'package:flutter/material.dart';
@@ -33,13 +34,13 @@ class BottomNavigation extends StatelessWidget {
         BottomNavigationBarItem(
           label: 'Cesta',
           icon: badges.Badge( 
-          badgeStyle: badges.BadgeStyle(badgeColor: kDetailColor),
+          badgeStyle: const badges.BadgeStyle(badgeColor: kDetailColor),
             badgeContent: Text(
               '${numeroTotalPedido.itens}',
-              style: TextStyle(color: Colors.white, fontSize: 12),
+              style: const TextStyle(color: Colors.white, fontSize: 12),
             ),
             position: badges.BadgePosition.topEnd(top: -8, end: -8),
-            child: Icon(
+            child: const Icon(
               Icons.shopping_basket_rounded,
               color: kDetailColor,
               size: 40,

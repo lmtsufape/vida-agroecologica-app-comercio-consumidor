@@ -3,7 +3,7 @@
 import 'dart:convert';
 import 'package:vidaagroconsumidor/components/appBar/custom_app_bar.dart';
 import 'package:vidaagroconsumidor/screens/cesta/cart_provider.dart';
-import 'package:vidaagroconsumidor/shared/components/bottomNavigation/BottomNavigation.dart';
+import 'package:vidaagroconsumidor/shared/components/bottomNavigation/bottom_navigation.dart';
 import 'package:vidaagroconsumidor/shared/components/dialogs/notice_dialog.dart';
 import 'package:vidaagroconsumidor/shared/core/models/produto_model.dart';
 import 'package:flutter/material.dart';

@@ -3,7 +3,7 @@ import 'package:vidaagroconsumidor/components/utils/vertical_spacer_box.dart';
 import 'package:vidaagroconsumidor/components/appBar/custom_app_bar.dart';
 import 'package:vidaagroconsumidor/screens/cesta/card_cart.dart';
 import 'package:vidaagroconsumidor/screens/pedidos/finalizar/finalize_purchase_screen.dart';
-import 'package:vidaagroconsumidor/shared/components/bottomNavigation/BottomNavigation.dart';
+import 'package:vidaagroconsumidor/shared/components/bottomNavigation/bottom_navigation.dart';
 import 'package:vidaagroconsumidor/shared/components/dialogs/notice_dialog.dart';
 import 'package:vidaagroconsumidor/shared/constants/app_enums.dart';
 import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';

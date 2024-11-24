@@ -343,13 +343,13 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                         style: const TextStyle(fontSize: 16),
                                       ),
                                     ),
-                                    SizedBox(height: 20), // Espaço entre chave e área do comprovante
-                                      Text(
+                                    const SizedBox(height: 20), // Espaço entre chave e área do comprovante
+                                      const Text(
                                         "Comprovante de PIX:",
                                         style: TextStyle(fontWeight: FontWeight.bold),
                                       ),
                                       Container(
-                                        padding: EdgeInsets.all(10),
+                                        padding: const EdgeInsets.all(10),
                                         decoration: BoxDecoration(
                                           border: Border.all(color: Colors.grey),
                                           borderRadius: BorderRadius.circular(8),
@@ -359,7 +359,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                             // Função para selecionar ou tirar uma foto do comprovante
                                             _chooseComprovante();
                                           },
-                                          child: Text("Anexar Comprovante de PIX"),
+                                          child: const Text("Anexar Comprovante de PIX"),
                                         ),
                                         
                                       ),
@@ -368,8 +368,8 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                             padding: const EdgeInsets.only(top: 10.0),
                                             child: Column(
                                               children: [
-                                                Text("Imagem do Comprovante de PIX:"),
-                                                SizedBox(height: 10),
+                                                const Text("Imagem do Comprovante de PIX:"),
+                                                const SizedBox(height: 10),
                                                 Image.file(
                                                   File(_comprovanteImage!.path),
                                                   height: 150, // Ajuste o tamanho da imagem conforme necessário

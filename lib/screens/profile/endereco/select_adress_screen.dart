@@ -2,7 +2,7 @@
 import 'package:vidaagroconsumidor/components/buttons/primary_button.dart';
 import 'package:vidaagroconsumidor/components/spacer/verticalSpacer.dart';
 import 'package:vidaagroconsumidor/screens/screens_index.dart';
-import 'package:vidaagroconsumidor/shared/components/bottomNavigation/BottomNavigation.dart';
+import 'package:vidaagroconsumidor/shared/components/bottomNavigation/bottom_navigation.dart';
 import 'package:vidaagroconsumidor/shared/constants/app_text_constants.dart';
 import 'package:vidaagroconsumidor/shared/core/user_storage.dart';
 import 'package:flutter/material.dart';

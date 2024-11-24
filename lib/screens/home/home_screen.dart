@@ -1,6 +1,6 @@
 import 'package:vidaagroconsumidor/components/appBar/custom_app_bar.dart';
 import 'package:vidaagroconsumidor/screens/banca/banca_screen.dart';
-import 'package:vidaagroconsumidor/shared/components/bottomNavigation/BottomNavigation.dart';
+import 'package:vidaagroconsumidor/shared/components/bottomNavigation/bottom_navigation.dart';
 import 'package:vidaagroconsumidor/shared/components/dialogs/dialog_confirmation_exit.dart';
 import 'package:vidaagroconsumidor/shared/core/controllers/home_screen_controller.dart';
 import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
