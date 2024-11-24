@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:vidaagroconsumidor/screens/screens_index.dart';
-import 'package:vidaagroconsumidor/shared/components/bottomNavigation/BottomNavigation.dart';
+import 'package:vidaagroconsumidor/shared/components/bottomNavigation/bottom_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';

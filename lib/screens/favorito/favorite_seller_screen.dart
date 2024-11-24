@@ -1,6 +1,6 @@
 import 'package:vidaagroconsumidor/assets/index.dart';
 import 'package:vidaagroconsumidor/components/utils/vertical_spacer_box.dart';
-import 'package:vidaagroconsumidor/shared/components/bottomNavigation/BottomNavigation.dart';
+import 'package:vidaagroconsumidor/shared/components/bottomNavigation/bottom_navigation.dart';
 import 'package:vidaagroconsumidor/shared/core/controllers/home_screen_controller.dart';
 import 'package:vidaagroconsumidor/screens/screens_index.dart';
 import 'package:vidaagroconsumidor/shared/constants/app_enums.dart';
