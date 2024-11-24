@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print, use_build_context_synchronously
 
+import 'dart:io';
+
 import 'package:vidaagroconsumidor/components/appBar/custom_app_bar.dart';
 import 'package:vidaagroconsumidor/screens/cesta/cart_provider.dart';
 import 'package:vidaagroconsumidor/shared/core/controllers/profile_controller.dart';
@@ -15,10 +17,12 @@ import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../../../components/buttons/primary_button.dart';
+import 'package:image_picker/image_picker.dart';
 
 class FinalizePurchaseScreen extends StatefulWidget {
   final List<CartModel> cartModel;
   final Map<String, dynamic>? addressData;
+  
 
   const FinalizePurchaseScreen(this.cartModel, {this.addressData, super.key});
 
@@ -32,6 +36,8 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
   AddressModel? userAddress;
   bool isLoading = true;
   late int selectedAddressId;
+  String pixCode = "12345678901234567890123456";
+  XFile? _comprovanteImage;
 
   @override
   void initState() {
@@ -277,6 +283,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                       TextStyle(fontWeight: FontWeight.normal),
                                 ),
                               ),
+                              
                               /* DropdownMenuItem<int>(
                                 value: 3,
                                 child: Text(
@@ -302,6 +309,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                 ),
                               ), */
                             ],
+                            
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8.0),
@@ -312,7 +320,66 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                               contentPadding:
                                   const EdgeInsets.fromLTRB(13, 13, 13, 13),
                             ),
+                            
                           ),
+                          if (_paymentMethodId == 2) 
+                              Padding(
+                                padding: const EdgeInsets.only(top: 20.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text(
+                                      "Chave PIX do Vendedor:",
+                                      style: TextStyle(fontWeight: FontWeight.bold),
+                                    ),
+                                    Container(
+                                      padding: const EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.grey),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: SelectableText(
+                                        pixCode, // Aqui você coloca a chave PIX real
+                                        style: const TextStyle(fontSize: 16),
+                                      ),
+                                    ),
+                                    SizedBox(height: 20), // Espaço entre chave e área do comprovante
+                                      Text(
+                                        "Comprovante de PIX:",
+                                        style: TextStyle(fontWeight: FontWeight.bold),
+                                      ),
+                                      Container(
+                                        padding: EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.grey),
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            // Função para selecionar ou tirar uma foto do comprovante
+                                            _chooseComprovante();
+                                          },
+                                          child: Text("Anexar Comprovante de PIX"),
+                                        ),
+                                        
+                                      ),
+                                      if (_comprovanteImage != null) 
+                                          Padding(
+                                            padding: const EdgeInsets.only(top: 10.0),
+                                            child: Column(
+                                              children: [
+                                                Text("Imagem do Comprovante de PIX:"),
+                                                SizedBox(height: 10),
+                                                Image.file(
+                                                  File(_comprovanteImage!.path),
+                                                  height: 150, // Ajuste o tamanho da imagem conforme necessário
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                  ],
+                                ),
+                              ),
                           const VerticalSpacerBox(size: SpacerSize.large),
                           if (_deliveryMethod == 'entrega')
                             InkWell(
@@ -586,4 +653,15 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
             ),
     );
   }
+  Future<void> _chooseComprovante() async {
+  final ImagePicker picker = ImagePicker();
+  final XFile? image = await picker.pickImage(source: ImageSource.gallery); // Ou ImageSource.camera para tirar uma foto
+  if (image != null) {
+    // Agora você pode exibir o comprovante ou fazer upload
+    setState(() {
+      _comprovanteImage = image; // Salve a imagem selecionada
+    });
+  }
 }
+}
+
