@@ -361,7 +361,6 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                           },
                                           child: const Text("Anexar Comprovante de PIX"),
                                         ),
-                                        
                                       ),
                                       if (_comprovanteImage != null) 
                                           Padding(

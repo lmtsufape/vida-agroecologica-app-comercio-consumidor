@@ -3,6 +3,7 @@
 import 'package:vidaagroconsumidor/screens/screens_index.dart';
 import 'package:vidaagroconsumidor/shared/core/repositories/sign_in_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 enum SignInStatus {
   done,
@@ -19,10 +20,36 @@ class SignInController with ChangeNotifier {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   String? errorMessage;
+  
+  // Chave para armazenar o último email
+  static const String _lastEmailKey = 'last_used_email';
+
+  SignInController() {
+    _loadLastEmail();
+  }
+
+  // Carrega o último email usado ao inicializar o controller
+  Future<void> _loadLastEmail() async {
+    final prefs = await SharedPreferences.getInstance();
+    final lastEmail = prefs.getString(_lastEmailKey);
+    
+    if (lastEmail != null) {
+      _emailController.text = lastEmail;
+      notifyListeners();
+    }
+  }
+
+  // Salva o último email após login bem-sucedido
+  Future<void> _saveLastEmail(String email) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_lastEmailKey, email);
+  }
+
   String? get userName => _userName;
   TextEditingController get emailController => _emailController;
   TextEditingController get passwordController => _passwordController;
   var status = SignInStatus.idle;
+
   void signIn(BuildContext context) async {
     try {
       if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
@@ -38,6 +65,9 @@ class SignInController with ChangeNotifier {
       );
 
       if (loginResult == 1) {
+        // Salva o último email após login bem-sucedido
+        await _saveLastEmail(_emailController.text);
+
         status = SignInStatus.done;
         notifyListeners();
 
