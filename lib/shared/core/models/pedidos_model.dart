@@ -11,9 +11,9 @@ class PedidoModel {
   DateTime? dataPagamento;
   DateTime? dataEnvio;
   DateTime? dataEntrega;
-  int formaPagamentoId;
-  int consumidorId;
-  int bancaId;
+  int? formaPagamentoId; // Pode ser nulo
+  int? consumidorId;     // Pode ser nulo
+  int? bancaId;          // Pode ser nulo
   String? bancaNome;
 
   PedidoModel({
@@ -29,42 +29,64 @@ class PedidoModel {
     this.dataPagamento,
     this.dataEnvio,
     this.dataEntrega,
-    required this.formaPagamentoId,
-    required this.consumidorId,
-    required this.bancaId,
+    this.formaPagamentoId,
+    this.consumidorId,
+    this.bancaId,
     this.bancaNome,
   });
 
   factory PedidoModel.fromJson(Map<String, dynamic> json) {
+    // Tratamento de campos opcionais
+    int? parseInt(dynamic value) {
+      if (value == null) return null;
+      if (value is int) return value;
+      if (value is String) {
+        return int.tryParse(value);
+      }
+      return null; // Retorna null se não for convertível
+    }
+
+    double parseDouble(dynamic value) {
+      if (value == null) return 0.0;
+      if (value is double) return value;
+      if (value is int) return value.toDouble();
+      if (value is String) {
+        return double.tryParse(value) ?? 0.0;
+      }
+      return 0.0; // Retorna 0.0 se não for convertível
+    }
+
+    DateTime? parseDate(dynamic value) {
+      if (value == null) return null;
+      if (value is String) {
+        return DateTime.tryParse(value);
+      }
+      return null; // Retorna null se não for convertível
+    }
+
+    // Valida os campos obrigatórios
+    if (json['venda']['id'] == null) {
+      throw Exception('ID do pedido está ausente.');
+    }
+
+    // Criação do modelo com validação
     return PedidoModel(
-      id: json['id'],
-      status: json['status'],
-      tipoEntrega: json['tipo_entrega'],
-      subtotal: double.parse(json['subtotal'].toString()),
-      taxaEntrega: double.parse(json['taxa_entrega'].toString()),
-      total: double.parse(json['total'].toString()),
-      dataPedido: json['data_pedido'] != null
-          ? DateTime.parse(json['data_pedido'])
-          : null,
-      dataConfirmacao: json['data_confirmacao'] != null
-          ? DateTime.parse(json['data_confirmacao'])
-          : null,
-      dataCancelamento: json['data_cancelamento'] != null
-          ? DateTime.parse(json['data_cancelamento'])
-          : null,
-      dataPagamento: json['data_pagamento'] != null
-          ? DateTime.parse(json['data_pagamento'])
-          : null,
-      dataEnvio: json['data_envio'] != null
-          ? DateTime.parse(json['data_envio'])
-          : null,
-      dataEntrega: json['data_entrega'] != null
-          ? DateTime.parse(json['data_entrega'])
-          : null,
-      formaPagamentoId: json['forma_pagamento_id'],
-      consumidorId: json['consumidor_id'],
-      bancaId: json['banca_id'],
-      bancaNome: json['banca_nome'],
+      status: json['venda']['status'] ?? 'Desconhecido',
+      tipoEntrega: json['venda']['tipo_entrega'] ?? 'Desconhecido',
+      dataPedido: parseDate(json['venda']['data_pedido']),
+      consumidorId: parseInt(json['venda']['consumidor_id']),
+      bancaId: parseInt(json['venda']['banca_id']),
+      formaPagamentoId: parseInt(json['venda']['forma_pagamento_id']),
+      id: parseInt(json['venda']['id'])!,
+      subtotal: parseDouble(json['venda']['subtotal']),
+      taxaEntrega: parseDouble(json['venda']['taxa_entrega']),
+      total: parseDouble(json['venda']['total']),
+      dataConfirmacao: parseDate(json['venda']['data_confirmacao']),
+      dataCancelamento: parseDate(json['venda']['data_cancelamento']),
+      dataPagamento: parseDate(json['venda']['data_pagamento']),
+      dataEnvio: parseDate(json['venda']['data_envio']),
+      dataEntrega: parseDate(json['venda']['data_entrega']),
+      bancaNome: json['venda']['banca_nome'],
     );
   }
 }

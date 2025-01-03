@@ -53,7 +53,7 @@ class PagamentoRepository {
           responseType: ResponseType.bytes,
         ),
       );
-
+      print("Status code comprovante: ${response.statusCode}");
       if (response.statusCode == 200) {
         return Uint8List.fromList(response.data);
       } else {

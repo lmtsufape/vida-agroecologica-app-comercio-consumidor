@@ -3,6 +3,7 @@
 import 'package:dio/dio.dart';
 import 'package:vidaagroconsumidor/shared/core/models/banca_model.dart';
 import 'package:vidaagroconsumidor/shared/core/models/cart_model.dart';
+import 'package:vidaagroconsumidor/shared/core/models/pedidos_model.dart';
 import 'package:vidaagroconsumidor/shared/core/repositories/banca_repository.dart';
 import 'package:vidaagroconsumidor/shared/core/repositories/purchase_repository.dart';
 import 'package:vidaagroconsumidor/shared/core/user_storage.dart';
@@ -35,8 +36,20 @@ class PurchaseController extends GetxController {
     }
   }
 
-  Future<bool> purchase(
-      int enderecoId, String tipoEntrega, int formaPagamento) async {
+  Future<PedidoModel> purchase(
+      int enderecoId,
+      String tipoEntrega,
+      int formaPagamento,
+      ) async {
+    // Validações iniciais
+    if (listCartModel == null || listCartModel!.isEmpty) {
+      throw Exception('Carrinho vazio ou inválido.');
+    }
+
+    if (bancas.isEmpty) {
+      throw Exception('Nenhuma banca disponível.');
+    }
+
     List<List> listCartModelSplited = [];
     for (var cart in listCartModel!) {
       for (int idBanca = 0; idBanca < bancas.length; idBanca++) {
@@ -45,29 +58,39 @@ class PurchaseController extends GetxController {
         }
       }
       bancaModel = bancas[idStore];
-      print(bancaModel!.nome);
+      print('Banca Selecionada: ${bancaModel!.nome}');
       List listItem = [];
       listItem.add(cart.productId);
       listItem.add(cart.amount);
       listCartModelSplited.add(listItem);
     }
+
     try {
-      final response = await _purchaseRepository.purchase(listCartModelSplited,
-          bancaModel!.id, userToken, enderecoId, tipoEntrega, formaPagamento);
-      return response;
-    } on DioError catch (dioError) {
-      if (dioError.response?.statusCode == 400) {
-        final errorMessage =
-            dioError.response?.data['error'] ?? 'Erro desconhecido';
-        throw Exception(errorMessage);
-      } else {
-        throw Exception('Erro ao realizar a compra: ${dioError.message}');
+      var response = await _purchaseRepository.purchase(
+        listCartModelSplited,
+        bancas[idStore].id,
+        userToken,
+        enderecoId,
+        tipoEntrega,
+        formaPagamento,
+      );
+
+      // Validações do retorno
+      if (response == null) {
+        throw Exception('Erro: Pedido retornado é nulo.');
       }
+
+      if (response.id == null) {
+        throw Exception('Pedido inválido retornado pelo servidor.');
+      }
+      print('Pedido gerado com sucesso: $response');
+      return response;
     } catch (error) {
-      print(error.toString());
+      print('Erro na compra: $error');
       rethrow;
     }
   }
+
 
   double get totalValue => listCartModel?.isNotEmpty == true
       ? listCartModel!.fold(
