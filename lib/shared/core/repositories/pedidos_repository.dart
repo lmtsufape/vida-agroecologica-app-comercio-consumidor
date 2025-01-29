@@ -41,7 +41,7 @@ class PedidosRepository {
           List<PedidoModel> orders = [];
           for (var orderJson in ordersJson) {
             var order = PedidoModel.fromJson(orderJson);
-            order.bancaNome = await fetchBancaName(order.bancaId);
+            order.bancaNome = await fetchBancaName(order.bancaId!);
             orders.add(order);
           }
 

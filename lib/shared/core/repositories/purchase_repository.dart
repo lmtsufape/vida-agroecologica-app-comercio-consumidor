@@ -3,17 +3,22 @@
 import 'package:dio/dio.dart';
 import 'package:vidaagroconsumidor/shared/constants/app_text_constants.dart';
 
+import '../models/pedidos_model.dart';
+
 class purchaseRepository {
   Dio dio = Dio();
 
-  Future<bool> purchase(List<List> products, int storeId, String userToken,
+  Future<PedidoModel> purchase(List<List> products, int storeId, String userToken,
       int enderecoId, String tipoEntrega, int formaPagamento) async {
-    print(products);
-    print(storeId);
-    print(userToken);
-    print(enderecoId);
-    print(formaPagamento);
-    print(tipoEntrega);
+    for(var product in products){
+      print("PRODUTOS REPO: ${product}");
+    }
+    print("ID BANCA REPO: ${storeId}");
+    print("TOKE REPO: ${userToken}");
+    print("ENDERECO REPO: ${enderecoId}");
+    print("FORMA PAGAMENTO REPO: ${formaPagamento}");
+    print("TIPO ENTREGA REPO: ${tipoEntrega}");
+
     try {
       final response = await dio.post(
         '$kBaseURL/transacoes',
@@ -23,7 +28,7 @@ class purchaseRepository {
           "banca_id": storeId,
           "endereco_id": enderecoId,
           "forma_pagamento_id": formaPagamento,
-          "tipo_entrega": tipoEntrega
+          "tipo_entrega": tipoEntrega,
         },
       );
 
@@ -31,10 +36,24 @@ class purchaseRepository {
         if (response.data['error'] != null) {
           throw Exception(response.data['error']);
         }
-        return true;
+
+        // Valida se os dados do pedido existem
+
+        print('Resposta da API: ${response.data}');
+
+        // Cria o modelo de pedido
+        final pedido = PedidoModel.fromJson(response.data);
+
+        // Validação final
+        if (pedido.id == null) {
+          throw Exception('ID do pedido retornado é nulo.');
+        }
+
+        return pedido;
       } else {
         throw Exception(
-            'Failed to purchase with status code: ${response.statusCode}.');
+          'Falha ao realizar a compra. Código: ${response.statusCode}.',
+        );
       }
     } on DioError catch (dioError) {
       if (dioError.response?.statusCode == 400) {

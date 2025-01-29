@@ -16,6 +16,7 @@ class PagamentoController with ChangeNotifier {
   String? _downloadPath;
   Uint8List? _comprovanteBytes;
 
+
   PagamentoController(this._repository);
 
   File? get comprovante => _comprovante;
@@ -65,14 +66,17 @@ class PagamentoController with ChangeNotifier {
 
     try {
       await _repository.uploadComprovante(pagamento, orderId);
+      print("Upload do comprovante para o pedido: $orderId");
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Comprovante enviado com sucesso!')),
       );
-      Navigator.pushNamed(context, Screens.purchases);
+      //Navigator.pushNamed(context, Screens.purchases);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(e.toString())),
       );
+      print('Erro ao fazer upload do comprovante: $e');
+      throw Exception('Erro no upload do comprovante.');
     }
   }
 
