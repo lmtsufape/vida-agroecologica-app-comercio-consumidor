@@ -25,6 +25,8 @@ import 'package:vidaagroconsumidor/screens/profile/profile_screen.dart';
 import 'package:vidaagroconsumidor/screens/signup/sign_up_screen.dart';
 import 'package:vidaagroconsumidor/shared/core/controllers/pagamento_controller.dart';
 import 'package:vidaagroconsumidor/shared/core/controllers/pedidos_controller.dart';
+import 'package:vidaagroconsumidor/shared/core/models/banca_model.dart';
+import 'package:vidaagroconsumidor/shared/core/models/cart_model.dart';
 import 'package:vidaagroconsumidor/shared/core/navigator.dart';
 import 'package:vidaagroconsumidor/shared/core/repositories/pagamento_repository.dart';
 import 'package:vidaagroconsumidor/shared/core/repositories/pedidos_repository.dart';
@@ -85,11 +87,19 @@ class App extends StatelessWidget {
                 create: (_) => PagamentoController(PagamentoRepository()),
                 child: const PaymentScreen(),
               ),
-          Screens.finalizePurchase: (BuildContext context) =>
-              const FinalizePurchaseScreen([]),
+          Screens.finalizePurchase: (BuildContext context) {
+            final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+
+            // Como os items já são CartModel, podemos fazer um cast direto
+            final List<CartModel> cartItems = args['cartItems'] as List<CartModel>;
+
+            return FinalizePurchaseScreen(
+              cartItems,
+              banca: args['banca'] as BancaModel,
+            );
+          },
           Screens.marcarEnviado: (BuildContext context) {
-            final args =
-                ModalRoute.of(context)!.settings.arguments as Map<String, int>;
+            final args = ModalRoute.of(context)!.settings.arguments as Map<String, int>;
             return MarkAsDeliveredScreen(orderId: args['orderId']!);
           },
         },

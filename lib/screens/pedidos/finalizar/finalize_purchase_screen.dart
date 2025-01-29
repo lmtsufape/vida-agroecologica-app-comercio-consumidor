@@ -18,13 +18,15 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../../../components/buttons/primary_button.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:vidaagroconsumidor/shared/core/models/banca_model.dart';
 
 class FinalizePurchaseScreen extends StatefulWidget {
   final List<CartModel> cartModel;
   final Map<String, dynamic>? addressData;
+  final BancaModel banca;
   
 
-  const FinalizePurchaseScreen(this.cartModel, {this.addressData, super.key});
+  const FinalizePurchaseScreen(this.cartModel, {required this.banca, this.addressData, super.key});
 
   @override
   State<FinalizePurchaseScreen> createState() => _FinalizePurchaseScreenState();
@@ -36,13 +38,17 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
   AddressModel? userAddress;
   bool isLoading = true;
   late int selectedAddressId;
-  String pixCode = "12345678901234567890123456";
+  String? pixCode;
   XFile? _comprovanteImage;
 
   @override
   void initState() {
     super.initState();
     _loadUserAddress();
+    print('Banca recebida: ${widget.banca.nome}');  // Nome da banca
+    print('ID da banca: ${widget.banca.id}');       // ID da banca
+    print('PIX da banca: ${widget.banca.pix}');
+    pixCode = widget.banca.pix;  // Pegando a chave Pix da banca
   }
 
   Future<void> _loadUserAddress() async {
@@ -339,7 +345,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       child: SelectableText(
-                                        pixCode, // Aqui você coloca a chave PIX real
+                                        pixCode != null ? 'Chave Pix: $pixCode' : 'Pix não disponível', // Aqui você coloca a chave PIX real
                                         style: const TextStyle(fontSize: 16),
                                       ),
                                     ),
@@ -351,7 +357,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                       Container(
                                         padding: const EdgeInsets.all(10),
                                         decoration: BoxDecoration(
-                                          border: Border.all(color: Colors.grey),
+                                          border: Border.all(color: Colors.transparent),
                                           borderRadius: BorderRadius.circular(8),
                                         ),
                                         child: ElevatedButton(
