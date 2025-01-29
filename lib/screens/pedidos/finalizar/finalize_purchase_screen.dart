@@ -21,14 +21,17 @@ import 'package:vidaagroconsumidor/shared/core/models/pedidos_model.dart';
 import 'package:vidaagroconsumidor/shared/core/repositories/pagamento_repository.dart';
 import '../../../components/buttons/primary_button.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:vidaagroconsumidor/shared/core/models/banca_model.dart';
 
 import '../../../shared/core/controllers/pagamento_controller.dart';
 
 class FinalizePurchaseScreen extends StatefulWidget {
   final List<CartModel> cartModel;
   final Map<String, dynamic>? addressData;
+  final BancaModel banca;
+  
 
-  const FinalizePurchaseScreen(this.cartModel, {this.addressData, super.key});
+  const FinalizePurchaseScreen(this.cartModel, {required this.banca, this.addressData, super.key});
 
   @override
   State<FinalizePurchaseScreen> createState() => _FinalizePurchaseScreenState();
@@ -40,7 +43,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
   AddressModel? userAddress;
   bool isLoading = true;
   late int selectedAddressId;
-  String pixCode = "12345678901234567890123456";
+  String? pixCode;
   XFile? _comprovanteImage;
 
 
@@ -48,6 +51,10 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
   void initState() {
     super.initState();
     _loadUserAddress();
+    print('Banca recebida: ${widget.banca.nome}');  // Nome da banca
+    print('ID da banca: ${widget.banca.id}');       // ID da banca
+    print('PIX da banca: ${widget.banca.pix}');
+    pixCode = widget.banca.pix;  // Pegando a chave Pix da banca
   }
 
   Future<void> _loadUserAddress() async {
@@ -301,44 +308,49 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                       border: Border.all(color: Colors.grey),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
-                                    child: SelectableText(
-                                      pixCode, // Aqui você coloca a chave PIX real
-                                      style: const TextStyle(fontSize: 16),
+                                    Container(
+                                      padding: const EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.grey),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: SelectableText(
+                                        pixCode != null ? 'Chave Pix: $pixCode' : 'Pix não disponível', // Aqui você coloca a chave PIX real
+                                        style: const TextStyle(fontSize: 16),
+                                      ),
                                     ),
-                                  ),
-                                  const SizedBox(height: 20),
-                                  // Espaço entre chave e área do comprovante
-                                  const Text(
-                                    "Comprovante de PIX:",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  Container(
-                                    padding: const EdgeInsets.all(10),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.grey),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: ElevatedButton(
-                                      onPressed: () async {
-                                        await pagamentoController.pickComprovante();
-                                      },
-                                      child: const Text(
-                                          "Anexar Comprovante de PIX"),
-                                    ),
-                                  ),
-                                  if (pagamentoController.comprovante != null)
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 10.0),
-                                      child: Column(
-                                        children: [
-                                          const Text(
-                                              "Imagem do Comprovante de PIX:"),
-                                          const SizedBox(height: 10),
-                                          Image.file(
-                                            pagamentoController.comprovante!,
-                                            height:
-                                                150, // Ajuste o tamanho da imagem conforme necessário
+                                    const SizedBox(height: 20), // Espaço entre chave e área do comprovante
+                                      const Text(
+                                        "Comprovante de PIX:",
+                                        style: TextStyle(fontWeight: FontWeight.bold),
+                                      ),
+                                      Container(
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.transparent),
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            // Função para selecionar ou tirar uma foto do comprovante
+                                            _chooseComprovante();
+                                          },
+                                          child: const Text("Anexar Comprovante de PIX"),
+                                        ),
+                                      ),
+                                      if (_comprovanteImage != null) 
+                                          Padding(
+                                            padding: const EdgeInsets.only(top: 10.0),
+                                            child: Column(
+                                              children: [
+                                                const Text("Imagem do Comprovante de PIX:"),
+                                                const SizedBox(height: 10),
+                                                Image.file(
+                                                  File(_comprovanteImage!.path),
+                                                  height: 150, // Ajuste o tamanho da imagem conforme necessário
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),

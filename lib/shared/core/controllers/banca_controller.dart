@@ -12,14 +12,21 @@ class BancaController with ChangeNotifier {
   List<BancaModel?> get bancas => _bancas;
 
   Future<void> loadBancas() async {
-    try {
-      _allBancas = await _bancaRepository.getBancas();
-      _bancas = _allBancas;
-      notifyListeners();
-    } catch (error) {
-      print('Erro ao carregar as bancas: $error');
+  try {
+    _allBancas = await _bancaRepository.getBancas();
+    _bancas = _allBancas;
+
+    // Debug: Verificar se o campo Pix está presente nos dados
+    for (var banca in _bancas) {
+      print('Banca: ${banca?.nome}, Pix: ${banca?.pix}');
     }
+
+    notifyListeners();
+  } catch (error) {
+    print('Erro ao carregar as bancas: $error');
   }
+}
+
 
   void searchBancas(String query) {
     if (query.isEmpty) {
