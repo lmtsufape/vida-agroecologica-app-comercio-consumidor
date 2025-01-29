@@ -22,14 +22,12 @@ import 'package:vidaagroconsumidor/shared/core/repositories/pagamento_repository
 import '../../../components/buttons/primary_button.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:vidaagroconsumidor/shared/core/models/banca_model.dart';
-
 import '../../../shared/core/controllers/pagamento_controller.dart';
 
 class FinalizePurchaseScreen extends StatefulWidget {
   final List<CartModel> cartModel;
   final Map<String, dynamic>? addressData;
   final BancaModel banca;
-  
 
   const FinalizePurchaseScreen(this.cartModel, {required this.banca, this.addressData, super.key});
 
@@ -59,7 +57,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
 
   Future<void> _loadUserAddress() async {
     final profileController =
-        Provider.of<ProfileController>(context, listen: false);
+    Provider.of<ProfileController>(context, listen: false);
     await profileController.fetchUserAddresses();
     setState(() {
       if (profileController.addresses.isNotEmpty) {
@@ -96,7 +94,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                   ),
                   title: Text('${address.rua}, ${address.numero}'),
                   subtitle:
-                      Text('${address.cidadeNome}, ${address.bairroNome} '),
+                  Text('${address.cidadeNome}, ${address.bairroNome} '),
                   onTap: () => Navigator.pop(context, address),
                 );
               },
@@ -126,7 +124,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
           ),
           backgroundColor: Colors.white,
           content:
-              const Icon(Icons.shopping_bag, size: 100, color: kDetailColor),
+          const Icon(Icons.shopping_bag, size: 100, color: kDetailColor),
           actions: <Widget>[
             PrimaryButton(
               text: "OK",
@@ -134,7 +132,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                 Navigator.pushNamedAndRemoveUntil(
                   context,
                   Screens.home,
-                  (Route<dynamic> route) => false,
+                      (Route<dynamic> route) => false,
                 );
               },
               color: kDetailColor,
@@ -180,404 +178,399 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
     final cartListProvider = Provider.of<CartProvider>(context);
     Size size = MediaQuery.of(context).size;
     final profileController =
-        Provider.of<ProfileController>(context, listen: false);
+    Provider.of<ProfileController>(context, listen: false);
     PagamentoRepository pagamentoRepository = PagamentoRepository();
     PagamentoController pagamentoController =
-        PagamentoController(pagamentoRepository);
+    PagamentoController(pagamentoRepository);
 
 
     return Scaffold(
       backgroundColor: Colors.white,
       body: isLoading
           ? const Scaffold(
-              backgroundColor: Colors.white,
-              appBar: CustomAppBar(),
-              body:
-                  Center(child: CircularProgressIndicator(color: kDetailColor)))
+          backgroundColor: Colors.white,
+          appBar: CustomAppBar(),
+          body:
+          Center(child: CircularProgressIndicator(color: kDetailColor)))
           : GetBuilder<PurchaseController>(
-              init: PurchaseController(listCartModel: widget.cartModel),
-              builder: (controller) {
-                controller.listCartModel = widget.cartModel;
-                return Scaffold(
-                  backgroundColor: Colors.white,
-                  appBar: const CustomAppBar(),
-                  body: Container(
-                    color: Colors.white,
-                    width: size.width,
-                    padding: const EdgeInsets.all(20),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Row(
-                            children: [
-                              Text(
-                                'Forma de entrega',
-                                style: TextStyle(
-                                    fontSize: 22, fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Radio(
-                                  overlayColor:
-                                      WidgetStateProperty.all(kDetailColor),
-                                  value: 'retirada',
-                                  groupValue: _deliveryMethod,
-                                  activeColor: kDetailColor,
-                                  focusColor: kDetailColor,
-                                  hoverColor: kDetailColor,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      _deliveryMethod = value.toString();
-                                      print(
-                                          "Tipo de entrega: $_deliveryMethod");
-                                    });
-                                  }),
-                              const Text(
-                                'Retirada',
-                                style: TextStyle(
-                                    fontSize: 20, color: kTextButtonColor),
-                              ),
-                              const HorizontalSpacerBox(size: SpacerSize.small),
-                              const HorizontalSpacerBox(size: SpacerSize.small),
-                            ],
-                          ),
-                          const VerticalSpacerBox(size: SpacerSize.medium),
-                          const Row(
-                            children: [
-                              Text(
-                                'Forma de pagamento',
-                                style: TextStyle(
-                                    fontSize: 22, fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                          const VerticalSpacerBox(size: SpacerSize.small),
-                          DropdownButtonFormField<int>(
-                            value: _paymentMethodId,
-                            onChanged: (int? value) {
+        init: PurchaseController(listCartModel: widget.cartModel),
+        builder: (controller) {
+          controller.listCartModel = widget.cartModel;
+          return Scaffold(
+            backgroundColor: Colors.white,
+            appBar: const CustomAppBar(),
+            body: Container(
+              color: Colors.white,
+              width: size.width,
+              padding: const EdgeInsets.all(20),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Row(
+                      children: [
+                        Text(
+                          'Forma de entrega',
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Radio(
+                            overlayColor:
+                            WidgetStateProperty.all(kDetailColor),
+                            value: 'retirada',
+                            groupValue: _deliveryMethod,
+                            activeColor: kDetailColor,
+                            focusColor: kDetailColor,
+                            hoverColor: kDetailColor,
+                            onChanged: (value) {
                               setState(() {
-                                _paymentMethodId = value ?? 1;
+                                _deliveryMethod = value.toString();
+                                print(
+                                    "Tipo de entrega: $_deliveryMethod");
                               });
-                            },
-                            items: const [
-                              DropdownMenuItem<int>(
-                                value: 1,
-                                child: Text(
-                                  'Dinheiro',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.normal),
-                                ),
-                              ),
-                              DropdownMenuItem<int>(
-                                value: 2,
-                                child: Text(
-                                  'Pix',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.normal),
-                                ),
-                              ),
-                            ],
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                                borderSide: BorderSide.none,
-                              ),
-                              filled: true,
-                              fillColor: Colors.grey[100],
-                              contentPadding:
-                                  const EdgeInsets.fromLTRB(13, 13, 13, 13),
-                            ),
+                            }),
+                        const Text(
+                          'Retirada',
+                          style: TextStyle(
+                              fontSize: 20, color: kTextButtonColor),
+                        ),
+                        const HorizontalSpacerBox(size: SpacerSize.small),
+                        const HorizontalSpacerBox(size: SpacerSize.small),
+                      ],
+                    ),
+                    const VerticalSpacerBox(size: SpacerSize.medium),
+                    const Row(
+                      children: [
+                        Text(
+                          'Forma de pagamento',
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    const VerticalSpacerBox(size: SpacerSize.small),
+                    DropdownButtonFormField<int>(
+                      value: _paymentMethodId,
+                      onChanged: (int? value) {
+                        setState(() {
+                          _paymentMethodId = value ?? 1;
+                        });
+                      },
+                      items: const [
+                        DropdownMenuItem<int>(
+                          value: 1,
+                          child: Text(
+                            'Dinheiro',
+                            style:
+                            TextStyle(fontWeight: FontWeight.normal),
                           ),
-                          if (_paymentMethodId == 2)
-                            Padding(
-                              padding: const EdgeInsets.only(top: 20.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text(
-                                    "Chave PIX do Vendedor:",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  Container(
-                                    padding: const EdgeInsets.all(10),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.grey),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    Container(
-                                      padding: const EdgeInsets.all(10),
-                                      decoration: BoxDecoration(
-                                        border: Border.all(color: Colors.grey),
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: SelectableText(
-                                        pixCode != null ? 'Chave Pix: $pixCode' : 'Pix não disponível', // Aqui você coloca a chave PIX real
-                                        style: const TextStyle(fontSize: 16),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 20), // Espaço entre chave e área do comprovante
-                                      const Text(
-                                        "Comprovante de PIX:",
-                                        style: TextStyle(fontWeight: FontWeight.bold),
-                                      ),
-                                      Container(
-                                        padding: const EdgeInsets.all(10),
-                                        decoration: BoxDecoration(
-                                          border: Border.all(color: Colors.transparent),
-                                          borderRadius: BorderRadius.circular(8),
-                                        ),
-                                        child: ElevatedButton(
-                                          onPressed: () {
-                                            // Função para selecionar ou tirar uma foto do comprovante
-                                            _chooseComprovante();
-                                          },
-                                          child: const Text("Anexar Comprovante de PIX"),
-                                        ),
-                                      ),
-                                      if (_comprovanteImage != null) 
-                                          Padding(
-                                            padding: const EdgeInsets.only(top: 10.0),
-                                            child: Column(
-                                              children: [
-                                                const Text("Imagem do Comprovante de PIX:"),
-                                                const SizedBox(height: 10),
-                                                Image.file(
-                                                  File(_comprovanteImage!.path),
-                                                  height: 150, // Ajuste o tamanho da imagem conforme necessário
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                ],
-                              ),
-                            ),
-                          const VerticalSpacerBox(size: SpacerSize.large),
-                          if (_deliveryMethod == 'entrega')
-                            InkWell(
-                              child: Container(
-                                width: double.infinity,
-                                padding: const EdgeInsets.all(16),
-                                decoration: BoxDecoration(
-                                  color: kOnSurfaceColor,
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(15)),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: kTextButtonColor.withOpacity(0.5),
-                                      spreadRadius: 0,
-                                      blurRadius: 3,
-                                      offset: const Offset(0, 0),
-                                    ),
-                                  ],
-                                  border: Border(
-                                    left: BorderSide(
-                                      color: kTextButtonColor.withOpacity(0.5),
-                                      width: 1,
-                                    ),
-                                    right: BorderSide(
-                                      color: kTextButtonColor.withOpacity(0.5),
-                                      width: 1,
-                                    ),
-                                  ),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        const Text(
-                                          'Endereço de entrega',
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        const Spacer(),
-                                        IconButton(
-                                            onPressed: () => _chooseAddress(
-                                                context, profileController),
-                                            icon: const Icon(
-                                              Icons.arrow_forward_ios_outlined,
-                                              color: kTextButtonColor,
-                                            )),
-                                      ],
-                                    ),
-                                    const VerticalSpacerBox(
-                                        size: SpacerSize.tiny),
-                                    Text(
-                                      'Bairro: ${userAddress?.bairroNome ?? 'Bairro não disponível'}',
-                                      style: const TextStyle(fontSize: 13),
-                                    ),
-                                    const VerticalSpacerBox(
-                                        size: SpacerSize.tiny),
-                                    Text(
-                                      'Cidade: ${userAddress?.cidadeNome ?? 'Cidade não disponível'}',
-                                      style: const TextStyle(fontSize: 13),
-                                    ),
-                                    const VerticalSpacerBox(
-                                        size: SpacerSize.tiny),
-                                    Text(
-                                      'Rua: ${userAddress?.rua ?? 'Rua não disponível'}',
-                                      style: const TextStyle(fontSize: 13),
-                                    ),
-                                    const VerticalSpacerBox(
-                                        size: SpacerSize.tiny),
-                                    Text(
-                                      'Número: ${userAddress?.numero ?? 'Número não disponível'}',
-                                      style: const TextStyle(fontSize: 13),
-                                    ),
-                                    const VerticalSpacerBox(
-                                        size: SpacerSize.tiny),
-                                    if (userAddress?.complemento != null)
-                                      Text(
-                                        'Complemento: ${userAddress?.complemento}',
-                                        style: const TextStyle(fontSize: 13),
-                                      ),
-                                  ],
-                                ),
-                              ),
-                              onTap: () {},
-                            ),
-                          const VerticalSpacerBox(size: SpacerSize.medium),
-                          InkWell(
-                            child: Container(
-                              width: double.infinity,
-                              padding: const EdgeInsets.all(16),
-                              decoration: BoxDecoration(
-                                color: kOnSurfaceColor,
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(15)),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: kTextButtonColor.withOpacity(0.5),
-                                    spreadRadius: 0,
-                                    blurRadius: 3,
-                                    offset: const Offset(0, 0),
-                                  ),
-                                ],
-                                border: Border(
-                                  left: BorderSide(
-                                    color: kTextButtonColor.withOpacity(0.5),
-                                    width: 1,
-                                  ),
-                                  right: BorderSide(
-                                    color: kTextButtonColor.withOpacity(0.5),
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Row(
-                                    children: [
-                                      Text(
-                                        'Resumo de valores',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Spacer(),
-                                    ],
-                                  ),
-                                  const VerticalSpacerBox(
-                                      size: SpacerSize.tiny),
-                                  const VerticalSpacerBox(
-                                      size: SpacerSize.small),
-                                  if (_deliveryMethod == 'retirada')
-                                    Row(
-                                      children: [
-                                        const Text(
-                                          'Total:',
-                                          style: TextStyle(
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        const Spacer(),
-                                        Text(
-                                          _deliveryMethod == 'entrega'
-                                              ? 'R\$ ${(controller.totalValue + 5).toStringAsFixed(2)}'
-                                              : 'R\$ ${controller.totalValue.toStringAsFixed(2)}',
-                                          style: const TextStyle(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold,
-                                              color: kTextButtonColor),
-                                        ),
-                                      ],
-                                    ),
-                                ],
-                              ),
-                            ),
-                            onTap: () {},
+                        ),
+                        DropdownMenuItem<int>(
+                          value: 2,
+                          child: Text(
+                            'Pix',
+                            style:
+                            TextStyle(fontWeight: FontWeight.normal),
                           ),
-                          const VerticalSpacerBox(size: SpacerSize.large),
-                          PrimaryButton(
-                            text: 'Confirmar pedido',
-                            onPressed: () async {
-                              try {
-                                final pedidoModel = await controller.purchase(
-                                  selectedAddressId,
-                                  _deliveryMethod,
-                                  _paymentMethodId,
-                                );
-
-                                if (pedidoModel.isBlank!) {
-                                  throw Exception('Erro ao criar o pedido.');
-                                }
-
-                                print("Esse é o id do PEDIDO: ${pedidoModel.id}");
-
-                                if (pedidoModel.formaPagamentoId == 2) {
-                                  cartListProvider.clearCart();
-                                  print("ID PEDIDO PIX: ${pedidoModel.id}");
-                                  await pagamentoController.uploadComprovante(pedidoModel.id, context);
-                                  showSuccessDialog(context);
-                                } else if (pedidoModel.formaPagamentoId == 1) {
-                                  cartListProvider.clearCart();
-                                  print("ID PEDIDO DINHEIRO: ${pedidoModel.id}");
-                                  showSuccessDialog(context);
-                                } else {
-                                  throw Exception('Forma de pagamento inválida.');
-                                }
-                              } catch (e) {
-                                String errorMessage = e.toString();
-                                if (errorMessage.startsWith('Exception: ')) {
-                                  errorMessage = errorMessage.replaceFirst('Exception: ', '');
-                                }
-                                showErrorDialog(context, errorMessage);
-                              }
-                            },
-                            color: kDetailColor,
-                          ),
-                          const VerticalSpacerBox(size: SpacerSize.medium),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(context, Screens.cart);
-                                },
-                                child: const Text(
-                                  'Voltar a cesta',
-                                  style: TextStyle(
-                                      color: kDetailColor, fontSize: 16),
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
+                        ),
+                      ],
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                          borderSide: BorderSide.none,
+                        ),
+                        filled: true,
+                        fillColor: Colors.grey[100],
+                        contentPadding:
+                        const EdgeInsets.fromLTRB(13, 13, 13, 13),
                       ),
                     ),
-                  ),
-                );
-              },
+                    if (_paymentMethodId == 2)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Chave PIX do Vendedor:",
+                              style:
+                              TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: SelectableText(
+                                pixCode != null ? 'Chave Pix: $pixCode' : 'Pix não disponível',
+                                style: const TextStyle(fontSize: 16),
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            // Espaço entre chave e área do comprovante
+                            const Text(
+                              "Comprovante de PIX:",
+                              style:
+                              TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: ElevatedButton(
+                                onPressed: () async {
+                                  await pagamentoController.pickComprovante();
+                                },
+                                child: const Text(
+                                    "Anexar Comprovante de PIX"),
+                              ),
+                            ),
+                            if (pagamentoController.comprovante != null)
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10.0),
+                                child: Column(
+                                  children: [
+                                    const Text(
+                                        "Imagem do Comprovante de PIX:"),
+                                    const SizedBox(height: 10),
+                                    Image.file(
+                                      pagamentoController.comprovante!,
+                                      height:
+                                      150, // Ajuste o tamanho da imagem conforme necessário
+                                    ),
+                                  ],
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                    const VerticalSpacerBox(size: SpacerSize.large),
+                    if (_deliveryMethod == 'entrega')
+                      InkWell(
+                        child: Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: kOnSurfaceColor,
+                            borderRadius: const BorderRadius.all(
+                                Radius.circular(15)),
+                            boxShadow: [
+                              BoxShadow(
+                                color: kTextButtonColor.withOpacity(0.5),
+                                spreadRadius: 0,
+                                blurRadius: 3,
+                                offset: const Offset(0, 0),
+                              ),
+                            ],
+                            border: Border(
+                              left: BorderSide(
+                                color: kTextButtonColor.withOpacity(0.5),
+                                width: 1,
+                              ),
+                              right: BorderSide(
+                                color: kTextButtonColor.withOpacity(0.5),
+                                width: 1,
+                              ),
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  const Text(
+                                    'Endereço de entrega',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  const Spacer(),
+                                  IconButton(
+                                      onPressed: () => _chooseAddress(
+                                          context, profileController),
+                                      icon: const Icon(
+                                        Icons.arrow_forward_ios_outlined,
+                                        color: kTextButtonColor,
+                                      )),
+                                ],
+                              ),
+                              const VerticalSpacerBox(
+                                  size: SpacerSize.tiny),
+                              Text(
+                                'Bairro: ${userAddress?.bairroNome ?? 'Bairro não disponível'}',
+                                style: const TextStyle(fontSize: 13),
+                              ),
+                              const VerticalSpacerBox(
+                                  size: SpacerSize.tiny),
+                              Text(
+                                'Cidade: ${userAddress?.cidadeNome ?? 'Cidade não disponível'}',
+                                style: const TextStyle(fontSize: 13),
+                              ),
+                              const VerticalSpacerBox(
+                                  size: SpacerSize.tiny),
+                              Text(
+                                'Rua: ${userAddress?.rua ?? 'Rua não disponível'}',
+                                style: const TextStyle(fontSize: 13),
+                              ),
+                              const VerticalSpacerBox(
+                                  size: SpacerSize.tiny),
+                              Text(
+                                'Número: ${userAddress?.numero ?? 'Número não disponível'}',
+                                style: const TextStyle(fontSize: 13),
+                              ),
+                              const VerticalSpacerBox(
+                                  size: SpacerSize.tiny),
+                              if (userAddress?.complemento != null)
+                                Text(
+                                  'Complemento: ${userAddress?.complemento}',
+                                  style: const TextStyle(fontSize: 13),
+                                ),
+                            ],
+                          ),
+                        ),
+                        onTap: () {},
+                      ),
+                    const VerticalSpacerBox(size: SpacerSize.medium),
+                    InkWell(
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: kOnSurfaceColor,
+                          borderRadius:
+                          const BorderRadius.all(Radius.circular(15)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: kTextButtonColor.withOpacity(0.5),
+                              spreadRadius: 0,
+                              blurRadius: 3,
+                              offset: const Offset(0, 0),
+                            ),
+                          ],
+                          border: Border(
+                            left: BorderSide(
+                              color: kTextButtonColor.withOpacity(0.5),
+                              width: 1,
+                            ),
+                            right: BorderSide(
+                              color: kTextButtonColor.withOpacity(0.5),
+                              width: 1,
+                            ),
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Row(
+                              children: [
+                                Text(
+                                  'Resumo de valores',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Spacer(),
+                              ],
+                            ),
+                            const VerticalSpacerBox(
+                                size: SpacerSize.tiny),
+                            const VerticalSpacerBox(
+                                size: SpacerSize.small),
+                            if (_deliveryMethod == 'retirada')
+                              Row(
+                                children: [
+                                  const Text(
+                                    'Total:',
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  const Spacer(),
+                                  Text(
+                                    _deliveryMethod == 'entrega'
+                                        ? 'R\$ ${(controller.totalValue + 5).toStringAsFixed(2)}'
+                                        : 'R\$ ${controller.totalValue.toStringAsFixed(2)}',
+                                    style: const TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: kTextButtonColor),
+                                  ),
+                                ],
+                              ),
+                          ],
+                        ),
+                      ),
+                      onTap: () {},
+                    ),
+                    const VerticalSpacerBox(size: SpacerSize.large),
+                    PrimaryButton(
+                      text: 'Confirmar pedido',
+                      onPressed: () async {
+                        try {
+                          final pedidoModel = await controller.purchase(
+                            selectedAddressId,
+                            _deliveryMethod,
+                            _paymentMethodId,
+                          );
+
+                          if (pedidoModel.isBlank!) {
+                            throw Exception('Erro ao criar o pedido.');
+                          }
+
+                          print("Esse é o id do PEDIDO: ${pedidoModel.id}");
+
+                          if (pedidoModel.formaPagamentoId == 2) {
+                            cartListProvider.clearCart();
+                            print("ID PEDIDO PIX: ${pedidoModel.id}");
+                            await pagamentoController.uploadComprovante(pedidoModel.id, context);
+                            showSuccessDialog(context);
+                          } else if (pedidoModel.formaPagamentoId == 1) {
+                            cartListProvider.clearCart();
+                            print("ID PEDIDO DINHEIRO: ${pedidoModel.id}");
+                            showSuccessDialog(context);
+                          } else {
+                            throw Exception('Forma de pagamento inválida.');
+                          }
+                        } catch (e) {
+                          String errorMessage = e.toString();
+                          if (errorMessage.startsWith('Exception: ')) {
+                            errorMessage = errorMessage.replaceFirst('Exception: ', '');
+                          }
+                          showErrorDialog(context, errorMessage);
+                        }
+                      },
+                      color: kDetailColor,
+                    ),
+                    const VerticalSpacerBox(size: SpacerSize.medium),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, Screens.cart);
+                          },
+                          child: const Text(
+                            'Voltar a cesta',
+                            style: TextStyle(
+                                color: kDetailColor, fontSize: 16),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
+          );
+        },
+      ),
     );
   }
 
@@ -585,7 +578,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(
         source:
-            ImageSource.gallery); // Ou ImageSource.camera para tirar uma foto
+        ImageSource.gallery); // Ou ImageSource.camera para tirar uma foto
     if (image != null) {
       // Agora você pode exibir o comprovante ou fazer upload
       setState(() {
