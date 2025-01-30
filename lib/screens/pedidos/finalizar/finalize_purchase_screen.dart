@@ -297,8 +297,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                           children: [
                             const Text(
                               "Chave PIX do Vendedor:",
-                              style:
-                              TextStyle(fontWeight: FontWeight.bold),
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             Container(
                               padding: const EdgeInsets.all(10),
@@ -312,11 +311,9 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                               ),
                             ),
                             const SizedBox(height: 20),
-                            // Espaço entre chave e área do comprovante
                             const Text(
                               "Comprovante de PIX:",
-                              style:
-                              TextStyle(fontWeight: FontWeight.bold),
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             Container(
                               padding: const EdgeInsets.all(10),
@@ -324,30 +321,43 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                                 border: Border.all(color: Colors.grey),
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: ElevatedButton(
-                                onPressed: () async {
-                                  await pagamentoController.pickComprovante();
-                                },
-                                child: const Text(
-                                    "Anexar Comprovante de PIX"),
+                              child: Column(
+                                children: [
+                                  ElevatedButton(
+                                    onPressed: () async {
+                                      await _chooseComprovante();
+                                    },
+                                    child: const Text("Anexar Comprovante de PIX"),
+                                  ),
+                                  if (_comprovanteImage != null)
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 10.0),
+                                      child: Column(
+                                        children: [
+                                          const Text("Visualização do comprovante:"),
+                                          const SizedBox(height: 8),
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              border: Border.all(color: Colors.grey),
+                                              borderRadius: BorderRadius.circular(8),
+                                            ),
+                                            child: Image.file(
+                                              File(_comprovanteImage!.path),
+                                              height: 200,
+                                              width: double.infinity,
+                                              fit: BoxFit.contain,
+                                              errorBuilder: (context, error, stackTrace) {
+                                                print("Erro ao carregar imagem: $error");
+                                                return const Text("Erro ao carregar a imagem");
+                                              },
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                ],
                               ),
                             ),
-                            if (pagamentoController.comprovante != null)
-                              Padding(
-                                padding: const EdgeInsets.only(top: 10.0),
-                                child: Column(
-                                  children: [
-                                    const Text(
-                                        "Imagem do Comprovante de PIX:"),
-                                    const SizedBox(height: 10),
-                                    Image.file(
-                                      pagamentoController.comprovante!,
-                                      height:
-                                      150, // Ajuste o tamanho da imagem conforme necessário
-                                    ),
-                                  ],
-                                ),
-                              ),
                           ],
                         ),
                       ),
@@ -527,9 +537,12 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                           print("Esse é o id do PEDIDO: ${pedidoModel.id}");
 
                           if (pedidoModel.formaPagamentoId == 2) {
+                            if (_comprovanteImage == null) {
+                              throw Exception('Por favor, anexe o comprovante de pagamento.');
+                            }
                             cartListProvider.clearCart();
                             print("ID PEDIDO PIX: ${pedidoModel.id}");
-                            await pagamentoController.uploadComprovante(pedidoModel.id, context);
+                            await pagamentoController.uploadComprovanteFromXFile(pedidoModel.id, context, _comprovanteImage!);
                             showSuccessDialog(context);
                           } else if (pedidoModel.formaPagamentoId == 1) {
                             cartListProvider.clearCart();

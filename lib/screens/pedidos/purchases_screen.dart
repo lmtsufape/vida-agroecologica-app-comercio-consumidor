@@ -116,16 +116,17 @@ Widget _buildEmptyListWidget() {
           const Icon(Icons.storefront, color: kDetailColor, size: 80),
           const SizedBox(height: 20),
           const Text(
-            'Nenhum pedido encontrado.',
+            'Você ainda não fez pedidos no aplicativo',
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.bold,
               color: kDetailColor,
             ),
+            textAlign: TextAlign.center,
           ),
           const SizedBox(height: 10),
           Text(
-            'Você ainda não tem pedidos realizados ou estão indisponíveis no momento.',
+            'Faça pedidos agora mesmo :)',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 16,

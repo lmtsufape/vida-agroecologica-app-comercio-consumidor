@@ -2,6 +2,7 @@
 
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:image_picker/image_picker.dart';
 import 'package:vidaagroconsumidor/screens/screens_index.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
@@ -71,6 +72,32 @@ class PagamentoController with ChangeNotifier {
         const SnackBar(content: Text('Comprovante enviado com sucesso!')),
       );
       //Navigator.pushNamed(context, Screens.purchases);
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.toString())),
+      );
+      print('Erro ao fazer upload do comprovante: $e');
+      throw Exception('Erro no upload do comprovante.');
+    }
+  }
+
+  // Novo método para upload com XFile
+  //Douglas Henrique
+  Future<void> uploadComprovanteFromXFile(int orderId, BuildContext context, XFile comprovanteImage) async {
+    try {
+      if (comprovanteImage == null) {
+        debugPrint('Nenhum comprovante selecionado');
+        return;
+      }
+
+      final file = File(comprovanteImage.path);
+      final pagamento = PagamentoModel(comprovante: file);
+
+      await _repository.uploadComprovante(pagamento, orderId);
+      print("Upload do comprovante para o pedido: $orderId");
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Comprovante enviado com sucesso!')),
+      );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(e.toString())),
