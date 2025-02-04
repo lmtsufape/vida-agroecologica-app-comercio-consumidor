@@ -587,16 +587,25 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
     );
   }
 
-  Future<void> _chooseComprovante() async {
+  bool _isPickerActive = false;
+
+Future<void> _chooseComprovante() async {
+  if (_isPickerActive) return; // Evita múltiplas chamadas
+
+  try {
+    _isPickerActive = true;
     final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(
-        source:
-        ImageSource.gallery); // Ou ImageSource.camera para tirar uma foto
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+    
     if (image != null) {
-      // Agora você pode exibir o comprovante ou fazer upload
       setState(() {
-        _comprovanteImage = image; // Salve a imagem selecionada
+        _comprovanteImage = image;
       });
     }
+  } catch (e) {
+    print('Erro ao selecionar imagem: $e');
+  } finally {
+    _isPickerActive = false;
   }
+}
 }
