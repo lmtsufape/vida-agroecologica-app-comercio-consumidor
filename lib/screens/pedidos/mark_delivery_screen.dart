@@ -1,4 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
 
 import 'package:vidaagroconsumidor/components/appBar/custom_app_bar.dart';
 import 'package:vidaagroconsumidor/shared/constants/app_text_constants.dart';
@@ -16,7 +15,7 @@ class MarkAsDeliveredScreen extends StatelessWidget {
 
   Future<void> _markAsDelivered(BuildContext context, int orderId) async {
     final pedidoController =
-        Provider.of<PedidoController>(context, listen: false);
+    Provider.of<PedidoController>(context, listen: false);
 
     try {
       final userStorage = UserStorage();

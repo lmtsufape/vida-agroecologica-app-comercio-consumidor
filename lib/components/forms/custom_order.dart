@@ -4,8 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:vidaagroconsumidor/components/utils/horizontal_spacer_box.dart';
 import 'package:vidaagroconsumidor/components/utils/vertical_spacer_box.dart';
 import 'package:vidaagroconsumidor/shared/constants/style_constants.dart';
+import 'package:vidaagroconsumidor/shared/core/controllers/pedidos_controller.dart';
+import 'package:vidaagroconsumidor/shared/core/models/produtos_pedidos_model.dart';
 
-class OrderCard extends StatelessWidget {
+import '../../screens/pedidos/components/itens_list.dart';
+
+class OrderCard extends StatefulWidget {
   final String orderNumber;
   final String sellerName;
   final double itemsTotal;
@@ -13,6 +17,8 @@ class OrderCard extends StatelessWidget {
   final String date;
   final String status;
   final VoidCallback onTap;
+  final int pedidoId;
+  final List<ProdutoPedidoModel> itens;
 
   const OrderCard({
     super.key,
@@ -23,17 +29,25 @@ class OrderCard extends StatelessWidget {
     required this.date,
     required this.status,
     required this.onTap,
+    required this.pedidoId,
+    required this.itens,
   });
 
+  @override
+  State<OrderCard> createState() => _OrderCardState();
+}
+
+class _OrderCardState extends State<OrderCard> {
   String formatPrice(double price) {
     return price.toStringAsFixed(2).replaceAll('.', ',');
   }
 
-  String get formattedItemsTotal => formatPrice(itemsTotal);
+  String get formattedItemsTotal => formatPrice(widget.itemsTotal);
+
 /*   String get formattedShippingHandling => formatPrice(shippingHandling);
  */
   String get formattedOrderTotal =>
-      formatPrice(itemsTotal /*  + shippingHandling */);
+      formatPrice(widget.itemsTotal /*  + shippingHandling */);
 
   Map<String, dynamic> _getStatusAttributes(String status) {
     switch (status) {
@@ -125,9 +139,10 @@ class OrderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final statusAttributes = _getStatusAttributes(status);
+    final statusAttributes = _getStatusAttributes(widget.status);
     final statusColor = statusAttributes['color'] as Color;
     final statusIcon = statusAttributes['icon'] as IconData;
+    final Size size = MediaQuery.of(context).size;
 
     return Column(
       children: [
@@ -135,17 +150,25 @@ class OrderCard extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
-            child: Text(
-              'Pedido $orderNumber',
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Pedido ${widget.orderNumber}',
+                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
+                Divider(
+                  color: Colors.transparent,
+                  height: size.height * 0.005,
+                ),
+              ],
             ),
           ),
         ),
         InkWell(
-          onTap: onTap,
+          onTap: widget.onTap,
           child: Container(
-            width: 430,
-            height: 255,
+            width: size.width,
             decoration: BoxDecoration(
               color: kOnSurfaceColor,
               borderRadius: const BorderRadius.all(Radius.circular(15)),
@@ -176,7 +199,7 @@ class OrderCard extends StatelessWidget {
                     children: [
                       const HorizontalSpacerBox(size: SpacerSize.large),
                       Text(
-                        sellerName,
+                        widget.sellerName,
                         style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -204,6 +227,25 @@ class OrderCard extends StatelessWidget {
                   thickness: 1,
 /*                   indent: 5,
  */
+                ),
+                const VerticalSpacerBox(size: SpacerSize.small),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const HorizontalSpacerBox(size: SpacerSize.large),
+                      const Text(
+                        'Itens:',
+                        style: TextStyle(fontSize: 17),
+                      ),
+                      const VerticalSpacerBox(size: SpacerSize.small),
+                      SizedBox(
+                        //height: size.height * widget.itens.length * 0.05,
+                        child: ItensPedidoWidget(pedidoId: widget.pedidoId, itensPurchase: widget.itens),
+                      ),
+                    ],
+                  ),
                 ),
                 const VerticalSpacerBox(size: SpacerSize.small),
                 Padding(
@@ -273,7 +315,7 @@ class OrderCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        date,
+                        widget.date,
                         style: const TextStyle(
                             fontSize: 17, fontWeight: FontWeight.bold),
                       ),
@@ -304,9 +346,17 @@ class OrderCard extends StatelessWidget {
                     ],
                   ),
                 ),
+                Divider(
+                  color: Colors.transparent,
+                  height: size.height * 0.01,
+                ),
               ],
             ),
           ),
+        ),
+        Divider(
+          color: Colors.transparent,
+          height: size.height * 0.03,
         ),
       ],
     );

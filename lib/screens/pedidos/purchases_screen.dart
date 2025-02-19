@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+import 'package:dio/dio.dart';
+import 'package:get/get.dart';
 import 'package:vidaagroconsumidor/screens/screens_index.dart';
 import 'package:vidaagroconsumidor/shared/components/bottomNavigation/bottom_navigation.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +12,7 @@ import 'package:vidaagroconsumidor/components/appBar/custom_app_bar.dart';
 import 'package:vidaagroconsumidor/components/forms/custom_order.dart';
 import 'package:vidaagroconsumidor/components/utils/vertical_spacer_box.dart';
 import '../../shared/constants/app_enums.dart';
+import '../../shared/core/repositories/pedidos_repository.dart';
 
 class PurchasesScreen extends StatefulWidget {
   const PurchasesScreen({super.key});
@@ -83,13 +86,15 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
                         ...List.generate(controller.orders.length, (index) {
                           var order = controller.orders[index];
                           return OrderCard(
+                            pedidoId:  order.id!,
                             orderNumber: '#${index + 1}',
                             sellerName: order.bancaNome ?? 'Banca Desconhecida',
-                            itemsTotal: order.subtotal,
+                            itemsTotal: order.subtotal!,
                             /*  shippingHandling: order.taxaEntrega, */
                             date: formatDate(order.dataPedido),
-                            status: order.status,
-                            onTap: () => _onOrderTapped(order.id),
+                            status: order.status!,
+                            onTap: () => _onOrderTapped(order.id!),
+                            itens: order.listaDeProdutos!,
                           );
                         }),
                         const VerticalSpacerBox(size: SpacerSize.medium),

@@ -542,7 +542,7 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                             }
                             cartListProvider.clearCart();
                             print("ID PEDIDO PIX: ${pedidoModel.id}");
-                            await pagamentoController.uploadComprovanteFromXFile(pedidoModel.id, context, _comprovanteImage!);
+                            await pagamentoController.uploadComprovanteFromXFile(pedidoModel.id!, context, _comprovanteImage!);
                             showSuccessDialog(context);
                           } else if (pedidoModel.formaPagamentoId == 1) {
                             cartListProvider.clearCart();
