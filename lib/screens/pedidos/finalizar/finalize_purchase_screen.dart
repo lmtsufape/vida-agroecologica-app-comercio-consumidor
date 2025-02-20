@@ -524,37 +524,37 @@ class _FinalizePurchaseScreenState extends State<FinalizePurchaseScreen> {
                       text: 'Confirmar pedido',
                       onPressed: () async {
                         try {
+                          // Validações iniciais
+                          if (_paymentMethodId == 2 && _comprovanteImage == null) {
+                            throw Exception('Por favor, anexe o comprovante do PIX');
+                          }
+
+                          // Tenta criar o pedido
                           final pedidoModel = await controller.purchase(
                             selectedAddressId,
                             _deliveryMethod,
                             _paymentMethodId,
                           );
 
-                          if (pedidoModel.isBlank!) {
-                            throw Exception('Erro ao criar o pedido.');
-                          }
-
-                          print("Esse é o id do PEDIDO: ${pedidoModel.id}");
-
-                          if (pedidoModel.formaPagamentoId == 2) {
-                            if (_comprovanteImage == null) {
-                              throw Exception('Por favor, anexe o comprovante de pagamento.');
+                          // Processamento do pedido
+                          if (pedidoModel.id != null) {
+                            if (_paymentMethodId == 2) {
+                              await pagamentoController.uploadComprovanteFromXFile(
+                                pedidoModel.id!,
+                                context,
+                                _comprovanteImage!
+                              );
                             }
+                            
                             cartListProvider.clearCart();
-                            print("ID PEDIDO PIX: ${pedidoModel.id}");
-                            await pagamentoController.uploadComprovanteFromXFile(pedidoModel.id!, context, _comprovanteImage!);
-                            showSuccessDialog(context);
-                          } else if (pedidoModel.formaPagamentoId == 1) {
-                            cartListProvider.clearCart();
-                            print("ID PEDIDO DINHEIRO: ${pedidoModel.id}");
                             showSuccessDialog(context);
                           } else {
-                            throw Exception('Forma de pagamento inválida.');
+                            throw Exception('Pedido não foi criado corretamente');
                           }
                         } catch (e) {
                           String errorMessage = e.toString();
                           if (errorMessage.startsWith('Exception: ')) {
-                            errorMessage = errorMessage.replaceFirst('Exception: ', '');
+                            errorMessage = errorMessage.substring(10);
                           }
                           showErrorDialog(context, errorMessage);
                         }
