@@ -51,16 +51,13 @@ class SignInRepository {
           if (userResponse.statusCode == 200) {
             List roles = userResponse.data['user']['roles'];
             if (roles.isNotEmpty) {
-              int roleId = roles[0]['id'];
-              print('Role ID: $roleId');
-              
-              // Verifica se é consumidor (role 5)
-              if (roleId == 5) {
+              bool hasRole5 = roles.any((role) => role['id'] == 5);
+              if (hasRole5) {
                 print(response.statusCode);
-                return 1; // Sucesso - é consumidor
+                return 1;
               } else {
                 print(noAut);
-                return 3; // Não autorizado - não é consumidor
+                return 3;
               }
             }
           }
