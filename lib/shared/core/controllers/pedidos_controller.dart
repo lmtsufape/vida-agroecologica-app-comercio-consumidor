@@ -80,9 +80,9 @@ class PedidoController with ChangeNotifier {
   }
 
   void carregarPedidos(int id) {
-    debugPrint("Pedidos carregados: ${orders.length}");
-    for (var pedido in orders) {
-      debugPrint("Pedido ${pedido.id} - Itens: ${pedido.listaDeProdutos?[id].titulo ?? 0}");
-    }
+  debugPrint("Pedidos carregados: ${orders.length}");
+  for (var pedido in orders) {
+    debugPrint("Pedido ${pedido.id} - Itens: ${pedido.listaDeProdutos?[id].titulo ?? 0}");
   }
+}
 }

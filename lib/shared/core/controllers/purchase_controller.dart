@@ -37,59 +37,76 @@ class PurchaseController extends GetxController {
   }
 
   Future<PedidoModel> purchase(
-      int enderecoId,
-      String tipoEntrega,
-      int formaPagamento,
-      ) async {
-    // Validações iniciais
-    if (listCartModel == null || listCartModel!.isEmpty) {
-      throw Exception('Carrinho vazio ou inválido.');
-    }
-
-    if (bancas.isEmpty) {
-      throw Exception('Nenhuma banca disponível.');
-    }
-
-    List<List> listCartModelSplited = [];
-    for (var cart in listCartModel!) {
-      for (int idBanca = 0; idBanca < bancas.length; idBanca++) {
-        if (bancas[idBanca].id == cart.storeId!) {
-          idStore = idBanca;
-        }
-      }
-      bancaModel = bancas[idStore];
-      print('Banca Selecionada: ${bancaModel!.nome}');
-      List listItem = [];
-      listItem.add(cart.productId);
-      listItem.add(cart.amount);
-      listCartModelSplited.add(listItem);
-    }
-
-    try {
-      var response = await _purchaseRepository.purchase(
-        listCartModelSplited,
-        bancas[idStore].id,
-        userToken,
-        enderecoId,
-        tipoEntrega,
-        formaPagamento,
-      );
-
-      // Validações do retorno
-      if (response == null) {
-        throw Exception('Erro: Pedido retornado é nulo.');
-      }
-
-      if (response.id == null) {
-        throw Exception('Pedido inválido retornado pelo servidor.');
-      }
-      print('Pedido gerado com sucesso: $response');
-      return response;
-    } catch (error) {
-      print('Erro na compra: $error');
-      rethrow;
-    }
+  int enderecoId,
+  String tipoEntrega,
+  int formaPagamento,
+) async {
+  // Validações iniciais mais robustas
+  if (listCartModel == null || listCartModel!.isEmpty) {
+    throw Exception('Carrinho vazio ou inválido.');
   }
+
+  if (bancas.isEmpty) {
+    throw Exception('Nenhuma banca disponível.');
+  }
+
+  List<List<dynamic>> listCartModelSplited = []; // Tipo explícito
+  int? currentBancaId;
+
+  // Encontra a banca correta
+  for (var cart in listCartModel!) {
+    if (cart.storeId == null) {
+      throw Exception('ID da loja não encontrado para um ou mais produtos.');
+    }
+
+    currentBancaId = cart.storeId;
+    idStore = bancas.indexWhere((banca) => banca.id == currentBancaId);
+    
+    if (idStore == -1) {
+      throw Exception('Banca não encontrada para o ID: ${cart.storeId}');
+    }
+
+    bancaModel = bancas[idStore];
+    
+    if (cart.productId == null) {
+      throw Exception('ID do produto não encontrado.');
+    }
+
+    listCartModelSplited.add([cart.productId, cart.amount]);
+  }
+
+  try {
+    if (bancaModel == null || bancaModel!.id == null) {
+      throw Exception('Dados da banca inválidos.');
+    }
+
+    var response = await _purchaseRepository.purchase(
+      listCartModelSplited,
+      bancaModel!.id,
+      userToken,
+      enderecoId,
+      tipoEntrega,
+      formaPagamento,
+    );
+
+    if (response == null) {
+      throw Exception('Erro: Pedido retornado é nulo.');
+    }
+
+    if (response.id == null) {
+      throw Exception('ID do pedido não retornado pelo servidor.');
+    }
+
+    print('Pedido gerado com sucesso. ID: ${response.id}');
+    return response;
+  } catch (error) {
+    print('Erro na compra: $error');
+    if (error is DioError) {
+      throw Exception('Erro na comunicação com o servidor: ${error.message}');
+    }
+    rethrow;
+  }
+}
 
 
   double get totalValue => listCartModel?.isNotEmpty == true

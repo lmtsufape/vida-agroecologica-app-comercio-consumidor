@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vidaagroconsumidor/screens/forgot-password/forgot_password_screen.dart';
 import 'package:vidaagroconsumidor/screens/screens_index.dart';
-import 'package:vidaagroconsumidor/screens/signin/sign_in_controller.dart'; // Novo import
+import 'package:vidaagroconsumidor/screens/signin/sign_in_controller.dart';
 import 'package:vidaagroconsumidor/shared/components/header_start_app/header_start_app.dart';
 import 'package:vidaagroconsumidor/shared/constants/app_enums.dart';
 import 'package:vidaagroconsumidor/shared/constants/app_number_constants.dart';
