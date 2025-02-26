@@ -2,12 +2,19 @@
 
 import 'package:vidaagroconsumidor/shared/core/models/banca_model.dart';
 import 'package:vidaagroconsumidor/shared/core/repositories/banca_repository.dart';
+import 'package:vidaagroconsumidor/shared/core/user_storage.dart';
 import 'package:flutter/material.dart';
 
 class BancaController with ChangeNotifier {
   List<BancaModel?> _bancas = [];
   List<BancaModel?> _allBancas = []; // Lista completa de bancas
   final BancaRepository _bancaRepository = BancaRepository();
+  UserStorage userStorage = UserStorage();
+  String? userToken;
+
+  Future getUserToken() async {
+    userToken = await userStorage.getUserToken();
+  }
 
   List<BancaModel?> get bancas => _bancas;
 
@@ -36,6 +43,12 @@ class BancaController with ChangeNotifier {
         return banca!.nome.toLowerCase().contains(query.toLowerCase());
       }).toList();
     }
+    notifyListeners();
+  }
+
+  void onInit() {
+    loadBancas();
+    getUserToken();
     notifyListeners();
   }
 }

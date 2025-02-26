@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:vidaagroconsumidor/components/buttons/custom_search_field.dart';
 import 'package:vidaagroconsumidor/components/spacer/verticalSpacer.dart';
 import 'package:vidaagroconsumidor/screens/screens_index.dart';
@@ -7,8 +8,25 @@ import 'package:vidaagroconsumidor/shared/core/models/banca_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Bancas extends StatelessWidget {
+import '../../assets/index.dart';
+import '../../shared/constants/app_text_constants.dart';
+
+class Bancas extends StatefulWidget {
   const Bancas({super.key});
+
+  @override
+  State<Bancas> createState() => _BancasState();
+}
+
+class _BancasState extends State<Bancas> {
+  BancaController controller = Get.put(BancaController());
+
+  @override
+  void initState() {
+    super.initState();
+    controller.loadBancas();
+    controller.getUserToken();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,15 +81,20 @@ class Bancas extends StatelessWidget {
               ),
               const VerticalSpacer(size: 5),
               Expanded(
-                child: bancaController.bancas.isEmpty
-                    ? _buildEmptyListWidget()
-                    : ListView.builder(
-                        itemCount: bancaController.bancas.length,
-                        itemBuilder: (context, index) {
-                          BancaModel banca = bancaController.bancas[index]!;
-                          return BancaCard(banca: banca);
-                        },
-                      ),
+                child: RefreshIndicator(
+                  onRefresh: () async {
+                    await bancaController.loadBancas();
+                  },
+                  child: bancaController.bancas.isEmpty
+                      ? _buildEmptyListWidget()
+                      : ListView.builder(
+                          itemCount: bancaController.bancas.length,
+                          itemBuilder: (context, index) {
+                            BancaModel banca = bancaController.bancas[index]!;
+                            return BancaCard(banca: banca);
+                          },
+                        ),
+                ),
               ),
             ],
           );
@@ -162,9 +185,23 @@ class Bancas extends StatelessWidget {
   }
 }
 
-class BancaCard extends StatelessWidget {
+class BancaCard extends StatefulWidget {
   final BancaModel banca;
+
   const BancaCard({required this.banca, super.key});
+
+  @override
+  State<BancaCard> createState() => _BancaCardState();
+}
+
+class _BancaCardState extends State<BancaCard> {
+  BancaController controller = Get.put(BancaController());
+
+  @override
+  void initState() {
+    super.initState();
+    controller.getUserToken();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -191,10 +228,10 @@ class BancaCard extends StatelessWidget {
               context,
               Screens.menuProducts,
               arguments: {
-                'id': banca.id,
-                'nome': banca.nome,
-                'horario_abertura': banca.horarioAbertura,
-                'horario_fechamento': banca.horarioFechamento,
+                'id': widget.banca.id,
+                'nome': widget.banca.nome,
+                'horario_abertura': widget.banca.horarioAbertura,
+                'horario_fechamento': widget.banca.horarioFechamento,
               },
             );
           },
@@ -203,15 +240,20 @@ class BancaCard extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Row(
               children: [
-                const CircleAvatar(
-                  radius: 25.0,
-                  backgroundImage:
-                      AssetImage("lib/assets/images/banca-fruta.jpg"),
+                CircleAvatar(
+                  radius: 38,
+                  backgroundImage: const AssetImage(Assets.logoVidaAgro),
+                  foregroundImage: NetworkImage(
+                    '$kBaseURL/bancas/${widget.banca.id}/imagem',
+                    headers: {
+                      "Authorization": "Bearer ${controller.userToken}"
+                    },
+                  ),
                 ),
                 const SizedBox(width: 16.0),
                 Expanded(
                   child: Text(
-                    banca.nome,
+                    widget.banca.nome,
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
