@@ -244,7 +244,7 @@ class _BancaCardState extends State<BancaCard> {
                   radius: 38,
                   backgroundImage: const AssetImage(Assets.logoVidaAgro),
                   foregroundImage: NetworkImage(
-                    '$kBaseURL/bancas/${widget.banca.id}/imagem',
+                    '$kBaseURL/bancas/${widget.banca.id}/imagem?timestamp=${DateTime.now().millisecondsSinceEpoch}',
                     headers: {
                       "Authorization": "Bearer ${controller.userToken}"
                     },
