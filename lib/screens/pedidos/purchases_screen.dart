@@ -80,29 +80,30 @@ class _PurchasesScreenState extends State<PurchasesScreen> {
             padding: const EdgeInsets.all(20),
             child: controller.orders.isNotEmpty
                 ? SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        const VerticalSpacerBox(size: SpacerSize.small),
-                        ...List.generate(controller.orders.length, (index) {
-                          var order = controller.orders[index];
-                          return OrderCard(
-                            pedidoId:  order.id!,
-                            orderNumber: '#${index + 1}',
-                            sellerName: order.bancaNome ?? 'Banca Desconhecida',
-                            itemsTotal: order.subtotal!,
-                            /*  shippingHandling: order.taxaEntrega, */
-                            date: formatDate(order.dataPedido),
-                            status: order.status!,
-                            onTap: () => _onOrderTapped(order.id!),
-                            itens: order.listaDeProdutos!,
-                          );
-                        }),
-                        const VerticalSpacerBox(size: SpacerSize.medium),
-                      ],
-                    ),
-                  )
+              child: Column(
+                children: [
+                  const VerticalSpacerBox(size: SpacerSize.small),
+                  ...List.generate(controller.orders.reversed.toList().length, (index) {
+                    var reversedOrders = controller.orders.reversed.toList();
+                    var order = controller.orders[index];
+                    return OrderCard(
+                      pedidoId: order.id!,
+                      orderNumber: '#${reversedOrders.length - index}', // Ajustando a numeração para ficar correta
+                      sellerName: order.bancaNome ?? 'Banca Desconhecida',
+                      itemsTotal: order.subtotal!,
+                      date: formatDate(order.dataPedido),
+                      status: order.status!,
+                      onTap: () => _onOrderTapped(order.id!),
+                      itens: order.listaDeProdutos!,
+                    );
+                  }),
+                  const VerticalSpacerBox(size: SpacerSize.medium),
+                ],
+              ),
+            )
                 : _buildEmptyListWidget(),
           ),
+
         );
       },
     );
