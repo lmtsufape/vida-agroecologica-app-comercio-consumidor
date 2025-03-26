@@ -14,7 +14,49 @@ class CartProvider extends ChangeNotifier {
     return listCart[index];
   }
 
-  void addCart(CartModel cartModel) {
+  void addCart(CartModel cartModel, BuildContext context) {
+
+    bool isDifferentStore = false;
+    for (int i = 0; i < listCart.length; i++) {
+      if (listCart[i].storeId != cartModel.storeId) {
+        isDifferentStore = true;
+        break;
+      }
+    }
+
+    if (isDifferentStore) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          // return AlertDialog(
+          //   title: Text("Erro"),
+          //   content: Text("Não é possível adicionar produtos de bancas diferentes no mesmo carrinho."),
+          //   actions: <Widget>[
+          //     TextButton(
+          //       child: Text("OK"),
+          //       onPressed: () {
+          //         Navigator.of(context).pop(); // Fecha o diálogo
+          //       },
+          //     ),
+          //   ],
+          // );
+          return CupertinoAlertDialog(
+            title: Text("Erro"),
+            content: Text("Não é possível adicionar produtos de bancas diferentes no mesmo carrinho."),
+            actions: <Widget>[
+              CupertinoDialogAction(
+                child: Text("OK"),
+                onPressed: () {
+                  Navigator.of(context).pop(); // Fecha o diálogo
+                },
+              ),
+            ],
+          );
+        },
+      );
+      return;  // Retorna sem adicionar o produto
+    }
+
     bool isDuplicated = false;
     for (int i = 0; i < listCart.length; i++) {
       if (cartModel.productId == listCart[i].productId) {

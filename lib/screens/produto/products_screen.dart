@@ -62,24 +62,7 @@ class _MenuProductsScreenState extends State<MenuProductsScreen> {
     String horarioFechamentoFormatado = formatarHorario(horarioFechamento);
 
     // ignore: deprecated_member_use
-    return WillPopScope(
-        onWillPop: () async {
-          if (cartListProvider.itens != 0) {
-            final shouldLeave = await confirmDialog(
-                context,
-                "Sair da banca",
-                "Se você sair da banca, os produtos que você adicionou à cesta serão removidos.",
-                "Cancelar",
-                "Sair", onConfirm: () {
-              cartListProvider.clearCart();
-              Navigator.of(context).pop(true);
-            });
-            return shouldLeave;
-          } else {
-            return true;
-          }
-        },
-        child: GetBuilder<ProductsController>(
+    return GetBuilder<ProductsController>(
           init: ProductsController(Dio()),
           builder: (controller) => Scaffold(
             appBar: const CustomAppBar(),
@@ -196,7 +179,7 @@ class _MenuProductsScreenState extends State<MenuProductsScreen> {
               ),
             ),
           ),
-        ));
+        );
   }
 }
 
