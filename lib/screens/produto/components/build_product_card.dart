@@ -38,7 +38,7 @@ class _BuildProductCardState extends State<BuildProductCard> {
 
     void addToCart(int quantity) {
       CartModel cart = widget.controller.createCart(context, quantity, widget.produto);
-      widget.cartProvider.addCart(cart);
+      widget.cartProvider.addCart(cart, context);
     }
 
     return InkWell(

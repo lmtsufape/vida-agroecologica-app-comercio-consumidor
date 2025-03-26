@@ -46,7 +46,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.lmts.vidaagroconsumidor"
+        applicationId "com.ufape.lmts.vidaagroconsumidor"
         minSdkVersion 21
         targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()
